@@ -1,0 +1,116 @@
+﻿<div class="ls-basic-setting">
+    <div class="field-row">
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Full height</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="autoHeightLSRes" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100">
+            <span class="range__slider fCol">
+                <div id="lsSliderHeightRes">
+                    <div title="Height" id="lsSliderHeightResHandle" class="ui-slider-handle">300</div>
+                </div>
+            </span>
+        </div>
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Show Arrows</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="arrowsResLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col100" id="arrowMarginRes">
+            <span class="range__slider fCol">
+                <div id="lsArrowMarginRes">
+                    <div title="Arrow margin" id="lsArrowMarginHandleRes" class="ui-slider-handle">20</div>
+                </div>
+            </span>
+        </div>
+
+        <div class="field-row stElWrap col100" id="arrowSizeRes">
+            <span class="range__slider fCol">
+                <div id="lsArrowSizeRes">
+                    <div title="Arrow size" id="lsArrowSizeHandleRes" class="ui-slider-handle">30</div>
+                </div>
+            </span>
+        </div>
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Show Dots</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="buttonsResLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Auto Play</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="autoplayResLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100" id="autoplayResMsg">
+            <label class="fCol">* Slider will not auto play in editor mode. Please preview the site for auto play.</label>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Auto Play Delay</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="autoplayDelayResLS">
+                        <option value="3000">3 seconds</option>
+                        <option value="5000">5 seconds</option>
+                        <option value="10000">10 seconds</option>
+                        <option value="15000">15 seconds</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div class="Dn" id="resLayerSet">
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Current Slide</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="lsResSlides" aria-invalid="false" class="valid"></select>
+                    </span>
+                </div>
+            </div>
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Current Layer</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="layerResLS" aria-invalid="false" class="valid"></select>
+                    </span>
+                </div>
+            </div>
+            <div class="field-row stElWrap col50-50 Dn">
+                <label class="fCol" id="layerHideLbl">Hide layer for device</label>
+                <div class="fCol TxAl-r">
+                    <span class="toggle_btn">
+                        <input type="checkbox" id="hideLayerResLS" name="toggleButton">
+                        <label for="toggleButton" class="tgl_slider"></label>
+                    </span>
+                </div>
+            </div>
+            <div class="field-row stElWrap col100">
+                <label class="fCol">* Changes made to layers are not reflected instantly. Please click 'Update Layer' button.</label>
+            </div>
+            <div class="field-row" id="lsLayerResCfg"></div>
+            <div class="field-row stElWrap col100">
+                <div class="fCol TxAl-l">
+                    <span class="stngSmallBtn" id="btnUpdateResLSLayer">Update Layer</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

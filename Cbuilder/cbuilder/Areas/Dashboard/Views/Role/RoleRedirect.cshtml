@@ -1,0 +1,93 @@
+﻿@model Cbuilder.Core.Role.RoleRedirectPost
+@{
+    Dictionary<string, string> localized = (Dictionary<string, string>)ViewData["localized"];
+}
+<div class="page-title">
+    <h2 class="form-title ">@localized["Rolewise Redirect"]</h2>
+</div>
+<form asp-action="RoleRedirect" method="post">
+    <div class="sfDatagrid">
+
+        <div class="sfDatagrid-title d-none sm-d-block">
+            <div class="dg-col-wp">
+                <div class="sfCol-6">@localized["Roles"]</div>
+                <div class="sfCol-6">@localized["Pages"]</div>
+            </div>
+        </div>
+
+        <div class="sfDatagrid-body">
+
+            <input asp-for="RedirectUrlXML" class="sfFormcontrol" type="hidden" />
+            @if (Model != null && Model.Roles.Count() > 0)
+            {
+                @foreach (var item in Model.Roles)
+                {
+                    <div class="dg-col-wp roleUrl_Wrap" data-roleid="@item.RoleID" data-rolename="@item.RoleName" data-url="@item.RedirectUrl">
+                        <div class="sfCol-12 sfCol-sm-6 role_wrap">
+                            <div class="dg-group Mb-10 sm-Mb-0">
+                                <span class="ds-grd-tit"> @item.RoleName</span>
+                            </div>
+                        </div>
+                        <div class="sfCol-12 sfCol-sm-6">
+                            <div class="dg-group">
+                                <div class="sfFieldset">
+                                    <div class="sfFormkey">
+                                        <span class="sfFormlabel"></span>
+                                    </div>
+                                    <div class="sfFormvalue">
+                                        <select class="slcPages sfFormcontrol" asp-items="ViewBag.PageList"></select>
+                                        <span class="sfError"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+
+
+        </div>
+
+
+    </div>
+    <div class=" sfButtonwrapper Mt-25 t-right">
+        <input type="submit" value="@localized["Save"]" class="btn primary round Mr-8" />
+        <a asp-action="@URLHelper.DashboardURL(Context,"Role", "Index")" class="btn light round">@localized["Back"]</a>
+    </div>
+</form>
+@section Scripts{
+    <script src="/lib/js/select2.min.js"></script>
+    <link href="~/lib/css/select2.min.css" rel="stylesheet" />
+    <script type="text/javascript">
+        $(function () {
+            //$(".slcPages").select2();
+            GenerateXML();
+            $('.slcPages').on('select2:select', function (e) {
+                GenerateXML();
+            });
+            //$(".slcPages").off("change").on("change", function (e) {
+            //    GenerateXML();
+            //});
+            function GenerateXML() {
+                let xml = "<Root>";
+                $(".slcPages").each(function () {
+                    let $this = $(this);
+                    let $wrap = $this.closest('.roleUrl_Wrap');
+                    xml += `<Roles><RoleName>${$wrap.attr("data-rolename")}</RoleName>
+                                            <RoleID>${$wrap.attr("data-roleid")}</RoleID>
+                                                <RedirectUrl>${$this.val()}</RedirectUrl></Roles>`;
+                });
+                xml += "</Root>";
+                $("#RedirectUrlXML").val(xml);
+            }
+            $(".roleUrl_Wrap").each(function () {
+                let $this = $(this);
+                let $thisSlc = $this.find(".slcPages");
+                var $select2Event = $thisSlc.select2();
+                if ($this.attr("data-url") !== undefined && $this.attr("data-url") !== "") {
+                    $select2Event.val($this.attr("data-url")).trigger("change");
+                }
+            });
+        });
+    </script>
+}

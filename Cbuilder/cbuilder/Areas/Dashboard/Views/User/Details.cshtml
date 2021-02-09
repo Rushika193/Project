@@ -1,0 +1,60 @@
+﻿@model Cbuilder.Core.Users.UserViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="sfContainer">
+    <div class="sfRow">
+        <div class=" sfCol_100 tsfCol_100 msfCol_100 ">
+            <section class="content-heading clearfix">
+                <div class="float-left">
+                    <h1>Details</h1>
+                </div>
+                    <div class="sfButtonwrapper">
+                        <a asp-action="Index" class="sfBtn default rounded outline">Back</a>
+                    </div>
+            </section>
+            
+            <div class="sfCard sfFormdetail">
+
+                <div class="sfFieldset">
+                    <div class="sfFormkey">
+                        <label asp-for="Email" class="sfFormlabel"></label>
+                    </div>
+                    <div class="sfFormvalue">
+                        <input asp-for="Email" class="sfInputbox sfcontrol" readonly />
+                        <span asp-validation-for="Email" class="sfError"></span>
+                    </div>
+                </div>
+
+                <div class="sfFieldset">
+                    <div class="sfFormkey">
+                        <label asp-for="UserName" class="sfFormlabel"></label>
+                    </div>
+                    <div class="sfFormvalue">
+                        <input asp-for="UserName" class="sfInputbox sfcontrol" readonly />
+                        <span asp-validation-for="UserName" class="sfError"></span>
+                    </div>
+                </div>
+                <div class="sfFieldset">
+                   
+                    <div class="custom-control custom-checkbox">
+                        <input class="sfCheckbox" asp-for="Enabled" id="chkEnabled" onclick="return false;" />
+                        <label for="chkEnabled" class="sfCheckboxlabel">@Html.DisplayNameFor(model => model.Enabled)</label>
+                    </div>
+                </div>
+                <div class="sfFieldset">
+                    <div class="sfFormkey">
+                        <label asp-for="PhoneNumber" class="sfFormlabel"></label>
+                    </div>
+                    <div class="sfFormvalue">
+                        <input asp-for="PhoneNumber" class="sfInputbox sfcontrol" readonly />
+                        <span asp-validation-for="PhoneNumber" class="sfError"></span>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+

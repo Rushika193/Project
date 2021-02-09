@@ -1,0 +1,146 @@
+﻿@using Cbuilder.Core.Settings
+@using Cbuilder.Core.Constants
+@model List<SettingSection>
+@{
+    bool isSuperAdmin = (bool)ViewBag.IsSuperAdmin;
+    bool isBasicActive = (bool)ViewBag.IsBasicActive;
+}
+
+@if (@Model != null)
+{
+
+
+    @Html.AntiForgeryToken();
+
+    <div class="sfContainer-full">
+        <div class="tab">
+            <div class="card bg-none">
+                <div class="card-header  @(isBasicActive? "active" : "")">
+                    <a asp-action="Basic"><h5>Basic </h5></a>
+                </div>
+                <div class="collapse   @(isBasicActive? "show bg-none" : "") ">
+                    @if (isBasicActive)
+                    {
+                        await RenderSettings();
+                    }
+                </div>
+
+                @if (isSuperAdmin)
+                {
+                    <div class="card-header  @(!isBasicActive? "active" : "")">
+                        <a asp-action="Advanced"> <h5>Advanced</h5></a>
+                    </div>
+                    <div class="collapse  @(!isBasicActive? "show bg-none" : "") ">
+                        @if (!isBasicActive)
+                        {
+                            await RenderSettings();
+                        }
+                    </div>
+
+                }
+            </div>
+        </div>
+    </div>
+    async Task RenderSettings()
+    {
+
+        <div class="sfRow">
+            @foreach (SettingSection setSection in Model)
+            {
+                <div class="sfCol-4">
+                    <div class="card-body divSectionWrapper">
+                        <div class="Pt-10 Pb-15">
+                            <h6 class="sectionHeader">@setSection.SectionName</h6>
+                        </div>
+
+                        <div class="sfFormwrapper">
+                            @foreach (SettingItem item in setSection.SettingItems)
+                            {
+
+                                @if (item.InputType == SettingInputType.TextBox)
+                                {
+                                    <div class="sfFieldset divItemWrapper" data-keyname="@item.SettingKey">
+                                        <div class="formkey Mb-10">
+                                            <label for="txt_@item.SettingKey" class="lblSettingKey">@item.SettingLabel</label>
+                                        </div>
+                                        <div class="formvalue Mb-15 divInputWrapper">
+
+                                            <input type="text" id="txt_@item.SettingKey" class="sfFormcontrol settingInput txtSettingValue" data-iscache="@item.IsCacheable" value="@item.SettingValue" />
+
+                                        </div>
+
+                                    </div>
+                                }
+                                else if (item.InputType == SettingInputType.CheckBox)
+                                {
+                                    <div class="sfRow Mb-3x">
+                                        <div class="sfCol-4 formkey divItemWrapper" data-keyname="@item.SettingKey">
+                                            <div class="formkey Mb-10">
+                                                <label for="chk_@item.SettingKey" class="lblSettingKey">@item.SettingLabel</label>
+                                            </div>
+                                            <div class="sfCol-8 formvalue divInputWrapper">
+
+                                                <div class="sfCheckbox">
+                                                    <input id="chk_@item.SettingKey" type="checkbox" class="settingInput chkSettingValue" data-iscache="@item.IsCacheable" @(item.SettingValue == "true" ? "checked='checked'" : "") />
+                                                    <label></label>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                }
+
+                            }
+
+                            @if (string.IsNullOrEmpty(setSection.CustomButtons))
+                            {
+                                <div class="sfButtonwrapper">
+                                    <button type="button" class="btn primary round btnSaveSettings">Save</button>
+                                </div>
+                            }
+                            else
+                            {
+                                @Html.Raw(setSection.CustomButtons);
+                            }
+
+                        </div>
+
+                    </div>
+                </div>
+            }
+
+            @if (isBasicActive)
+            {
+                <div class="sfCol-4">
+                    <div class="card-body">
+                        <div class="Pt-10 Pb-15">
+                            <h6>O auth Settings</h6>
+                        </div>
+                        <div class="sfFormwrapper" id="divOauthSetting">
+                            @Html.Raw(ViewBag.OAuthSettingForm)
+                            <div class="sfButtonwrapper">
+                                <button type="button" id="btnSaveOauthSetting" class="btn primary round">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+
+
+
+    }
+
+}
+
+
+<script type="text/javascript">
+    $(function () {
+        $(this).Settings({
+            StatusID: 0
+        });
+    });
+
+</script>

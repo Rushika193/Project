@@ -1,0 +1,44 @@
+﻿@model IEnumerable<Cbuilder.DashboardMenu.DashboardSideMenuView>
+@{
+    Cbuilder.DashboardMenu.SideMenuGridLabel gridLabel = (Cbuilder.DashboardMenu.SideMenuGridLabel)ViewBag.LocalLabel;
+    ViewData["Title"] = @gridLabel.Title;
+}
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">@gridLabel.Title</div>
+        <div class="sfButtonwrapper">
+            <a  href="@ViewData["CultureURL"]" class="btn round primary-outline ">@gridLabel.AddButton</a>
+        </div>
+    </div>
+</section>
+<div class="sfDatagrid">
+    <div class="sfDatagrid-header">
+        <div class="dg-col-wp">
+            <div class="sfCol-12 sfCol-sm-6  offset-sfCol-sm-6 sfCol-md-4  offset-sfCol-md-8 ">
+                <div class="dg-group">
+                    <div class="dg-search-key rounded">
+                        <input type="text" id="keywords" class="sfFormcontrol rounded" placeholder="@gridLabel.SearchPlaceholder">
+                        <button type="button" class="search" id="btnSearch">
+                            <i class="fa fa-search rounded"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sfDatagrid-title">
+        <div class="dg-col-wp">
+            <div class="sfCol-sm-9">@gridLabel.DetailsLabel</div>
+            <div class="sfCol-sm-3 f-center">@gridLabel.ActionLabel</div>
+        </div>
+    </div>
+    <div id="divGridBody" class="sfDatagrid-body">
+    </div>
+</div>
+<div id="divPagination" class="sfPagination"></div>
+@section Scripts {
+    <script type="text/javascript">
+     
+        let localLabel = @Html.Raw(Json.Serialize(ViewBag.LocalLabel));
+    </script>
+}

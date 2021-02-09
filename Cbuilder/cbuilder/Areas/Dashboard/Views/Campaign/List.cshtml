@@ -1,0 +1,98 @@
+﻿@inject Cbuilder.Core.Permissions.IPermission _permission;
+@{
+    var localLabel = ViewBag.LocalLabel;
+    ViewData["Title"] = localLabel.Title;
+}
+
+<div class="campaign-container">
+    <section class="content-header clearfix">
+        <div class="page-title d-block sm-d-flex">
+            <div class="h2">@localLabel.Title</div>
+
+            <div class="sfButtonwrapper">
+                @if (_permission.CheckPermission("Create"))
+                {
+                    <a asp-action="Create" class="btn  primary-outline round">@localLabel.Actions.NewCampaign</a>
+
+                }
+
+                @if (_permission.CheckPermission("ManageAccounts"))
+                {
+                    <a asp-action="ManageAccounts" class="btn  primary-outline round">@localLabel.Actions.ManageAccounts</a>
+
+                }
+            </div>
+        </div>
+    </section>
+
+    <div class="sfDatagrid campaign-container">
+        <div class="sfDatagrid-header">
+
+            <div class="dg-col-wp">
+                <div class="sfCol-md-6 sfCol-lg-5">
+                    <div class="dg-group Mb-20 sm-Mb-0 ">
+                        <div class="dg-search-filter flex f-middle">
+                            <div class="sfFormkey Pr-20">
+                                <span class="sfFormlabel">@localLabel.Grid.StatusTitle</span>
+                            </div>
+                            <div class="sfFormvalue f-fill">
+                                <select class="sfFormcontrol rounded" id="slcCampaignStatus" name="slcCampaignStatus">
+                                    <option value="0">@localLabel.Grid.All</option>
+                                    <option value="1">@localLabel.Grid.Draft</option>
+                                    <option value="4">@localLabel.Grid.Scheduled</option>
+                                    <option value="5">@localLabel.Grid.Published</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="sfCol-md-6 sfCol-lg-5 ml-auto">
+                    <div class="dg-group">
+                        <div class="dg-search-key rounded">
+                            <input type="text" id="txtCampaignTitle" class="sfInputbox rounded" placeholder="@localLabel.Grid.SearchPlaceholder">
+                            <button type="button" id="btnSearchCampaign" class="search"><i class="fa fa-search rounded"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="sfDatagrid-title d-none sm-d-block">
+            <div class="dg-col-wp">
+                <div class="sfCol-1 sfCol-sm-1">#</div>
+                <div class="sfCol-6 sfCol-sm-6">@localLabel.Grid.Title</div>
+                <div class="sfCol-2 sfCol-sm-2 f-center">@localLabel.Grid.StatusTitle</div>
+                <div class="sfCol-3 sfCol-sm-3 f-center">@localLabel.Grid.ActionTitle</div>
+            </div>
+        </div>
+
+        <div class="sfDatagrid-body campaign-data" id="campaign-data">
+
+        </div>
+    </div>
+
+    <div id="pagination" class="sfPagination" style="display: none;">
+    </div>
+</div>
+
+<div id="divCampaignDetail" class="campaign-container" style="display: none;">
+    <div class="sfGridwrapper animate">
+        <div class="is-medium">
+            <div class="page-title d-block sm-d-flex">
+                <h2 class="fw-400 Mb-25">
+                    Campaign Detail
+                </h2>
+                <div class="sfButtonwrapper Mt-0">
+                    <span class="btn light round btnBacktoList">Back to List</span>
+                </div>
+            </div>
+           
+           
+            <div class="campaign-detail card">
+            </div>
+        </div>
+    </div>
+</div>

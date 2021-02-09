@@ -1,0 +1,122 @@
+﻿
+@{
+    ViewData["Title"] = "filter";
+}
+
+<div class="cd_content">
+    <h1 class="content_title ">Side Bar Panel</h1>
+    <p class="content_lead ">
+        Filter or Side Bar Panel commonly used for filtering and managing various data informations.
+    </p>
+</div>
+
+<div class="cd_example cd_example-filter">
+    <div class="sfFormwrapper">
+        <div class="sfRow">
+            <div class="sfCol-6 sfFieldset">
+                <button class="btn primary round Mt-8x" id="btnOpenPanel">Demo</button>
+            </div>
+            <div class="sfFieldset sfCol-6">
+                <div class="formkey">
+                    <span class="sfFormlabel">Direction</span>
+                </div>
+                <div class="formvalue">
+                    <select id="slcPanelDir" class="sfFormcontrol" placeholder=" Enter your name ">
+                        <option value="right">right</option>
+                        <option value="up">up</option>
+                        @*<option value="down">down</option>
+                            <option value="left">left</option>*@
+                    </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="preview">
+        <form id="SideBarPanelDemo" style="display:none">
+            <div class="sfFormwrapper">
+                <div class="sfFieldset">
+                    <div class="formkey">
+                        <span class="sfFormlabel">First name</span>
+                    </div>
+                    <div class="formvalue">
+                        <input type="text" class="sfFormcontrol" placeholder="Enter your name">
+                    </div>
+                </div>
+                <div class="sfFieldset">
+                    <div class="formkey">
+                        <span class="sfFormlabel">Last name</span>
+                    </div>
+                    <div class="formvalue">
+                        <input type="text" class="sfFormcontrol" placeholder="Enter last name">
+                    </div>
+                </div>
+                <div class="filter-footer sfButtonwrapper flex f-end">
+                    <button class="btn primary round">Save</button>
+                    <button id="btnCloseSidePnl" class="btn light round">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<figure class="Mb-5x">
+    <div data-lang="lang-html" class="codeContent">
+        <button class="btn primary round" id="btnOpenPanel">Open Panel</button>
+        <form id="SideBarPanelDemo" style="display:none">
+            <div class="sfFormwrapper">
+                <div class="sfFieldset">
+                    <div class="formkey">
+                        <span class="sfFormlabel">First name</span>
+                    </div>
+                    <div class="formvalue">
+                        <input type="text" class="sfFormcontrol" placeholder="Enter your name">
+                    </div>
+                </div>
+                <div class="sfFieldset">
+                    <div class="formkey">
+                        <span class="sfFormlabel">Last name</span>
+                    </div>
+                    <div class="formvalue">
+                        <input type="text" class="sfFormcontrol" placeholder="Enter your name">
+                    </div>
+                </div>
+                <div class="filter-footer sfButtonwrapper flex f-end">
+                    <button class="btn primary round">Save</button>
+                    <button id="btnCloseSidePnl" class="btn light round">Cancel</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</figure>
+<figure>
+    <span class="example_title">Method Invoke </span>
+
+    <div data-lang="lang-javascript" class="codeContent">
+        <script type="text/javascript">
+            function CreatePanel(dir) {
+                $('#SideBarPanelDemo').SideBarPanel({
+                    title: 'Example of Side panel',
+                    direction: dir,//optional (right,up,down,left)
+                    speed: 500,//optional
+                    openButton: '#btnOpenPanel',
+                    closeButton: '#btnCloseSidePnl',
+                    ready: function () {
+
+                    },
+                });
+            }
+            $(function () {
+                $('#slcPanelDir').on('change', function () {
+                    CreatePanel($(this).val())
+                });
+                CreatePanel($('#slcPanelDir').val())
+            });
+        </script>
+    </div>
+</figure>
+
+
+
+
+
+

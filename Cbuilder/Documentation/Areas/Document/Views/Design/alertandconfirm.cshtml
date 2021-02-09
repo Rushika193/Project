@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "modals";
+}
+
+<div class="cd_content">
+    <h1 class="content_title ">Modal</h1>
+    <p class="content_lead ">
+        Alert box and Confiramtion window that can be used for important message and action display and confirmation accept from user before doing any action.
+    </p>
+</div>
+
+<div class="cd_example Mb-10x">
+
+    <div class="preview">
+        <span class="example_title">Alert Message Box</span>
+        <div class="preview">
+            <button id="btnShowAlertBox" type="button" class="btn primary ">
+                Show Alert
+            </button>
+        </div>
+    </div>
+    <figure class="Mt-4x">
+        <div data-lang="lang-javascript" class="codeContent">
+            <script type="text/javascript">
+                $(function () {
+                    $('#btnShowAlertBox').off('click').on('click', function () {
+                        SageAlertDialog("This is alert message", "Title Goes Here");
+                    });
+                });
+            </script>
+        </div>
+    </figure>
+</div>
+<div class="cd_example Mb-10x">
+
+    <div class="preview">
+        <span class="example_title">Alert Message Box</span>
+        <div class="preview">
+            <button id="btnShowConfirmBox" type="button" class="btn primary ">
+                Show Confirmation
+            </button>
+        </div>
+    </div>
+    <figure class="Mt-4x">
+        <div data-lang="lang-javascript" class="codeContent">
+            <script type="text/javascript">
+                $(function () {
+                    $('#btnShowConfirmBox').off('click').on('click', function () {
+                        SageConfirmDialog("Are you sure?", "Delete Confimation", function () { console.log("Close") }).done(function () { console.log("Yes") });
+                    });
+                });
+            </script>
+        </div>
+    </figure>
+</div>
+
+
+

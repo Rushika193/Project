@@ -1,0 +1,395 @@
+﻿@*@model IList<Cbuilder.Assets.ApplicationNameInfo>*@
+
+@{
+    ViewData["Title"] = "Analytics";
+}
+
+
+@Html.AntiForgeryToken()
+
+<section class="content-header">
+    <div class="page-title">
+        <div class="h2">Analytics</div>
+        <div class="sfButtonwrapper">
+            @*<a asp-action="UserArea" asp-controller="Assets" class="btn primary round">Areas</a>*@
+        </div>
+    </div>
+</section>
+
+
+<div class="sfRow">
+    <div class="sfCol-12 sfCol-md-8 charts Mb-40">
+        <div class="card">
+            <div class="card-body Pa-30">
+                <div class="flex Mb-30 p-relative">
+                    <h5 class="fw-400">Users</h5>
+
+                    <div class="chart-date-filter  dropdown-group  ml-auto" id="divMainUserChart">
+
+                        <div class="list-dropdown">
+                            <button class="btn chartfilter dropdown-link">
+                                <i class="fa fa-calendar Ml-0 Mr-5"></i>
+                                <span id="spanCurrentUserDateView">July 24 - July 31</span>
+                            </button>
+                        </div>
+                        <ul class="list-group" id="ulCurrentUserFilter">
+                            <li class=" group-item group-item-link-bg ">
+                                <span aid="today" class="clscurrentuser spanDateFilterToday">Today</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="yesterday" class="clscurrentuser spanDateFilterYesterday">Yesterday</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="last7" class="clscurrentuser spanDateFilterLast7">Last 7 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="last30" class="clscurrentuser spanDateFilterLast30">Last 30 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="custom" class="clscurrentuser spanDateFilterCustom">Custom</span>
+                            </li>
+                        </ul>
+                        <div id="divDatePickerCurrentUser" class="multi-datepicker" style="display:none;">
+                            <input type="text" id="dtFromCurrentUser" class="sfFormcontrol round" />
+                            <input type="text" id="dtToCurrentUser" class="sfFormcontrol round" />
+
+
+                            <input type="button" id="btnCurrentUserApply" class="btn success round" value="Apply" />
+                        </div>
+                    </div>
+                </div>
+                <canvas id="divAnalyticsUser"></canvas>
+            </div>
+        </div>
+
+    </div>
+    <div class="sfCol-12 sfCol-md-4 charts Mb-40">
+        <div class="sfRow">
+
+            <div class="sfCol-12 Mb-40">
+                <div class="card">
+                    <div class="card-body Pa-30">
+                        <div class="flex">
+                            <h5 class="fw-400 tt-upper">Total Visits</h5>
+
+                        </div>
+                        <div class="flex chartwithdata">
+                            <span><strong id="spanTotalVisit"></strong></span>
+                            <canvas id="canvasTotalVisit"></canvas>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="sfCol-12 Mb-40" style="display:none">
+                <div class="card">
+                    <div class="card-body Pa-30">
+                        <div class="flex">
+                            <h5 class="fw-400 tt-upper">Bounce Rate</h5>
+                        </div>
+                        <span><strong id="spanTotalBounceRate"></strong></span>
+
+                    </div>
+                </div>
+            </div>
+            <div class="sfCol-12 Mb-40">
+                <div class="card">
+                    <div class="card-body Pa-30">
+                        <div class="flex">
+                            <h5 class="fw-400 tt-upper">Sessions</h5>
+                        </div>
+                        <div class="flex chartwithdata">
+                            <span><strong id="spanTotalSession"></strong></span>
+                            <canvas id="canvasTotalSession"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sfCol-12 sfCol-sm-6 sfCol-md-4 charts Mb-40">
+        <div class="card h-100">
+            <div class="card-body">
+                <div class="flex Mb-30 p-relative">
+                    <h5 class="fw-400 tt-upper">View by device</h5>
+                    <div class="chart-date-filter  dropdown-group  ml-auto" id="divMainUserDeviceChart">
+
+                        <div class="list-dropdown">
+                            <button class="btn chartfilter dropdown-link">
+                                <i class="fa fa-calendar Ml-0 Mr-5"></i>
+                                <span id="spanCurrentUserDeviceDateView"></span>
+                            </button>
+                        </div>
+                        <ul class="list-group" id="ulCurrentUserDeviceFilter">
+                            <li class=" group-item group-item-link-bg ">
+                                <span aid="today" class="clscurrentuserdevice spanDateFilterToday">Today</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="yesterday" class="clscurrentuserdevice spanDateFilterYesterday">Yesterday</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="last7" class="clscurrentuserdevice spanDateFilterLast7">Last 7 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="last30" class="clscurrentuserdevice spanDateFilterLast30">Last 30 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="custom" class="clscurrentuserdevice spanDateFilterCustom">Custom</span>
+                            </li>
+                        </ul>
+                        <div id="divDatePickerCurrentUserDevice" class="multi-datepicker" style="display:none;">
+                            <input type="text" id="dtFromCurrentUserDevice" />
+                            <input type="text" id="dtToCurrentUserDevice" />
+                            <input type="button" id="btnCurrentUserDeviceApply" class="btn success round" value="Apply" />
+                        </div>
+                    </div>
+                </div>
+                <canvas id="divAnalyticsUserDevice"></canvas>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="sfCol-12 sfCol-sm-6 sfCol-md-4 charts Mb-40" style="display:none;">
+        <div class="card">
+            <div class="card-body">
+                <div class="flex Mb-30 p-relative">
+                    <h5 class="fw-400 tt-upper">Country Visits</h5>
+                    <div class="chart-date-filter  dropdown-group  ml-auto">
+
+                        <div class="list-dropdown">
+                            <button class="btn chartfilter dropdown-link">
+                                <i class="fa fa-calendar Ml-0 Mr-5"></i>
+                                <span>July 24 - July 31</span>
+                            </button>
+                        </div>
+                        <ul class="list-group" id="assetTypeList">
+                            <li class=" group-item group-item-link-bg ">
+                                <span class="spanDateFilterToday">Today</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterYesterday">Yesterday</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterLast7">Last 7 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterLast30">Last 30 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterCustom">Custom</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <canvas id="divAnalyticsUserCountry"></canvas>
+            </div>
+        </div>
+
+
+    </div>
+    <div class="sfCol-12 sfCol-sm-6 sfCol-md-4 charts Mb-40" style="display:none">
+        <div class="card">
+            <div class="card-body">
+                <div class="flex Mb-30">
+                    <h5 class="fw-400 tt-upper">Active Users</h5>
+                    <div class="chart-date-filter  dropdown-group  ml-auto">
+
+                        <div class="list-dropdown">
+                            <button class="btn chartfilter dropdown-link">
+                                <i class="fa fa-calendar Ml-0 Mr-5"></i>
+                                <span>July 24 - July 31</span>
+                            </button>
+                        </div>
+                        <ul class="list-group" id="assetTypeList">
+                            <li class=" group-item group-item-link-bg ">
+                                <span class="spanDateFilterToday">Today</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterYesterday">Yesterday</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterLast7">Last 7 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterLast30">Last 30 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterCustom">Custom</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <div class="sfCol-12 sfCol-sm-8 charts Mb-40">
+        <div class="card">
+            <div class="card-body Pa-30">
+                <div class="table-responsive">
+                    <table class="table ">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Active Page</th>
+                                <th>Total Views</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbodyActivepage">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sfCol-12 sfCol-sm-6  charts Mb-40" style="display:none">
+        <div class="card">
+            <div class="card-body Pa-30">
+                <div class="flex Mb-30">
+                    <h5 class="fw-400 tt-upper">User Types</h5>
+                    <div class="dropdown-group  ml-auto">
+
+                        <div class="list-dropdown">
+                            <span class="dropdown-link">
+                                <span class="action-icon"> <i class="fa fa fa-ellipsis-h Ml-0"></i></span>
+                            </span>
+                        </div>
+                        <ul class="list-group" id="assetTypeList">
+                            <li class=" group-item group-item-link-bg ">
+                                <span class="spanDateFilterToday">Today</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterYesterday">Yesterday</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterLast7">Last 7 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterLast30">Last 30 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span class="spanDateFilterCustom">Custom</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                @*chart of new user, recurring users*@
+            </div>
+        </div>
+    </div>
+    <div class="sfCol-12 sfCol-sm-12  charts Mb-40">
+        <div class="card">
+            <div class="card-body Pa-30">
+                <div class="flex Mb-30">
+                    <h5 class="fw-400 tt-upper">User By Country</h5>
+                    <div class="chart-date-filter  dropdown-group  ml-auto" id="divMainUserCountryChart">
+
+                        <div class="list-dropdown">
+                            <button class="btn chartfilter dropdown-link">
+                                <i class="fa fa-calendar Ml-0 Mr-5"></i>
+                                <span id="spanCurrentUserCountryDateView"></span>
+                            </button>
+                        </div>
+                        <ul class="list-group" id="ulCurrentUserCountryFilter">
+                            <li class=" group-item group-item-link-bg ">
+                                <span aid="today" class="clscurrentusercountry spanDateFilterToday">Today</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="yesterday" class="clscurrentusercountry spanDateFilterYesterday">Yesterday</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="last7" class="clscurrentusercountry spanDateFilterLast7">Last 7 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="last30" class="clscurrentusercountry spanDateFilterLast30">Last 30 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="custom" class="clscurrentusercountry spanDateFilterCustom">Custom</span>
+                            </li>
+                        </ul>
+                        <div id="divDatePickerCurrentUserCountry" class="multi-datepicker" style="display:none;">
+                            <input type="text" id="dtFromCurrentUserCountry" />
+                            <input type="text" id="dtToCurrentUserCountry" />
+                            <input type="button" id="btnCurrentUserCountryApply" class="btn success round" value="Apply" />
+                        </div>
+                    </div>
+                </div>
+
+                <canvas id="divAnalyticsUserByCountry"></canvas>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="sfCol-12 sfCol-sm-12  charts Mb-40">
+        <div class="card">
+            <div class="card-body Pa-30">
+                <div class="flex Mb-30">
+                    <h5 class="fw-400 tt-upper">Bounce Rate</h5>
+
+                    <div class="chart-date-filter  dropdown-group    ml-auto" id="divMainBounceRateChart">
+
+                        <div class="list-dropdown flex">
+                            <div class="bounce-page-name Mr-10 ">
+                                <select class="sfFormcontrol sfFormcontrol-sm" id="ddlBouncePageName">
+                                    <option value="login,home">Blog-BlogDetail</option>
+                                    <option value="home,product,contact">Home-Contact</option>
+                                    <option value="product,productdetail,cart,checkout">Product-Cart</option>
+
+                                </select>
+                            </div>
+                            <button class="btn chartfilter dropdown-link">
+                                <i class="fa fa-calendar Ml-0 Mr-5"></i>
+                                <span id="spanCurrentUserBounceRateDateView">July 24 - July 31</span>
+                            </button>
+                        </div>
+
+                        <ul class="list-group" id="ulCurrentUserBounceRateFilter">
+                            <li class=" group-item group-item-link-bg ">
+                                <span aid="today" class="clscurrentuserbouncerate spanDateFilterToday">Today</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="yesterday" class="clscurrentuserbouncerate spanDateFilterYesterday">Yesterday</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="last7" class="clscurrentuserbouncerate spanDateFilterLast7">Last 7 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="last30" class="clscurrentuserbouncerate spanDateFilterLast30">Last 30 days</span>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <span aid="custom" class="clscurrentuserbouncerate spanDateFilterCustom">Custom</span>
+                            </li>
+                        </ul>
+                        <div id="divDatePickerCurrentUserBounceRate" style="display:none;">
+                            <input type="text" id="dtFromCurrentUserBounceRate" />
+                            <input type="text" id="dtToCurrentUserBounceRate" />
+                            <input type="button" id="btnCurrentUserBounceRateApply" class="btn success round" value="Apply" />
+                        </div>
+                    </div>
+
+                </div>
+                <div class="funnel" id="divAnalyticsBounceRate"></div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $(this).AnalyticsMgmt({
+            StatusID: 0
+        });
+    });
+
+</script>
+

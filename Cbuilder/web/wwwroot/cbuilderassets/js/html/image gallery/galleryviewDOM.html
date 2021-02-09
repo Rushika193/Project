@@ -1,0 +1,61 @@
+﻿﻿<div class="editor-component imgGalleryDOM grpStng Dib mDib overflow-hidden options-display-inside fit-image sfCol_100 tsfCol_100 msfCol_100 TxAl-c" layout-type="grid" data-delay="5000" data-loop data-transition="slide">
+
+    <div class="SetHdlr">
+        <span class="stng">
+            <i class="cb-stng" title="Settings"></i>
+            <ul class="setDrp no_txt">
+                <li class="com-settings stngHd" data-type="image gallery">
+                    <span class="text-wrp">Settings</span>
+                    <i class="cb-mxr" title="Settings"></i>
+                </li>
+                <li class="s-style" data-type="image gallery">
+                    <span class="text-wrp">Style</span>
+                    <i class="cb-stl" title="Styles"></i>
+                </li>
+                <li class="mng-img">
+                    <span class="text-wrp">Manage Data</span>
+                    <i class="fa fa-pencil-square-o" title="manage data"></i>
+                </li>
+                <li class="deletehelper delete_icon">
+                    <i class="cb-del" title="Delete"></i>
+                </li>
+            </ul>
+        </span>
+        <span class="sortComponent"><i class="cb-drg" title="Drag Up and down"></i></span>
+    </div>
+
+    <div class="imgGalleryView" style="position: relative; overflow: hidden; width: 100%; border: none; min-height: 100%;">       
+        <div style="display:none;" class="imgGallery-temp">
+
+        </div>
+        <div class="no-imgs-lbl Dn">
+            <label class="Fs-40" style="width: 100%;  font-weight: 200; color: rgba(0,0,0,.2);  text-align: center;  display: block;  margin-top: 60px;">Nothing to display :(</label>
+        </div>
+        <div class="for_carousel"  style="width: 100%; overflow:hidden;">
+            <ul class="imgglry-view-list sfCol_100 itemsWrapper Dfx flxWrp"style="top: 0px; left: 0px; height: 100%; list-style: none;">
+                <li class="imgglry-view-item itemWrapper Pt-10 Pb-10 Pl-10 Pr-10 mPl-10 mPr-10 mPt-10 mPb-10 tPl-10 tPt-10 tPr-10 tPb-10  sfCol_20 tsfCol_33 msfCol_50" style="position:relative;background-repeat: no-repeat; background-size: cover;">
+                    <div class="images-img-wrp sfCol_100 tsfCol_100  msfCol_100">
+                        <a href="/MediaThumb/large/Media/bnr3.jpg" data-lightbox="Image Gallery" data-title="Image Gallery">
+                            <img src="/Media/bnr3.jpg" class="sfCol_100 images-img" alt="" style="height:155px; width:100%;">
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--Next-prev-->
+        <div class="arrows-wrapper Dn">
+            <span class="prev-btn disable">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </span>
+            <span class="next-btn">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </div>
+        <!--Pager dot-->
+        <div class="pager-dot Dn" style="position: absolute; width: 100%; text-align: center; padding: 10px; left: 0; bottom: -5px; cursor: pointer;">
+            <span class="dots active-dot" style="display: inline-block; margin: 0px 2px; height: 10px; width: 10px; border-radius: 50%; background-color: rgb(0, 0, 0);"></span>
+            <span class="dots" style="display: inline-block; margin: 0 2px; height: 10px; width: 10px; border-radius: 50%; background-color: rgba(0,0,0,0.6);"></span>
+        </div>
+    </div>
+</div>
+

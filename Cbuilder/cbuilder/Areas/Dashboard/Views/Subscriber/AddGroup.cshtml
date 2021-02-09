@@ -1,0 +1,36 @@
+﻿@model Cbuilder.NewsLetter.GroupInfo
+@{
+    ViewData["Title"] = "View";
+}
+<div class="sfContainer">
+    <h1>View</h1>
+    <div class="sfRow">
+        <div class="sfCol-7">
+            <div class="sfFormwrapper">
+                <form action="AddUpdateGroup">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <input type="hidden" asp-for="GroupID" class="form-control" />
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <span class="sfFormLabel">Group Name</span>
+                        </div>
+                        <div class="formvalue">
+                            <input asp-for="Name" type="text" class="form-control" placeholder="Enter group name" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Create" class="btn btn-primary" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

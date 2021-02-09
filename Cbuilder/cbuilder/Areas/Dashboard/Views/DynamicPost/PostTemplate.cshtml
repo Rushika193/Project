@@ -1,0 +1,104 @@
+﻿@model Cbuilder.Core.DynamicPost.Post
+
+<div id="templateWrapper">
+
+    <section class="content-header clearfix">
+        <div class="page-title d-block md-d-flex">
+            <div class="h2">Templates for @Model.Name</div>
+
+            <div class="sfButtonwrapper flex ">
+
+
+
+                <div class=" dropdown-group p-relative ">
+                    <div class="list-dropdown btn primary-outline round">
+                        <span class="dropdown-link ">
+                            Actions
+                            <i class="fa fa-chevron-down Ml-10"></i>
+                        </span>
+                    </div>
+                    <ul class="list-group">
+                        <li class="group-item group-item-link-bg">
+                            <span class="btn  link-secondary" id="addListTypeTemplate">Create List  Template</span>
+                        </li>
+                        @if (Model.HasDetail)
+                        {
+                            <li id="detailTemplateWrap" class="group-item group-item-link-bg">
+                                <span class="btn  link-secondary" id="addDetailTypeTemplate">Create Details Template</span>
+                            </li>
+                        }
+                    </ul>
+                </div>
+                <a href="@URLHelper.DashboardURL(Context,"DynamicPost", "Index")" class="btn primary round Ml-10">Goto Post List</a>
+            </div>
+        </div>
+    </section>
+    <div id="templateListWrapper">
+
+        <div class="sfDatagrid">
+            <div class="sfDatagrid-header">
+                <div class="dg-col-wp">
+                    <div class="sfCol-12 sfCol-md-4">
+                        <div class="dg-group">
+                            <div class="dg-search-filter flex f-middle">
+                                <div class="dg-group dropdown-group ">
+                                    <div class="list-dropdown ">
+                                        <span class="dropdown-link">Filter By Type <i class="fa fa-chevron-down Ml-10"></i></span>
+                                    </div>
+                                    <ul class="list-group">
+                                        <li class="group-item group-item-link-bg">
+                                            <div class="checkbox-label checkbox-labelWrap">
+                                                <input type="checkbox" id="tt1" name="templateTypeFilter" value="list" checked="checked">
+                                                <label class="chk" for="tt1">List</label>
+                                            </div>
+                                        </li>
+
+                                        <li class="group-item group-item-link-bg">
+                                            <div class="checkbox-label checkbox-labelWrap">
+                                                <input type="checkbox" id="tt2" name="templateTypeFilter" value="detail" checked="checked">
+                                                <label class="chk" for="tt2">Detail</label>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="sfCol-12 sfCol-md-4 ml-auto">
+                        <div class="dg-group">
+                            <div class="dg-search-key rounded">
+                                <input type="text" id="templateSearchInput" name="typeSearchInput" class="sfFormcontrol rounded" placeholder="Search here by Post">
+                                <button type="submit" id="btnSearch" class="search"><i class="fa fa-search rounded"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sfDatagrid-title d-none sm-d-block">
+                <div class="dg-col-wp">
+                    <div class="sfCol-4 sfCol-sm-6">Name</div>
+
+                    <div class="sfCol-3 sfCol-sm-3 sm-f-center">Screenshot</div>
+                    <div class="sfCol-2 sfCol-sm-3 f-center">Action</div>
+                </div>
+            </div>
+            <div id="templateTable" class="sfDatagrid-body">
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+    <script>
+        $(function () {
+            window.dynCmpUserModuleID = 0;
+            $('#templateWrapper').PostTemplate({
+                SageSetting: {
+                }
+            });
+        });
+    </script>
+}
+

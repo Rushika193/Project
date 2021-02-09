@@ -1,0 +1,84 @@
+﻿@model Documentation.Models.HomeInfo
+@{
+    ViewData["Title"] = "Captcha Example";
+}
+
+<div class="cd_content">
+    <h1 class="content_title ">Contentder Captcha</h1>
+    <p class="content_lead ">
+        Example of how to implement contentder captcha
+    </p>
+</div>
+
+<div class="cd_example Mb-20x ">
+    <div class="preview">
+        <form method="post">
+            <div class="sfFormwrapper sfCol-md-6">
+                <div class="sfFieldset">
+                    <div class="formkey">
+                        <span class="sfFormlabel">Captcha Type</span>
+                    </div>
+                    <div class="formvalue">
+                        <select id="slcCaptchaType" class="sfFormcontrol">
+                            <option value="number">Number</option>
+                            <option value="image">Image</option>
+                            <option value="slider">Slider</option>
+                        </select>
+
+                    </div>
+                </div>
+                <div class="sfFieldset">
+                    <div id="cbuildercaptcha">
+                    </div>
+                </div>
+                <div class="sfFieldset">
+                    <div class="formkey">
+                        <span class="sfFormlabel">Captcha</span>
+                    </div>
+                    <div class="formvalue">
+                        <input name="CaptchaAnswer" type="text" class="sfFormcontrol" placeholder="Enter captcha value">
+                    </div>
+                </div>
+                <div class="sfButtonwrapper">
+                    <button type="submit" class="btn primary">Submit</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script src="~/lib/js/jquery.validate.min.js"></script>
+<script src='@Model.CaptchaServer/js/contentdercaptcha.js'></script>
+<script type="text/javascript">
+    //contentdercaptcha.init({
+    //    siteKey: "site io",
+    //    secretKey: 'secret uo',
+    //    controlId: 'cbuildercaptcha',
+    //    type:'slider'
+    //});
+    $(function () {
+        $('#slcCaptchaType').on('change', function () {
+            InitCaptcha();
+        });
+        function InitCaptcha() {
+            $('#cbuildercaptcha').contentdercaptcha({
+                type: $('#slcCaptchaType').val(),
+                siteKey: "sk",
+                secretKey: 'ss'
+            });
+        }
+        InitCaptcha();
+    });
+
+
+                    //$('#cbuildercaptcha1').contentdercaptcha({
+                    //    submitDelay: 1000,
+                    //    successText: 'Looks Like You\x27re Human! I am not robot',
+                    //    type: 'slider',
+                    //    siteKey: "sk",
+                    //    secretKey: 'ss'
+                    //});
+
+
+
+</script>

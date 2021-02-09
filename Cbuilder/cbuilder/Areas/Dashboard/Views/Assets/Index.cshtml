@@ -1,0 +1,324 @@
+﻿@using Cbuilder.Core.Bundle
+@model IList<Cbuilder.Assets.ApplicationNameInfo>
+
+@{
+    ViewData["Title"] = "Assets";
+    Cbuilder.Assets.AssetLabel localLabel = (Cbuilder.Assets.AssetLabel)ViewBag.LocalLabel;
+    IList<Cbuilder.Core.Role.RoleViewModel> lstRoles = ViewBag.RoleList as IList<Cbuilder.Core.Role.RoleViewModel>;
+}
+
+@Html.AntiForgeryToken()
+
+<section class="content-header">
+    <div class="page-title">
+        <div class="h2">@localLabel.GridHeading</div>
+        <div class="sfButtonwrapper">
+            <a asp-action="UserArea" asp-controller="Assets" class="btn primary round">@localLabel.UserArea</a>
+        </div>
+    </div>
+</section>
+
+
+
+
+<div class="sfDatagrid">
+    <div class="sfDatagrid-header">
+        <div class="dg-col-wp">
+
+
+            @*<div class="sfCol-md-4 sfCol-sm-12 ml-auto">
+                    <div class="dg-group">
+                        <span>Asset Type</span>
+                        <select id="ddlFilterAssetType" class="sfFormcontrol">
+                            <option value="all">All</option>
+                            <option value="css">css</option>
+                            <option value="js">js</option>
+                        </select>
+                    </div>
+                </div>*@
+            <div class="sfCol-12 sfCol-sm-6 sfCol-md-4">
+                <div class="dg-group dropdown-group  Mb-20 sm-Mb-0">
+
+                    <div class="list-dropdown">
+                        <span class="dropdown-link">@localLabel.AssetType<i class="fa fa-chevron-down"></i></span>
+                    </div>
+                    <ul class="list-group" id="assetTypeList">
+                        <li class=" group-item group-item-link-bg ">
+                            <div class="sfCheckbox">
+                                <input type="checkbox" name="chkAssetType" value="js" checked id="chkJS">
+                                <label for="chkJS">js</label>
+                            </div>
+                        </li>
+                        <li class=" group-item group-item-link-bg">
+                            <div class="sfCheckbox">
+                                <input type="checkbox" name="chkAssetType" value="css" checked id="chkCSS">
+                                <label for="chkCSS">css</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="sfCol-12 sfCol-sm-6 sfCol-md-4">
+                <div class="dg-group dropdown-group  Mb-20 sm-Mb-0">
+
+                    <div class="list-dropdown">
+                        <span class="dropdown-link">@localLabel.Mode<i class="fa fa-chevron-down"></i></span>
+                    </div>
+                    <ul class="list-group" id="assetModeList">
+                        <li class=" group-item group-item-link-bg ">
+                            <div class="sfCheckbox">
+                                <input type="checkbox" name="chkAssetMode" value="both" checked id="chkBoth">
+                                <label for="chkBoth">both</label>
+                            </div>
+                        </li>
+                        <li class=" group-item group-item-link-bg">
+                            <div class="sfCheckbox">
+                                <input type="checkbox" name="chkAssetMode" value="live" checked id="chkLive">
+                                <label for="chkLive">live</label>
+                            </div>
+                        </li>
+                        <li class=" group-item group-item-link-bg">
+                            <div class="sfCheckbox">
+                                <input type="checkbox" name="chkAssetMode" value="local" checked id="chkLocal">
+                                <label for="chkLocal">local</label>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+            @*<div class="sfCol-md-4 sfCol-sm-12 ml-auto">
+                    <div class="dg-group">
+                        <span>Mode</span>
+                        <select id="ddlFilterExcessMode" class="sfFormcontrol">
+                            <option value="all">All</option>
+                            <option value="both">both</option>
+                            <option value="live">live</option>
+                            <option value="local">local</option>
+                        </select>
+                    </div>
+                </div>*@
+
+            <div class="sfCol-md-4 sfCol-sm-12 ml-auto">
+                <div class="dg-group Mb-20 sm-Mb-0 ">
+                    <div class="dg-search-filter flex f-middle">
+                        <div class="sfFormkey Pr-20">
+                            <span id="lblApplicationName" class="sfFormLabel pr-20">@localLabel.Application</span>
+                        </div>
+                        <div class="sfFormvalue f-fill">
+                            <select id="ddlApplicationName" class="sfFormcontrol rounded">
+                                @foreach (var item in Model)
+                                {
+                                    <option value="@item.ApplicationID">@item.ApplicationName</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="accordion" id="divAssetsAccordion">
+
+
+    </div>
+
+
+    <div id="divAssetAddUpdate" style="display:none">
+        <div class="sfFormwrapper card">
+            <input type="hidden" id="hdnAssetID" value="0" />
+            <input type="hidden" id="hdnAreaID" value="0" />
+
+            <div class="card-body Pa-6x">
+                <h2 class="form-title" id="assetFormTitle">@localLabel.AddNew</h2>
+
+                <div class="sfRow">
+                    <div class="sfFieldset sfCol-6 Px-15">
+                        <div class="formkey">
+                            <span class="sfFormLabel">@localLabel.Name</span>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" id="txtAssetName" class="sfFormcontrol" />
+                            <span class="color-danger" id="errAssetName" style="display:none"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset sfCol-6 Mb-3x">
+                        <div class="formkey">
+                            <span class="sfFormLabel">@localLabel.AssetType</span>
+                        </div>
+                        <div class="formvalue">
+                            <select id="ddlAssetType" class="sfFormcontrol">
+                                <option value="css">css</option>
+                                <option value="js">js</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset sfCol-6 Mb-3x">
+                        <div class="formkey">
+                            <span class="sfFormLabel">@localLabel.Role</span>
+                        </div>
+                        <div class="formvalue">
+                            <div class="dg-group dropdown-group  Mb-20 sm-Mb-0">
+                                <div class="list-dropdown">
+                                    <span class="dropdown-link">Select Roles<i class="fa fa-chevron-down"></i> </span>
+                                </div>
+                                <ul class="list-group" id="rolesList">
+                                    <li class=" group-item group-item-link-bg ">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" class="chkRole" value="" checked id="chkAllRoles">
+                                            <label for="chkAllRoles">All Roles</label>
+                                        </div>
+                                    </li>
+                                    @foreach (var role in lstRoles)
+                                    {
+                                        <li class=" group-item group-item-link-bg ">
+                                            <div class="sfCheckbox">
+                                                <input type="checkbox" class="chkRole chkIndividualRole" value="@role.Name" id="chk_@role.Name">
+                                                <label for="chk_@role.Name">@(string.IsNullOrEmpty(role.AliasName) ? role.Name : role.AliasName)</label>
+                                            </div>
+                                        </li>
+                                    }
+
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="sfFieldset sfCol-6 Px-15">
+                        <div class="formkey">
+                            <span class="sfFormLabel">@localLabel.AssetPosition</span>
+                        </div>
+                        <div class="formvalue">
+                            <select id="ddlAssetPosition" class="sfFormcontrol">
+                                <option value="@AssetPosition.Header">@AssetPosition.Header</option>
+                                <option value="@AssetPosition.HeaderTop">@AssetPosition.HeaderTop</option>
+                                <option value="@AssetPosition.HeaderBottom">@AssetPosition.HeaderBottom</option>
+                                <option value="@AssetPosition.Footer">@AssetPosition.Footer</option>
+                                <option value="@AssetPosition.FooterTop">@AssetPosition.Footer</option>
+                                <option value="@AssetPosition.FooterBottom">@AssetPosition.FooterBottom</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset  sfCol-6 Mb-3x">
+                        <div class="formkey">
+                            <label class="sfFormLabel" for="chkIsExternal">Is External?</label>
+                        </div>
+                        <div class="formvalue">
+                            <div class="sfCheckbox">
+                                <input type="checkbox" id="chkIsExternal" class="form-checkbox" />
+                                <label class="sfFormLabel" for="chkIsExternal"></label>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="sfFieldset  sfCol-6 Px-15">
+                        <div class="formkey">
+                            <label class="sfFormLabel">@localLabel.AccessMode</label>
+                        </div>
+                        <div class="formvalue">
+                            <select id="ddlExcessMode" class="sfFormcontrol">
+                                <option value="both">both</option>
+                                <option value="live">live</option>
+                                <option value="local">local</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+
+                    <div class="sfFieldset  sfCol-6 Mb-3x" id="divFilePathExternal">
+                        <div class="formkey">
+                            <span class="sfFormLabel">@localLabel.FilePath</span>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" id="txtFilePath" class="sfFormcontrol" />
+                            <span class="color-danger" id="errAssetPath" style="display:none"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset  sfCol-6 Mb-3x" id="divFilePathLocal" style="display:none">
+                        <div class="formkey">
+                            <span class="sfFormLabel">@localLabel.LocalFilePath</span>
+                        </div>
+                        <div class="formvalue">
+                            <select id="ddlLocalFiles" class="sfFormcontrol">
+                            </select>
+                            <span class="color-danger" id="errLocalAssetPath" style="display:none"></span>
+
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+
+                <div class="sfButtonwrapper">
+                    <input type="button" id="btnSaveAsset" class="btn primary round" value="@localLabel.Save" />
+                    <input type="button" id="btnCancelAsset" class="btn secondary round" value="@localLabel.Cancel" />
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div id="divCloneDialog" style="display:none">
+        <div class="sfFormwrapper card">
+            <div class="sfFieldset  sfCol-6 Px-15">
+                <div class="formkey">
+                    <label class="sfFormLabel">Select Clone Source</label>
+                </div>
+                <div class="formvalue">
+                    <select id="ddlCloneApplication" class="sfFormcontrol">
+                        @foreach (var item in Model)
+                        {
+                            <option value="@item.ApplicationID">@item.ApplicationName</option>
+                        }
+                    </select>
+                    <span class="color-danger" id="errCloneApp" style="display:none"></span>
+                </div>
+            </div>
+
+
+            <div class="sfButtonwrapper">
+                <input type="button" id="btnSaveClone" class="btn primary round" value="@localLabel.Ok" />
+                <input type="button" id="btnCancelClone" class="btn secondary round" value="@localLabel.Cancel" />
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        var localLabel = @Html.Raw(Json.Serialize(localLabel));
+        $(this).AssetMgmt({
+            LocalLabel:localLabel
+        });
+    });
+
+</script>
+

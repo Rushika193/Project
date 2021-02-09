@@ -1,0 +1,108 @@
+﻿
+@model Cbuilder.Core.PageAction.ServiceActionBind
+
+
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">Action Service Management</div>
+    </div>
+</section>
+
+<div class="is-medium">   
+        <div class="card">
+        <div class="card-body">
+            <div class="sfCol_100 tsfCol_100 msfCol_100 ">
+                <div class="sfCard sfFormwrapper">
+                    <form asp-action="ManageService" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="@Model.PageAction.PageActionID" />
+                        <input type="hidden" asp-for="@Model.PageAction.SelectedService" class="form-control" />
+                        <!--Application Areas-->
+                        <div class="sfFieldset Mt-40" id="actionList">
+                            <div class="sfFormkey">
+                                <label class="sfFormlabel">Allow Services</label>
+                            </div>
+                            <div class="sfFormvalue accAreaWrap Mt-20">
+                                <div class="card">
+                                    @foreach (var areas in Model.ServiceActionList.GroupBy(x => x.AreaName).Select(y => y.First()))
+                                    {
+
+                                        <div class="accArea accordion">
+
+                                            <div class="accHeader card-header">
+                                                <h5>@areas.AreaName   <i class="fa fa-chevron-up "></i></h5>
+
+                                            </div>
+                                            <div class="accPagesWrap accContents accordion collpase" style="display:none;">
+                                                @foreach (var pages in Model.ServiceActionList.Where(x => x.AreaName == areas.AreaName).GroupBy(x => x.PageName).Select(y => y.First()))
+                                                {
+                                                    <div class="accHeader card-header Pl-35">
+                                                        <div class="head">
+                                                            <div class="ds-grd-chk   custom-control custom-checkbox">
+                                                                <input id="customCheck_@pages.PageID" name="Pages" class="gdchkbx sfCheckbox" type="checkbox" value="@pages.PageName">
+                                                                <label class="sfCheckboxlabel" for="customCheck_@pages.PageID">@pages.PageName</label>
+                                                            </div>
+
+                                                            <i class="fa fa-chevron-up"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="accGrpWrap accContents accordion collapse" style="display:none;">
+                                                        @foreach (var actiongrp in Model.ServiceActionList.Where(x => x.AreaName == areas.AreaName && x.PageName == pages.PageName).GroupBy(x => x.GroupName).Select(y => y.First()))
+                                                        {
+                                                            <div class="accHeader card-header Pl-50">
+                                                                <div class="head">
+                                                                    <div class="ds-grd-chk   custom-control custom-checkbox">
+                                                                        <input id="customCheck_@actiongrp.ActionGroupID" name="ActionGrp" class="gdchkbx sfCheckbox" type="checkbox" value="@actiongrp.GroupName">
+                                                                        <label class="sfCheckboxlabel" for="customCheck_@actiongrp.ActionGroupID">@actiongrp.GroupName</label>
+                                                                    </div>
+
+                                                                    <i class="fa fa-chevron-up"></i>
+
+                                                                </div>
+                                                            </div>
+                                                            <div class="accActionWrap accContents" style="display:none;">
+                                                                @foreach (var action in Model.ServiceActionList.Where(x => x.AreaName == areas.AreaName && x.PageName == pages.PageName && x.ActionGroupID == actiongrp.ActionGroupID))
+                                                                {
+                                                                    <div class="card-header Pl-65">
+                                                                        <div class="head">
+                                                                            <div class="ds-grd-chk custom-control custom-checkbox">
+                                                                                @if (!string.IsNullOrEmpty(Model.PageAction.SelectedService) && Model.PageAction.SelectedService.ToLower().Contains(action.ServiceActionID.ToString().ToLower()))
+                                                                                {
+                                                                                    <input class="gdchkbx sfCheckbox serviceAction" type="checkbox" id="customCheck_@action.ServiceActionID" checked="checked" name="SelectedPagesActions" value="@action.ServiceActionID">
+                                                                                }
+                                                                                else
+                                                                                {
+                                                                                    <input class="gdchkbx sfCheckbox serviceAction" type="checkbox" id="customCheck_@action.ServiceActionID" name="SelectedPagesActions" value="@action.ServiceActionID">
+
+                                                                                }
+                                                                                <label class="sfCheckboxlabel" for="customCheck_@action.ServiceActionID">@action.ServiceName</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                }
+                                                            </div>
+
+
+                                                        }
+                                                    </div>
+
+                                                }
+
+                                            </div>
+                                        </div>
+
+
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sfButtonwrapper">
+                            <input type="submit" class="btn primary round" />
+                            <a asp-action="ManageAction" class="btn light round">Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

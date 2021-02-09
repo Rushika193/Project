@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authorization" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.9.10" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Cbuilder.Core.API.Response\Cbuilder.Core.API.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.Constants\Cbuilder.Core.Constants.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.InMemory\Cbuilder.Core.InMemory.csproj" />
+    <ProjectReference Include="..\Cbuilder.SQLHelper\Cbuilder.SQLHelper.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="SkiaSharp">
+      <HintPath>dll\SkiaSharp.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+</Project>

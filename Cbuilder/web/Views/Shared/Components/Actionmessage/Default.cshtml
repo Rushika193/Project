@@ -1,0 +1,14 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@using Cbuilder.Core.Helper.Models;
+@{ var Message = TempData["ActionMessage"];
+    var type = TempData["ActionMessageType"];
+}
+@if (Message != null)
+{
+    <div id="divActionMessage" class="act-message @type">
+        <span class="message-text">@Message</span>
+    </div>
+}
+<div id="divClientActionMessage">
+   
+</div>

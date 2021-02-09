@@ -1,0 +1,36 @@
+﻿@inject Cbuilder.Core.Permissions.IPermission _permission;
+@{
+    var localLabel = ViewBag.LocalLabel;
+    ViewData["Title"] = localLabel.Title;
+}
+    <div class="is-small">
+        <section class="content-header clearfix">
+            <div class="page-title d-block sm-d-flex">
+                <div class="h2">@localLabel.Title</div>
+
+                <div class="sfButtonwrapper">
+
+                    <a asp-action="Index" class="btn  light round">@localLabel.Actions.Back</a>
+
+
+                </div>
+            </div>
+        </section>
+  
+
+    <div class="app-data sfRow">
+
+    </div>
+
+  </div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+        var CurrentHostURL = SageFrameHostURL;
+        $(function () {
+            $(this).ManageAccountsManage({
+                localLabel: @Html.Raw(ViewBag.LocalLabel)
+            });
+        });</script>
+}

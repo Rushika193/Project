@@ -1,0 +1,189 @@
+﻿
+@{
+    ViewData["Title"] = "Forms Advance Elements";
+}
+
+<div class="cd_content">
+    <h1 class="content_title ">@ViewData["Title"]</h1>
+    <p class="content_lead ">
+        Forms and their layout options for any kind of input based operations invloving users' interactions.
+    </p>
+</div>
+<div class="cd_example Mb-20">
+    <div class="preview">
+        <div class="flyer">
+            <button class="btnOpenFlyer btn primary">Extra Field</button>
+            <div class="flyer-group">
+                <div class="sfFormwrapper">
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <span class="sfFormlabel">
+                                Username
+                            </span>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" value="" class="sfFormcontrol" />
+                        </div>
+                    </div>
+                    <div class="sfButtonwrapper">
+                        <button type="button" class="btn primary-outline round">Add</button>
+                        <button type="button" class="btnCloseFlyer btn warning-outline round">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="cd_example Mb-20x ">
+    <div class="preview">
+        <div class="sfFormwrapper">
+            <div class="sfFieldset ">
+                <div class="formkey">
+                    <span class="sfFormlabel">Auto Complete</span>
+                </div>
+                <div class="formValue">
+                    <input class="sfFormcontrol" id="txtAutoComplete" />
+                </div>
+
+            </div>
+            <div class="sfFieldset ">
+                <div class="formkey">
+                    <span class="sfFormlabel">Date Picker</span>
+                </div>
+                <div class="formValue">
+                    <input class="sfFormcontrol" id="txtDatePicker" />
+                </div>
+            </div>
+            <div class="sfFieldset">
+                <div class="formkey">
+                    <span class="sfFormlabel">Selectize</span>
+                </div>
+                <div class="formvalue">
+                    <select id="slcSelectize" class="sfFormcontrol" placeholder="Your Interest" multiple>
+                        <option>Sports</option>
+                        <option>Music</option>
+                        <option>Traveling</option>
+                        <option>Dancing</option>
+                        <option>Reading</option>
+                        <option>Painting</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="sfFieldset ">
+                <div class="formkey">
+                    <span class="sfFormlabel">Range Slider</span>
+                </div>
+                <div id="divRangeSlider">
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <figure class="Mt-5x">
+        <div data-lang="lang-html" class="codeContent">
+            <div class="sfFormwrapper">
+                <div class="sfFieldset ">
+                    <div class="formkey">
+                        <span class="sfFormlabel">Auto Complete</span>
+                    </div>
+                    <div class="formValue">
+                        <input class="sfFormcontrol" id="txtAutoComplete" />
+                    </div>
+
+                </div>
+                <div class="sfFieldset ">
+                    <div class="formkey">
+                        <span class="sfFormlabel">Date Picker</span>
+                    </div>
+                    <div class="formValue">
+                        <input class="sfFormcontrol" id="txtDatePicker" />
+                    </div>
+                </div>
+                <div class="sfFieldset">
+                    <div class="formkey">
+                        <span class="sfFormlabel">Selectize</span>
+                    </div>
+                    <div class="formvalue">
+                        <select id="slcSelectize" class="sfFormcontrol" placeholder="Your Interest" multiple>
+                            <option>Sports</option>
+                            <option>Music</option>
+                            <option>Traveling</option>
+                            <option>Dancing</option>
+                            <option>Reading</option>
+                            <option>Painting</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="sfFieldset ">
+                    <div class="formkey">
+                        <span class="sfFormlabel">Range Slider</span>
+                    </div>
+                    <div id="divRangeSlider">
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </figure>
+    <figure class="Mt-5x">
+        <div data-lang="lang-javascript" class="codeContent">
+            <script type="text/javascript">
+                $(function () {
+                    // auto complete example
+                    var availableTags = [
+                        "ActionScript",
+                        "AppleScript",
+                        "Asp",
+                        "BASIC",
+                        "C",
+                        "C++",
+                        "Clojure",
+                        "COBOL",
+                    ];
+                    $("#txtAutoComplete").autocomplete({
+                        source: availableTags
+                    });
+                    // selectize example
+                    // more details https://select2.org/
+                    $('#slcSelectize').select2();
+
+
+                    // date picker example
+
+                    $('#txtDatePicker').datepicker({
+                        dateFormat: "yy-mm-dd",
+                        numberOfMonths: 2,
+                        minDate: $.datepicker.formatDate('yy-mm-dd', new Date()),
+                        onSelect: function (dateText, inst) {
+
+                        }
+                    });
+
+                    // Range slider Example
+                    var obj = {
+                        Min: 10,
+                        Max: 200,
+                        InitMin: 20,
+                        InitMax: 150
+                    };
+                    $('#divRangeSlider').createRangeSlider(obj.Min, obj.Max, obj.InitMin, obj.InitMax, function (val1, val2) {
+
+                    });
+                    // to change slider value
+                    //$('#divRangeSlider').ChangeSliderValue(obj.InitMin,obj.InitMax);
+                });
+            </script>
+        </div>
+    </figure>
+</div>
+
+
+
+
+
+
+

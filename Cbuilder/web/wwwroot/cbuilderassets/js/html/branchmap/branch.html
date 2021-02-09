@@ -1,0 +1,58 @@
+﻿<div class="field-row-wrap">
+    <div class="field-row stElWrap">
+        <span class="stngSmallBtn" id="addBranch">Add Address</span>
+    </div>
+    <div class="field-row stElWrap col100">
+        <label>Search</label>
+    </div>
+    <div class="field-row stElWrap search">
+        <span class="cb_input">
+            <input type="text" id="searchPlace" />
+        </span>
+    </div>
+    <div class="field-row clearfix">
+        <div class="branch-list ui-sortable">
+
+        </div>
+    </div>
+</div>
+
+<div class="field-row branch-form Dn" style="border: solid 1px rgba(255, 255, 255, 0.06); margin-bottom: 10px;">
+    <div class="field-row stElWrap col30-70">
+        <label class="fCol">Latitude:</label>
+        <span class="fCol cb_input">
+            <input type="text" id="lat" />
+        </span>
+    </div>
+    <div class="field-row stElWrap col30-70">
+        <label class="fCol">Longitude:</label>
+        <span class="fCol cb_input">
+            <input type="text" id="lng" />
+        </span>
+    </div>
+    <div class="sfError latlan Dn">Latitude and Longitude must be numeric.</div>
+    <div class="field-row stElWrap col30-70">
+        <label class="fCol">Title:</label>
+        <span class="fCol cb_input">
+            <input type="text" id="title" />
+        </span>
+    </div>
+    <div class="sfError title Dn">Title is required.</div>
+    <div class="field-row stElWrap col30-70">
+        <label class="fCol">Details:</label>
+        <div class="fCol TxAl-l text__area">
+            <textarea id="details"></textarea>
+        </div>
+    </div>
+    <span class="cb-btn-red cancel" style="margin-left:auto">
+        <i class="fa fa-arrow-left" title="Cancel"></i> Cancel
+    </span>
+    <span class="cb-btn-green save" style="margin-left:auto">
+        <i class="fa fa-save" title="Save"></i> Save
+    </span>
+</div>
+<style>
+    .pac-container {
+        z-index: 999997;
+    }
+</style>

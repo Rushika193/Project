@@ -1,0 +1,14 @@
+﻿{
+  "Title": "Menu Management",
+  "AddButton": "Add New",
+  "DetailsLabel": "Detail",
+  "SearchPlaceholder": "Search",
+  "ActionLabel": "Action",
+  "EditLabel": "Edit",
+  "DeleteLabel": "Delete",
+  "NoData": "No Data To Display.",
+  "Ok": "Yes",
+  "No": "No",
+  "AreaLabel": "Area",
+  "ControllerLabel": "Controller"
+}

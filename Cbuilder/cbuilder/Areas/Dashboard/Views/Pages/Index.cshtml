@@ -1,0 +1,115 @@
+﻿
+@model IEnumerable<Cbuilder.Core.Pages.AdminPage>
+
+@{
+    int rowTotal = 0;
+}
+
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">Admin Page Permission</div>
+        <div class="sfButtonwrapper">
+            <a asp-action="ManagePortalPage" class="btn  primary round">Manage Portal Page</a>            
+        </div>
+    </div>
+</section>
+
+<div class="sfDatagrid">
+    <div class="sfDatagrid-header">
+        <form asp-action="Index" method="get">
+            <div class="dg-col-wp">
+                <div class="sfCol-12 sfCol-md-4">
+                    <div class="dg-group Mb-20 md-Mb-0">
+                        <div class="dg-search-key">
+                            <select class="sfFormcontrol" id="areaName" name="areaName"
+                                    asp-items="@ViewBag.AreaList" value="@ViewData["AreaName"]">
+                                <option value="">Please select area</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="sfCol-12 sfCol-md-4 ml-auto">
+                    <div class="dg-group">
+                        <div class="dg-search-key rounded">
+                            <input type="text" id="keyword" class="sfFormcontrol rounded" name="keyword" placeholder="Search here by PageName" value="@ViewData["Keyword"]">
+                            <button type="submit" class="search"><i class="fa fa-search rounded"></i></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+    </div>
+    <div class="sfDatagrid-title d-none sm-d-block">
+        <div class="dg-col-wp">
+            <div class="sfCol-3">PageName</div>
+            <div class="sfCol-2">DisplayName</div>
+            <div class="sfCol-2">AreaName</div>
+            <div class="sfCol-2">Type</div>
+            <div class="sfCol-3  f-center">Action</div>
+        </div>
+    </div>
+    <div class="sfDatagrid-body">
+        @if (Model != null && Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+                rowTotal = item.RowTotal;
+        <div class="dg-col-wp">
+            <div class="sfCol-3 sfCol-sm-3">
+                <div class="dg-group Mb-10 sm-Mb-0">
+                    <span class="ds-grd-tit"> @item.PageName</span>
+                </div>
+            </div>
+            <div class="sfCol-2 sfCol-sm-2 ">
+                <div class="dg-group Mb-10 sm-Mb-0">
+                    <span class="ds-grd-tit"> @item.DisplayName</span>
+                </div>
+            </div>
+            <div class="sfCol-2 sfCol-sm-2 ">
+                <div class="dg-group Mb-10 sm-Mb-0">
+                    <span class="ds-grd-tit"> @item.AreaName</span>
+                </div>
+            </div>
+            <div class="sfCol-2 sfCol-sm-2 ">
+                <div class="dg-group Mb-10 sm-Mb-0">
+                    <span class="ds-grd-tit"> @item.ControllerTypeName</span>
+                </div>
+            </div>
+            <div class="sfCol-3 sfCol-sm-3 f-end sm-f-center">
+                <div class="dg-group-inline">
+                    <div class="action-menu">
+                        <span class="action-icon">
+                            <i class="fa fa-ellipsis-h"></i>
+                        </span>
+                        <ul class="action-open">
+
+                            <li>
+                                <a asp-action="ManageAdminPermission" asp-route-id="@item.PageID" class="links"><i class="far far fa-edit"></i>ManagePermission</a>
+                            </li>                            
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+            }
+        }
+        else
+        {
+            <div class="dg-nodata">
+                No Data To Display.
+            </div>
+        }
+
+    </div>
+</div>
+
+<div id="divPagination" class="Mt-5x"></div>
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#divPagination').CreatePagination({ total:@rowTotal, limit: 10 });
+        });
+    </script>
+}

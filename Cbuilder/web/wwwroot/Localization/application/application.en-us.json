@@ -1,0 +1,17 @@
+{
+  "AddNew": "Add New",
+  "Save": "Save",
+  "Update": "Update",
+  "Cancel": "Cancel",
+  "Back": "Back",
+  "Name": "Name",
+  "Action": "Action",
+  "Edit": "Edit",
+  "Delete": "Delete",
+  "ApplicationName": "Application Name",
+  "GridHeading": "Application Management",
+  "AddFormHeading": "Create Application",
+  "EditFormHeading": "Update Application",
+  "NoData": "No data to display."
+  
+}

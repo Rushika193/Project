@@ -1,0 +1,255 @@
+﻿<div class="field-row">
+    <div class="field-row stElWrap divlayout col50-50">
+        <label class="fCol">Choose Layout</label>
+        <span class="fCol TxAl-r select__box">
+            <select id="slcchooselayout">
+                <option value="grid">Grid</option>
+                <option value="masonry">Masonry</option>
+                <option value="slickSlider">Slick Slide</option>
+            </select>
+        </span>
+    </div>
+    <div id="imagesperrow"></div>
+
+    <div id="imgsizeslider"></div>
+
+    <div class="field-row imgsizestng Dn">
+
+        <!--<div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imageHeightSlider">
+                    <div id="imageHeightHandle" class="ui-slider-handle" title="Image Height">0</div>
+                </div>
+            </div>
+        </div>-->
+        <div class="field-row stElWrap col100 divGridHght">
+            <div class="range__slider fCol">
+                <div id="imageHeightSlider">
+                    <div id="imageHeightHandle" class="ui-slider-handle" title="Image Height">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row stElWrap col10-90">
+            <div class="fCol">
+                <span class="fa fa-refresh" id="refresImageWidth"></span>
+            </div>
+            <div class="fCol"><label>Reset Height to 100%</label></div>
+        </div>
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Fit Image</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="imageFittoCover" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="divBtnStngs">
+        <!--style="display:none;">-->
+        <label class="Fs-16">Load More Settings</label>
+        <div id="moreBtnSize"></div>
+    </div>
+    <div class="cs-basic-setting slickSetting Dn">
+        <div class="field-row">
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Adaptive height (based on content)</label>
+                <div class="fCol TxAl-r">
+                    <span class="toggle_btn">
+                        <input type="checkbox" id="adaptiveHeightCS" name="toggleButton">
+                        <label for="toggleButton" class="tgl_slider"></label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Continuous</label>
+                <div class="fCol TxAl-r">
+                    <span class="toggle_btn">
+                        <input type="checkbox" id="infiniteSliderCS" name="toggleButton">
+                        <label for="toggleButton" class="tgl_slider"></label>
+                    </span>
+                </div>
+            </div>
+            <div class="field-row stElWrap col100 Dn" id="infiniteSliderMsg">
+                <label class="fCol">* Enabling continuous option will cause problem if slides contain audio/video.</label>
+            </div>
+
+            <div class="field-row stElWrap col100 Dn">
+                <span class="range__slider fCol">
+                    <div id="csSliderHeight">
+                        <div title="Height" id="csSliderHeightHandle" class="ui-slider-handle">400</div>
+                    </div>
+                </span>
+            </div>
+
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Show Arrows</label>
+                <div class="fCol TxAl-r">
+                    <span class="toggle_btn">
+                        <input type="checkbox" id="showArrowsCS" name="toggleButton">
+                        <label for="toggleButton" class="tgl_slider"></label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50" id="arrowsStyleHld">
+                <label class="fCol">Arrows style</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="arrowsStyleCS" aria-invalid="false" class="valid">
+                            <option value="1">Default</option>
+                            <option value="2">Style 2</option>
+                            <option value="3">Style 3</option>
+                            <option value="4">Style 4</option>
+                            <option value="5">Style 5</option>
+                            <option value="6">Style 6</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50" id="arrowsPosHld">
+                <label class="fCol">Arrows position</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="arrowsPosCS" aria-invalid="false" class="valid">
+                            <option value="cs-arrow-pos-1">Default</option>
+                            <option value="cs-arrow-pos-2">Position 2</option>
+                            <option value="cs-arrow-pos-3">Position 3</option>
+                            <option value="cs-arrow-pos-4">Position 4</option>
+                            <option value="cs-arrow-pos-5">Position 5</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50" id="arrowsBGHld">
+                <label class="fCol">Arrows Background Color</label>
+                <div class="fCol TxAl-r">
+                    <span class="color-picker-holder arrowsColorPicker selected" id="arrowsBGColor"></span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50" id="arrowsColorHld">
+                <label class="fCol">Arrows Color</label>
+                <div class="fCol TxAl-r">
+                    <span class="color-picker-holder arrowsColorPicker selected" id="arrowsFColor"></span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Show Dots</label>
+                <div class="fCol TxAl-r">
+                    <span class="toggle_btn">
+                        <input type="checkbox" id="showDotsCS" name="toggleButton">
+                        <label for="toggleButton" class="tgl_slider"></label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50" id="dotsStyleHld">
+                <label class="fCol">Dots style</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="dotsStyleCS" aria-invalid="false" class="valid">
+                            <option value="slick-dots">Default</option>
+                            <option value="slick-dots-2">Style 2</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50" id="dotsPosHld">
+                <label class="fCol">Dots position</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="dotsPosCS" aria-invalid="false" class="valid">
+                            <option value="cs-dots-pos-1">Default</option>
+                            <option value="cs-dots-pos-2">Position 2</option>
+                            <option value="cs-dots-pos-3">Position 3</option>
+                            <option value="cs-dots-pos-4">Position 4</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50" id="dotsColorHld">
+                <label class="fCol">Dots Color</label>
+                <div class="fCol TxAl-r">
+                    <span class="color-picker-holder arrowsColorPicker selected" id="dotsBGColor"></span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Transition</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="transitionCS" aria-invalid="false" class="valid">
+                            <option value="fade">Fade</option>
+                            <option value="slide">Slide</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Auto Play</label>
+                <div class="fCol TxAl-r">
+                    <span class="toggle_btn">
+                        <input type="checkbox" id="autoPlayCS" name="toggleButton">
+                        <label for="toggleButton" class="tgl_slider"></label>
+                    </span>
+                </div>
+            </div>
+            <div class="field-row stElWrap col100" id="autoPlayMsg">
+                <label class="fCol">* Content Slider will not auto play in editor mode. Please preview the site for auto play.</label>
+            </div>
+
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Auto Play Speed</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="autoPlaySpeedCS">
+                            <option value="3000">3 seconds</option>
+                            <option value="5000">5 seconds</option>
+                            <option value="10000">10 seconds</option>
+                            <option value="15000">15 seconds</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Slides to show</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="slidesPerViewCS">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Slides to scroll</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="slidesScrollCS">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+
+            <div class="field-row stElWrap col100 Dn" id="fadeTranMsg">
+                <label class="fCol">Fade transition works only with one slide per view.</label>
+            </div>
+        </div>
+    </div>
+</div>

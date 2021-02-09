@@ -1,0 +1,166 @@
+﻿@model Cbuilder.Core.Localization.Language
+@*@model IList<Cbuilder.Core.Localization.Language>*@
+
+
+<section class="content-header clearfix">
+    <div class="page-title d-block md-d-flex">
+        <div class="h2">Language Management</div>
+    </div>
+</section>
+<div class="sfFormwrapper">
+
+</div>
+<div class="sfFieldset">
+    <div class="sfRow Mt-2x">
+        <div class="sfButtonwrapper sfCol-12 offset-sfCol-sm-10 sfCol-sm-7">
+            <input id="btnDisableLocalization" type="button" data-value="off" class="btn primary round" value="Disable Localization" />
+        </div>
+    </div>
+</div>
+<div class="sfFieldset">
+    <div class="sfRow Mt-2x">
+        <div class="sfButtonwrapper sfCol-12 offset-sfCol-sm-10 sfCol-sm-7">
+            <input id="btnEditDashboardLink" type="button" data-value="off" class="btn primary round" value="Edit Dashboard Link" />
+        </div>
+    </div>
+</div>
+
+<form asp-action="SaveLanguage" method="post">
+    <div class="sfButtonwrapper">
+        <div class="sfFieldset">
+            <div class="formkey">
+                <span class="sfFormlabel">Select Country</span>
+            </div>
+            <select asp-for="LanguageCode" class="sfFormcontrol" placeholder="Select Language" asp-items="@(new SelectList(ViewBag.ListofCountry,"LanguageCode","LanguageName"))">
+            </select>
+            <div class="sfFieldset">
+                <input type="hidden" asp-for="LanguageName" class="sfInp" />
+            </div>
+        </div>
+        <div class="sfFieldset">
+            <div class="sfRow Mt-2x">
+                <div class="sfButtonwrapper sfCol-2 sfCol-sm-4">
+                    <input type="submit" class="btn primary round" value="Add" />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<form asp-action="Index" method="post">
+    <div class="sfFormwrapper">
+
+        <div class="sfDatagrid">
+
+            <div class="sfDatagrid-title d-none sm-d-block">
+                <div class="dg-col-wp">
+                    @*<div class="sfCol-2">ID</div>*@
+                    <div class="sfCol-6">Language</div>
+                    <div class="sfCol-4">Code</div>
+                    <div class="sfCol-2">Action</div>
+                    @*<div class="sfCol-3  f-center">Enable</div>*@
+                </div>
+            </div>
+            <div class="sfDatagrid-body">
+
+                @if (ViewBag.AvailableCulture != null)
+                {
+
+                    @foreach (var item in ViewBag.AvailableCulture)
+                    {
+
+                        <div class="dg-col-wp">
+                            @*<div class="sfCol-3 sfCol-sm-3">
+                                    <div class="dg-group Mb-10 sm-Mb-0">
+                                        <span class="ds-grd-tit">
+                                            @item.LanguageID
+                                        </span>
+                                    </div>
+                                </div>*@
+                            <div class="sfCol-12 sfCol-sm-6">
+                                <div class="dg-group Mb-10 sm-Mb-0">
+                                    <span class="ds-grd-tit">
+                                        @item.LanguageName
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="sfCol-12 sfCol-sm-4">
+                                <div class="dg-group Mb-10 sm-Mb-0">
+                                    <span class="ds-grd-tit"> @item.LanguageCode</span>
+                                </div>
+                            </div>
+
+
+                            <div class="sfCol-12  sfCol-sm-2 f-end sm-f-center">
+                                <div class="dg-group-inline">
+
+                                    <div class="action-menu">
+                                        <span class="action-icon">
+                                            <i class="fa fa-ellipsis-h"></i>
+                                        </span>
+
+                                        <ul class="action-open">
+
+                                            <li>
+                                                <a asp-controller="Localization" asp-action="Edit" asp-route-LanguageCode="@item.LanguageCode" class="links"><i class="fa fa fa-edit"></i>Edit</a>
+                                            </li>
+                                            @if (@item.LanguageID != 1)
+                                            {
+                                                <li>
+                                                    <a asp-action="Delete" asp-route-id="@item.LanguageID" class="links"><i class='fa fa-trash'></i>Delete</a>
+                                                </li>
+                                            }
+                                            @if (ViewBag.DefaultCulture != item.LanguageCode)
+                                            {
+                                                <li>
+                                                    <a asp-action="Update" asp-route-LanguageCode="@item.LanguageCode" class="links"><i class='fa fa-globe'></i>Set Default Language</a>
+                                                </li>
+                                            }
+                                        </ul>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                    }
+                }
+                else
+                {
+                    <div class="dg-nodata">
+                        No Data To Display.
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</form>
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#LanguageCode').on('change', function () {
+                var languageName = $("option:selected", $(this)).text();
+                $('#LanguageName').val(languageName);
+            });
+            $('#LanguageCode').trigger('change');
+            $('#btnDisableLocalization').on('click', function () {
+                var value = $(this).data("value");
+                SecureAjaxCall.PassObject({
+                    url: `${SageFrameHostURL}/Dashboard/Localization/DisableLocalization`,
+                    data: JSON.stringify({ value: value }),
+                    success: function (data) {
+                        if (data != "") {
+                            SageAlertDialog("Disable Successfully", "Success");
+                            window.setTimeout(function () {
+                                window.location.href = `${SageFrameHostURL}/Dashboard/Localization`
+                            }, 2000);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

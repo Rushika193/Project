@@ -1,0 +1,37 @@
+{
+  "ChooseType": "Choose Type",
+  "CreateCampaign": "Create Campaign",
+  "CampaignTitle": "Campaign Title",
+  "CampaignTitlePlaceholder": "Enter Campaign",
+  "CampaignPost": "Compose Post",
+  "CampaignPosts": "Campaign Posts",
+  "CampaignComplete": "Campaign Complete",
+  "Actions": {
+    "NotNow": "Not Now",
+    "Connect": "Connect",
+    "Reconnect": "Re-connect",
+    "SaveContinue": "Save and Continue",
+    "FinishLater": "Finish Later",
+    "Add": "Add",
+    "Submit": "Submit",
+    "GotoList": "Go to List"
+  },
+  "Messages": {
+    "ReconnectConfirmation": "Are you sure you want to reconnect? Once you reconnect your previous data will be lost.",
+    "PostScheduled": "You post has been scheduled",
+    "PostComplete": "You post has been completed",
+    "ComposeConfirm": "Any changes you make to Design will remove your current content. To edit a specific social network, click Customize instead.",
+    "ComposeConfirmTitle": "Are you sure?"
+  },
+  "Form": {
+    "Content": "Content",
+    "ContentPlaceholder": "write something...."
+  },
+  "BreadCrumb": {
+    "Create": "Create",
+    "Compose": "Compose",
+    "Customize": "Customize and Publish",
+    "Publish": "Schedule and Publish",
+    "End": "Complete"
+  }
+}

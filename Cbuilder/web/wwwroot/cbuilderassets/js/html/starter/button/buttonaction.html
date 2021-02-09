@@ -1,0 +1,76 @@
+﻿<div class="field-row">
+    <div class="field-row stElWrap col30-70">
+        <label class="fCol">Action Type</label>
+        <span class="fCol TxAl-r select__box">
+            <select id="slcBtnStActionType">
+                <option value="Actlink">Redirect to Link</option>
+                <option value="ActPopup">Open Popup</option>
+                <option value="ActSection">Goto Section</option>
+                <option value="ActflDownload">Download Attachment</option>
+            </select>
+        </span>
+    </div>
+
+    <div id="linkSettingWrapper" class="btnActionTypes Actlink">
+        <div class="field-row linkSettingWrapper">
+            <div class="field-row stElWrap col60-40">
+                <label class="fCol">Link Type</label>
+                <span class="fCol select__box">
+                    <select id="enableExternalLink">
+                        <option value="external">External</option>
+                        <option value="internal">Internal</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <div class="field-row ">
+            <span class="fCol cb_input">
+                <input class="Dn"
+                       placeholder="http://www.contentder.com"
+                       type="text" id="linkTextURL" value="" />
+            </span>
+            <span class="fCol select__box Dn" id="anchorPageListHolder">
+                <select id="anchorPageList"></select>
+            </span>
+            <h4 style="color:red; font-style:normal; font-family:sans-serif;" id="messageContainer"> </h4>
+        </div>
+
+        <div class="field-row stElWrap col30-70">
+            <label class="fCol">Target </label>
+            <span class="fCol TxAl-r select__box">
+                <select id="targetFrame">
+                    <option value="_blank">Load in a new tab</option>
+                    <option value="_self">Load in the same frame</option>
+                </select>
+            </span>
+        </div>
+    </div>
+
+
+
+    <div class="btnActionTypes ActPopup Dn">
+        <div class="field-row stElWrap col30-70">
+            <label class="fCol">Select Popup</label>
+            <span class="fCol TxAl-r select__box">
+                <select id="slcBtnStpopup"></select>
+            </span>
+            <span class="info Mt-10 Mb-10">On button click, selected pop-up will be opened. This action will be visible on preview or published page.</span>
+        </div>
+    </div>
+    <div class="btnActionTypes ActSection Dn">
+        <div class="field-row stElWrap col30-70">
+            <label class="fCol">Select Section</label>
+            <span class="fCol TxAl-r select__box">
+                <select id="slcBtnStSection"></select>
+            </span>
+            <span class="info Mt-10 Mb-10">On button click, page is scrolled to the selected section.</span>
+        </div>
+    </div>
+    <div class="btnActionTypes ActflDownload Dn">
+        <button type="button" data-event="click" class="stngSmallBtn" id="btnStActChooseFile">Choose File</button>
+        <label id="btnStActDwnFileName" class="Db"></label>
+        <span class="info Mt-10 Mb-10">On button click, chosen file will be downloaded.</span>
+
+    </div>
+
+</div>

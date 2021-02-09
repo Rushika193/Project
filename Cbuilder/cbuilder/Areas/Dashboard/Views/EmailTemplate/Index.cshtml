@@ -1,0 +1,148 @@
+﻿@{
+    Cbuilder.EmailTemplate.EmailTemplateLabel lbl = (Cbuilder.EmailTemplate.EmailTemplateLabel)ViewBag.LocalLabel;
+    ViewData["Title"] = lbl.GridHeading;
+}
+<div id="divTemplateList">
+    <section class="content-header clearfix">
+        <div class="page-title d-block sm-d-flex">
+            <div class="h2">@lbl.GridHeading</div>
+            <div class="sfButtonwrapper">
+                <button type="button" id="btnAddNewTemp" class="btn primary round">@lbl.AddNew</button>
+                <button id="btnOpenFltr" data-title="Filter" class="btn sq bg-white round"> <i class="fa fa-random"></i></button>
+            </div>
+        </div>
+    </section>
+    <div id="divTemplateFilter" style="display:none;">
+        <div class="filterWrapper">
+            <div class="filter-search">
+                <div class="searchbox flex sfFieldset Mb-5x Mt-5x">
+                    <div class="formkey formvalue Mt-0 f-fill Pr-0">
+                        <input type="text" id="txtTemplateSearch" class="sfFormcontrol" placeholder="@lbl.FilterPlaceholder" />
+                    </div>
+                    <div class="sfButtonwrapper Mt-0 Ml-N-5 z-i-1  f-a-s-stretch Pl-0">
+                        <button id="btnSearchTemplate" class="btn primary"><i class="fa fa-search"></i></button>
+                    </div>
+                </div>
+            </div>
+            <div class="cat-listing">
+                <div class="catTitle h5 fw-400 Mb-10">Categories</div>
+                <ul id="fltrCatListing" class="sfRow Mx-N-20"></ul>
+            </div>
+        </div>
+    </div>
+    <div id="eTemplateList" class="sfRow"></div>
+    <div class="sfPagination" id="divETempPagination" style="display: none"></div>
+</div>
+<div id="divMailTempForm" class="mailTemplateForm" style="display: none">
+    <div class="templateForm">
+        <div class="templateForm_header">
+            <div class="pageHeader_info">
+                <div id="divTemplateHeading" class="title-form">@lbl.AddFormHeading</div>
+            </div>
+        </div>
+
+        <div id="divMailTempEditor">
+            <!-- Email Composer Editor Start  -->
+            @await Component.InvokeAsync("MediaManagement")
+            @await Component.InvokeAsync("MailComposer", "/EmailTemplate/")
+            <!-- Email Composer End   -->
+        </div>
+        <div class="templateForm_body sfFormwrapper" id="divTemplateInfo" style="display: none">
+            <div class="sfFormwrapper">
+                <form method="post" id="formEmailTemplate">
+                    <input type="hidden" id="path" value="@ViewBag.path" />
+                    <input type="hidden" id="hdnEmailTemplateID" value="0" />
+                    <div class="sfFieldset" style="display: none;" id="divTemplateIdenfier">
+                        <div class="formkey">
+                            <span class="sfFormlabel">Identifier</span>
+                        </div>
+                        <div class="formvalue">
+                            <input disabled="disabled" readonly="readonly" id="txtMailTempIdentifier" type="text" class="sfInputbox " placeholder="To uniquely identify this template">
+                        </div>
+                    </div>
+                    @*<div class="sfFieldset">
+                            <div class="formkey">
+                                <span class="sfFormlabel">Language</span>
+                            </div>
+                            <div class="formvalue">
+                                <select id="slcCultureCode" class="sfFrmcontrol" asp-items="@ViewBag.CultureCode"></select>
+                            </div>
+                        </div>*@
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@lbl.FormNameLbl</span>
+                        </div>
+                        <div class="formvalue">
+                            <input id="txtTemplateName" type="text" name="TemplateName" class="sfInputbox " placeholder="Mail Template Name">
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@lbl.FormSubjectLbl</span>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" id="txtEmailSubject" name="EmailSubject" class="sfInputbox " placeholder="Subject">
+                        </div>
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@lbl.FormCategoryLbl</span>
+                        </div>
+                        <div class="formvalue categorySelect flex" id="divTempCategorySelect">
+                            <select id="slcTemplateCategory" class="sfFormcontrol" name="TemplateCategory"></select>
+                            <button type="button" id="btnAddTempCat" class="btn sml-btn primary-btn">@lbl.FormAddCategoryLbl</button>
+                        </div>
+                        <div class="formvalue temp-cat-list" id="divTempCategoryManage" style="display: none;">
+                            <ul id="ulTempCatList">
+                                <li>
+                                    <input type="text" contenteditable="true" class="tempCat" value="System" /><span class="deleteTempCat iconDel"></span>
+                                </li>
+                                <li>
+                                    <input type="text" contenteditable="true" class="tempCat" value="News & Blog" /><span class="deleteTempCat iconDel"></span>
+                                </li>
+                            </ul>
+                            <div class="sfButtonwrapper">
+                                <button type="button" id="btnAddNewTempCat" class="btn success-outline round"><i class="fa fa-plus" aria-hidden="true"></i> @lbl.FormNewLbl</button>
+                                <button type="button" id="btnCloseCatList" class="btn dark-outline round"><i class="fa fa-times" aria-hidden="true"></i> @lbl.Close</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label>@lbl.FormScreenshotLbl</label>
+                        </div>
+                        <div class="formvalue">
+                            <div id="divScreenShootUpload" class="temp-scrnshot"></div>
+                            <div id="divImagePreview" class="preview-temp-img"></div>
+                            <input type="text" id="hdnScreenShoot" name="TemplateScreenShoot" style="opacity:0;width:0;height:0;" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="template-controls">
+            <div class="action-left">
+                <button type="button" id="btnBackToEditor" style="display: none" class="btn default-btn btnBack">@lbl.Back</button>
+                <button type="button" id="btnExitFromTempForm" class="btn btn-danger btnCancel exitBtn">@lbl.Exit</button>
+            </div>
+            <div class="action-right">
+                <button type="button" id="btnSendTestEmail" class="btn btn-sendMail  btnSend">@lbl.SendTestEmailLbl</button>
+                <button type="button" id="btnPreviewTemplate" class="btn btn-preview  btnPreview">@lbl.Preview</button>
+                <button type="button" style="display: none" id="btnAddUpdateTemplate" class="btn  btn-update-template btnSave">@lbl.Save</button>
+                <button type="button" id="btnNextToTempInfo" class="btn primary-btn btnSave btnNext">@lbl.NextLbl <i class="fa fa-long-arrow-right Ml-5" aria-hidden="true"></i></button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+        var CurrentHostURL = SageFrameHostURL;
+        let localLabel =@Html.Raw(Json.Serialize(lbl));
+        $(function () {
+            $(this).EmailTemplateManager();
+        });
+    </script>
+}

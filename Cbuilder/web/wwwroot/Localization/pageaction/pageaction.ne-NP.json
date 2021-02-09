@@ -1,0 +1,9 @@
+﻿{
+  "Title": "पृष्ठ नियन्त्रक व्यवस्थापन",
+  "Actions": "कार्यहरू",
+  "ButtonAction": {
+    "AddNew": "नयाँ थप्नुहोस्",
+    "ManageArea": "Manage Area",
+    "ManageActions": "Manage Actions"
+  }
+}

@@ -1,0 +1,18 @@
+﻿{
+  "EmailAnalyticsTitle": "ईमेल एनालिटिक्स",
+  "DeliveredMailLbl": "वितरित ईमेल",
+  "ScheduledMailLbl": "अनुसूचित ईमेल",
+  "TotalSubscribersLbl": "कुल सदस्यहरू",
+  "MonthlyEmailMarketingTitle": "मासिक ईमेल मार्केटिंग",
+  "SubscriptionComparisonTitle": "सदस्यता तुलना",
+  "TrendingUserInterestsTitle": "प्रचलित प्रयोगकर्ता रुचिहरू",
+  "TotalUsersCountTitle": "कुल प्रयोगकर्ता गणना",
+  "SubscribedUsersLbl": "सदस्यता लिइएको प्रयोगकर्ताहरू",
+  "UnsubscribedUsersLbl": "सदस्यता रद्द प्रयोगकर्ताहरू",
+  "SubscribedLbl": "सदस्य",
+  "UnsubscribedLbl": "रद्द सदस्य",
+  "ImportedSubscribersLbl": "आयातित सदस्यहरू",
+  "StartDateLbl": "सुरू मिति",
+  "EndDateLbl": "अन्त्य मिति",
+  "GenerateAnalyticsLbl": "एनालिटिक्स उत्पन्न गर्नुहोस्"
+}

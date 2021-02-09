@@ -1,0 +1,106 @@
+﻿@model Cbuilder.EmailTemplate.MailComposerViewModel
+@Html.Raw(Model.TokenScript)
+<div id="divMailComposer" class="MtEditorWrp clearfix">
+    <!-- setting Popup -->
+    <div id="popupModel" class="popup-model  setting__panel skin-dr mxwdthPop" draggable="true" style="display: none; top: 0px; left: 0px;">
+        <div class="panel__head popup-header dragComponentSettings">
+            <span class="drag_icon  fa fa-arrows-alt"></span>
+            <h2 class="pTitle">Setting</h2>
+            <div class="right_actions">
+                <span class="collapse heademarControls">
+                    <span class="icClose close-model"><i class="fa fa-times"></i></span>
+                </span>
+            </div>
+        </div>
+        <div class="popup-model-body panel__body">
+        </div>
+    </div>
+    <!--editor area-->
+    <div id="divMailTemplateEditors" class="MtEditorArea">
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+            }
+
+            table {
+                border-spacing: 0px;
+            }
+        </style>
+        <div class="SetHdlr body-stng">
+            <span class="stng">
+                <i class="cb-stng" title="Settings"></i>
+                <ul class="setDrp no_txt" style="display: none;">
+                    <li class="com-settings" data-type="mail body"><span class="text-wrp">Settings</span><i class="cb-mxr" title="Settings"></i></li>
+                    <li class="s-style" data-type="mail body"><span class="text-wrp">Style</span><i class="cb-stl" title="Styles"></i></li>
+                </ul>
+            </span>
+        </div>
+        <table data-type="mail body" class="mailTemplateBody" style="width: 100%;max-width:650px;margin:0 auto">
+
+            <tbody class="rowCompAceptor"></tbody>
+        </table>
+    </div>
+    <!--Component toolbox-->
+    <div class="setting__panel" id="divComponentPanel" style="display: none; position: fixed; left: 887px; top: 86px;">
+        <div class="panel__head dragComponentSettings">
+            <span class="drag_icon fa fa-arrows-alt"></span>
+            <h1 class="pTitle txC">Components</h1>
+            <div class="right_actions">
+
+                <span class="collapse heademarControls">
+                    <span class="icClose"><i class="fa fa-times"></i></span>
+                </span>
+            </div>
+        </div>
+        <div class="panel_bdy">
+            <div class="MtCompTools" id="MailCompCollection">
+                <span class="module-search">
+                    <input type="text" placeholder="Search components" id="componentSearch" />
+                    <i class="fa fa-refresh" id="refreshComSearch"></i>
+                </span>
+                <div class="components-list-array">
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--toolbox end here-->
+    <!--open component-->
+    <div class="components " title="Components">
+        <span class="expand-compo-btn" data-title="Components"><i class="fa fa-th-large" aria-hidden="true"></i></span>
+    </div>
+    <!-- open end-->
+</div>
+<div style="display: none" id="divMailComposerViewTemp">
+</div>
+@{ bool DevMode = false;}
+<environment include="Development">
+    @{ DevMode = true;}
+</environment>
+
+<script>
+    var MailEditorUserModuleID = 0;
+    let ComposerModulePath ='@Model.InvokerJsPath';
+    let UpdateMailComponent = [];
+    let mailcomponent = {};
+    $(function () {
+        if (typeof storedEmailComponent !== "undefined") {
+            $.each(storedEmailComponent, function (i, v) {
+                v = v.ComponentValue;
+                var value = JSONParse(v);
+                var key = value.componentname;
+                mailcomponent[key] = value;
+            });
+        }
+
+        $('#divMailComposer').CreateMailComposer({
+            'IsDevelopmentMode':'@DevMode',
+        });
+    });
+</script>
+
+
+

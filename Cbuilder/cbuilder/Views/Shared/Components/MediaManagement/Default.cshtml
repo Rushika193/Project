@@ -1,0 +1,104 @@
+﻿@model Cbuilder.Core.MediaManagement.MediaLibraryInfo
+@*<script type="text/javascript">
+
+    $(function () {
+        $(this).SageMedia({
+            userModuleID: 10,
+            onSelect: function (src, response, type, filename, extension) {
+                //$image.attr('src', src);
+
+                var fname = filename;
+                $("#spanAppSplash").attr('src', src);
+                appBuilderSettings.Upload.SplashScreen = src;
+                AppBuilderJsPattern.SaveAppSplash();
+                $("#flAppSplash").parent().attr("data-text", fname);
+                AppBuilderJsPattern.SettingThemeVal();
+            },
+            mediaType: 'image'
+        });
+    });
+</script>*@
+
+
+
+@Html.AntiForgeryToken()
+<div class="popup-fade-bg popup-model-wrap PopupContents mediapopups" style="display:none;">
+    <input type="hidden" id="hdnMediaSettingID" value="1" />
+    <div class="popup-model media-pop-model">
+        <div class="model-header flex-box"><h2 class="model-title"><i class="fa fa-picture-o" aria-hidden="true"></i> Media Store</h2><span class="close-model  closemediapop"><i class="fa fa-times" aria-hidden="true"></i></span></div><div class="media-search-model flex-box">
+            <div class="search-box local-search"><input id="localsearch" type="text" placeholder="Search from local"><span class="search-btn" id="btnLocalSearch"><i class="fa fa-search" aria-hidden="true"></i></span></div><div class="search-box online-search"><input id="onlinesearch" type="text" placeholder="Search from online"><span class="search-btn" id="btnOnlineSearch"><i class="fa fa-search" aria-hidden="true"></i></span></div><span class="fa fa-refresh" id="refreshSearch"></span><div class="settingWrapper">
+                <span class="fa fa-cog" id="showSettings"></span><div class="mediaSettingList" style="display:none;">
+                    <span id="closeSettings"><i class="fa fa-times" aria-hidden="true"></i></span><ul>
+                        <li>
+                            <label>
+                                APIKEY:<input id="pixabayApikey" type="text" placeholder="pixabay API key">
+                            </label><span class="action-btns btn-row"><span class="saveapikey" id="saveapikey">Save</span></span><span class="notelink"><ul><li>Sign Up in <a href="https://pixabay.com/en/accounts/register/" target="_blank">pixabay</a></li><li>and then get<a href="https://pixabay.com/api/docs/#api_key" target="_blank">API Key</a>.</li><li>Paste the key in the textbox. And enjoy Online high quality images for free from <a href="https://pixabay.com/" target="_blank">Pixbay</a></li></ul></span>
+                        </li>
+                    </ul>
+                </div>
+            </div><span class="action-btns btn-row"><span class="create-folder" id="CreateFolder">Create Folder</span></span>
+        </div><div class="model-body flex-box">
+            <div class="left-side">
+                <h2>Folders</h2>
+                <div class="root-branch">
+                    @Html.Raw(@Model.MediaFolderList)
+                </div>
+            </div>
+            <div class="right-side">
+                <div class="divBreadcrumb">
+                    mediaCategoryHierrarchy
+                    <ul id="navigateurl">
+                        <li><span class="navigatecategory" data-rootfolder="Media">Media</span></li>
+                    </ul>
+                </div>
+                <div class="drop-media flex-box">
+                    <div class="fileUploader">
+                        <div class="droppable" id="dvUploadWrapperDrop">
+                            <p>Drag files here or click to upload</p>
+                            @*<input type="file" multiple="true" class="MediaFile" style="display: none;">*@
+                            <input type="file" multiple="true" class="MediaFile">
+                        </div>
+                    </div>
+                    <div class="uploadError">
+                        <span class="notValidExtension" style="display:none;">Not a valid Extension</span>
+                    </div>
+                </div>
+                <div class="media-wrap CategoryListing" id="CategoryListing">
+                    @await Component.InvokeAsync("MediaImages", new { folderName = "", mediaSettingKeys = Model.MediaSettingKeys })
+                </div>
+
+                <div class="imageaction">
+                    <span class="choosefiles">Select document above</span>
+                </div>
+            </div>
+            <div class="right-right-side" style="display: none;">
+                <div class="btn-row flex-box">
+                    <div id="backtoMediaList" class="back-to-btn">
+                        <i class="fa fa-chevron-left" aria-hidden="true"></i>Back
+                    </div><div class="crop-n-save">
+                        <span id="btnSaveCroppedImage" class="btn btn-primary">
+                            <span class="crop-and-save">
+                                <span>
+                                    <span class="fa fa-crop"></span>Crop &amp; save
+                                </span>
+                            </span>
+                        </span>
+                    </div>
+                </div>
+                <div id="imagemanipulate" class="imagemanipulate">
+                    <div id="CropImageWrapper" class="sfCol_100">
+                        <div class="container">
+                            <div class="row flex-box">
+                                <div class="docs-preview clearfix">
+                                    <div class="img-media-preview preview-lg" style="width: 45px; height: 25.3125px;">
+                                        <img src="" style="display: block; width: 56.25px; height: 31.6406px; min-width: 0px !important; min-height: 0px !important; max-width: none !important; max-height: none !important; margin-left: -5.625px; margin-top: -3.16406px; transform: none;">
+                                    </div>
+                                </div><div class="crop-area"><div class="img-container"><img id="imgCropping" src="" alt="Picture"></div></div><div class="crop-tools"><div class="tools-bg"><div class="mysite" style="width: 254.222px; height: 143px; display: none;"><img id="clientImage" src="" style="display: block; width: 409.185px; height: 230.167px; min-width: 0px ! important; min-height: 0px ! important; max-width: none ! important; max-height: none ! important; image-orientation: 0deg ! important; margin-left: -111.869px; margin-top: -45.902px; transform: none;"></div><div class="docs-data" style="display: none;"><div class="input-group input-group-sm"><label class="input-group-addon" for="dataX">X</label><input class="form-control" id="dataX" placeholder="x" value="350" type="text"><span class="input-group-addon">px</span></div><div class="input-group input-group-sm"><label class="input-group-addon" for="dataY">Y</label><input class="form-control" id="dataY" placeholder="y" value="144" type="text"><span class="input-group-addon">px</span></div><div class="input-group input-group-sm"><label class="input-group-addon" for="dataWidth">Width</label><input class="form-control" id="dataWidth" placeholder="width" value="795" type="text"><span class="input-group-addon">px</span></div><div class="input-group input-group-sm"><label class="input-group-addon" for="dataHeight">Height</label><input class="form-control" id="dataHeight" placeholder="height" value="447" type="text"><span class="input-group-addon">px</span></div><div class="input-group input-group-sm"><label class="input-group-addon" for="dataRotate">Rotate</label><input class="form-control" id="dataRotate" placeholder="rotate" value="0" type="text"><span class="input-group-addon">deg</span></div><div class="input-group input-group-sm"><label class="input-group-addon" for="dataScaleX">ScaleX</label><input class="form-control" id="dataScaleX" placeholder="scaleX" value="1" type="text"></div><div class="input-group input-group-sm"><label class="input-group-addon" for="dataScaleY">ScaleY</label><input class="form-control" id="dataScaleY" placeholder="scaleY" value="1" type="text"></div></div><div class="row" id="actions"><div class="acp-ratios docs-toggles" style="display:none;"><div class="btn-group docs-aspect-ratios" data-toggle="buttons"><h2>Aspect Ratios</h2><label class="btn btn-primary active"><input class="sr-only" id="aspectRatio1" name="aspectRatio" value="1.7777777777777777" type="radio"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="aspectRatio: 16 / 9">16:9</span></label><label class="btn btn-primary"><input class="sr-only" id="aspectRatio2" name="aspectRatio" value="1.3333333333333333" type="radio"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="aspectRatio: 4 / 3">4:3</span></label><label class="btn btn-primary"><input class="sr-only" id="aspectRatio3" name="aspectRatio" value="1" type="radio"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="aspectRatio: 1 / 1">1:1</span></label><label class="btn btn-primary"><input class="sr-only" id="aspectRatio4" name="aspectRatio" value="0.6666666666666666" type="radio"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="aspectRatio: 2 / 3">2:3</span></label><label class="btn btn-primary"><input class="sr-only" id="aspectRatio5" name="aspectRatio" value="NaN" type="radio"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="aspectRatio: NaN">Free</span></label></div></div><div class="docs-buttons"><h2>Cropping Options</h2><div class="btn-group"><button type="button" class="btn btn-primary" data-method="zoom" data-option="0.1" title="Zoom In"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.zoom(0.1)"><span class="fa fa-search-plus"></span></span></button><button type="button" class="btn btn-primary" data-method="zoom" data-option="-0.1" title="Zoom Out"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.zoom(-0.1)"><span class="fa fa-search-minus"></span></span></button></div><div class="btn-group"><button type="button" class="btn btn-primary" data-method="move" data-option="-10" data-second-option="0" title="Move Left"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.move(-10, 0)"><span class="fa fa-arrow-left"></span></span></button><button type="button" class="btn btn-primary" data-method="move" data-option="10" data-second-option="0" title="Move Right"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.move(10, 0)"><span class="fa fa-arrow-right"></span></span></button><button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="-10" title="Move Up"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.move(0, -10)"><span class="fa fa-arrow-up"></span></span></button><button type="button" class="btn btn-primary" data-method="move" data-option="0" data-second-option="10" title="Move Down"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.move(0, 10)"><span class="fa fa-arrow-down"></span></span></button></div><div class="btn-group"><button type="button" class="btn btn-primary" data-method="rotate" data-option="-45" title="Rotate Left"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.rotate(-45)"><span class="fa fa-rotate-left"></span></span></button><button type="button" class="btn btn-primary" data-method="rotate" data-option="45" title="Rotate Right"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.rotate(45)"><span class="fa fa-rotate-right"></span></span></button></div><div class="btn-group"><button type="button" class="btn btn-primary" data-method="scaleX" data-option="-1" title="Flip Horizontal"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.scaleX(-1)"><span class="fa fa-arrows-h"></span></span></button><button type="button" class="btn btn-primary" data-method="scaleY" data-option="-1" title="Flip Vertical"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.scaleY(-1)"><span class="fa fa-arrows-v"></span></span></button></div><div class="btn-group"><button type="button" class="btn btn-primary" data-method="reset" title="Reset"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.reset()"><span class="fa fa-refresh"></span></span></button></div><div class="btn-group btn-group-crop"><button id="btnCropped" style="display: none;" type="button" class="btn btn-primary" data-method="getCroppedCanvas"><span class="docs-tooltip" data-toggle="tooltip" title="" data-original-title="cropper.getCroppedCanvas()">Crop</span></button></div></div></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

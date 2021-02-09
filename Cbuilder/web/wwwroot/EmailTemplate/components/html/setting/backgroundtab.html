@@ -1,0 +1,57 @@
+﻿<div class="field-row">
+    <div   class="field-row stElWrap col50-50">
+        <label class="fCol">Background</label>
+        <div class="fCol TxAl-r">
+            <span class="select__box">
+                <select id="selBackround">
+                    <option value="none">None</option>
+                   
+                </select>
+            </span>
+        </div>
+    </div>
+    <div class="field-row stElWrap col50-50" id="divBackColorChoose" style="display: none;">
+        <label class="fCol">Background Color</label>
+        <div class="fCol TxAl-r">
+            <span class="color-picker-holder  selected" id="chooseColorColBG" style="background-color:rgba(247, 247, 247,.8);color:rgb(34, 34, 34);"></span>
+        </div>
+    </div>
+    <div class="hidden-div field-row" id="divBackImageChoose" style="display: none;">
+        <div class="field-row stElWrap col100">
+            <div class="img-preview">
+                <img id="RowBGImageSrc" src="/modules/webbuilder/img/tiger.jpg" class="imageBG">
+            </div>
+            <span id="RowBGImage" class="change_image">Change Image</span>
+        </div>
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Background Style</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="bgImageEffect">
+                        <option data-val="None" value='{"background-size": "","background-attachment":"","background-repeat":""}'>None</option>
+                        <option data-val="Parallax" value='{"background-size": "cover","background-attachment":"fixed","background-repeat":"no-repeat"}'>Parallax</option>
+                        <option data-val="Cover" value='{"background-size": "cover","background-attachment":"","background-repeat":"no-repeat"}'>Cover</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+        <!--<div class="field-row stElWrap col50-50 Dn" >
+            <label class="fCol">Shaded Layer</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="shadedLayerActive" name="toggleButton">
+                    <label for="shadedLayerActive" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+        <div  id="divPickShaded" style="display: none;">
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Layer Color</label>
+                <div class="fCol TxAl-r">
+                    <span class="color-picker-holder  selected" id="chooseColorShaded" style="background-color:rgba(247, 247, 247,.8);color:rgb(34, 34, 34);"></span>
+                </div>
+            </div>
+        </div>-->
+
+    </div>
+</div>

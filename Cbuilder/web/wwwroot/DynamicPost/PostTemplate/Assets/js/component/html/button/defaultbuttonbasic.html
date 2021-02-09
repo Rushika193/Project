@@ -1,0 +1,69 @@
+﻿<div class="field-row">
+    <div class="field-row stElWrap col100 ">
+        <span class="range__slider fCol">
+            <div id="buttonWrapperSizeSlider">
+                <div id="buttonWrapperSizeHandle" class="ui-slider-handle" title="Width">0</div>
+            </div>
+        </span>
+    </div>
+    <div id='txtbasictab'></div>
+    <div class="field-row stElWrap col80-20">
+        <label class="fCol">Text Color</label>
+        <span class="fCol TxAl-r">
+            <span class="color-picker-holder chooseTextColor" id="buttonColor"></span>
+        </span>
+    </div>
+    <div id="divEnableLink">
+        <div class="field-row stElWrap col20-80">
+            <label class="fCol">URL</label>
+            <span class="fCol cb_input" id="linkTextURLHolder">
+                <input placeholder="http://www.contentder.com" type="text" id="linkTextURL" value="" class="editor-com-outerSpacing-left-5" />
+            </span>
+        </div>
+        <div class="field-row stElWrap col30-70" id="targetFrameWrapper">
+            <label class="fCol">Target </label>
+            <span class="fCol TxAl-r select__box">
+                <select id="targetFrame">
+                    <option value="_blank">Load in a new window</option>
+                    <option value="_self">Load in the same frame</option>
+                </select>
+            </span>
+        </div>
+    </div>
+    
+    <div class="field-row stElWrap col80-20">
+        <label class="fCol">Enable Text </label>
+        <span class="fCol toggle_btn">
+            <input id="enableButtonText" name="enable buttonLink" type="checkbox" />
+            <label for="enableButtonText" class="tgl_slider"></label>
+        </span>
+    </div>
+    <div class="field-row cb_input" id="divEnableText" style="display: none;">
+        <input type="text" id="buttonText" value="" class="editor-com-outerSpacing-left-5" />
+    </div>
+    <div class="field-row stElWrap col80-20">
+        <label class="fCol">Enable Icon</label>
+        <span class="fCol toggle_btn">
+            <input id="enableButtonIcon" name="enable button icon" type="checkbox" />
+            <label for="enableButtonIcon" class="tgl_slider"></label>
+        </span>
+    </div>
+    <div class="field-row stElWrap col80-20">
+        <label class="fCol">Icon Before Text</label>
+        <span class="fCol toggle_btn">
+            <input id="linkBeforeText" name="enable linkBefore text" type="checkbox" />
+            <label for="linkBeforeText" class="tgl_slider"></label>
+        </span>
+    </div>
+    <div class="field-row" id="buttonIcon" style="display: none;">
+        <div class="field-row stElWrap col40-60">
+            <label class="fCol">Search Icons</label>
+            <span class="fCol cb_input">
+                <input type="text" id="buttonSearchIcon" />
+            </span>
+        </div>
+        <div class="field-row stElWrap col100">
+            <ul id="buttonfontIconCollection" class="fontIconCollection"></ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,10 @@
+﻿#Full
+##Bulk or Partial
+
+#Blocking all web crawlers from all content
+User-agent: * Disallow: 
+#Allowing all web crawlers access to all content
+User-agent: * Disallow: /
+
+#Blocking a specific web crawler from a specific folder
+User-agent: Googlebot Disallow: /example-subfolder/

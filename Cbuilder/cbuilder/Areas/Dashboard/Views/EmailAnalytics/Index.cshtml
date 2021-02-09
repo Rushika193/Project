@@ -1,0 +1,136 @@
+﻿@{
+    Cbuilder.ManageMassMail.EmailAnalyticsLabel lbl = (Cbuilder.ManageMassMail.EmailAnalyticsLabel)ViewBag.LocalLabel;
+    ViewData["Title"] = lbl.EmailAnalyticsTitle;
+}
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">@ViewData["Title"]</div>
+        <div class="sfButtonwrapper dropdown-group p-relative">
+            <div class="list-dropdown filterIcon btn sq round bg-white">
+                <span class="dropdown-link">
+                    <i class="fa fa-chevron-down Ma-0 "></i>
+                </span>
+            </div>
+            <div class="list-group email-datefilter">
+                <div class="card Mb-40">
+                    <div class="card-body ">
+                        <div class="sfFormwrapper ">
+                            <div class="sfFieldset  ">
+                                <div class="formkey Mt-0">
+                                    <span class="sfFormlabel">@lbl.StartDateLbl</span>
+                                </div>
+                                <div class="formvalue  ">
+                                    <input type="text" id="startDate" class="sfFormcontrol">
+                                </div>
+                            </div>
+                            <div class="sfFieldset ">
+                                <div class="formkey Mt-0">
+                                    <span class="sfFormlabel">@lbl.EndDateLbl</span>
+                                </div>
+                                <div class="formvalue  ">
+                                    <input type="text" id="endDate" class="sfFormcontrol">
+                                </div>
+                            </div>
+                            <div class="d-block ">
+                                <button type="button" id="btnShowData" class="btn success-outline round">@lbl.GenerateAnalyticsLbl</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="sfRow">
+    <div class="sfCol-12 sfCol-md-12 sfCol-lg-4 Mb-40 card-holder">
+        <div class="card">
+            <div class=" Pa-25 md-d-flex h1 lg-f-middle t-center">
+                <i class="fa fa-envelope-o color-success"></i>
+                <div class="counts  ml-auto Mt-10 sm-Mt-0 h6 fw-400 gray-600">
+                    <div class="counts_values color-success display-4">0</div>
+                    @lbl.DeliveredMailLbl
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sfCol-12 sfCol-md-12 sfCol-lg-4 Mb-40 card-holder">
+        <div class="card">
+            <div class=" Pa-25 md-d-flex h1 lg-f-middle t-center">
+                <i class="fa fa-calendar color-primary "></i>
+                <div class="counts ml-auto Mt-10 sm-Mt-0 h6 fw-400 gray-600">
+                    <div class="counts_values display-4 color-primary">0</div>
+                    @lbl.ScheduledMailLbl
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sfCol-12 sfCol-md-12 sfCol-lg-4 Mb-40 card-holder">
+        <div class="card">
+            <div class=" Pa-25 md-d-flex h1 lg-f-middle t-center">
+                <i class="fa fa-users color-secondary"></i>
+                <div class="counts ml-auto Mt-10 sm-Mt-0 h6 fw-400 gray-600">
+                    <div class="counts_values  color-secondary display-4">0</div>
+                    @lbl.TotalSubscribersLbl
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sfRow Mt-12">
+    <div class="sfCol-12 sfCol-lg-6 charts  Mb-40">
+        <div class="h4 fw-400 Mb-15">@lbl.MonthlyEmailMarketingTitle</div>
+        <div class="card">
+            <div class="card-body Pa-30">
+                <div id="emailChart" class="code" style="height: 300px; width: 100%;"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sfCol-12 sfCol-lg-6 charts Mb-40">
+        <div class="h4 fw-400 Mb-15">@lbl.SubscriptionComparisonTitle</div>
+        <div class="card">
+            <div class="card-body Pa-30">
+                <div id="userChart"></div>
+                <div class="chart-legend flex">
+                    <div class="item Pr-40">
+                        <span class="color subscribed-users"></span>
+                        <span>@lbl.SubscribedUsersLbl</span>
+                    </div>
+                    <div class="item Pr-40">
+                        <span class="color unsubscribed-users"></span>
+                        <span>@lbl.UnsubscribedUsersLbl</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="sfRow">
+    <div class="sfCol-12 sfCol-lg-6 charts Mb-40">
+        <div class="h4 fw-400 Mb-15">@lbl.TrendingUserInterestsTitle</div>
+        <div class="card">
+            <div class="card-body Pa-30">
+                <div id="interestId"> </div>
+                <div style="clear:both;"> <span>You Clicked: </span><span id="info1">Nothing yet</span></div>
+            </div>
+        </div>
+    </div>
+    <div class="sfCol-12 sfCol-lg-6 Mb-40">
+        <div class="h4 fw-400 Mb-15">@lbl.TotalUsersCountTitle</div>
+        <div class="card  ">
+            <div class="card-body flex Pa-30">
+                <div class="subscribers_count totalSubscribers">
+                    <div class="counts_values">0</div>
+                    @lbl.SubscribedLbl
+                </div>
+                <div class="subscribers_count totalUnsubscribers">
+                    <div class="counts_values">0</div>
+                    @lbl.UnsubscribedLbl
+                </div>
+                <div class="subscribers_count importedSubscribers">
+                    <div class="counts_values">0</div>
+                    @lbl.ImportedSubscribersLbl
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

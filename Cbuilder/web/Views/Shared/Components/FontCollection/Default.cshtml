@@ -1,0 +1,55 @@
+﻿@model IEnumerable<string>
+@{
+    var controlID = ViewBag.ControlID;
+    var extraClass = ViewBag.ExtraClass;
+}
+
+<div class="fontCollection-wrapper">
+    <div class=" sfFieldset  sfCol-12  ">
+        <div class="formkey">
+            <label class="sfFormlabel">Search Icons</label>
+        </div>
+
+        <div class="formvalue">
+            <input type="text" class="sfFormcontrol" id="txtFontSearch" />
+
+        </div>
+    </div>
+
+    <div class=" sfFieldset  sfCol-12  ">
+        <div class="formvalue">
+            <ul class="list-group list-group-hz sfRow fontCollection @extraClass" id="@controlID">
+                @foreach (var font in Model)
+                {
+                    <li class=" "><i class='fa @font' data-class='@font'></i></li>
+                }
+            </ul>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $('body').off('input').on('input', '#txtFontSearch', function () {
+            let $parent = $(this).closest('.fontCollection-wrapper');
+            let $collectionUI = $parent.find('.fontCollection');
+            var searchVal = $(this).val();
+            $collectionUI.find('li').each(function () {
+                var $this = $(this);
+                var dataClass = $this.find('i').attr('data-class');
+                var pos = dataClass.indexOf(searchVal);
+                if (pos < 0) {
+                    $this.hide();
+                } else {
+                    $this.show();
+                }
+            });
+        });
+    });
+</script>
+
+
+
+

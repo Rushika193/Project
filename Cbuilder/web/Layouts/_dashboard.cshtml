@@ -1,0 +1,42 @@
+﻿@using Cbuilder.Core.Helper
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    @{
+        Cbuilder.Core.CoreHelpers.CoreHelper.RegisterJSVariable(Context); 
+    }
+
+    @await Component.InvokeAsync("Bundle")
+    @Html.Raw(TempData["cssHeader"])
+    @Html.Raw(TempData["jsHeader"])
+    @await Component.InvokeAsync("JSVariables")
+    @await Component.InvokeAsync("CommonDashboard")
+</head>
+<body id="body" class="@TempData["sidebarCollapse"]">
+    <header>
+        @await Component.InvokeAsync("Navbar")
+    </header>
+    <div class="sfContentwrapper flex">
+        <div class="leftContent">
+            @await Component.InvokeAsync("SideBar")
+        </div>
+        <div class="rightContent">
+            <div class="rightContent_main">
+                @await Component.InvokeAsync("Actionmessage")
+                @RenderBody()
+            </div>
+        </div>
+    </div>
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2019 - cbuilder - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    @Html.Raw(TempData["jsFooter"])
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,249 @@
+﻿@{
+    ViewData["Title"] = "Manage Subscriber";
+}
+<div id="grid">
+    <section class="content-header clearfix">
+        <div class="page-title d-block sm-d-flex">
+            <div class="h2">@ViewData["Title"]</div>
+            <div class="sfButtonwrapper flex">
+                <div class="   dropdown-group p-relative ">
+                    <div class="list-dropdown btn primary round Mr-15">
+                        <span class="dropdown-link">Actions <i class="fa fa-chevron-down "></i></span>
+                    </div>
+                    <ul class="list-group">
+                        <li class="group-item group-item-link-bg">
+                            <a class="btn  link-secondary" id="btnAdd">Add Subscriber</a>
+                        </li>
+                        <li class="group-item group-item-link-bg">
+                            <a class="btn  link-secondary" id="btnOpenPanel">Add Group</a>
+                        </li>
+                        <li class="group-item group-item-link-bg">
+                            <a class="btn  link-secondary" id="importExcel">Import Excel</a>
+                        </li>
+                    </ul>
+
+
+
+                </div>
+                <button type="button" id="deleteChkd" class="btn round light Ml-8">Delete</button>
+            </div>
+        </div>
+    </section>
+    <div class="sfDatagrid">
+        <div class="sfDatagrid-header">
+            <div class="dg-col-wp">
+                <div class="sfCol-4 sfCol-md-2 Mb-20 sm-Mb-0">
+                    <div class="dg-group">
+                        <div class="sfCheckbox">
+                            <input type="checkbox" class="chkAllGrdItem" id="checkbox1">
+                            <label for="checkbox1">All</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="sfCol-8 sfCol-md-4 Mb-20 sm-Mb-0">
+                    <div class="dg-group">
+                        <div class="dg-search-filter flex f-middle">
+                            <div class="sfFormkey Pr-20">
+                                <span class="sfFormlabel">Types</span>
+                            </div>
+                            <div class="sfformvalue f-fill ">
+                                <div class="list-group f-row">
+                                    <select id="fltrSubType" class="sfFormcontrol rounded Mr-20  w-50">
+                                        <option value="2">All</option>
+                                        <option value="1">Imported User</option>
+                                        <option value="0">Subscribe User</option>
+                                    </select>
+                                    <select id="fltrSubStatus" class="sfFormcontrol rounded d-none w-50">
+                                        <option value="2">All</option>
+                                        <option value="1">Active</option>
+                                        <option value="0">Unsubscribe</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="sfCol-4 sfCol-md-3 Mb-20 sm-Mb-0 md-f-center">
+                    <div class="dg-group dropdown-group ">
+                        <div class="list-dropdown">
+                            <span class="dropdown-link">Group <i class="fa fa-chevron-down"></i></span>
+                        </div>
+                        <ul class="list-group" id="subsGroup">
+                        </ul>
+                    </div>
+                </div>
+                <div class="sfCol-8 sfCol-md-3 ">
+                    <div class="dg-group">
+                        <div class="dg-search-key rounded">
+                            <input type="text" class="sfInputbox rounded" placeholder="Search">
+                            <button type="button" class="search">
+                                <i class="fa fa-search rounded"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sfDatagrid-title d-none sm-d-block">
+            <div class="dg-col-wp">
+                <div class="sfCol-6  ">Subscriber </div>
+                <div class="sfCol-3  f-center">Recipient</div>
+                <div class="sfCol-3  f-center">Action</div>
+            </div>
+        </div>
+        <div class="sfDatagrid-body" id="divGridBody">
+        </div>
+    </div>
+    <div id="divPagination" class="sfPagination"></div>
+</div>
+
+<div class="sfContainer-full" style="display:none;" id="addForm">
+    <h2 class="form-title">@ViewData["Title"]</h2>
+    <div class="sfRow">
+        <div class="sfCol-12 sfCol-md-8">
+            <div class="sfFormwrapper card">
+                <div class="card-body Pa-6x">
+                    <div class="card-header Mb-20 Pa-0 Pb-15 bg-none">
+                        <h5 class="Mb-0 fw-400">Personal Information</h5>
+                    </div>
+                    <form id="addSubForm">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <input id="hdnSubscriberID" value="0" class="form-control d-none" hidden />
+                        <div class="sfRow">
+                            <div class="sfFieldset sfCol-12 sfCol-md-6">
+                                <div class="formkey">
+                                    <span class="sfFormlabel">First Name</span>
+                                </div>
+                                <div class="formvalue">
+                                    <input name="firstname" type="text" class="sfFormcontrol" placeholder="Enter first name" id="txtFName">
+                                    <span name="firstname" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-12 sfCol-md-6">
+                                <div class="formkey">
+                                    <span class="sfFormlabel">Last Name</span>
+                                </div>
+                                <div class="formvalue">
+                                    <input name="lastname" type="text" class="sfFormcontrol" placeholder="Enter last name" id="txtLName" />
+                                    <span name="lastname" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-12 sfCol-md-6">
+                                <div class="formkey">
+                                    <span class="sfFormlabel">Email</span>
+                                </div>
+                                <div class="formvalue">
+                                    <input name="email" type="text" class="sfFormcontrol" placeholder="Enter email" id="txtEmail" />
+                                    <span name="email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-12 sfCol-md-6">
+                                <div class="formkey">
+                                    <span class="sfFormlabel">Phone Number</span>
+                                </div>
+                                <div class="formvalue">
+                                    <input name="phonenumber" type="text" class="sfFormcontrol" placeholder="Enter Phone Number" id="txtPhoneNumber" />
+                                    <span name="phonenumber" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-12 sfCol-md-6">
+                                <div class="formkey">
+                                    <span class="sfFormlabel">Profession</span>
+                                </div>
+                                <div class="formvalue">
+                                    <input name="profession" type="text" class="sfFormcontrol" placeholder="Enter Profession" id="txtProfession" />
+                                    <span name="profession" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-12 sfCol-md-6">
+                                <div class="formkey">
+                                    <span class="sfFormlabel">Company</span>
+                                </div>
+                                <div class="formvalue">
+                                    <input name="company" type="text" class="sfFormcontrol" placeholder="Enter location" id="txtCompany" />
+                                    <span name="company" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-12 sfCol-md-6">
+                                <div class="formkey">
+                                    <span class="sfFormlabel">Location</span>
+                                </div>
+                                <div class="formvalue">
+                                    <input name="location" type="text" class="sfFormcontrol" placeholder="Enter location" id="txtLocation" />
+                                    <span name="location" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-12 sfCol-md-12">
+                                <div class="formkey">
+                                    <span class="sfFormlabel">Gender</span>
+                                </div>
+                                <div class="formvalue horizontal-list">
+                                    <div class="sfCheckbox">
+                                        <input type="radio" name="gender" id="rbMale" class="form-radio" checked>
+                                        <label for="radio1">Male</label>
+                                    </div>
+                                    <div class="sfCheckbox">
+                                        <input type="radio" name="gender" id="rbFemale" class="form-radio">
+                                        <label for="radio2">Female</label>
+                                    </div>
+                                    <div class="sfCheckbox">
+                                        <input type="radio" name="gender" id="Others" class="form-radio">
+                                        <label for="radio3">Others</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sfButtonwrapper Mt-25">
+                            <input id="btnSaveSubscriber" type="button" value="save" class="btn primary round Mr-8" />
+                            <a asp-action="Index" class="btn light round">Back</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="sfCol-12 sfCol-md-4">
+            <div class="card">
+                <div class="card-body Pa-6x sfFormwrapper">
+                    <div class="card-header Mb-20 Pa-0 Pb-15 bg-none">
+                        <h5 class="Mb-0 fw-400">Choose Interests</h5>
+                    </div>
+                    <div class="sfFieldset interestGroup">
+                        <div class="formKey">
+                            <label class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <div class="chkInterestsList">
+                            </div>
+                        </div>
+                        <div class="formvalue" style="">
+                            <input type="text" id="txtVdInterest" readonly="" name="vdInterest" class="input_field sfError sfError d-none" aria-required="true" aria-invalid="true" style="opacity: 0;">
+                            <label id="txtVdInterest-error" class="sfError d-i-block" for="txtVdInterest">*Select Interest.*</label>
+                        </div>
+                    </div>
+                    <div class="sfFieldset targetGroup">
+                        <div class="formKey">
+                            <label class="sfFormlabel Mb-10 d-i-block ">Choose Group</label>
+                        </div>
+                        <div class="formvalue chkGroupList">
+
+                        </div>
+                        <div class="formvalue" style="">
+                            <input type="text" id="txtVdGroup" readonly="" name="vdGroup" class="input_field valid" aria-required="true" aria-invalid="false" style="opacity: 0;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divSideBarPanelDemo" style="display:none">
+    <div class="formvalue group-list" id="divGroupManage" style="">
+        <ul id="ulGroupList" class="sfFormwrapper">
+        </ul>
+    </div>
+    <div class="sfButtonwrapper flex f-end">
+        <button class="btn success round" id="addNewGroup">New</button>
+    </div>
+</div>

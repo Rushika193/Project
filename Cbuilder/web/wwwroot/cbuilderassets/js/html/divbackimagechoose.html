@@ -1,0 +1,54 @@
+﻿<div class="field-row stElWrap col100">
+    <div class="img-preview">
+        <img id="RowBGImageSrc" src="/cbuilderassets/img/tiger.jpg" class="imageBG">
+    </div>
+    <span id="RowBGImage" class="change_image">Change Image</span>
+</div>
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Background Style</label>
+    <div class="fCol TxAl-r">
+        <span class="select__box">
+            <select id="bgImageEffect">
+                <option value="background-effect-size-contain">None</option>
+                <option value="background-effect-image-parallax">Parallax</option>
+                <option value="background-effect-size-cover">Cover</option>
+            </select>
+        </span>
+    </div>
+</div>
+<div class="field-row stElWrap col50-50" id="divBackgroundPositionTab" style="display:none;">
+    <label class="fCol">Background Position</label>
+    <div class="fCol TxAl-r">
+        <span class="select__box">
+            <select id="bgImageEffect">
+                <option class="bgp-left-top">left top</option>
+                <option class="bgp-left-center">left center</option>
+                <option class="bgp-left-bottom">left bottom</option>
+                <option class="bgp-right-top">right top</option>
+                <option class="bgp-right-center">right center</option>
+                <option class="bgp-right-bottom">right bottom</option>
+                <option class="bgp-center-top">center top</option>
+                <option class="bgp-center-center">center center</option>
+                <option class="bgp-center-bottom">center bottom</option>
+            </select>
+        </span>
+    </div>
+</div>
+<div class="field-row stElWrap col50-50 setting__has--child">
+    <label class="fCol">Shaded Layer</label>
+    <div class="fCol TxAl-r">
+        <span class="toggle_btn">
+            <input type="checkbox" id="shadedLayerActive" name="toggleButton">
+            <label for="toggleButton" class="tgl_slider"></label>
+        </span>
+    </div>
+
+</div>
+<div class="child__setting--wrap" id="divPickShaded" style="display: none;">
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Layer Color</label>
+        <div class="fCol TxAl-r">
+            <span class="color-picker-holder chooseBGColors selected" id="chooseColorShadedCol" style="background-color:rgba(247, 247, 247,.8);color:rgb(34, 34, 34);"></span>
+        </div>
+    </div>
+</div>

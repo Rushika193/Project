@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Areas\Dashboard\Controllers\DynamicFormController.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cbuilder.Analytics\Cbuilder.Analytics.csproj" />
+    <ProjectReference Include="..\Cbuilder.Assets\Cbuilder.Assets.csproj" />
+    <ProjectReference Include="..\Cbuilder.Block\Cbuilder.Block.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.Bundle\Cbuilder.Core.Bundle.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.DynamicPost\Cbuilder.Core.DynamicPost.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.Localization\Cbuilder.Core.Localization.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.MediaManagement\Cbuilder.Core.MediaManagement.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.PageAction\Cbuilder.Core.PageAction.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.Page\Cbuilder.Core.Pages.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.Permissions\Cbuilder.Core.Permissions.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.Role\Cbuilder.Core.Role.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.Settings\Cbuilder.Core.Settings.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.Users\Cbuilder.Core.Users.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core\Cbuilder.Core.csproj" />
+    <ProjectReference Include="..\Cbuilder.DashboardMenu\Cbuilder.DashboardMenu.csproj" />
+    <ProjectReference Include="..\Cbuilder.EmailTemplate\Cbuilder.EmailTemplate.csproj" />
+    <ProjectReference Include="..\Cbuilder.GenericComponent\Cbuilder.GenericComponent.csproj" />
+    <ProjectReference Include="..\Cbuilder.ManageMassMail\Cbuilder.ManageMassMail.csproj" />
+    <ProjectReference Include="..\Cbuilder.MandrilMailHelper\Cbuilder.MandrilMailHelper.csproj" />
+    <ProjectReference Include="..\Cbuilder.MiniEditor\Cbuilder.MiniEditor.csproj" />
+    <ProjectReference Include="..\CBuilder.Models\Cbuilder.Core.Models.csproj" />
+    <ProjectReference Include="..\Cbuilder.NewsLetter\Cbuilder.NewsLetter.csproj" />
+    <ProjectReference Include="..\Cbuilder.SecurityHelper\Cbuilder.SecurityHelper.csproj" />
+    <ProjectReference Include="..\CBuilder.SocialCampaign\CBuilder.SocialCampaign.csproj" />
+    <ProjectReference Include="..\CBuilder.Theme\CBuilder.Theme.csproj" />
+    <ProjectReference Include="..\Cbuilder.Webbuilder\Cbuilder.Webbuilder.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.4" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
+  </ItemGroup>
+
+
+
+</Project>

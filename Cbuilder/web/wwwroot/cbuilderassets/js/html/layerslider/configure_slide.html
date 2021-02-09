@@ -1,0 +1,105 @@
+﻿<div class="ls-slide-setting">
+    <div class="sfCol_100">
+        <span class="stngSmallBtn Dn" id="btnGotoLSSlideSet">Go to Slide Settings</span>
+        <span class="stngSmallBtn" id="btnGotoLSLayerSet">Go to Layer Settings</span>
+    </div>
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Current Slide</label>
+        <div class="fCol TxAl-r">
+            <span class="select__box">
+                <select id="lsSlides" aria-invalid="false" class="valid"></select>
+            </span>
+        </div>
+    </div>
+    
+    <div class="field-row" id="LSSlidesSettings">
+        <div class="sfCol_100">
+            <span class="stngSmallBtn" id="btnAddLSSlide">Add Slide</span>&nbsp;
+            <span class="stngSmallBtn" id="btnDuplicateLSSlide">Duplicate slide</span>&nbsp;
+            <span class="stngSmallBtn" id="btnDelLSSlide">Delete slide</span>
+        </div>
+        <div class="field-row stElWrap col40-60">
+            <label class="fCol">Container Width</label>
+            <span class="fCol TxAl-r select__box">
+                <select id="lsContainerWidth">
+                    <option value="">None</option>
+                    <option value="container-small">Small</option>
+                    <option value="container-medium">Medium</option>
+                    <option value="container-large">Large</option>
+                    <option value="container-extralarge">ExtraLarge</option>
+                    <option value="container-fluid">Full Width</option>
+                </select>
+            </span>
+        </div>
+        <div class="sfCol_100">
+            <div class="slideBGDemo background-effect-size-cover Dn" id="lsSlideBGDemo" style="width:200px; height:150px; background-color:#fff; margin-bottom:2px;"></div>
+            <div class="slideBGSetting" id="lsSlideBGSetting"></div>
+        </div>
+    </div>
+    
+    <div class="field-row Dn" id="LSLayersSettings">
+        <div class="sfCol_100" id="newLayerBtn">
+            <span class="stngSmallBtn" id="btnNewLayer">Add layer</span>
+        </div>
+        <div class="field-row Dn" id="newLayerForm">
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Layer name</label>
+                <span class="fCol cb_input">
+                    <input type="text" id="newLayerName" />
+                </span>
+            </div>
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">New layer position</label>
+                <div class="fCol TxAl-r">
+                    <span class="select__box">
+                        <select id="newLayerPosLS" aria-invalid="false" class="valid">
+                            <option value="topLeft">Top left</option>
+                            <option value="topCenter">Top center</option>
+                            <option value="topRight">Top right</option>
+                            <option value="bottomLeft">Bottom left</option>
+                            <option value="bottomCenter">Bottom center</option>
+                            <option value="bottomRight">Bottom right</option>
+                            <option value="centerLeft">Center left</option>
+                            <option value="centerCenter">Center center</option>
+                            <option value="centerRight">Center right</option>
+                        </select>
+                    </span>
+                </div>
+            </div>
+            <div class="sfCol_100">
+                <span class="stngSmallBtn" id="btnAddLSLayer">Save layer</span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Current Layer</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="layerLS" aria-invalid="false" class="valid"></select>
+                </span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100">
+            <div class="fCol TxAl-l">
+                <span class="stngSmallBtn" id="btnDelLSLayer">Delete Layer</span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col50-50 Dn">
+            <label class="fCol">Hide layer for desktop</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="hideLayerLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100">
+            <label class="fCol">* Changes made to layers are not reflected instantly. Please click 'Update Layer' button.</label>
+        </div>
+        <div class="field-row" id="lsLayerCfg"></div>
+        <div class="field-row stElWrap col100">
+            <div class="fCol TxAl-l">
+                <span class="stngSmallBtn" id="btnUpdateLSLayer">Update Layer</span>
+            </div>
+        </div>
+    </div>
+</div>

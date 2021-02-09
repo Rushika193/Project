@@ -1,0 +1,350 @@
+﻿@model Cbuilder.MiniEditor.Models.MiniEditorVM
+<div id="divAdminWebEditor" class="clearfix">
+    <div class="WebBuilderWrapper skin__dark">
+        <div id="popupModel" class="popup-model ui-state-highlight setting__panel skin-dr mxwdthPop" draggable="true" style="display: none; position: fixed; top: 0px; left: 0px;">
+            <div class="panel__head popup-header">
+                <span class="drag_icon cb-drg"></span>
+                <h2 class="pTitle txC">Setting</h2>
+                <div class="right_actions">
+                    <span class="pin__right"><i data-icon="r"></i></span>
+                    <span class="collapse heademarControls">
+                        <span class="icClose close-model"><i data-icon="d"></i></span>
+                    </span>
+                </div>
+            </div>
+            <div class="popup-model-body panel__body">
+            </div>
+        </div>
+        <!--Bottom Taskbar-->
+        <div class="main-top-row">
+            <div class="top-bar-item-lists Dfx JcSp-b ">
+                <div class="top-bar__leftpanel Dfx TxAl-m">
+                    <div title="Choose device type" class="Mr-0">
+                        <div class="viewPorts Dn" id="viewPorts">
+                            <div class="desktop active changePort Mx-8  cPointer Dib" data-width="" data-height="" data-shorthand=""><i data-icon="g"></i></div>
+                            <div class="tablet changePort PosR Mx-8 cPointer Dib" data-width="768" data-height="1024" data-shorthand="t">
+                                <i data-icon="v"></i>
+                                <div class="panel__topbar device-change Dn">
+                                    <div class="panel__topbar-container">
+                                        <div class="content-box panel-links Dfx">
+                                            <i class="fa fa-tablet"></i>
+                                            <div class="device-name Dfx">
+                                                <span class="device">Tablet</span>
+                                                <span class="orientation TxAl-l">Portrait</span>
+                                            </div>
+                                        </div>
+                                        <div class="content-box panel-links Dfx">
+                                            <i class="fa fa-tablet landscape"></i>
+                                            <div class="device-name Dfx ">
+                                                <span class="device">Tablet</span>
+                                                <span class="orientation TxAl-r">Landscape</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="mobile changePort PosR Mx-8  cPointer Dib" data-width="375" data-height="715" data-shorthand="m">
+                                <i data-icon="w"></i>
+                                <div class="panel__topbar device-change Dn">
+                                    <div class="panel__topbar-container">
+                                        <div class="content-box panel-links Dfx">
+                                            <i class="fa fa-mobile"></i>
+                                            <div class="device-name Dfx">
+                                                <span class="device">Mobile</span>
+                                                <span class="orientation TxAl-l">Portrait</span>
+                                            </div>
+                                        </div>
+                                        <div class="content-box panel-links Dfx">
+                                            <i class="fa fa-mobile landscape"></i>
+                                            <div class="device-name Dfx ">
+                                                <span class="device">Mobile</span>
+                                                <span class="orientation TxAl-r">Landscape</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="deviceView" title="Device view">
+                        <span class="btnDeviceViewOpen"></span>
+                    </div>
+                </div>
+                <div class="top-bar__centerpanel">
+
+                </div>
+                <div class="top-bar__rightpanel Dfx">
+                    <div title="components" class="expand-panel-topbar topbar-components cPointer Mr-0">
+                        <span class="expand-compo-btn addComponent headerControls" data-title="Components">
+                            <i class="fa fa-th-large" aria-hidden="true"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- Component pop and site setting pop -->
+        <div class="main-left setting__panel skin-dr mxwdthPop" style="display: none;">
+            <!--This is drag icon when user unpin the setting panel-->
+            <!-- Panel Head -->
+            <div class="panel__head dragComponentSettings">
+                <span class="drag_icon cb-drg"></span>
+                <h1 class="pTitle txC">Component</h1>
+                <div class="right_actions">
+                    <span class="pin__right"><i data-icon="r"></i></span>
+                    <span class="collapse heademarControls">
+                        <span class="icClose"><i data-icon="d"></i></span>
+                    </span>
+                </div>
+            </div>
+            <!-- Ends -->
+            <!--Panel Body-->
+            <div class="panel__body body__setting--panel no__foot--btn ">
+                <section class="tabs" id="sidebarcontrol">
+                    <div class="content">
+                        <div class="content-1 content-box body__setting builder-options-array moduleRemoval">
+
+                            <div class="theme-color builder-options">
+                                <h2>Set Theme Color</h2>
+                                <div class="OptionItems">
+                                    <div class="field-row stElWrap col50-50">
+                                        <div class="fCol">
+                                            <label>Primary Color</label>
+                                        </div>
+                                        <div class="fCol TxAl-r">
+                                            <span class="color-picker-holder chooseThemeColor selected" id="primaryColor" style="background-color: rgba(247, 247, 247,.8); color: rgb(34, 34, 34);"></span>
+                                        </div>
+                                    </div>
+                                    <div class="field-row stElWrap col50-50">
+                                        <div class="fCol">
+                                            <label>Secondary Color</label>
+                                        </div>
+                                        <div class="fCol TxAl-r">
+                                            <span class="color-picker-holder chooseThemeColor selected" id="secondaryColor" style="background-color: rgba(247, 16, 247,.8); color: rgb(34, 34, 34);"></span>
+                                        </div>
+                                    </div>
+                                    <div class="field-row stElWrap col50-50">
+                                        <div class="fCol">
+                                            <label>Alternate Color</label>
+                                        </div>
+                                        <div class="fCol TxAl-r">
+                                            <span class="color-picker-holder chooseThemeColor selected" id="optionalColor" style="background-color: rgba(247, 16, 8,.8); color: rgb(34, 34, 34);"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="theme-fonts builder-options">
+                                <h2>Set Theme Font</h2>
+                                <div class="OptionItems" style="display: none;">
+                                    <p>Choose fonts from below</p>
+                                    <span class="select__box">
+                                        <select id="basicFonts">
+                                        </select>
+                                    </span>
+                                    <div class="text__area">
+                                        <textarea id="fontPreview" class="ff-montserrat" placeholder="Almost before we knew it, we had left the ground."></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="HeaderOption builder-options" style="display: none;">
+                                <h2>Set Layout</h2>
+                                <div class="OptionItems" style="display: none;">
+                                    <span>
+                                        <span class="check radioWrp Dfx">
+                                            <input type="radio" id="full" name="one" checked="checked" class="layoutChange" data-layout="fullWidth" style="margin-left: auto" />
+                                            <label for="full">Full width</label>
+                                            <i class="cb-full-width"></i>
+                                        </span>
+                                    </span>
+                                    <span>
+                                        <span class="check radioWrp Dfx">
+                                            <input type="radio" id="box" name="one" class="layoutChange" data-layout="boxed" />
+                                            <label for="box">Boxed Layout</label>
+                                            <i class="cb-box-width"></i>
+                                        </span>
+                                    </span>
+                                    <span>
+                                        <span class="check radioWrp Dfx">
+                                            <input type="radio" id="leftlayout" name="one" class="layoutChange" data-layout="leftLayout" />
+                                            <label for="leftlayout">Left Layout</label>
+                                            <i class="cb-left-nav"></i>
+                                        </span>
+                                    </span>
+                                    <span>
+                                        <span class="check radioWrp Dfx">
+                                            <input type="radio" id="rightlayout" name="one" class="layoutChange" data-layout="rightLayout" />
+                                            <label for="rightlayout">Right Layout</label>
+                                            <i class="cb-right-nav"></i>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="manage-body sfBtn smlbtn-succ" id="manageOnePagemenu">
+
+                                <div class="field-row stElWrap col80-20">
+                                    <div class="fCol">
+                                        <label>Single Page Site</label>
+                                    </div>
+                                    <div class="fCol TxAl-r">
+                                        <span class="value">
+                                            <span class="toggle_btn">
+                                                <input id="chkOnePageMenu" type="checkbox" />
+                                                <label for="chkOnePageMenu" class="tgl_slider"></label>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="field-row stElWrap col80-20">
+                                    <div class="fCol">
+                                        <label>Scroll to Top</label>
+                                    </div>
+
+                                    <div class="fCol TxAl-r">
+                                        <span class="value">
+                                            <span class="toggle_btn">
+                                                <input id="chkScrollToTopBox" type="checkbox" />
+                                                <label for="chkScrollToTopBox" class="tgl_slider"></label>
+                                            </span>
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="field-row stElWrap col80-20 setting__has--child">
+                                    <div class="fCol">
+                                        <label>Set Site Under Construction</label>
+                                    </div>
+                                    <div class="fCol TxAl-r">
+                                        <span class="value">
+                                            <span class="toggle_btn">
+                                                <input id="chkUnderConstruction" type="checkbox" />
+                                                <label for="chkUnderConstruction" class="tgl_slider"></label>
+                                            </span>
+                                            <!-- <span id="chkUnderConstruction" class="checkboxlike" /> -->
+                                        </span>
+                                    </div>
+                                </div>
+                                <!--Child to expand-->
+                                <div class="">
+                                    <!--child__setting--wrap-->
+                                    <div class="field-row stElWrap col100">
+                                        <div id="underConstructionNote">
+                                            <span class="info">To remove under construction you need to set any other page as  default page </span>
+                                        </div>
+                                        <span class="edit-const-page stngSmallBtn" id="btnEditUnderConstruction">Edit Under Construction Page</span>
+                                    </div>
+                                </div>
+                                <!--ends-->
+                                <div class="btm-btns panel__foot">
+                                    <span class="cancel manage-body sfBtn" id="manageBody">
+                                        Body Settings
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="content-3 content-box all__components" id="componentCollection">
+                            <span class="module-search">
+                                <input type="text" placeholder="Search components" id="componentSearch" />
+                                <i class="fa fa-refresh" id="refreshComSearch"></i>
+                            </span>
+                            <div class="components-list-array">
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </div>
+        <!-- Ends this pops -->
+        <!-- Main Container Wrapper -->
+        <div class="devicewrap">
+            <div class="editor-box">
+                <div class="edit-area site-body f-weight-400 ff-montserrat " id="divWebEditArea">
+                </div>
+            </div>
+        </div>
+        <!-- Main Container Ends -->
+    </div>
+    <div class="resueabledata" style="display: none;">
+        <ul id="fontIconCollection">
+            <asp:Literal runat="server" ID="ltrFontFamily"></asp:Literal>
+        </ul>
+        <div id="WebBuilderDataFrameDom"></div>
+        <div id="WebBuilderWrapperClone"></div>
+    </div>
+    <div id="simplePopupModel" class="simple-popup-model setting__panel skin-dr" style="display: none; position: absolute; top: 0px; left: 0px;">
+        <div class="panel__head popup-header simple-popup-header">
+            <span class="drag_icon cb-drg"></span>
+            <h2 class="pTitle simple-popup-title txC">Setting</h2>
+            <div class="right_actions">
+
+                <span class="collapse heademarControls simple-close-model">
+                    <span class="icClose close-model"><i data-icon="d"></i></span>
+                </span>
+            </div>
+        </div>
+        <div class="simple-popup-model-body popup-model-body panel__body">
+        </div>
+    </div>
+</div>
+@await Component.InvokeAsync("MediaManagement")
+
+<link href="~/cbuilderassets/css/custom.css" rel="stylesheet" />
+<link href="~/MiniEditor/webuilderEditor.css" rel="stylesheet" />
+
+<script type="text/javascript">
+    //need to remove
+    var webBuilderUserModuleID = 0;
+    var SageFramePortalID = 1;
+
+    var IsEditorOnDevMode = @Model.IsDevMode.ToString().ToLower();
+    var CompFileNotExists = @Model.HasComponentFile.ToString().ToLower();
+    var currentpageName = '';
+    var webbuildermodulepath = '/modules/webbuilder';
+
+    var component = {};
+    var CallerModulePath = '@Model.ModulePath';
+    var componentID = [];
+    var EnableEditorRow = @Model.EnableMultiRow.ToString().ToLower();
+    var EditorComponents =@Html.Raw(@Model.EditorComponents)
+    $(function () {
+        var layoutComp = ["row", "column", "holder", "container", "row separator"];
+        if (EditorComponents.length > 0) {
+            $.each(EditorComponents, function (i, v) {
+                  if (v.ComponentValue !== 'undefined') {
+                    var comp = JSONParse(v.ComponentValue)
+                      component[comp.componentname] = comp;
+                      component[comp.componentname].IsBasic = v.IsBasic;
+                    if (layoutComp.indexOf(comp.componentname) >= 0) {
+                        component[comp.componentname].category = "layout";
+                    }
+                }
+
+            });
+            if (EnableEditorRow) {
+                component['row'].hidden = false;
+                component['row separator'].hidden = false;
+            } else {
+                component['row'].hidden = true;
+                component['row separator'].hidden = true;
+            }
+        }
+        EditorComponents = null;
+        if (typeof extendedComps != 'undefined')
+            component = $.extend(component, extendedComps);
+        $('.WebBuilderWrapper').SageWebBuilder({
+            enableHeader: 'false',
+            pageExtension: '',
+            siteID: 0,
+            tempPageName: '',
+            isDeveloperMode: 'false',
+        });
+        WebEditorHelper.ClearEditor();
+        if(@Model.IsDevMode.ToString().ToLower())
+            SaveEditorsComponents('@Model.ModuleName');
+    });
+</script>
+
+<script src="~/cbuilderassets/js/webbuilderEdit.js"></script>
+<script src="~/MiniEditor/webuildereditor.js"></script>
+@if (Model.HasComponent && Model.IsDevMode)
+{
+    <script src="@Model.ComponentPath"></script>
+}

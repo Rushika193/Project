@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewData["Title"] = "File Upload Example";
+}<div class="cd_content">
+    <h1 class="content_title">File Uploader</h1>
+    <p class="content_lead ">
+        Example of how implement file uploader
+    </p>
+</div>
+
+<div id="divFileUpload" class=" Mt-10">
+
+</div>
+<div id="ImgPreview" class="sfRow  Mt-10 Mb-10">
+
+</div>
+<div class="codeContent">
+    <!--change id-->
+    <div id="ImgPreview1" class="sfRow">
+
+    </div>
+    <!--change id-->
+    <div id="divFileUpload1">
+
+    </div>
+    <script src="/js/uploadFile.js"></script>
+    <script type="text/javascript">
+    $(function () {
+        $('#divFileUpload').CustomFileUploader({
+            uploadpath: '@ViewBag.UploadPath',// encripted path   C# code FileUploadHelper.EncryptString(Path.Combine(CurrentHostEnvironment.WebRootPath, "upload","example"));
+            allowExt: '@ViewBag.AllowExtension',// encripted extension c# code FileUploadHelper.EncryptString(string.Join(",",Enum.GetNames(typeof(ImageExtensionEnum))));
+            crop: true,
+            success: function (data) {
+                /*
+                 response sample 
+                 {
+                     "messages":["rudra_7.jpg uploaded successfully."],
+                     "filePath":"/upload/example/",
+                     "status":1,
+                     "files":["rudra_7.jpg"]
+                 }
+                 */
+                    var html = '';
+                if (data.status === 1) {
+                    $.each(data.files, function (i,v) {
+                        html += '<div class="sfCol-4"><img class="img-responsive img-thumbnail" src="' + data.filePath + v + '" /></div>';
+                    });
+                }
+                $('#ImgPreview').html(html)
+            }
+        });
+    });
+    </script>
+</div>

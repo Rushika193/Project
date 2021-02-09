@@ -1,0 +1,110 @@
+﻿<div class="media-search-model">
+    <button type="button" class="btn-ui green-btn cur-p Dib" style="font-family:Poppins,sans-serif;font-size:12px;line-height:33px;padding:0 20px;margin-right:5px;border:none;border-radius:30px; transition:0.3s ease; height:31px;font-weight:600;padding:0 20px;" id="addtst">Add</button>
+</div>
+<ul id="tstdata" class="field-row tst_form">
+    <li class="item Pt-10 Pb-10">
+        <div class="data-form">
+            <div class="field-row flx flxWrp">
+                <div class="field-row stElWrap tstdataCol1 sfCol_20 Pl-20 Pr-20 flx" style="position:relative;align-items:flex-start">
+                    <span class="fcol cPointer sfCol_10">
+                        <i class="fa fa-2x fa-arrows-v sortHandle" style="padding-top:40px;"></i>
+                    </span>
+
+                    <div class="img-preview sfCol_90" style="position:relative">
+                        <img id="RowBGImageSrc" src="" class="imageBG">
+
+                    </div>
+                    <span class="cb-btn-primary cngimg" style="position:absolute; left:38%; top:120px;    transform: translateX(-25%);;-moz-transform: translateX(-25%);;-webkit-transform: translateX(-25%);;-o-transform: translateX(-25%);">Change Image</span>
+
+                </div>
+                <div class="form flx nmwrp tstdataCol2 flxWrp sfCol_80">
+                    <div class="field-row  stElWrap sfCol_60 Pl-20 Pr-20" style="grid-column: 2/3;grid-row: 1/2;">
+                        <label class="fCol Mb-10">Name</label>
+                        <span class="fCol cb_input ">
+                            <input class="input tst-nm " type="text" />
+                        </span>
+                    </div>
+                    <div class="field-row poswrp stElWrap sfCol_40 Pl-20 Pr-20">
+                        <label class="fCol Mb-10">Designation</label>
+                        <span class="fCol cb_input ">
+                            <input class="pos" type="text" />
+                        </span>
+                    </div>
+                    <div class="field-row msgwrp stElWrap sfCol_100 Pl-20 Pr-20" style="margin-left:auto">
+                        <label class="fCol Mb-10">Message</label>
+                        <span class="fCol text__area ">
+                            <textarea class="msg "></textarea>
+                        </span>
+                    </div>
+                    <div class="field-row stElWrap sfCol_100 Pl-20 Pr-20" ">
+                        <span class="deletehelper tstdlt delete_icon cb-btn-red Dn" style="margin-left:auto">
+                            Remove Data
+                            <i class="fa fa-trash-o " title="Delete"></i>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>
+<style>
+    .fullpagepopupWrapper .fullpagepopup {
+        background-color: #fff;
+        margin: 0 auto 0 auto;
+    }
+
+    .fullpagepopupWrapper {
+        background-color: rgba(37,43,52,0.94);
+        box-shadow: rgba(0,0,0,0.4) 0 0 15px;
+    }
+
+    .fullpage-popup-model-body {
+        padding: 0;
+        display: block;
+    }
+
+    span.fcol {
+        font-size: 15px;
+        color: #555;
+    }
+
+    label.fCol {
+        font-size: 15px;
+        color: #555;
+    }
+
+    textarea {
+        font-size: 16px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        color: #555;
+    }
+
+    input {
+        font-size: 16px;
+        border: 1px solid #ccc;
+        background-color: #fff;
+        color: #555;
+    }
+
+    .media-search-model {
+        display: flex;
+    }
+
+    li.item {
+        background: rgba(0,0,0,0.025);
+        border-bottom: 1px solid rgba(0,0,0,0.085);
+    }
+
+
+    .btn-ui.green-btn {
+        margin-left: auto;
+    }
+
+    .img-preview {
+        width: 150px;
+        height: 100px;
+        margin-right: 0;
+        margin-bottom: 0;
+    }
+</style>

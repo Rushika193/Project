@@ -1,0 +1,55 @@
+﻿
+@{
+    ViewData["Title"] = "User Areas";
+    Cbuilder.Assets.AreaLabel localLabel=(Cbuilder.Assets.AreaLabel)ViewBag.AreaLocalLabel;
+}
+<section class="content-header clearfix">
+    <div class="page-title">
+        <div class="h2">User Areas</div>
+        <div class="sfButtonwrapper">
+            <button type="button" id="btnAddUserArea" class="btn primary round Mr-5">@localLabel.AddNew</button>
+            <a asp-action="Index" asp-controller="Assets" class="btn light round">@localLabel.BackToAsset</a>
+        </div>
+    </div>
+</section>
+
+
+<div class="sfDatagrid">
+    <div class="sfDatagrid-title">
+        <div class="dg-col-wp">
+            <div class="sfCol-9">@localLabel.AreaName</div>
+            <div class="sfCol-3  f-center">@localLabel.Action</div>
+        </div>
+    </div>
+
+    <div class="sfDatagrid-body" id="divAreaList">
+        @*@foreach (var item in Model)
+        {
+            <div class="dg-col-wp">
+                <div class="sfCol-9">
+                    <div class="dg-group">
+                        <span class="ds-grd-tit">@item.UserArea</span>
+                    </div>
+                </div>
+                <div class="sfCol-3 f-center">
+                    <button type="button" class="btnEditArea btn  primary round"> Edit </button>
+                    <button type="button" class="btnDeleteArea btn  danger round">Delete</button>
+                </div>
+            </div>
+        }*@
+
+    </div>
+
+</div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        var localLabel = @Html.Raw(Json.Serialize(localLabel));
+        $(this).UserArea({
+             LocalLabel:localLabel
+        });
+    });
+
+</script>

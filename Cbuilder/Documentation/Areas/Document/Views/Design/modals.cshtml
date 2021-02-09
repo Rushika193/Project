@@ -1,0 +1,230 @@
+﻿
+@{
+    ViewData["Title"] = "modals";
+}
+
+<div class="cd_content">
+    <h1 class="content_title ">Modal</h1>
+    <p class="content_lead ">
+       Modal or popup window that can be used for notifications, ui enhancements and for various information related to system with options rleating to size, position and others.
+    </p>
+</div>
+
+<div class="cd_example Mb-10x">
+    <div class="board">
+        <h2>Modal size Notation </h2>
+        <p>The class for modal sizes are named using format<code class="highlighter-rouge">{modal}-{size}</code></p>
+        <p class="Mb-2x">
+            <em>size</em> is either on of the following
+            <ul class="mb-4x">
+                <li><code class="highlighter-rouge">sm</code> - for classes that set <code class="highlighter-rouge">small modal</code></li>
+                <li><code class="highlighter-rouge">md</code> - for classes that set <code class="highlighter-rouge">medium modal</code></li>
+                <li><code class="highlighter-rouge">lg</code> - for classes that set <code class="highlighter-rouge">large modal</code></li>
+                <li><code class="highlighter-rouge">xl</code> - for classes that set <code class="highlighter-rouge">extra large modal</code></li>
+                <li><code class="highlighter-rouge">full</code> - for classes that set <code class="highlighter-rouge">full screen modal</code></li>
+
+
+
+            </ul>
+
+        </p>
+
+    </div>
+    <div class="preview">
+        <span class="example_title">Default Modal</span>
+        <div class="preview">
+            <button id="btnModelDemo" type="button" class="btn primary ">
+                Default Modal
+            </button>
+        </div>
+
+
+    </div>
+    <figure>
+        <div data-lang="lang-html" class="codeContent">
+            <button id="btnViewModelDemo" type="button" class="btn secondary">View Demo</button>
+        </div>
+    </figure>
+
+    <figure class="Mt-4x">
+        <div data-lang="lang-javascript" class="codeContent">
+            <script type="text/javascript">
+                $(function () {
+                    $('#btnViewModelDemo').off('click').on('click', function () {
+                        CustomModel({
+                            heading: "Your Model Title",
+                            body: "<p>Modal body text goes here.</p>",
+                            footer: '<button type="button" class="btn primary">ok</button>',
+                            sizeClass: 'modal-sm',
+                            advClass: '',
+                            onOpen: function ($wrapper) {
+
+                            },
+                            onClose: function ($wrapper) {
+
+                            }
+                        });
+                    });
+                });
+            </script>
+        </div>
+    </figure>
+</div>
+
+<div class="cd_example  Mb-10x">
+
+    <div class="preview">
+        <span class="example_title">Centered Modal</span>
+        <button id="btnModelCentered" type="button" class="btn primary ">
+            Centered Modal
+        </button>
+    </div>
+
+    <figure>
+        <div data-lang="lang-html" class="codeContent">
+            <button id="btnModelCentered" type="button" class="btn secondary">Centered Modal</button>
+        </div>
+    </figure>
+
+    <figure class="Mt-4x">
+        <div data-lang="lang-javascript" class="codeContent">
+            <script type="text/javascript">
+                $(function () {
+                    $('#btnViewModelDemo').off('click').on('click', function () {
+                        CustomModel({
+                            heading: "Your Model Title",
+                            body: "<p>Modal body text goes here.</p>",
+                            footer: '<button type="button" class="btn primary">ok</button>',
+                            sizeClass: 'modal-dialog-centered modal-md',
+                            advClass: '',
+                            onOpen: function ($wrapper) {
+
+                            },
+                            onClose: function ($wrapper) {
+
+                            }
+                        });
+                    });
+                });
+            </script>
+        </div>
+    </figure>
+</div>
+
+<div class="cd_example  Mb-10x">
+    <div class="board">
+        <h2>Notify Modal positions </h2>
+        <p>The class for modal sizes are named using format<code class="highlighter-rouge">{modal}-{notify} {position}</code></p>
+        <p class="Mb-2x">
+            <em>Position</em> is either on of the following
+            <ul class="mb-4x">
+                <li><code class="highlighter-rouge">top</code> - for classes that set <code class="highlighter-rouge">top position</code></li>
+                <li><code class="highlighter-rouge">bottom</code> - for classes that set <code class="highlighter-rouge">bottom position</code></li>
+            </ul>
+
+        </p>
+
+    </div>
+    <span class="example_title">Bottom Modal</span>
+    <div class="preview">
+        <button id="btnModelNotify" type="button" class="btn primary ">
+            Notify Modal
+        </button>
+    </div>
+
+    <figure>
+        <div data-lang="lang-html" class="codeContent">
+            <button id="btnModelNotify" type="button" class="btn primary ">
+                Notify Modal
+            </button>
+        </div>
+    </figure>
+
+    <figure class="Mt-4x">
+        <div data-lang="lang-javascript" class="codeContent">
+            $(function () {
+            $('#btnModelNotify').off('click').on('click', function () {
+            CustomModel({
+            heading: "Default Modal",
+            body: "<p>Modal body text goes here.</p>",
+            footer: '<button type="button" class="btn primary">ok</button>',
+            showheading: true,
+            sizeClass: 'modal-notify bottom',
+            advClass: '',
+            onOpen: function ($wrap) {
+
+            },
+            onClose: function ($wrap) {
+
+            }
+            });
+            });
+            });
+        </div>
+    </figure>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('#btnModelDemo').off('click').on('click', function () {
+            CustomModel({
+                heading: "Default Modal",
+                body: "<p>Modal body text goes here.</p>",
+                footer: '<button type="button" class="btn primary">ok</button>',
+                showheading: true,
+                sizeClass: 'modal-sm',
+                advClass: '',
+                onOpen: function ($wrap) {
+
+                },
+                onClose: function ($wrap) {
+
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#btnModelCentered').off('click').on('click', function () {
+            CustomModel({
+                heading: "Default Modal",
+                body: "<p>Modal body text goes here.</p>",
+                footer: '<button type="button" class="btn primary">ok</button>',
+                showheading: true,
+                sizeClass: 'modal-dialog-centered modal-md',
+                advClass: '',
+                onOpen: function ($wrap) {
+
+                },
+                onClose: function ($wrap) {
+
+                }
+            });
+        });
+    });
+</script>
+
+<script type="text/javascript">
+    $(function () {
+        $('#btnModelNotify').off('click').on('click', function () {
+            CustomModel({
+                heading: "Default Modal",
+                body: "<p>Modal body text goes here.</p>",
+                footer: '<button type="button" class="btn primary">ok</button>',
+                showheading: true,
+                sizeClass: 'modal-notify bottom',
+                advClass: '',
+                onOpen: function ($wrap) {
+
+                },
+                onClose: function ($wrap) {
+
+                }
+            });
+        });
+    });
+</script>
+

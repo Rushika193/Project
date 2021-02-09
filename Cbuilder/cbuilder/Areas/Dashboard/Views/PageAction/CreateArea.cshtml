@@ -1,0 +1,58 @@
+﻿@model Cbuilder.Core.PageAction.PageArea
+
+
+<div class="is-small">
+    @{ var action = "";
+        bool isUpdate = false;
+        if (Model == null) { action = "Create"; isUpdate = false; } else { action = "Update"; isUpdate = false; } }
+    <div class="is-small">
+        <h2 class="form-title">@action Area</h2>
+        <div class="sfFormwrapper card ">
+            <div class="card-body Pa-6x">
+
+                <form asp-action="CreateArea" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="sfFieldset Ma-0">
+                        <input asp-for="AreaID" class="sfFormcontrol" type="hidden" />
+                    </div>
+                    <div class="sfFieldset Ma-0">
+                        <div class="formkey">
+                            <label asp-for="AreaName" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <select disabled="@isUpdate" class="sfFormcontrol" asp-for="AreaName"
+                                    asp-items="@ViewBag.AreaList">
+                                <option>Please select area</option>
+                            </select>
+                            <span asp-validation-for="AreaName" class="sfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="DisplayName" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" asp-for="DisplayName" class="sfFormcontrol" />
+                            <span asp-validation-for="DisplayName" class="sfError"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="Description" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <textarea type="text" asp-for="Description" class="sfFormcontrol" value=""></textarea>
+                            <span asp-validation-for="Description" class="sfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfButtonwrapper">
+                        <input type="submit" value="@action" class="btn primary round Mr-8" />
+                        <a asp-action="PageArea" class="btn light round">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

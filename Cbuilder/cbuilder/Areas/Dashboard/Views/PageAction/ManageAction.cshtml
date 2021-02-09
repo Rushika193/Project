@@ -1,0 +1,179 @@
+﻿
+@model IEnumerable<Cbuilder.Core.PageAction.PageAction>
+
+@{
+    int rowTotal = 0;
+}
+
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">Page Action Management</div>
+        <div class="sfButtonwrapper">
+            <a asp-action="CreateAction" class="btn  primary-outline round">Add New</a>
+
+            <a asp-action="Index" class="btn light round">Back</a>
+        </div>
+    </div>
+</section>
+
+<div class="sfDatagrid">
+    <div class="sfDatagrid-header">
+
+        <form asp-action="ManageAction" method="get">
+            <div class="dg-col-wp">
+                <div class="sfCol-12 sfCol-md-4">
+                    <div class="dg-group Mb-20 md-Mb-0">
+                        <div class="dg-search-filter flex f-middle">
+                            <div class="formkey Pr-20">
+                                <span class="sfFormlabel">Area</span>
+                            </div>
+                            <div class="formvalue f-fill">
+                                <select id="areaName" name="areaName" class="sfFormcontrol rounded" asp-for="@ViewData["AreaName"]"
+                                        asp-items="@ViewBag.AreaList">
+                                    <option value="">Please select area</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sfCol-12 sfCol-md-4">
+                    <div class="dg-group Mb-20 md-Mb-0">
+                        <div class="dg-search-filter flex f-middle">
+                            <div class="formkey Pr-20">
+                                <span class="sfFormlabel">Page</span>
+                            </div>
+                            <div class="formvalue f-fill">
+                                <select id="pageName" name="pageName" class="sfFormcontrol rounded" asp-for="@ViewData["PageName"]">
+                                    <option value="">Please select page</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sfCol-12 sfCol-md-4 ml-auto">
+                    <div class="dg-group">
+                        <div class="dg-search-key rounded">
+                            <input type="text" id="keyword" class="sfFormcontrol rounded" name="keyword" placeholder="Search here by ActionName" value="@ViewData["Keyword"]">
+                            <button type="submit" class="search"><i class="fa fa-search rounded"></i></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+    </div>
+    <div class="sfDatagrid-title d-none sm-d-block">
+        <div class="dg-col-wp">
+            <div class="sfCol-12 sfCol-sm-9">Action Title</div>
+            @*<div class="sfCol-2">Display Name</div>
+                <div class="sfCol-2">Page</div>
+                <div class="sfCol-2">Area</div>*@
+            <div class="sfCol-12 sfCol-sm-3 f-center">Action</div>
+        </div>
+    </div>
+    <div class="sfDatagrid-body">
+        @if (Model != null && Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+                rowTotal = item.RowTotal;
+                <div class="dg-col-wp">
+                    <div class="sfCol-12 sfCol-sm-9 d-block">
+                        <div class="dg-group Mb-10 sm-Mb-0">
+                            <div class="dg-title"> @item.ActionName</div>
+                        </div>
+                        <div class="dg-group">
+                            <div class="dg-group-inline">
+                                <span class="grd-key">Display: </span>
+                                <span class="grd-value"> @item.DisplayName</span>
+                            </div>
+                        </div>
+                        <div class="dg-group">
+                            <div class="dg-group-inline">
+                                <span class="grd-key">Page: </span>
+                                <span class="grd-value"> @item.PageName</span>
+                            </div>
+                        </div>
+                        <div class="dg-group">
+                            <div class="dg-group-inline">
+                                <span class="grd-key">Area: </span>
+                                <span class="grd-value"> @item.AreaName</span>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+                    <div class="sfCol-12 sfCol-sm-3 t-left sm-f-center">
+                        <div class="dg-group-inline">
+                            <div class="action-menu">
+                                <span class="action-icon">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </span>
+                                <ul class="action-open">
+
+                                    <li>
+                                        <a asp-action="EditAction" asp-route-id="@item.PageActionID" class="links"><i class="fa fa-edit"></i>Edit</a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="ManageService" asp-route-id="@item.PageActionID" class="links"><i class="fa fa fa-edit"></i>Manage Service</a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="ManageIdentity" asp-route-id="@item.PageActionID" class="links"><i class="fa fa fa-edit"></i>Manage Identity</a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="DeleteAction" asp-route-id="@item.PageActionID" onclick="return ConfirmBox('Are you sure you want to delete this?All services and permissions associated will also be delted')" class="links"><i class='fa fa-trash'></i>Delete</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="dg-nodata">
+                No Data To Display.
+            </div>
+        }
+
+    </div>
+</div>
+
+<div id="divPagination" class="Mt-5x"></div>
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#divPagination').CreatePagination({ total:@rowTotal, limit: 10 });
+
+            $('#areaName').change(function () {
+                var areaVal = $(this).val();
+                var page = $('#pageName');
+                if (areaVal != null) {
+                    page.empty();
+                    $.getJSON('@Url.Action("GetRefractionPages")', { areaName: areaVal, isEdit: true }, function (pages) {
+                        if (pages != null && !jQuery.isEmptyObject(pages)) {
+                            page.append($('<option/>', {
+                                value: "",
+                                text: "Please select page"
+                            }));
+                            $.each(pages, function (index, pageName) {
+                                page.append($('<option/>', {
+                                    value: pageName.Value,
+                                    text: pageName.Text
+                                }));
+                            });
+                        };
+                    });
+                }
+
+            });
+            $('#areaName').trigger("change");
+        });
+    </script>
+}

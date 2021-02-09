@@ -1,0 +1,67 @@
+﻿@using Cbuilder.Core.Helper.Models
+@using Cbuilder.DashboardMenu
+@*@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers*@
+@model IEnumerable<DashboardSideMenu>
+<div class="sidebar_links">
+    <ul>
+        @{
+            IEnumerable<DashboardSideMenu> parent = Model.Where(x => x.ParentID == Guid.Empty).OrderBy(x => x.DisplayOrder);
+            IEnumerable<DashboardSideMenu> child;
+        }
+        @foreach (var menu in parent)
+        {
+            child = Model.Where(x => x.ParentID == menu.LinkID).OrderBy(x => x.DisplayOrder);
+            @if (child.Count() > 0)
+            {
+                @if (menu.IsParent)
+                {
+                    <li class="has-child">
+                        <a class="side-nav-link navlinks" href="javascript:void(0);">
+                            <i class="@menu.PageIcon"></i>
+                            <span>@menu.LinkTitle</span>
+                        </a>
+                        @Html.Raw(@CreateSumMenuItems(child))
+                    </li>
+                }
+            }
+            else if (!menu.IsParent)
+            {
+                <li class="isChildLink">
+                    <a class="side-nav-link navlinks" href="@HttpContextCommons.HostURL/@menu.URL.ToLower()@HttpContextKey.CultureURL.FromHttpContext(Context)">
+                        <i class="@menu.PageIcon"></i>
+                        <span>@menu.LinkTitle</span>
+                    </a>
+                </li>
+            }
+        }
+    </ul>
+</div>
+@functions{
+    IEnumerable<DashboardSideMenu> subchild;
+    string CreateSumMenuItems(IEnumerable<DashboardSideMenu> child)
+    {
+        var html = "<ul class='sub-menu'>";
+        foreach (var item in child)
+        {
+            subchild = Model.Where(x => x.ParentID == item.LinkID).OrderBy(x => x.DisplayOrder);
+            if (subchild.Count() > 0)
+            {
+                if (item.IsParent)
+                {
+                    html += "<li class='has-child'>";
+                    html += "<a class='side-nav-link ' href='javascript:void(0);'><i class='" + item.PageIcon + "'></i><span>" + item.LinkTitle + "</span></a>";
+                    html += CreateSumMenuItems(subchild);
+                    html += "</li>";
+                }
+            }
+            else if (!item.IsParent)
+            {
+                html += "<li class='isChildLink'>";
+                html += "<a class='side-nav-link ' href='" + HttpContextCommons.HostURL + "/" + item.URL.ToLower() + HttpContextKey.CultureURL.FromHttpContext(Context) + "'><i class=' " + item.PageIcon + "'></i><span>" + item.LinkTitle + "</span></a>";
+                html += "</li>";
+            }
+        }
+        html += "</ul>";
+        return html;
+    }
+}

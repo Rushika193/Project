@@ -1,0 +1,37 @@
+@using Microsoft.AspNetCore.Identity
+@using Cbuilder.Core.Helper.Models
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+@{
+    var claims = User.Claims;
+}
+@if (SignInManager.IsSignedIn(User))
+{
+
+
+    <ul class="nav navbar-nav navbar-right">
+        <li class="user dropdown-group">
+            <a href="#" class="list-dropdown username" title="View your profile"><span class="dropdown-link f-middle"><span class="user-name d-none sm-d-block">@UserManager.GetUserName(User)! </span><span class="fa fa-user sm-d-none d-block"></span><i class="fa fa-chevron-down Ml-2x d-none sm-d-i-block"></i></span></a>
+            <ul class="list-group Mt-0">
+                <li class=" group-item group-item-link-bg">
+                    <a asp-area="Dashboard" asp-controller="UserProfile" asp-action="Details" title="Edit Profile"><i class="fa fa-edit "></i> Edit Profile</a>
+                </li>
+                <li class=" group-item group-item-link-bg">
+                    <a asp-area="Dashboard" asp-controller="User" asp-action="ChangePassword" title="Change Password"><i class="fa fa-key  "></i>Change Password</a>
+                </li>
+            </ul>
+        </li>
+        <li class="sign-out">
+            <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                <button type="submit" class="btn btn-link navbar-btn navbar-link"><i class="fa fa-power-off"></i></button>
+            </form>
+        </li>
+    </ul>
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li><a asp-area="" asp-controller="Account" asp-action="Register">Register</a></li>
+        <li><a asp-area="" asp-controller="Account" asp-action="Login">Log in</a></li>
+    </ul>
+}

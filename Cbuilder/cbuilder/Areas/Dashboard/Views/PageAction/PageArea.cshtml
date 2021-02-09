@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Cbuilder.Core.PageAction.PageArea>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">Page Area Management</div>
+        <div class="sfButtonwrapper">
+
+            <a asp-action="CreateArea" asp-controller="PageAction" class="btn  primary-outline round">Add New Area</a>
+            <a asp-action="Index" class="btn light round">Back</a>
+        </div>
+    </div>
+</section>
+
+
+<div class="sfDatagrid">
+    <div class="sfDatagrid-header">
+        <div class="dg-col-wp">
+
+            <div class="sfCol-12 sfCol-sm-6 sfCol-md-4 ml-auto">
+                <div class="dg-group">
+                    <div class="dg-search-key rounded">
+                        <form asp-action="Index">
+                            <input type="text" id="keyword" class="sfFormcontrol rounded" AreaName="keyword" placeholder="Search here by AreaAreaName" value="@ViewData["Keyword"]">
+                            <button type="submit" class="search"><i class="fa fa-search rounded"></i></button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    <div class="sfDatagrid-title d-none md-d-block">
+        <div class="dg-col-wp">
+            <div class="sfCol-12 sfCol-md-6">AreaName</div>
+            <div class="sfCol-12 sfCol-md-4">Display Area Name </div>
+            <div class="sfCol-12 sfCol-md-2 f-center">Action</div>
+        </div>
+    </div>
+    <div class="sfDatagrid-body">
+
+        @if (Model != null && Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+
+                <div class="dg-col-wp">
+
+                    <div class="sfCol-12 sfCol-md-6">
+                        <div class="dg-group Mb-10 sm-Mb-0">
+                            <span class="dg-title"> @item.AreaName</span>
+                        </div>
+                    </div>
+                    <div class="sfCol-12 sfCol-md-4 ">
+                        <div class="dg-group Mb-10 sm-Mb-0">
+                            <div class="dg-group">
+                                <div class="dg-group-inline">
+                                    <span class="dg-grd-key md-d-none"> Display Area name: </span>
+                                    <span class="dg-grd-value"> @item.DisplayName</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="sfCol-12  sfCol-md-2 t-left md-f-center">
+                        <div class="dg-group-inline">
+                            <div class="action-menu">
+                                <span class="action-icon">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </span>
+                                <ul class="action-open">
+
+                                    <li>
+                                        <a asp-action="EditArea" asp-route-id="@item.AreaID" class="links"><i class="fa fa fa-edit"></i>Edit</a>
+                                    </li>
+
+                                    <li>
+                                        <a asp-action="DeleteArea" asp-route-id="@item.AreaID" onclick="return ConfirmDialog(this,'Confirmation','Are you sure you want to delete this?All pages, actions and permissions associated will also be deleted');" class="links"><i class='fa fa-trash'></i>Delete</a>
+                                    </li>
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="dg-nodata">
+                No Data To Display.
+            </div>
+        }
+    </div>
+</div>

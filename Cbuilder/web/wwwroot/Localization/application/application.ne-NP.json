@@ -1,0 +1,17 @@
+{
+  "AddNew": "नयाँ थप्नुहोस्",
+  "Save": "सुरक्क्षित  गर्नुहोस्",
+  "Update": "परिवर्तनहरू सुरक्क्षित  गर्नुहोस्",
+  "Cancel": "रद्द गर्नुहोस्",
+  "Back": "पछाडि जानुहोस्",
+  "Name": "नाम",
+  "Action": "कार्य मेनू",
+  "Edit": "परिवर्तन गर्नुहोस्",
+  "Delete": "मेट्नुहोस्",
+  "ApplicationName": "Application नाम",
+  "GridHeading": "Application व्यवस्थापन",
+  "AddFormHeading": "Application  बनाउनुहोस ",
+  "EditFormHeading": "Application  परिवर्तन गर्नुहोस ",
+  "NoData": "कुनै Application छैन।"
+
+}

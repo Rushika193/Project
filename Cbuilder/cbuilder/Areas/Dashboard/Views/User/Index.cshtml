@@ -1,0 +1,160 @@
+﻿@model IEnumerable<Cbuilder.Core.Users.UserGetViewModel>
+
+@{
+                ViewData["Title"] = "Index";
+                int totalRow = 0;
+                Dictionary<string, string> localLabel = (Dictionary<string, string>)ViewData["LocalLabel"];
+                string currentUserName = ViewData["UserName"].ToString();
+
+            }
+
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">@localLabel["GridHeading"]</div>
+        <div class="sfButtonwrapper">
+            <a href="@URLHelper.DashboardURL(Context,"User", "Create")" class="btn  primary-outline round">@localLabel["AddNew"]</a>
+        </div>
+    </div>
+</section>
+
+<div class="sfDatagrid">
+    <form asp-action="Index" method="get">
+        <div class="sfDatagrid-header">
+            <div class="dg-col-wp">
+                <div class="sfCol-md-4 sfCol-sm-12">
+                    <div class="dg-group Mb-20 sm-Mb-0">
+                        <div class="dg-search-filter flex f-middle">
+                            <div class="sfFormkey Pr-20">
+                                <span id="lblRoleName" class="sfFormLabel pr-20">Role</span>
+                            </div>
+                            <div class="sfFormvalue f-fill">
+                                <select id="roleName" name="roleName" class="sfFormcontrol rounded" asp-items="@ViewBag.RoleListSelection"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sfCol-md-4 sfCol-sm-12 ml-auto">
+                    <div class="dg-group">
+                        <div class="dg-search-key rounded">
+
+                            <input type="text" id="keyword" class="sfFormcontrol rounded" name="keyword" placeholder="@localLabel["SearchPlaceHolder"]" value="@ViewData["Keyword"]">
+                            <button type="submit" class="search"><i class="fa fa-search rounded"></i></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+    <div class="sfDatagrid-title d-none sm-d-block">
+        <div class="dg-col-wp">
+            <div class="sfCol-3">@localLabel["UserName"]</div>
+            <div class="sfCol-3">@localLabel["Email"]</div>
+            <div class="sfCol-3">@localLabel["Status"]</div>
+            <div class="sfCol-3  f-center">@localLabel["Action"]</div>
+        </div>
+    </div>
+    <div class="sfDatagrid-body">
+
+        @if (Model != null && Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+                totalRow = item.TotalRow;
+                <div class="dg-col-wp">
+
+                    <div class="sfCol-12 sfCol-sm-3">
+                        <div class="dg-group Mb-10 sm-Mb-0">
+                            <span class="ds-grd-tit"> @item.UserName</span>
+                        </div>
+                    </div>
+                    <div class="sfCol-12 sfCol-sm-3">
+                        <div class="dg-group Mb-10 sm-Mb-0">
+                            <span class="ds-grd-tit"> @item.Email</span>
+                        </div>
+                    </div>
+                    <div class="sfCol-6 sfCol-sm-3 ">
+                        <div class="dg-group">
+                            @if (@item.Enabled)
+                            {
+                                <span class="pills pills-success rounded">@localLabel["Active"]</span>
+                            }
+                            else
+                            {
+                                <span class="pills pills-danger rounded">@localLabel["InActive"]</span>
+
+                            }
+                        </div>
+                    </div>
+                    <div class="sfCol-6  sfCol-sm-3 f-end sm-f-center">
+                        <div class="dg-group-inline">
+                            @if (@item.Editable && @item.UserName.ToLower() != currentUserName.ToLower())
+                            {
+                                <div class="action-menu">
+                                    <span class="action-icon">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </span>
+                                    <ul class="action-open">
+
+                                        <li>
+                                            <a href="@URLHelper.DashboardURL(Context,"User", "Edit")?id=@item.ID" class="links"><i class="fa fa fa-edit"></i>@localLabel["Edit"]</a>
+                                        </li>
+
+                                        @*<li>
+                                                <a asp-action="NonEditable" asp-route-id="@item.ID" asp-route-enable="@item.Editable" class="class=" links"">
+                                                    <i class="fas fa-ban"></i>Non Editable
+                                                </a>
+
+                                            </li>*@
+
+                                        @*<li>
+                                                <a asp-action="Details" asp-controller="User" asp-route-id="@item.ID" class="links"><i class='far fa-list-alt'></i>Details</a>
+                                            </li>*@
+                                        <li>
+                                            <a asp-action="Enable" asp-route-id="@item.ID" asp-route-enable="@item.Enabled" class="links">
+                                                @if (@item.Enabled)
+                                                {
+                                                    <i class="fa fa-eye-slash"></i>
+                                                    @localLabel["Deactivate"]
+                                                }
+                                                else
+                                                {
+                                                    <i class="fas fa-eye"></i>
+                                                    @localLabel["Activate"]
+                                                }
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="@URLHelper.DashboardURL(Context,"User", "ResetPassword")?id=@item.ID" class="links"><i class='fas fa-eye'></i>@localLabel["ResetPassword"]</a>
+                                        </li>
+                                        <li>
+                                            <a asp-action="Delete" asp-route-id="@item.ID" onclick="return ConfirmDialog(this,'Confirmation','Are you sure you want to delete?')" class="links"><i class='fa fa-trash'></i>@localLabel["Delete"]</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="dg-nodata">
+                @localLabel["NoData"]
+            </div>
+        }
+
+    </div>
+</div>
+
+@*<pagination pagination-model="@Model" class="float-right"></pagination>*@
+
+<div id="divPagination" class="Mt-5x"></div>
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $('#divPagination').CreatePagination({ total:@totalRow, limit: 10 });
+        });
+    </script>
+}

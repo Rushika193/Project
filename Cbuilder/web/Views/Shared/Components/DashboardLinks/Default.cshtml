@@ -1,0 +1,22 @@
+﻿@model List<Cbuilder.Core.Models.DashboardLinks>
+    <div class="sfRow">
+        @foreach (var dashboardLinks in Model)
+        {
+            string link = URLHelper.DashboardURL(Context, dashboardLinks.Link);
+            <a href="@link" class="sfCol-12 sfCol-md-4 dashboardlinks Mb-20">
+             
+                  
+                        <div class="flex card-body Py-30 @dashboardLinks.CssColor">
+                            <i class="@dashboardLinks.IconClass"></i>
+                            <div class="linkcontent Pl-20">
+                                <p class="fw-400 h4 Mb-0 t-capital"> @dashboardLinks.Title </p>
+                                <p>@dashboardLinks.Description</p>
+                            </div>
+
+                        </div>
+        
+            
+
+            </a>
+        }
+    </div>

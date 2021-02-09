@@ -1,0 +1,142 @@
+﻿@using Cbuilder.Core.Users.Enum
+@model Cbuilder.Core.Users.UserProfile
+
+@{
+    ViewData["Title"] = "User Profile";
+    //string profileImage = Model?.ProfileImage == null ? "/UserProfilePictures/NoImage.png" : "/UserProfilePictures/" + Model.ProfileImage.FileName;
+}
+<div class="is-default">
+    <section class="content-header">
+        <div class="page-title">
+            <div class="h2">
+                Update Profile
+            </div>
+        </div>
+    </section>
+
+    <div class="sfFormwrapper card ">
+        <div class="card-body Pa-6x">
+            <form action="/dashboard/userProfile/details" method="post" class="sfRow">
+                <div class="sfCol-12 sfCol-sm-4">
+                    <div class="sfFieldset sfRow">
+
+                        <div class="sfFormthumb formvalue  sfCol t-center">
+                            <div class="image profile-img thumb">
+                                @if (string.IsNullOrEmpty(Model.ProfileImage))
+                                {
+                                    <img src="/cbuilderassets/img/logo.png" id="imgProfile" class="img-contain">
+                                }
+                                else
+                                {
+                                    <img src="@Model.ProfileImage" alt="" id="imgProfile" class="img-contain" />
+                                }
+                            </div>
+                            @*<div class="logo-preview thumb-preview">
+
+                                </div>*@
+
+                            <div id="uploadLogo" class="uploads PosR "></div>
+                            <input asp-for="ProfileImage" id="txtImagePath" class="sfInputbox sfcontrol" type="hidden" />
+                            <span asp-validation-for="ProfileImage" class="sfError"></span>
+                        </div>
+                    </div>
+
+                </div>
+                @*<div class="sfFieldset sfCol-12 sfCol-sm-4">
+                        <div class="formkey">
+                            <span class="sfFormlabel">Title*</span>
+                        </div>
+                        <div class="formvalue">
+                            <select asp-for="Title" class="sfInputbox sfcontrol">
+                                <option value="Mr">Mr</option>
+                                <option value="Miss">Miss</option>
+                                <option value="Mrs">Mrs</option>
+                            </select>
+                        </div>
+                    </div>*@
+                <div class="sfCol-12 sfCol-sm-8">
+                    <div class=" sfFieldset sfRow">
+                        <div class="formkey sfCol-12 sfCol-sm-4 ">
+                            <span class="sfFormlabel">First Name*</span>
+                        </div>
+                        <div class="formvalue sfCol-12 sfCol-sm-8">
+                            <input type="text" asp-for="FirstName" class="sfInputbox sfcontrol" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset sfRow">
+                        <div class="formkey sfCol-12 sfCol-sm-4">
+                            <span class="sfFormlabel">Last Name*</span>
+                        </div>
+
+                        <div class="formvalue sfCol-12 sfCol-sm-8">
+                            <input type="text" asp-for="LastName" class="sfInputbox sfcontrol" placeholder="">
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfRow">
+                        <div class="formkey sfCol-12 sfCol-sm-4 ">
+                            <span class="sfFormlabel">Email*</span>
+                        </div>
+                        <div class="formvalue sfCol-12 sfCol-sm-8">
+                            <input type="email" asp-for="Email" class="sfInputbox sfcontrol" readonly="readonly" placeholder="">
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfRow">
+                        <div class="formkey sfCol-12 sfCol-sm-4 ">
+                            <span class="sfFormlabel">Gender*</span>
+                        </div>
+                        <div class="formvalue sfCol-12 sfCol-sm-8">
+                            <div class="d-i-block">
+                                <select asp-for="GenderID" class="sfInputbox sfcontrol" asp-items="Html.GetEnumSelectList<Gender>()"></select>
+                                <span asp-validation-for="GenderID" class="sfError"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfRow">
+                        <div class="formkey sfCol-12 sfCol-sm-4 ">
+                            <span class="sfFormlabel">Mobile*</span>
+                        </div>
+                        <div class="formvalue sfCol-12 sfCol-sm-8">
+                            <div class="d-i-block">
+                                <input type="tel" asp-for="Mobile" class="sfInputbox sfcontrol" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfRow">
+                        <div class="formkey sfCol-12 sfCol-sm-4 sfCol-sm-4">
+                            <span class="sfFormlabel">About You</span>
+                        </div>
+
+                        <div class="formvalue sfCol-12 sfCol-sm-8">
+                            <textarea asp-for="About" class="sfFormcontrol area" rows="5" placeholder=""></textarea>
+                        </div>
+                    </div>
+                    <div class="sfRow">
+                        <div class=" sfCol-8 offset-sfCol-4">
+                            <button class="btn round primary" type="submit">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script>
+        $('#uploadLogo').CustomFileUploader({
+            uploadpath:'@ViewData["UploadPath"]',
+            allowExt: '@ViewData["AllowExtension"]',
+            crop: true,
+            success: function (data) {
+                
+                if (data.status === 1) {
+                    var src = data.filePath +"small/"+ data.files[0];
+                    $("#txtImagePath").val(src);
+                    $("#imgProfile").attr('src',src);
+                }
+            },
+            name: 'Choose File'
+        });
+    </script>
+}

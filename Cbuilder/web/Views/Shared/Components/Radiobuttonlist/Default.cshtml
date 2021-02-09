@@ -1,0 +1,12 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@using Cbuilder.Core.Helper.Models;
+@model CustomMultiselect
+
+@foreach (SelectListItem item in Model.Items)
+{
+    var chkID = "rdoLst" + item.Value;
+    <div class="custom-control custom-radio Mb-3x">
+        <input value="@item.Value" type="radio" class="sfCheckbox" checked="@item.Selected" name="@Model.GroupName" id="@chkID" />
+        <label for="@chkID" class="sfRadiolabel">@item.Text</label>
+    </div>
+}

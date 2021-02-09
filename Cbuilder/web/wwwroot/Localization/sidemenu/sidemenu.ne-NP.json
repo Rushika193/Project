@@ -1,0 +1,14 @@
+﻿{
+  "Title": "मेनू  व्यवस्थापन",
+  "AddButton": "नयाँ थप्नुहोस्",
+  "DetailsLabel": "विवरण",
+  "SearchPlaceholder": "खोज्नुहोस्",
+  "ActionLabel": "कार्य",
+  "EditLabel": "सम्पादन",
+  "DeleteLabel": "मेट्नुहोस्",
+  "NoData": "प्रदर्शन गर्न कुनै डाटा छैन।",
+  "Ok": "हुन्छ",
+  "No": "हुदैन",
+  "AreaLabel": "एरिया",
+  "ControllerLabel": "कन्ट्रोलर"
+}

@@ -1,0 +1,18 @@
+{
+  "EmailAnalyticsTitle": "Email Analytics",
+  "DeliveredMailLbl": "Delivered Mail",
+  "ScheduledMailLbl": "Scheduled Mail",
+  "TotalSubscribersLbl": "Total Subscribers",
+  "MonthlyEmailMarketingTitle": "Monthly Email Marketing",
+  "SubscriptionComparisonTitle": "Subscription Comparison",
+  "TrendingUserInterestsTitle": "Trending User Interests",
+  "TotalUsersCountTitle": "Total Users Count",
+  "SubscribedUsersLbl": "Subscribed Users",
+  "UnsubscribedUsersLbl": "Unsubscribed Users",
+  "SubscribedLbl": "Subscribed",
+  "UnsubscribedLbl": "Unsubscribed",
+  "ImportedSubscribersLbl": "Imported Subscribers",
+  "StartDateLbl": "Start Date",
+  "EndDateLbl": "End Date",
+  "GenerateAnalyticsLbl": "Generate Analytics"
+}

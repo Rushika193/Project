@@ -1,0 +1,83 @@
+﻿@model Cbuilder.Core.Localization.Language
+@{
+}
+@Html.AntiForgeryToken()
+<section class="content-header clearfix">
+    <div class="page-title d-block md-d-flex">
+        <div class="h2">Localize Management</div>
+        <div class="sfButtonwrapper">
+            <a  href="@URLHelper.DashboardURL(Context,"Localization")" id="backtoindex" class="btn light round">Back</a>
+        </div>
+    </div>
+</section>
+
+
+<div class="sfFormwrapper" id="localizeDataList">
+    <div class="sfDatagrid">
+        <div class="sfDatagrid-title d-none sm-d-block">
+            <div class="dg-col-wp">
+                <div class="sfCol-5">Name</div>
+                <div class="sfCol-5">FilePath</div>
+                <div class="sfCol-2">Action</div>
+            </div>
+        </div>
+        <div class="sfDatagrid-body">
+            @if (ViewBag.FilePath != null)
+            {
+                @foreach (var item in ViewBag.FilePath)
+                {
+                    <div class="dg-col-wp">
+                        <div class="sfCol-12 sfCol-sm-5">
+                            <div class="dg-group Mb-10 sm-Mb-0">
+                                <span class="ds-grd-tit">
+                                    @item.Key
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sfCol-12 sfCol-sm-5">
+                            <div class="dg-group Mb-10 sm-Mb-0">
+                                <span class="ds-grd-tit">
+                                    @item.Value
+                                </span>
+                            </div>
+                        </div>
+                        <div class="sfCol-12  sfCol-sm-2 f-end sm-f-center">
+                            <div class="dg-group-inline">
+                                <div class="action-menu">
+                                    <span class="action-icon">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </span>
+                                    <ul class="action-open">
+                                        <li>
+                                            <a data-language="@ViewBag.Lang" data-path="@item.Value" class="links lnk-file"><i class="fa fa fa-edit"></i>Edit</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="dg-nodata">
+                    No Data To Display.
+                </div>
+            }
+        </div>
+    </div>
+</div>
+<input type="hidden" id="hdnFilePath">
+<input type="hidden" id="hdnLang">
+<div id="jsondatalist" style="display:none;">
+    <div id="divjson">
+    </div>
+</div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $(this).LocalizeData({});
+        });
+    </script>
+}

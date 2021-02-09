@@ -1,0 +1,16 @@
+﻿{
+  "CreateTitle": "Add Menu",
+  "UpdateTitle": "Edit Menu",
+  "LinkTitle": "Link Title",
+  "Area": "Area",
+  "Controller": "Controller",
+  "Action": "Action",
+  "Culture": "Culture",
+  "Parent": "Parent",
+  "IconClass": "Icon Class",
+  "Parameters": "Parameters",
+  "IsParent": "Is Parent",
+  "AddBtnLabel": "Save",
+  "UpdateBtnLabel": "Update",
+  "BackBtnLabel": "Back"
+}

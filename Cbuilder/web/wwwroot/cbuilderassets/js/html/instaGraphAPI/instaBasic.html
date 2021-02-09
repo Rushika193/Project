@@ -1,0 +1,149 @@
+﻿
+<div class="field-row instaCredentials">
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Update App Info</label>
+        <div class="fCol TxAl-r">
+            <span class="toggle_btn">
+                <input type="checkbox" id="chkUpdateAppInfo" name="toggleButton">
+                <label for="toggleButton" class="tgl_slider"></label>
+            </span>
+        </div>
+    </div>
+    <!--<div class="field-row divAppInfo">
+        <div class="field-row stElWrap col30-70 ">
+            <label class="fCol">AccessToken</label>
+            <span class="fCol cb_input">
+                <input type="text" id="txt-acc-tkn" required="">
+            </span>
+        </div>
+    </div>
+    <div class="field-row divAppInfo">
+        <div class="field-row stElWrap col30-70 ">
+            <label class="fCol">App ID</label>
+            <span class="fCol cb_input">
+                <input type="text" id="txt-FbAppId" required="">
+            </span>
+        </div>
+    </div>
+    <div class="field-row divAppInfo">
+        <div class="field-row stElWrap col30-70 ">
+            <label class="fCol">Secret Key</label>
+            <span class="fCol cb_input">
+                <input type="text" id="txt-secretKey" required="">
+            </span>
+        </div>
+    </div>-->
+
+    <div class="facebook-app-info Dn">
+        <div class="field-row">
+            <div class="field-row stElWrap col100">
+                <label class="fCol">Facebook App ID</label>
+            </div>
+            <div class="field-row">
+                <span class="fCol cb_input">
+                    <input type="text" id="txt-FbAppId" required="">
+                </span>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-row stElWrap col100">
+                <label class="fCol">App Secret Key</label>
+            </div>
+            <div class="field-row">
+                <span class="fCol cb_input">
+                    <input type="text" id="txt-secretKey" required="">
+                </span>
+                <span class="info Mt-5 Mb-5 Lh-15" style="color: #ffffffc4;">
+                    App Secret Key is required at the first time or
+                    when
+                    the
+                    key gets reset.
+                </span>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-row stElWrap col100">
+                <label class="fCol">User Access Token</label>
+            </div>
+            <div class="field-row">
+                <span class="fCol cb_input">
+                    <input class="" id="txt-acc-tkn" value="" type="text">
+                </span>
+                <span class="info Mt-5 Mb-5 Lh-15" style="color: #ffffffc4;">
+                    User Access Token is required at the first time or
+                    when the user is changed.
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="field-row">
+        <div class="field-row stElWrap col100">
+            <label class="fCol">Facebook Page URL</label>
+        </div>
+        <div class="field-row">
+            <span class="fCol cb_input">
+                <input class="" id="txt-FbPageUrl"  value="" type="text">
+            </span>
+        </div>
+    </div>
+    <div class="field-row ">
+        <div class="field-row stElWrap col100">
+            <label class="fCol">Fetch Limit</label>
+        </div>
+        <span class="fCol cb_input">
+            <input type="number" min="1" id="txt-feed-limit" required="">
+        </span>
+    </div>
+
+    <div class="field-row stElWrap col100">
+        <!--<div id="reqparamnote">
+            <span class="info">To retrieve your instagram photos, above fields are required for the first time. The process of getting the credentials is mentioned in Help tab.</span>
+        </div>-->
+        <span class="sbmt-cred stngSmallBtn" id="btn-sbmt-cred">Submit</span>
+    </div>
+
+    <div class="field-row instaHeadingStng stElWrap col30-70">
+        <label class="fCol">Heading</label>
+        <div class="fCol TxAl-r">
+            <div class="field-row stElWrap col100">
+                <span class="sfCol_70 TxAl-l cb_input txtBoxInstaHdng">
+                    <input type="text" data-class="instaHeading" class="instaChangeText" value="Instagram" />
+                </span>
+                <span class="sfCol_30 TxAl-r">
+                    <span class="toggle_btn">
+                        <input data-class="instaHeading" id="chkInstaHeading" class="instaCheckbox" name="chkInstaHeading" type="checkbox" checked>
+                        <label for="toggleButton" class="tgl_slider"></label>
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Show User Details</label>
+        <div class="fCol TxAl-r">
+            <span class="toggle_btn">
+                <input type="checkbox" id="chkUsrDetails" name="toggleButton">
+                <label for="toggleButton" class="tgl_slider"></label>
+            </span>
+        </div>
+    </div>
+    <div class="field-row divProfileImage">
+        <div id="profImgHeight"></div>
+        <div id="profImgWidth"></div>
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Fit Image</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="profImgFittoCover" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

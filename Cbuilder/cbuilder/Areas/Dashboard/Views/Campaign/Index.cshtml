@@ -1,0 +1,23 @@
+﻿@inject Cbuilder.Core.Permissions.IPermission _permission;
+@{
+    var localLabel = ViewBag.LocalLabel;
+    ViewData["Title"] = localLabel.Title;
+}
+
+<div class="divListing">
+    @await Html.PartialAsync("List.cshtml")
+</div>
+
+
+
+
+@section Scripts{
+
+    <script type="text/javascript">
+        var CurrentHostURL = SageFrameHostURL;
+        $(function () {
+            $(this).SocialCampaignManage({
+                localLabel: @Html.Raw(ViewBag.LocalLabel)
+            });
+        });</script>
+}

@@ -1,0 +1,257 @@
+﻿
+@{
+    var localLabel = ViewBag.LocalLabel;
+    ViewData["Title"] = localLabel.Title;
+}
+
+@await Component.InvokeAsync("MediaManagement")
+<nav class="breadcrumb campaign-wizard">
+    <ul>
+        <li class="breadcrumb-item step-1 active"><a href="javascript:void(0)">@localLabel.BreadCrumb.Create </a></li>
+        <li class="breadcrumb-item step-2 disabled"><a href="javascript:void(0)">@localLabel.BreadCrumb.Compose</a></li>
+        <li class="breadcrumb-item step-3 disabled"><a href="javascript:void(0)"> @localLabel.BreadCrumb.Customize</a></li>
+        <li class="breadcrumb-item step-4 disabled" style="display:none;"><a href="javascript:void(0)">@localLabel.BreadCrumb.Publish</a></li>
+        <li class="breadcrumb-item step-5 disabled"><a href="javascript:void(0)">@localLabel.BreadCrumb.End</a></li>
+        <li class="breadcrumb-item " disabled><a href="#"></a></li>
+    </ul>
+</nav>
+<div class="campaign-wizardbody Mt-65">
+
+    <div class="sfFormwrapper">
+
+        <form id="form1">
+            <div class=" animate" id="divCampaignTypeWrapper" style="display: none">
+                <div class="is-medium">
+                    <div class="page-title d-block sm-d-flex">
+                        <div class="h2 fw-400 Mb-25">
+                            @localLabel.ChooseType
+                        </div>
+                        <div class="sfButtonwrapper Mt-0">
+
+                            <a asp-action="Index" class="btn  light round">Back</a>
+
+
+                        </div>
+                    </div>
+                    <div id="divCampaignType" class=" campaignList sfRow">
+                    </div>
+                </div>
+            </div>
+            <div class="sfGridwrapper animate" id="divCampaignTitleWrapper" style="display: none">
+                <div class="is-medium">
+                    <div class="h2 fw-400 Mb-25">
+                        @localLabel.CreateCampaign
+                    </div>
+                    <div id="divCampaignCampaignTitle">
+                        <div class="sfFormwrapper ">
+
+                            <div class="sfFieldset">
+                                @*<div class="formkey">
+                                        <label>@localLabel.CampaignTitle</label>
+                                    </div>*@
+                                <div class="formvalue">
+                                    <input id="txtCampaignTitle" type="text" name="campaignTitle" class="sfFormline" placeholder="@localLabel.CampaignTitlePlaceholder" />
+                                </div>
+                            </div>
+
+                            <div class="sfFieldset">
+
+                                <div class="formValue">
+                                    <button type="button" id="btnAddCampaign" class="btn primary round primary-btn">@localLabel.CreateCampaign</button>
+                                    <button type="button" class="btn light round btnCancel">@localLabel.Actions.NotNow</button>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sfGridwrapper animate " id="divCampaignComposeWrapper" style="display: none">
+
+                <div class="form-header-top f-middle Mb-30  Py-15 sfRow is-default ">
+                    <div class=" w-100 f-middle">
+                        <div class="sfCol Pl-0">
+                            <h2 class=" fw-400">
+                                @localLabel.CampaignPost
+                            </h2>
+                        </div>
+                        <div class=" sfCol-auto Pr-0">
+                            <button type="button" id="btnAddCampaignContent" class="btn primary-outline round">@localLabel.Actions.SaveContinue</button>
+                            <button type="button" class="btn btnCancel danger-outline round">@localLabel.Actions.FinishLater</button>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="divCampaignCampaignCompose" class="sfFormwrapper sfRow  is-default">
+                    <div class="sfCol-12">
+                        <div class="block  ">
+                            <div class="sfFormwrapper campaign-post">
+                                <div class="sfFieldset t-center">
+                                    <h4 class="d-none t-centergray-700 fw-300 Mb-25">Choose your social Network</h4>
+                                    <div class="formKey choosemedia">
+                                        <div id="divCampaignApps"></div>
+                                        <input type="text" id="chckError" name="chckError" value="" style="opacity: 0; width: 0px; height: 0px;" />
+                                    </div>
+                                </div>
+                                <div class="card Mb-40">
+                                    <div class="card-body">
+                                        <div class="sfFieldset Mx-N-20 campaign-post-title">
+                                            <div class="flex Px-20 Mb-20">
+                                                <div class="thumb sm round">
+                                                    <img src="~/images/logos/dashboard/Contentder.png" class="img-contain" alt="" />
+                                                </div>
+                                                <div class="formvalue sfCol Pr-0 Mt-0">
+                                                    <textarea id="txtCampaignContent" name="campaignContent" class="sfFormcontrol area post-content" placeholder="@localLabel.Form.ContentPlaceholder"></textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="sfFieldset">
+                                            <div class="thumb postImagePrimary p-relative">
+                                                <img id="postLogo" class="imgPrimary postImage img-contain" src="" alt="">
+                                                <div class="btn sq round dark deleteImage" style="display: none;"><i class="fa fa-trash-o"></i></div>
+                                            </div>
+                                        </div>
+                                        <div class="sfFormGroup sfFieldset">
+                                            <div class="secondaryImageWrapper flex">
+                                                <div class="post-upload-image Pr-15">
+                                                    <div class="browsePostLogo ">
+                                                        <div class="action-wrapper"><span class="media-upload productmedia postImageIcon"><i class="ct-ios-plus-outline"></i> </span></div>
+                                                    </div>
+                                                </div>
+                                                <div class="secondaryImages flex">
+
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfCol-5 Pa-15">
+                        <div class="block sfCol-10">
+                            <div class="filter_wrap sfFormwrapper">
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+            </div>
+
+            <div class="sfGridwrapper animate" id="divCampaignPostWrapper" style="display: none">
+                <div class="form-header-top f-middle Mb-30  Py-15  sfRow is-default">
+                    <div class="sfCol">
+                        <h2 class="fw-400">
+                            @localLabel.CampaignPosts
+                        </h2>
+                    </div>
+                    <div class=" sfCol-auto">
+                        <button type="button" id="btnProcessCampaign" class="btn primary-outline round">@localLabel.Actions.SaveContinue</button>
+                        <button type="button" class="btn btnCancel danger-outline round">@localLabel.Actions.FinishLater</button>
+                    </div>
+
+                </div>
+
+                <div id="divCampaignPost" class="campaignPostList sfRow Mb-40 is-default">
+                </div>
+                <div class=" sfRow">
+                    <div class="sfFormwrapper sfCol-12 is-default">
+                        <div class="sfFieldset Mb-0">
+                            <h5 class="fw-400 Mb-0">When do you want to publish your post?</h5>
+                        </div>
+                        <div class="sfFieldset">
+                            <div class="formKey flex">
+
+                                <div class="sfCol-auto">
+                                    <input id="rbInstant" type="radio" name="schedule" class="input_radio rbSchedule" value="1" checked="checked" />
+                                    <label class="radio_label" for="rbInstant">Instant</label>
+                                </div>
+                                <div class="sfCol-auto">
+                                    <input id="rbCustom" type="radio" name="schedule" class="input_radio rbSchedule" value="0" />
+                                    <label class="radio_label" for="rbCustom">Schedule</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="sfFieldset" id="divScheduleForm" style="display: none">
+                            <div class="formkey">
+                                <label class="sfFormlabel">Schedule On</label>
+                            </div>
+                            <div class="formvalue">
+                                <input type="text" class="sfFormcontrol" id="txtSchedule" name="scheduleOn" />
+                            </div>
+                        </div>
+
+                        <div class="sfFieldset">
+
+                            <div class="formValue">
+                                <button type="button" id="btnPublishCampaignInline" class="btn primary-outline round">@localLabel.Actions.Submit</button>
+                                <button type="button" class="btn btnCancel danger-outline round">@localLabel.Actions.FinishLater</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="sfGridwrapper animate" id="divCampaignPostPublish" style="display: none">
+                <div class="is-small">
+                    <h2 class="fw-400 Mb-25">
+                        Campaign Publish
+                    </h2>
+
+
+                </div>
+            </div>
+
+            <div class="sfGridwrapper animate" id="divCampaignPublsished" style="display: none">
+                <div class="is-small t-center">
+                    <h2 class="fw-400 Mb-25">
+                        @localLabel.CampaignComplete
+                    </h2>
+
+                    <div class="sfFormwrapper card">
+                        <div class="card-body">
+                            <div class="camp-content scheduled">
+                                <p class="camp-content"></p>
+                            </div>
+
+                            <div class="sfFieldse Mb-0t">
+
+                                <div class="formValue">
+                                    <button type="button" class="btn primary-outline round btnCancel">@localLabel.Actions.GotoList</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+</div>
+@section Scripts{
+
+    <script type="text/javascript">
+        var CurrentHostURL = SageFrameHostURL;
+        $(function () {
+            $(this).CreateCampaignManage({
+                localLabel: @Html.Raw(ViewBag.LocalLabel),
+                campaignID: '@Html.Raw(ViewBag.CampaignID)',
+                currentStep: @Html.Raw(ViewBag.CurrentStep)
+            });
+        });</script>
+}

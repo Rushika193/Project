@@ -1,0 +1,53 @@
+﻿
+@model Cbuilder.Core.PageAction.IdentiyActionBind
+
+
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">Action Identity Management</div>       
+    </div>
+</section>
+
+<div class="sfContainer">
+    <div class="sfRow">
+        <div class="sfCol_100 tsfCol_100 msfCol_100 ">            
+            <div class="sfCard sfFormwrapper">
+                <form asp-action="ManageIdentity" method="post">
+                    @Html.AntiForgeryToken()
+                    <input type="hidden" asp-for="@Model.PageAction.PageActionID" />        
+                    <input type="hidden" asp-for="@Model.PageAction.SelectedIdentity" class="form-control" />
+                    <!--Application Areas-->
+                    <div class="sfFieldset" id="actionList">
+                        <div class="sfFormkey">
+                            <label class="sfFormlabel">Identiy Action</label>
+                        </div>
+                        <div class="sfFormvalue">
+                            <div class="accActions accContents">
+                                @foreach (var actions in Model.IdentiyActionList)
+                                {
+                                    <div class="ds-grd-chk custom-control custom-checkbox">
+                                        @if (!string.IsNullOrEmpty(Model.PageAction.SelectedIdentity) && Model.PageAction.SelectedIdentity.Contains(actions.ScopeID.ToString()))
+                                        {
+                                            <input class="gdchkbx sfCheckbox identityAction" type="checkbox" id="customCheck_@actions.ScopeID" checked="checked" name="SelectedIdentity" value="@actions.ScopeID">
+                                        }
+                                        else
+                                        {
+                                            <input class="gdchkbx sfCheckbox identityAction" type="checkbox" id="customCheck_@actions.ScopeID" name="SelectedIdentity" value="@actions.ScopeID">
+
+                                        }
+                                        <label class="sfCheckboxlabel" for="customCheck_@actions.">@actions.ScopeName</label>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfButtonwrapper">
+                        <input type="submit" class="btn primary round"  />
+                        <a asp-action="ManageAction" class="btn light round">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -1,0 +1,125 @@
+﻿<div class="sliderWrapper">
+    <div class="field-row">
+        <div class="field-row stElWrap col50-50" style="display:none;">
+            <label class="fCol">Auto Adjust to screen</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="heightAdjustCarousel" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Items per view</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="slcSliderItemsPerView">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Total Items</label>
+            <div class="fCol TxAl-r">
+                <span class="manualNumCounter"></span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Show Heading</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="showSliderHeading" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Navigational Arrows</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="showNavigationalArrows" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Pagination Dots</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="showSliderDots" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Auto Slide</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="sliderAutoSlide" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+
+        <!--carouselHeightSlider,carouselHeightHandle-->
+        <div class="field-row stElWrap col100" id="heightadjust">
+            <div class="range__slider fCol">
+                <div id="logoSliderHeightSlider">
+                    <div id="logoSliderHeightHandle" class="ui-slider-handle" title="Slider Height">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col100" id="heightadjust">
+            <div class="range__slider fCol">
+                <div id="logoSliderItemHeightSlider">
+                    <div id="logoSliderItemHeightHandle" class="ui-slider-handle" title="Item Height">0</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Transition</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="slcSliderAnimation" aria-invalid="false" class="valid">
+                        <option value="fade">Fade</option>
+                        <option value="slide">Slide</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="field-row">
+        <h4 id="SliderGutterSpaceWrap" data-times="5">Gutter Spacing</h4>
+        <!--<div id="sliderHvrGutterSpace" class="field-row" data-slidemin="0" data-slidemax="40">
+            <label>Horizontal</label>
+            <span class="value">
+                <div id="sliderHorGutterSpaceSlider">
+                    <div id="sliderHorGutterSpaceHandle" class="ui-slider-handle">0</div>
+                </div>
+            </span>
+        </div>-->
+        <div class="field-row stElWrap col100" id="sliderHvrGutterSpace" data-slidemin="0" data-slidemax="40">
+            <div class="range__slider fCol">
+                <div id="sliderHorGutterSpaceSlider">
+                    <div id="sliderHorGutterSpaceHandle" class="ui-slider-handle" title="Horizontal">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

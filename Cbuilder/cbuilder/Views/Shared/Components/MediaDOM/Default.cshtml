@@ -1,0 +1,75 @@
+﻿@model Cbuilder.Core.MediaManagement.ImageDomInfo
+
+@{
+
+    Model.FilePath = Model.FilePath.Replace("\\", "/");
+
+}
+@if (@Model.IsFolder)
+{
+
+    <div class="items noimage" data-path="@Model.FilePath">
+        <div>
+            <div class="frame type-folder" data-type="category">
+                <span><i class="fa fa-folder-open"></i></span>
+                <span class="chkmedia">
+                    <input type="Checkbox" class="checkboximage normalchk">
+                    <label></label>
+                </span>
+                <span class="openSettings fa fa-ellipsis-h" style="display:none;">
+                </span>
+            </div>
+            <span class="openfolder folderName" style="display:inline-block">@Model.FileName</span>
+            <span class="editableFolderName" style="display:none;">
+                <input value="@Model.FileName" type="text" class="txtEditableFolderName" />
+            </span>
+        </div>
+    </div>
+
+
+}
+else if (@Model.IsImageExtension)
+{
+    string imgUrl = ViewBag.HostURL + Model.FilePath;
+
+    <div class="items" data-path="@Model.FilePath">
+        <div data-type="image" class="frame type-img true" data-thubnails="true">
+            <img src="@imgUrl" />
+            <span class="chkmedia">
+                <input type="Checkbox" class="checkboximage normalchk" /><label></label>
+            </span>
+        </div>
+        <span class="openfolder fileName">
+            @Model.FileNameOnly
+        </span>
+        <span class="editableFileName" style="display:none">
+            <input value="@Model.FileNameOnly" type="text" class="txtEditableFileName" data-extension="@Model.FileExtension" />
+        </span>
+    </div>
+
+}
+else if (@Model.IsVideoExtension)
+{
+    string vidType = "video/" + Model.FileExtension;
+    string vidUrl = ViewBag.HostURL + Model.FilePath;
+
+    <div class="items noimage" data-path="@Model.FilePath">
+        <div data-type="video" class="frame type-video">
+            <i class="videoControl fa fa-play-circle-o" title="video player" data-type="video"></i>
+            <video class="videos" width="100">
+                <source src="@vidUrl" type=@vidType />
+                Your browser doesnot support HTML5 video.
+            </video>
+
+            <span class="chkmedia">
+                <input type="Checkbox" class="checkboximage normalchk" /><label></label>
+            </span>
+        </div>
+        <span class="openfolder fileName">
+            @Model.FileNameOnly
+        </span>
+        <span class="editableFileName" style="display:none">
+            <input value="@Model.FileNameOnly" type="text" class="txtEditableFileName" data-extension="@Model.FileExtension" />
+        </span>
+    </div>
+}

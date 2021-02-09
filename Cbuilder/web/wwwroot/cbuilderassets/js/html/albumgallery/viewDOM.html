@@ -1,0 +1,109 @@
+﻿
+<div class="editor-component imgalbumviewDOM  grpStng Dib overflow-hidden options-display-inside fit-image sfCol_100 tsfCol_100 msfCol_100 TxAl-c" data-delay="5000" data-loop data-transition="slide" layout-type="grid" data-page="Home" data-url glry-name="">
+    <div class="SetHdlr">
+        <span class="stng">
+            <i class="cb-stng" title="Settings"></i>
+            <ul class="setDrp no_txt">
+                <li class="com-settings stngHd" data-type="albumgallery">
+                    <span class="text-wrp">Settings</span>
+                    <i class="cb-mxr" title="Settings"></i>
+                </li>
+                <li class="s-style" data-type="albumgallery">
+                    <span class="text-wrp">Style</span>
+                    <i class="cb-stl" title="Styles"></i>
+                </li>
+                <li class="manage-imageAlbum" data-type="albumgallery">
+                    <span class="text-wrp">Manage Album Gallery</span>
+                    <i class="fa fa-pencil-square-o" title="Manage Album Gallery"></i>
+                </li>
+                <li class="change-layout-imageAlbum" data-type="albumgallery">
+                    <span class="text-wrp">Change Album Layout</span>
+                    <i class="cb-chstl" title="Change Album Layout"></i>
+                </li>
+
+                <li class="deletehelper delete_icon">
+                    <i class="cb-del" title="Delete"></i>
+                </li>
+            </ul>
+        </span>
+        <span class="sortComponent"><i class="cb-drg" title="Drag Up and down"></i></span>
+    </div>
+
+
+    <div style="display:none;" class="album-pro-temp">
+
+    </div>
+    <div style="display:none;" class="image-pro-temp">
+
+    </div>
+
+    <!--Album Part-->
+    <div class="albumView-wrp">
+        <div class="albumViewList-wrp selectDataWrapper Dfx flxWrp">
+            <div class="album-item sfCol_20 tsfCol_33 msfCol_50 Pa-15 tPa-10 mPa-10">
+                <a href="" class="lnk-album-item">
+                    <div class="sfCol_100 layout-list">
+                        <div class="albm-lay" style="background: #fff;">
+                            <div class="album-layout layout-thumbs" style="padding: 10px ;grid-gap: 10px;box-sizing: border-box;border: 1px solid rgba(0,0,0,0.095);-webkit-transition:0.3s ease;-moz-transition:0.3s ease;transition:0.3s ease; display: grid; grid-template-rows: repeat(3, minmax(83px, 93px));">
+                                <div class="albumimage" style="grid-row: 1/3;grid-column: 1/4;">
+                                    <img src="/Modules/AlbumGallery/images/landscape.jpg" class="album-img sfCol_100" style="object-fit: cover;max-height: 100%;max-width: 100%;">
+                                </div>
+                                <div class="albumimage">
+                                    <img src="/Modules/AlbumGallery/images/sky.jpg" class="album-img sfCol_100" style="object-fit: cover;max-height: 100%;max-width: 100%;">
+                                </div>
+                                <div class="albumimage">
+                                    <img src="/Modules/AlbumGallery/images/romance.jpg" class="album-img sfCol_100" style="object-fit: cover;max-height: 100%;max-width: 100%;">
+                                </div>
+                                <div class="albumimage">
+                                    <img src="/Modules/AlbumGallery/images/snow.jpg" class="album-img sfCol_100" style="object-fit: cover;max-height: 100%;max-width: 100%;">
+                                </div>
+                            </div>
+                            <div class="albm-nm-ch">
+                                <div class="album-nm-wrp sfCol_100">
+                                    <p class="album-nm Fs-20 tFs-10 mFs-10 Per TxAl-l">Default</p>
+                                </div>                              
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="no-album Dn sfCol_100">
+            <label class="Fs-40" style="width: 100%;  font-weight: 200; color: rgba(0,0,0,.2);  text-align: center;  display: block;  margin-top: 60px;">Nothing to display :(</label>
+        </div>
+    </div>
+    <!--Image Part-->
+    <div class="imageView-wrp" style="position:relative; overflow: hidden; width: 100%; border: none; min-height: 100%;">
+        <div class="for_carousel" style="width: 100%; overflow:hidden;">
+            <ul class="imgViewList-wrp sfCol_100  itemsWrapper Dfx flxWrp" style="top: 0px; left: 0px; height: 100%; list-style: none;">
+                <li class="images-item itemWrapper Pt-10 Pb-10 Pl-10 Pr-10 mPl-10 mPr-10 mPt-10 mPb-10 tPl-10 tPt-10 tPr-10 tPb-10  sfCol_20 tsfCol_33 msfCol_50" style="background-repeat: no-repeat; background-size: cover;">
+                    <div class="images-img-wrp sfCol_100 tsfCol_100  msfCol_100">
+                        <a href="" data-lightbox="" data-title="">
+                            <img src="" class="sfCol_100 images-img" alt="" style="height: 160px;">
+                        </a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+        <!--No images label-->
+        <div class="no-imgs Dn sfCol_100">
+
+        </div>
+
+        <!--Next-prev-->
+        <div class="arrows-wrapper Dn">
+            <span class="prev-btn disable">
+                <i class="fa fa-chevron-left" aria-hidden="true"></i>
+            </span>
+            <span class="next-btn">
+                <i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </span>
+        </div>
+        <!--Pager dot-->
+        <div class="pager-dot Dn" style="position: absolute; width: 100%; text-align: center; padding: 10px; left: 0; bottom: -5px; cursor: pointer;">
+            <span class="dots active-dot" style="display: inline-block; margin: 0px 2px; height: 10px; width: 10px; border-radius: 50%; background-color: rgb(0, 0, 0);"></span>
+            <span class="dots" style="display: inline-block; margin: 0 2px; height: 10px; width: 10px; border-radius: 50%; background-color: rgba(0,0,0,0.6);"></span>
+        </div>
+    </div>
+</div>

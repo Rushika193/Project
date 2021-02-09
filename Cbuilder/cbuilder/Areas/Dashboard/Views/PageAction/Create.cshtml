@@ -1,0 +1,115 @@
+﻿@model Cbuilder.Core.PageAction.PageController
+
+
+<div class="is-small">
+    @{ var action = "";
+        bool isUpdate = false;
+        if (Model == null) { action = "Create"; isUpdate = false; } else { action = "Update"; isUpdate = true; } }
+    <div class="is-small">
+        <h2 class="form-title">@action Page Controller</h2>
+        <div class="sfFormwrapper card ">
+            <div class="card-body Pa-6x">
+
+                <form asp-action="Create" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="sfFieldset Ma-0">
+                        <input asp-for="PageID" class="sfFormcontrol" type="hidden" />
+                        <input asp-for="@isUpdate" id="hdnIsEdit" name="hdnIsEdit" class="sfFormcontrol" type="hidden" />
+                        <input id="hdnPageName" name="hdnPageName" asp-for="PageName" class="sfFormcontrol" type="hidden" />
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="AreaName" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <select disabled="@isUpdate" class="sfFormcontrol" asp-for="AreaName"
+                                    asp-items="@ViewBag.AreaList">
+                                <option value=''>Please select area</option>
+                            </select>
+                            <input type="hidden" asp-for="AreaName" />
+                            <span asp-validation-for="AreaName" class="sfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="PageName" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <select disabled="@isUpdate" class="sfFormcontrol" asp-for="PageName">
+                                <option value="">Please select page</option>
+                            </select>
+                            <input type="hidden" asp-for="PageName" />
+                            <span asp-validation-for="PageName" class="sfError"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="ControllerType" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <select class="sfFormcontrol" asp-for="ControllerType"
+                                    asp-items="@ViewBag.ControllerType">
+                            </select>
+                            <span asp-validation-for="ControllerType" class="sfError"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="DisplayName" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" asp-for="DisplayName" class="sfFormcontrol" />
+                            <span asp-validation-for="DisplayName" class="sfError"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="Description" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <textarea type="text" asp-for="Description" class="sfFormcontrol area" value=""></textarea>
+                            <span asp-validation-for="Description" class="sfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfButtonwrapper">
+                        <input type="submit" value="@action" class="btn primary round Mr-8" />
+                        <a asp-action="Index" class="btn light round">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        $(function () {
+            $('#AreaName').change(function () {
+                var areaVal = $(this).val();
+                var page = $('#PageName');
+                var isEdit = $("#hdnIsEdit").val();
+                if (areaVal != null) {
+                    page.empty();
+                    $.getJSON('@Url.Action("GetRefractionPages")', { areaName: areaVal, isEdit: isEdit},function (pages) {
+                        if (pages != null && !jQuery.isEmptyObject(pages)) {
+                            page.append($('<option/>', {
+                                value: "",
+                                text: "Please select page"
+                            }));
+                            $.each(pages, function (index, pageName) {
+                                page.append($('<option/>', {
+                                    value: pageName.Value,
+                                    text: pageName.Text
+                                }));
+                            });
+                            page.val($("#hdnPageName").val());
+                        };
+                    });
+                }
+            });
+            $('#AreaName').trigger("change");
+        });
+    </script>
+}

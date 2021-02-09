@@ -1,0 +1,20 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - cbuilder</title>
+    @{
+        Cbuilder.Core.CoreHelpers.CoreHelper.RegisterJSVariable(Context);
+    }
+    @await Component.InvokeAsync("Bundle")
+    @Html.Raw(TempData["cssHeader"])
+    @Html.Raw(TempData["jsHeader"])
+    @await Component.InvokeAsync("JSVariables")
+</head>
+<body class="device newskin  @ViewBag.EditorTheme">
+    @RenderBody()
+    @await Component.InvokeAsync("Actionmessage")
+    @Html.Raw(TempData["jsFooter"])
+</body>
+</html>

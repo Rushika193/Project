@@ -1,0 +1,75 @@
+﻿<div class="field-row">
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Apply Setting on</label>
+        <span class="fCol TxAl-r select__box">
+            <select id="widthsize">
+                <option value=".testimonial">Entire Component</option>
+                <option value=".tst-item">Item</option>
+                <option value=".Holder1">Holder 1</option>
+                <option value=".Holder2">Holder 2</option>
+                <option value=".Holder2_signatures">Holder 3</option>
+                <option class="ddlimg" value=".imgwrap">Image</option>
+                <option class="ddlnm" value=".tst-nm-wrp">Name</option>
+                <option class="ddlpos" value=".tst-pos-wrp">Designation</option>
+                <option class="ddlmsg" value=".tst-msg-wrp">Message</option>
+            </select>
+        </span>
+    </div>
+</div>
+<div class="field-row">
+    <div id="selwdthsize"></div>
+</div>
+<div class="field-row imagestng">
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Image Display</label>
+        <div class="fCol TxAl-r">
+            <span class="select__box">
+                <select id="imageDisplay">
+                    <option value="rectangle">Rectangle</option>
+                    <option value="round">Round</option>
+                </select>
+            </span>
+        </div>
+    </div>
+    <div class="rectangleOption" style="display: none;">
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imagesizeSlider">
+                    <div id="imagesizeHandle" class="ui-slider-handle" title="Image Width">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imageHeightSlider">
+                    <div id="imageHeightHandle" class="ui-slider-handle" title="Image Height">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row stElWrap col10-90">
+            <div class="fCol">
+                <span class="fa fa-refresh" id="refresImageWidth" style="cursor: pointer;"></span>
+            </div>
+            <div class="fCol Ml-10"><label>Reset Height</label></div>
+        </div>
+    </div>
+    <div class="roundOption" style="display: none;">
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imageRoundSlider">
+                    <div id="imageRoundHandle" class="ui-slider-handle" title="Round Image Width">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field-row stElWrap col50-50" id="fitimagesettings">
+        <label class="fCol">Fit Image</label>
+        <div class="fCol TxAl-r">
+            <span class="toggle_btn">
+                <input type="checkbox" id="imageFittoCover" name="toggleButton">
+                <label for="toggleButton" class="tgl_slider"></label>
+            </span>
+        </div>
+
+    </div>
+</div>

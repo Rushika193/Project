@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cbuilder.Core.API.Response\Cbuilder.Core.API.csproj" />
+    <ProjectReference Include="..\Cbuilder.SQLHelper\Cbuilder.SQLHelper.csproj" />
+  </ItemGroup>
+
+</Project>

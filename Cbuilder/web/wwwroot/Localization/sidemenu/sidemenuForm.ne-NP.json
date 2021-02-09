@@ -1,0 +1,16 @@
+﻿{
+  "CreateTitle": "मेनू थप्नुहोस्",
+  "UpdateTitle": "मेनू सम्पादन गर्नुहोस्",
+  "LinkTitle": "लिंक शीर्षक",
+  "Area": "एरिया",
+  "Controller": "कन्ट्रोलर",
+  "Action": "एक्शन",
+  "Culture": "कल्चर",
+  "Parent": "प्यारेन्ट",
+  "IconClass": "आइकन क्लास",
+  "Parameters": "प्यारामिटरहरू",
+  "IsParent": "प्यारेन्ट हो",
+  "AddBtnLabel": "सुरक्क्षित गर्नुहोस्",
+  "UpdateBtnLabel": "अद्यावधिक गर्नुहोस्",
+  "BackBtnLabel": "पछाडि जानुहोस्"
+}

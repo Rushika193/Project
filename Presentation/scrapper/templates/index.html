@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% load static %}
+    <title>Scrapper</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+
+    </header>
+    <section>
+
+        <form action="/webscrapper/startscraping" method="post">
+            {% csrf_token %}
+            <label class="button">
+                <p>start scrapping</p>
+                <input type="submit" style="display: none;">
+            </label>
+            
+        </form>       
+        <div class="button">
+            <p>stop scrapping</p>
+          </div>
+    </section>
+    <footer>
+    </footer>
+
+</html>

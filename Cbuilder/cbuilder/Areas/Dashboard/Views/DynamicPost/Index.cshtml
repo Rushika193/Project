@@ -1,0 +1,126 @@
+﻿@await Component.InvokeAsync("MediaManagement")
+<div id="postTypeWrapper">
+    <div id="postTypeListWrapper">
+        <section class="content-header clearfix">
+            <div class="page-title d-block md-d-flex">
+                <div class="h2">Posts</div>
+                <div class="sfButtonwrapper">
+                    <span id="createNewPostType" class="btn  primary-outline round">Create New Post Type</span>
+                </div>
+            </div>
+        </section>
+        <div class="sfDatagrid">
+            <div class="sfDatagrid-header">
+                <div class="dg-col-wp">
+                    <div class="sfCol-12 sfCol-md-4 ml-auto">
+                        <div class="dg-group">
+                            <div class="dg-search-key rounded">
+                                <input type="text" id="typeSearchInput" name="typeSearchInput" class="sfFormcontrol rounded" placeholder="Search here by Post">
+                                <button type="submit" id="btnSearch" class="search"><i class="fa fa-search rounded"></i></button>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="sfDatagrid-title d-none sm-d-block">
+                <div class="dg-col-wp">
+                    <div class="sfCol-12 sfCol-sm-6">Post Type</div>
+
+                    <div class="sfCol-3 sfCol-sm-3 sm-f-center">Status</div>
+                    <div class="sfCol-2 sfCol-sm-3 f-center">Action</div>
+                </div>
+            </div>
+            <div id="postTypeList" class="sfDatagrid-body">
+            </div>
+        </div>
+    </div>
+    <div id="postTypeFormWrapper" style="display: none;">
+        <section class="content-header headertop ">
+            <div class="page-title d-block sm-d-flex">
+                <div class="h2 Mb-0">Posts</div>
+                <div class="sfButtonwrapper Mb-0 ">
+                    <span class="btn primary round" id="gotoList">Go to list</span>
+                </div>
+            </div>
+        </section>
+
+        <div id="postTypeForm " class="sectionWrapper formBuild is-large Mt-25x">
+            <div class="wb-new-post">
+                <div class="sfFieldset Mb-10x">
+                    <div class="formkey">
+                        <label class="sfFormlabel">Post Type</label>
+                    </div>
+                    <div class="formvalue">
+                        <input type="text" id="cmp-name" class="sfFormline" placeholder="Name of Post" />
+                        <span for="Name" class="sfError"></span>
+                    </div>
+                </div>
+                <div class="sfFormwrapper  card whiteWrap">
+                    <div class="card-body Pa-6x">
+                        <div class="sfFieldset">
+                            <div class="formvalue horizontal-list">
+                                <div class="sfCheckbox sfCheckbox-toggle">
+                                    <input type="checkbox" id="cmp-detail" class="form-toggle" value="1">
+                                    <label for="cmp-detail" class="toggle" Detail page></label>
+                                </div>
+                                <span class="sfFormlabel">Detail Page</span>
+                            </div>
+                            <input type="hidden" id="cmp-id" value="0" />
+                            <input type="hidden" id="cmp-key" value="0" />
+                        </div>
+                        <div class="sfFieldset">
+                            <div id="wb-fb-editor" class="clearfix"></div>
+                        </div>
+                        <div id="fbActionButtons">
+                            <div class="sfButtonwrapper">
+                                <a href="#" id="savePostType" class="btn primary round">Save</a>
+                                <a href="#" id="cancelPostType" class="btn light round">Cancel</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div id="postTypeFormViewWrapper" style="display: none;">
+        <div class="content-header headertop">
+            <div class="page-title d-block sm-d-flex">
+                <div id="formPreviewTitle" class="h2 Mb-0">Form Preview</div>
+                <div class="sfButtonwrapper Mb-0">
+                    <span class="btn primary round" id="gotoListView">Go to list</span>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="is-small Mt-16x sm-Mt-24x">
+            <div class="sectionWrapper formView card Mt-25x">
+                <div id="wb-fb-render" class="card-body Pa-25"></div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+
+        $(document).ready(function () {
+            window.dynCmpUserModuleID = 0;//'<%=SageUserModuleID%>';
+            $('#postTypeWrapper').PostType({
+                SageSetting: {
+                    SiteId: 0,
+                    AuthObj: {
+                        PortalID: 0,
+                        UserModuleID: 0,
+                        UserName: ''
+                    }
+                }
+            });
+        });
+    </script>
+}
+

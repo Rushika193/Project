@@ -1,0 +1,12 @@
+﻿@model IEnumerable<Cbuilder.Core.Localization.LanguageMiniInfo>
+@{
+    var controlID = ViewBag.ControlID;
+    var extraClass = ViewBag.ExtraClass;
+}
+
+<select class="sfFormcontrol @extraClass" id="@controlID" name="@controlID">
+    @foreach (var lang in Model)
+    {
+        <option value="@lang.LanguageCode">@lang.LanguageName</option>
+    }
+</select>

@@ -1,0 +1,24 @@
+﻿@model Cbuilder.Core.Localization.CountryLanguage
+
+<form asp-action="SaveLanguage" method="post">
+    <div class="sfButtonwrapper">
+        <div class="sfFieldset">
+            <div class="formkey">
+                <span class="sfFormlabel">Select Country</span>
+            </div>
+            <select asp-for="LanguageName" class="sfFormcontrol" placeholder="Select Language" asp-items="@ViewBag.Languages">
+            </select>
+            <div class="sfFieldset">
+                <input type="hidden" asp-for="LanguageName" class="sfInp" />
+            </div>
+        </div>
+        <div class="sfFieldset">
+            <div class="sfRow Mt-2x">
+                <div class="sfButtonwrapper sfCol-2 sfCol-sm-4">
+                    <input type="submit" class="btn primary round" value="Add" />
+                    <a href="@URLHelper.DashboardURL(Context,"Localization")" class="btn light round">Back</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

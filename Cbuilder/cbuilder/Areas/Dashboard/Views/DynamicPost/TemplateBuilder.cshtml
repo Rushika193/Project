@@ -1,0 +1,198 @@
+﻿@model Cbuilder.Core.DynamicPost.TemplatePost
+
+
+
+<div id="postTemplateBuilder" class="clearfix">
+    <section class="content-header headertop">
+        <div class="page-title">
+            <div class="h2 Mb-0">Post Title</div>
+            <div class="sfButtonwrapper">
+                <span class="btn primary round" id="gotoListView">Go to list</span>
+            </div>
+        </div>
+    </section>
+
+    <div class="sectionWrapper formBuild is-large">
+        <div id="divTemplateForm">
+            <div class="sfFormwrapper ">
+                <span class="sfFieldset">
+                    <span class="formKey ">
+                        <label class="sfFormlabel">Template Name</label>
+                    </span>
+                    <div class="formValue">
+                        <input type="hidden" name="postTypeId" id="postTypeId" value="<%=PostType.PostId%>" />
+                        <input type="text" name="templateName" id="templateName" placeholder="Enter template name" class="sfFormline" />
+                        <span class="inputInfo">Provide a name for your template</span>
+                    </div>
+                </span>
+            </div>
+        </div>
+        <input type="hidden" id="templateId" value="0" />
+        <div id="WebBuilderEditorWrapper" class="WebBuilderEditorWrapper" style="display: none;">
+            <div class="page-title  flex w-100 ">
+                <span class="formKey">
+                    <span class="sfFormlabel template-previewer"><i class="fa fa-eye" style="margin-right: 10px;"></i>Preview</span>
+                </span>
+                <div class="sfButtonwrapper Mt-20">
+                    <a href="#" id="saveTemplate" class="btn primary-outline round">Save</a>
+                    <a href="#" id="cancelTemplate" class="btn danger light round ">Cancel</a>
+                </div>
+            </div>
+            @await Component.InvokeAsync("MiniEditor", new Cbuilder.MiniEditor.Models.MiniEditorParam("TemplateBuilder", "", false, true, "text,button"))
+        </div>
+        <div class="postTemplateSaving" style="display: none;" id="postTemplateSaving">Saving</div>
+
+    </div>
+</div>
+
+@section Scripts {
+    <script type="text/javascript">
+        var postTypeFields = JSON.parse(@Html.Raw(Model.PostTypeFields));
+        var postTypeId = @Model.Post.PostId;
+        var postTypeKey = '@Model.Post.PostKey';
+        var postTypeName =  '@Model.Post.Name';
+        var templateType =  '@Model.TemplateType';
+        var templateId = @Model.Template.TemplateId;
+        var postTemplate = @Html.Raw(Model.PostTemplateObj);
+        var hasDetail = '@Model.Post.HasDetail';
+        var isEdit = @Model.IsEdit;
+        var extendedComps = {};
+        var component = {};
+
+        var webBuilderUserModuleID = 0;
+        var templateBuilderDirty = false;
+        window.addEventListener('beforeunload', function (e) {
+            if (templateBuilderDirty) {
+                e.preventDefault();
+                e.returnValue = '';
+            }
+        });
+        extendedComps = $.extend(extendedComps, component_template);
+        $.each(postTypeFields, function (i, f) {
+            let default_value = f.label;
+            let default_value_render = f.label;
+            switch (f.type) {
+                case 'richtext':
+                    default_value_render = '<div class="documenttext nobreak Lh-20 tLh-24 mLh-24" contenteditable="true" style="font-family:montserrat;">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean posuere, eros quis ullamcorper commodo, est nulla rhoncus velit, in pellentesque metus felis nec justo.</div>';
+                    if (f.value && f.value.length > 0) {
+                        default_value_render = f.value;
+                    }
+                    break;
+                case 'text':
+                case 'textarea':
+                    if (f.value && f.value.trim().length > 0) {
+                        default_value = f.value;
+                        default_value_render = f.value;
+                    }
+                    break;
+                case 'checkbox-group':
+                case 'select':
+                case 'radio-group':
+                    let selected = [];
+                    default_value = JSON.stringify([f.label]);
+                    default_value_render = f.label;
+                    for (let i = 0, j = f.values.length; i < j; i++) {
+                        if (f.values[i].selected) {
+                            selected.push(f.values[i].label);
+                        }
+                    }
+                    if (selected.length > 0) {
+                        default_value = JSON.stringify(selected);
+                        default_value_render = selected.join(', ');
+                    }
+                    break;
+                case 'sageMedia':
+                    default_value = '/Media/bnr1.jpg';
+                    default_value_render = '/Media/bnr1.jpg';
+                    if (f.value) {
+                        try {
+                            let m = JSON.parse(f.value);
+                            if (m.filePath) {
+                                default_value = m.filePath;
+                                default_value_render = m.filePath;
+                            }
+                        } catch (e) {
+                            //
+                        }
+                    }
+                    break;
+                case 'sageUrl':
+                    default_value = '#';
+                    if (f.value) {
+                        default_value = f.value;
+                    }
+                    break;
+                case 'sageIcon':
+                    default_value = 'fa-star';
+                    default_value_render = 'fa-star';
+                    if (f.value) {
+                        default_value = f.value;
+                        default_value_render = f.value;
+                    }
+                    break;
+                case 'sageVideo':
+                    default_value = 'https://www.youtube.com/embed/_YsUWcUvR9c';
+                    default_value_render = 'https://www.youtube.com/embed/_YsUWcUvR9c';
+                    if (f.value) {
+                        try {
+                            let v = JSON.parse(f.value);
+                            if (v.url) {
+                                let ytRegExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+                                let yt = v.url.match(ytRegExp);
+                                if (yt && yt[2].length == 11) {
+                                    let youTubeurl = 'https://www.youtube.com/embed/';
+                                    let ytUrl = youTubeurl + yt[2];
+                                    default_value = ytUrl;
+                                    default_value_render = ytUrl;
+                                }
+                            }
+                        } catch (e) {
+                            //
+                        }
+                    }
+                    break;
+            }
+            let type = f.type;
+            if (f.type == 'text') {
+                type = 'sage_text';
+            }
+            let temp = $.extend(true, {}, component_template[type]);
+            temp.componentname = f.label;
+            temp.category = postTypeName;
+            temp.valuekey = f.name;
+            temp.hidden = false;
+            temp.inherits = type;
+            temp.defaultdata = Handlebars.templates[type]({
+                component_name: f.label,
+                value_key: f.name,
+                default_value: default_value,
+                default_value_render: default_value_render,
+                multiple: (typeof f.multiple !== 'undefined') ? (+f.multiple) : 0
+            }).trim();
+            extendedComps[f.label] = temp;
+        });
+        if (templateType == 'list' && hasDetail.toLowerCase() == "true") {
+            //detail button
+            let dbcmp = 'detail button';
+            let detail_button = $.extend(true, {}, component_template[dbcmp]);
+            detail_button.category = postTypeName;
+            detail_button.hidden = false;
+            extendedComps[dbcmp] = detail_button;
+        }
+        $(document).ready(function () {
+            $('#postTemplateBuilder').TemplateBuilder({
+                templateType: templateType,
+                postTypeId: postTypeId,
+                postTypeKey: postTypeKey,
+                isEdit: isEdit,
+                postTemplate: postTemplate,
+                SageSetting: {
+                    AuthObj: {
+                        UserName: SageFrameUserName
+                    }
+                }
+            });
+        });
+    </script>
+}
+

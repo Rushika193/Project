@@ -1,0 +1,105 @@
+﻿@model IEnumerable<Cbuilder.Core.Role.RoleViewModel>
+@inject Cbuilder.Core.Permissions.IPermission _permission;
+@{
+    Dictionary<string, string> localized = (Dictionary<string, string>)ViewData["localized"];
+}
+
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">@localized["Role Management"]</div>
+        <div class="sfButtonwrapper">
+            @if (_permission.CheckPermission("Create"))
+            {
+                <a href="@URLHelper.DashboardURL(Context,"Role", "Create")" class="btn round primary-outline">@localized["Addnew"]</a>
+
+            }
+            <a href="@URLHelper.DashboardURL(Context,"Role", "RoleRedirect")" class="btn round primary-outline">@localized["Role Redirect"]</a>
+        </div>
+    </div>
+</section>
+
+<div class="sfDatagrid">
+    <div class="sfDatagrid-title d-none sm-d-block">
+        <div class="dg-col-wp">
+            <div class="sfCol-4">@localized["Detail"]</div>
+            <div class="sfCol-3">@localized["Alias Name"]</div>
+            <div class="sfCol-3">@localized["Status"]</div>
+            <div class="sfCol-2 f-center">@localized["Action"]</div>
+        </div>
+    </div>
+    <div class="sfDatagrid-body">
+        @if (Model != null && Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+                <div class="dg-col-wp">
+                    <div class="sfCol-12 sfCol-sm-4">
+                        <div class="dg-group Mb-10 sm-Mb-0">
+                            <span class="ds-grd-tit"> @item.Name</span>
+                        </div>
+                    </div>
+                    <div class="sfCol-12 sfCol-sm-3">
+                        <div class="dg-group Mb-10 sm-Mb-0">
+                            <span class="ds-grd-tit"> @item.AliasName</span>
+                        </div>
+                    </div>
+                    <div class="sfCol-6 sfCol-sm-3">
+                        <div class="dg-group">
+                            @if (@item.IsActive)
+                            {
+                                <span class="pills pills-success rounded">Active</span>
+                            }
+                            else
+                            {
+                                <span class="pills pills-danger rounded">Inactive</span>
+
+                            }
+                        </div>
+                    </div>
+                    <div class="sfCol-6  sfCol-sm-2 f-end sm-f-center">
+                        <div class="dg-group-inline">
+                            @if (!@item.IsSystem)
+                            {
+                                <div class="action-menu">
+                                    <span class="action-icon">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </span>
+                                    <ul class="action-open">
+
+                                        <li>
+                                            <a href="@URLHelper.DashboardURL(Context,"Role", "Edit")?id=@item.ID" class="links"><i class="fa fa fa-edit"></i>@localized["Edit"]</a>
+                                        </li>
+                                        <li>
+                                            <a asp-action="Delete" asp-route-id="@item.ID" onclick="return ConfirmDialog(this,'Confirmation','Are you sure you want to delete this')" class="links"><i class='fa fa-trash'></i>@localized["Delete"]</a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+                            }
+                            else if (@item.IsSystem && @item.CanEdit)
+                            {
+                                <div class="action-menu">
+                                    <span class="action-icon">
+                                        <i class="fa fa-ellipsis-h"></i>
+                                    </span>
+                                    <ul class="action-open">
+                                        <li>
+                                            <a href="@URLHelper.DashboardURL(Context,"Role", "Edit")?id=@item.ID" class="links"><i class="fa fa fa-edit"></i>@localized["Edit"]</a>
+                                        </li>                                        
+                                    </ul>
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="dg-nodata">
+                @localized["No Data"]
+            </div>
+        }
+    </div>
+
+</div>

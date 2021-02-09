@@ -1,0 +1,53 @@
+﻿
+<div class="managePDF">
+    <div class="media-search-model cRow" style="display:flex;width:100%;background-color: #e6e8ec;padding: 8px;align-items: center;">
+        <div class="divbtnPdf" style="margin-left:auto">
+            <span class="btnAddPdfs sfBtn btn-ui green-btn  cur-p" style="display: inline-block;text-decoration: none;font-size: 12px !important;line-height: 33px;border-radius: 30px;padding: 0 20px;transition: all .4s ease;margin-left: 10px !important;border: none !important;font-weight: 600 !important;cursor: pointer;height: 31px;text-transform: none !important;">Add New PDF</span>
+        </div>
+        </div>
+
+        <!--<div class="no-pdfs-lbl Dn cRow ">
+            <label class="Fs-40" style="width: 100%;  font-weight: 200; color: rgba(0,0,0,.2);  text-align: center;  display: block;  margin-top: 60px;">Nothing to display :(</label>
+        </div>-->
+        <div class="pdf-list-wrp cRow sfCol_100" id="pdf-list">
+            <div class="pdf-item-wrp draggable Pa-10 tPa-10 mPa-10 sfCol_20 tsfCol_33 msfCol_50" pdf-path="/ComponentImage/pdf reader/Demo.pdf" style="">
+                <div class="pdf-img-wrp sfCol_100 tsfCol_100  msfCol_100" style="position:relative; height:100%;cursor:move;">
+                    <div class="media-search-model cur-p Dn" style="display:flex;width:100%;background:rgba(0,0,0,4); position:absolute; bottom:0;left:0;height:30px; opacity: 0.5;">
+                        <div class="pdf-name-wrp">
+                            <span class="pdf-name" style="color:#000000;">Demo.pdf</span>
+                        </div>
+                        <span class="deletePDF" style="position:absolute;right:0;bottom:0; text-align:Center;height:30px;width:30px;">
+                            <i class="fa fa-trash-o" aria-hidden="true" style="color:white;line-height:30px;"></i>
+                        </span>                       
+                    </div>
+                    <img src="/ComponentImage/pdf reader/adobe-pdf.jpg" class="pdf-img sfCol_100 H-126" alt="" style="object-fit:cover;">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+<style>
+    .fullpagepopupWrapper {
+        background-color: rgba(37,43,52,0.94);
+        box-shadow: rgba(0,0,0,0.4) 0 0 15px;
+        z-index:999;
+    }
+
+        .fullpagepopupWrapper .fullpagepopup .fullpage-popup-model-body {
+            background: #fff;
+            padding: 0 !important;
+        }
+
+    .device .fullpagepopupWrapper .fullpagepopup {
+        margin: 0 auto 0 auto;
+    }
+
+    .fullpage-popup-model-body {
+        padding: 0;
+        display: block;
+    }
+	.fullpagepopup{
+	max-height:85%}
+   
+</style>

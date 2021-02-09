@@ -1,0 +1,106 @@
+﻿<div class="field-row">
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Image Display</label>
+        <div class="fCol TxAl-r">
+            <span class="select__box">
+                <select id="imageDisplay">
+                    <option value="rectangle">Rectangle</option>
+                    <option value="round">Round</option>
+                </select>
+            </span>
+        </div>
+    </div>
+    <div class="rectangleOption" style="display: none;">
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imagesizeSlider">
+                    <div id="imagesizeHandle" class="ui-slider-handle" title="Image Width">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imageHeightSlider">
+                    <div id="imageHeightHandle" class="ui-slider-handle" title="Image Height">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row stElWrap col10-90">
+            <div class="fCol">
+                <span class="fa fa-refresh" id="refresImageWidth" style="cursor: pointer;"></span>
+            </div>
+            <div class="fCol Ml-10"><label>Reset Height</label></div>
+        </div>
+        <div class="field-row stElWrap col100" style="display: none;">
+            <div class="range__slider fCol">
+                <div id="imageRadiusSlider">
+                    <div id="imageRadiusHandle" class="ui-slider-handle" title="Box Radius">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="roundOption" style="display: none;">
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imageRoundSlider">
+                    <div id="imageRoundHandle" class="ui-slider-handle" title="Round Image Width">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field-row stElWrap col50-50" id="fitimagesettings" style="display:none;">
+        <label class="fCol">Fit Image</label>
+        <div class="fCol TxAl-r">
+            <span class="toggle_btn">
+                <input type="checkbox" id="imageFittoCover" name="toggleButton">
+                <label for="toggleButton" class="tgl_slider"></label>
+            </span>
+        </div>
+
+    </div>
+    <div class="field-row stElWrap col50-50" style="display: none;">
+        <label class="fCol">Border Style</label>
+        <div class="fCol TxAl-r">
+            <span class="select__box">
+                <select id="imgBorderStyle">
+                    <option value="none">none</option>
+                    <option value="solid">solid</option>
+                    <option value="dashed">dashed</option>
+                    <option value="dotted">dotted</option>
+                    <option value="double">double</option>
+                </select>
+            </span>
+        </div>
+    </div>
+    <div class="imgborder" style="display: none;">
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imgBorderSlider">
+                    <div id="imgBorderHandle" class="ui-slider-handle" title="Border Width">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-row stElWrap col50-50">
+                <label class="fCol">Border Color</label>
+                <div class="fCol TxAl-r">
+                    <span class="color-picker-holder chooseBGColors selected" id="imgBorderColor"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--<div class="btn-group">
+        <span class="manageImgPos" data-name="left">
+            <i class="fa fa-angle-left Fs-50"></i>
+        </span>
+        <span class="manageImgPos"  data-name="right">
+            <i class="fa fa-angle-right Fs-50"></i>
+        </span>
+        <span class="manageImgPos" data-name="up">
+            <i class="fa fa-angle-up Fs-50"></i>
+        </span>
+        <span class="manageImgPos" data-name="down">
+            <i class="fa fa-angle-down Fs-50"></i>
+        </span>
+    </div>-->
+</div>

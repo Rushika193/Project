@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewData["Title"] = "Google Analytics";
+}
+
+@Html.AntiForgeryToken()
+@model Cbuilder.Core.Constants.SettingKeyValue
+<section class="content-header">
+    <div class="page-title">
+        <div class="h2">Google Analytics</div>
+    </div>
+</section>
+
+<div class="sfFormwrapper">
+    <form action="Index" method="post">
+        <div class="sfFieldset">
+            <div class="formkey">
+                <span class="sfFormlabel">Paste the  Global Site Tag  provided by Google Analytics</span>
+            </div>
+            <div class="formvalue">
+                <textarea class="sfFormcontrol area" asp-for="@Model.Value"></textarea>
+            </div>
+        </div>
+        <div class="sfButtonwrapper">
+            <input type="Submit" value="Submit" class="btn primary round  Mr-8" />
+        </div>
+    </form>
+</div>
+
+
+

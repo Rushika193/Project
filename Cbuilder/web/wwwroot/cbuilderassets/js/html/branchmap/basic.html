@@ -1,0 +1,123 @@
+﻿<div class="field-row stElWrap col30-70">
+    <label class="fCol">API Key</label>
+    <span class="fCol cb_input">
+        <input type="text" id="mapKey" />
+    </span>
+</div>
+
+<div class="field-row stElWrap col30-70">
+    <label class="fCol">Zoom</label>
+    <span class="fCol cb_input">
+        <input type="text" id="zoomLevel" />
+    </span>
+</div>
+<div class="field-row stElWrap col100">
+    <label>Map Center</label>
+</div>
+
+<div class="field-row stElWrap col30-70">
+    <label class="fCol">Latitude:</label>
+    <span class="fCol cb_input">
+        <input type="text" id="centerLat" />
+    </span>
+</div>
+<div class="field-row stElWrap col30-70">
+    <label class="fCol">Longitude:</label>
+    <span class="fCol cb_input">
+        <input type="text" id="centerLng" />
+    </span>
+</div>
+
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Address Per Row</label>
+    <span class="fCol TxAl-r select__box">
+        <select id="slcItemInRow">
+            <option value="sfCol_100">1</option>
+            <option value="sfCol_50">2</option>
+            <option value="sfCol_33">3</option>
+            <option value="sfCol_25">4</option>
+            <option value="sfCol_20">5</option>
+        </select>
+    </span>
+</div>
+
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Map Type:</label>
+    <span class="fCol TxAl-r select__box">
+        <select id="slcMap">
+            <option value="roadmap">Road Map</option>
+            <option value="satellite">Satellite</option>
+            <option value="hybrid">Hybrid</option>
+            <option value="terrain">Terrain</option>
+        </select>
+    </span>
+</div>
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Map Theme:</label>
+    <span class="fCol TxAl-r select__box">
+        <select id="slcTheme">
+            <option value="default">Default</option>
+            <option value="hiding">Hiding</option>
+            <option value="night">Night</option>
+            <option value="retro">Retro</option>
+            <option value="silver">Silver</option>
+        </select>
+    </span>
+</div>
+<div class="field-row stElWrap col100">
+    <label>Show / Hide</label>
+</div>
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Address List</label>
+    <div class="fCol TxAl-r">
+        <span class="toggle_btn">
+            <input type="checkbox" id="tglBrnList">
+            <label for="tglBrnList" class="tgl_slider"></label>
+        </span>
+    </div>
+</div>
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Address Title</label>
+    <div class="fCol TxAl-r">
+        <span class="toggle_btn">
+            <input type="checkbox" id="tglBrnTitle" name="tglElem" data-item=".branch-title">
+            <label for="tglBrnTitle" class="tgl_slider"></label>
+        </span>
+    </div>
+</div>
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Address Details</label>
+    <div class="fCol TxAl-r">
+        <span class="toggle_btn">
+            <input type="checkbox" id="tglBrnDetails" name="tglElem" data-item=".branch-details">
+            <label for="tglBrnDetails" class="tgl_slider"></label>
+        </span>
+    </div>
+</div>
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Info Popup</label>
+    <div class="fCol TxAl-r">
+        <span class="toggle_btn">
+            <input type="checkbox" id="tglInfoWindow" name="tglInfoWindow" />
+            <label for="tglInfoWindow" class="tgl_slider"></label>
+        </span>
+    </div>
+</div>
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Info Title</label>
+    <div class="fCol TxAl-r">
+        <span class="toggle_btn">
+            <input type="checkbox" id="tglInfoTitle" name="tglElem" data-item=".info-dom>.info-title">
+            <label for="tglInfoTitle" class="tgl_slider"></label>
+        </span>
+    </div>
+</div>
+<div class="field-row stElWrap col50-50">
+    <label class="fCol">Info Details</label>
+    <div class="fCol TxAl-r">
+        <span class="toggle_btn">
+            <input type="checkbox" id="tglInfoDetails" name="tglElem" data-item=".info-dom>.info-details">
+            <label for="tglInfoDetails" class="tgl_slider"></label>
+        </span>
+    </div>
+</div>

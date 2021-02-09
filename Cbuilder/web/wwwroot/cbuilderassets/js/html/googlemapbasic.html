@@ -1,0 +1,73 @@
+﻿<div class="field-row">
+    <div class="field-row stElWrap col30-70">
+            <label class="fCol">API Key</label>
+            <span class="fCol cb_input">
+                <input type="text" id="txtMapApiKey" required />
+            </span>
+    </div>
+    <div class="field-row">
+        <div class="field-row stElWrap col30-70">
+            <label class="fCol">Select Type </label>
+            <span class="select__box fCol">
+                <select id="slcMapType">
+                    <option value="place">Place</option>
+                    <option value="view">View</option>
+                </select>
+            </span>
+        </div>
+    </div>
+    <div  class="field-row" id="divPlace">
+        <div class="field-row stElWrap col30-70">
+                <label class="fCol">Street</label>
+                <span class="fCol cb_input">
+                    <input type="text" id="txtMapStreet" />
+                </span>
+        </div>
+        <div class="field-row">
+            <div class="field-row stElWrap col30-70">
+                <label class="fCol">City</label>
+                <span class="fCol cb_input">
+                    <input type="text" id="txtMapCity" />
+                </span>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-row stElWrap col30-70">
+                <label class="fCol">State</label>
+                <span class="fCol cb_input">
+                    <input type="text" id="txtMapState" />
+                </span>
+            </div>
+        </div>
+        <div class="field-row">
+            <div class="field-row stElWrap col30-70">
+                <label class="fCol">Country</label>
+                <span class="fCol cb_input">
+                    <input type="text" id="txtMapCountry" />
+                </span>
+            </div>
+        </div>
+    </div>
+    <div id="divLocation" style="display: none;"  class="field-row">
+        <div class="field-row stElWrap col30-70">
+           
+                <label class="fCol">Latitude</label>
+                <span class="fCol cb_input">
+                    <input type="text" id="txtMapLatitude" />
+                </span>
+         
+        </div>
+        <div class="field-row">
+            <div class="field-row stElWrap col30-70">
+                <label class="fCol">Longitute</label>
+                <span class="fCol cb_input">
+                    <input type="text" id="txtMapLongitude" />
+                </span>
+            </div>
+        </div>
+
+    </div>
+    <div class="sfCol_100 TxAl-r Mt-20">
+        <span class="stngSmallBtn" id="btnGenerateMap">Generate Map</span>
+    </div>
+</div>

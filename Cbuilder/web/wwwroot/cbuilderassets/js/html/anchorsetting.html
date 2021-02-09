@@ -1,0 +1,35 @@
+﻿<div class="anchorSetting">
+    <div class="form-list-group">
+        <div class="field-row stElWrap col20-80">
+            <label class="fCol">Title</label>
+            <div class="fCol TxAl-l text__area">
+                <textarea id="txtAnchorTitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla neque metus, pellentesque sit amet turpis id, tempor dignissim nunc. Duis id consequat ligula, at semper mauris.</textarea>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col20-80">
+            <label class="fCol">Link To</label>
+            <div class="fCol TxAl-l">
+                <div class="radioButtonWrapper linkType field-row stElWrap col33-33-33" id="rbLinkType">
+                    <div class="fCol radioWrp">
+                        <input type="radio" id="rbPages" value="1" name="linkType" class="rbLinkType" checked />
+                        <label for="rbPages">Pages</label>
+                    </div>
+                    <div class="fCol radioWrp">
+                        <input type="radio" id="rbExternal" value="2" name="linkType" class="rbLinkType" />
+                        <label for="rbExternal">External</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row stElWrap col20-80">
+            <label class="fCol"></label>
+            <div class="fCol TxAl-r select__box" id="linkPages">
+                <select id="ddllinkPages"></select>
+            </div>
+            <div class="fCol TxAl-r cb_input" id="linkExternal" style="display: none;">
+                <input type="text" id="txtExternalLink" placeholder="your url" />
+            </div>
+        </div>
+    </div>
+</div>

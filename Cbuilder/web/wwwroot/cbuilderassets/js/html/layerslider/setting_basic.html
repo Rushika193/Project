@@ -1,0 +1,176 @@
+﻿<div class="ls-basic-setting">
+    <div class="field-row">
+        <!--<div class="field-row stElWrap col40-60">
+        <label class="fCol">Container Width</label>
+        <span class="fCol TxAl-r select__box">
+            <select id="lsContainerWidth">
+                <option value="">None</option>
+                <option value="container-small">Small</option>
+                <option value="container-medium">Medium</option>
+                <option value="container-large">Large</option>
+                <option value="container-extralarge">ExtraLarge</option>
+                <option value="container-fluid">Full Width</option>
+            </select>
+        </span>
+    </div>-->
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Full height</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="autoHeightLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100 Dn">
+            <span class="range__slider fCol">
+                <div id="lsSliderHeight">
+                    <div title="Height" id="lsSliderHeightHandle" class="ui-slider-handle">400</div>
+                </div>
+            </span>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Show Arrows</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="arrowsLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50" id="arrowsColorHld">
+            <label class="fCol">Arrows Color</label>
+            <div class="fCol TxAl-r">
+                <span class="color-picker-holder arrowsColorPicker selected" id="arrowsColor"></span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col100" id="arrowMargin">
+            <span class="range__slider fCol">
+                <div id="lsArrowMargin">
+                    <div title="Arrow margin" id="lsArrowMarginHandle" class="ui-slider-handle">20</div>
+                </div>
+            </span>
+        </div>
+
+        <div class="field-row stElWrap col100" id="arrowSize">
+            <span class="range__slider fCol">
+                <div id="lsArrowSize">
+                    <div title="Arrow size" id="lsArrowSizeHandle" class="ui-slider-handle">20</div>
+                </div>
+            </span>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Show Dots</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="buttonsLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <!--<div class="field-row stElWrap col50-50" id="dotsColorHld">
+            <label class="fCol">Dots Color</label>
+            <div class="fCol TxAl-r">
+                <span class="color-picker-holder dotsColorPicker selected" id="dotsColor"></span>
+            </div>
+        </div>-->
+
+        <div id="sliderDotsGeneric"></div>
+
+        <div class="field-row stElWrap col50-50" id="dotsPositionHld">
+            <label class="fCol">Dots position</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="dotsPosition" aria-invalid="false" class="valid">
+                        <option value="ls-dots-inside">Inside</option>
+                        <option value="ls-dots-outside">Outside</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col70-30">
+            <label class="fCol">Animate during slide change</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="waitForLayersLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col70-30">
+            <label class="fCol">Continuous</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="loopLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Transition</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="fadeLS" aria-invalid="false" class="valid">
+                        <option value="1">Fade</option>
+                        <option value="0">Slide</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+        <!--<div class="field-row stElWrap col100" id="fadeDuration">
+        <span class="range__slider fCol">
+            <div id="lsFadeDuration">
+                <div title="Fade Duration" id="lsFadeDurationHandle" class="ui-slider-handle">500</div>
+            </div>
+        </span>
+    </div>-->
+        <div class="field-row stElWrap col50-50" id="fadeDuration">
+            <label class="fCol">Fade duration</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="lsFadeDuration" aria-invalid="false" class="valid">
+                        <option value="500">Fast</option>
+                        <option value="1100">Medium</option>
+                        <option value="2500">Slow</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Auto Play</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="autoplayLS" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100" id="autoplayMsg">
+            <label class="fCol">* Slider will not auto play in editor mode. Please preview the site for auto play.</label>
+        </div>
+
+        <div class="field-row stElWrap col50-50">
+            <label class="fCol">Auto Play Delay</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="autoplayDelayLS">
+                        <option value="3000">3 seconds</option>
+                        <option value="5000">5 seconds</option>
+                        <option value="10000">10 seconds</option>
+                        <option value="15000">15 seconds</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,221 @@
+﻿
+<style>
+    .fullpagepopupWrapper {
+        background-color: rgba(37,43,52,0.94);
+        box-shadow: rgba(0,0,0,0.4) 0 0 15px;
+    }
+
+        .fullpagepopupWrapper .fullpagepopup .fullpage-popup-model-body {
+            background: #fff;
+            padding: 0 !important;
+        }
+
+    .device .fullpagepopupWrapper .fullpagepopup {
+        margin: 0 auto 0 auto;
+    }
+
+    .fullpage-popup-model-body {
+        padding: 0;
+        display: block;
+    }
+
+    .album {
+        position: relative;
+    }
+
+    .albumList {
+        padding: 0 10px;
+    }
+
+    #divAlbum img {
+        border: none !important;
+    }
+
+    #albumList {
+        padding: 0 10px;
+    }
+
+    .openAlbumSettings {
+        height: 20px !important;
+        width: 20px;
+        text-align: center;
+        line-height: 22px;
+        color: rgba(0,0,0,.6);
+        background-color: white;
+        position: absolute;
+        left: 5px;
+        bottom: 5px;
+        box-shadow: rgba(0,0,0,.2) 0 0 18px;
+        transition: all .4s ease;
+        opacity: 0;
+        visibility: hidden;
+        z-index: 9;
+    }
+
+
+    #divAlbum:hover .openAlbumSettings {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .edits {
+        width: 100%;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        line-height: 16px;
+        -webkit-line-clamp: 1;
+        -webkit-box-orient: vertical;
+        position: absolute;
+        top: 0;
+        padding: 0 15px;
+        left: 0;
+        background-color: rgba(0,0,0,.8);
+        color: white;
+        padding: 8px;
+        font-size: 11px;
+        opacity: 0;
+        visibility: hidden;
+        transition: all .4s ease;
+        z-index: 29;
+    }
+
+        .edits .albumName {
+            display: block;
+        }
+
+        .edits .editableAlbumName {
+            background-color: rgba(0,0,0,.8);
+            display: none;
+        }
+
+    .media-search-model {
+        display: flex;
+        width: 100%;
+		padding:15px 8px;
+    }
+
+
+    .divbtnImage {
+        margin-left: auto;
+    }
+
+    .edits {
+    }
+
+    #divAlbum:hover .edits {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .btnAddNewAlbum, .btnBackToAlbumList, .btnAddImages {
+        display: inline-block;
+        text-decoration: none;
+        font-size: 12px !important;
+        line-height: 33px;
+        border-radius: 30px;
+        padding: 0 20px;
+        transition: all .4s ease;
+        margin-left: 10px !important;
+        border: none !important;
+        font-weight: 600 !important;
+        cursor: pointer;
+        height: 31px;
+        text-transform: none !important;
+    }
+.select__box select{
+	background-image:url(../Administrator/Templates/Default/images/select-box-arrow.png) !important ;
+	background-repeat:no-repeat;
+    background-position: 99% 50%;
+	}
+    .media-search-model .btnaddalbum {
+        margin-left: auto;
+        margin-right: 10px;
+    }
+
+    .nolblmImg:after {
+        content: 'Nothing to display :(';
+        width: 100%;
+        font-weight: 200;
+        color: rgba(0,0,0,.2);
+        font-size: 54px;
+        text-align: center;
+        display: block;
+        margin-top: 60px;
+    }
+
+    .ulImage, .imageList, .nolblmImg {
+        width: 100%;
+    }
+</style>
+
+<div class="albumPart Dfx flxWrp cRow">
+    <div class="media-search-model">
+       
+
+        <div class="field-row glrynm  Pl-20 Pr-20  sfCol_50">
+            <div class="glrynm-wrp">
+                <label class="Dib Pr-15 Pb-10 " style="font-size: 15px;color: rgb(85, 85, 85);;">Gallery Name</label>
+                <span class="cb_input Dib ">
+                    <input class="input glry-nm" placeholder="Enter Desired Gallery Name." type="text" value="" style="font-size: 16px; border: 1px solid rgb(204, 204, 204); background-color: rgb(255, 255, 255); color: rgb(85, 85, 85);">
+                </span>
+            </div>
+        </div>
+		 <div class="field-row glryslc Pl-20 Pr-20 sfCol_50 Dn">
+                <div class="field-row  ">
+                    <label class="Dib Pr-15 Pb-10 " style="font-size: 15px;color: rgb(85, 85, 85);">Choose Gallery</label>
+                    <span class="fCol TxAl-r select__box">
+                        <select id="slcprevglry" style="border:1px solid rgb(204, 204, 204);font-size: 16px;background-color: rgb(255, 255, 255);color: rgb(85, 85, 85);">
+                        
+                        </select>
+                    </span>
+                </div>
+            </div>
+      <div class="field-row  glrychk  Pl-20 Pr-20">
+            <label class="fCol Mb-10  Pr-15 Pb-5 Db" style="font-size: 15px;color: rgb(85, 85, 85);">Use Previous</label>
+            <div class="fCol TxAl-l Db">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="chk-prev-glry" name="toggleButtonHdng">
+                    <label for="toggleButtonHdng" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+           
+      
+        <div class="divbtnAlbum  btnaddalbum Pt-15">
+            <span class="btnAddNewAlbum btn-ui green-btn  cur-p ">Add New Album</span>
+            <!--<span id="SaveWeb" class="btn-ui green-btn">Save</span>-->
+
+        </div>
+    </div>
+    <div class="albumList cRow sfCol_100">
+        <!--Album List Goes Here-->
+    </div>
+</div>
+
+
+<div class="imagePart Dfx flxWrp cRow" style="display:none;">
+    <div class="media-search-model">
+        <!--<div class="albm-lbl-img">
+            <label class="Fs-40  TxAl-l" style="width: 100%;  font-weight: 200; color: rgba(0,0,0,.2);  display: block;  margin-top: 60px;">Hello</label>
+        </div>-->
+   
+        <div class="divbtnImage ">
+            <span class="btnAddImages sfBtn btn-ui green-btn  cur-p ">Add New Image</span>
+            <span class="btnBackToAlbumList btn-ui red-btn cur-p">Get Back To Album</span>
+        </div>
+    </div>
+
+
+
+
+    <div album-id class="imageList  cRow">
+
+        <div class="ulImage  cRow">
+            <!--Image List Goes Here-->
+        </div>
+
+    </div>
+</div>
+
+

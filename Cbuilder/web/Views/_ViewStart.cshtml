@@ -1,0 +1,10 @@
+﻿@using Cbuilder.Core.Constants
+@{
+
+    string layoutname = CbuilderLayout.Default;
+    if (this.Context.Items[HttpContextKey.layoutName] != null)
+    {
+        layoutname = this.Context.Items[HttpContextKey.layoutName].ToString();
+    }
+    Layout = layoutname;
+}

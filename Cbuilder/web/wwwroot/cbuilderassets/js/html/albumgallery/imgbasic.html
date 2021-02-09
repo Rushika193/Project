@@ -1,0 +1,60 @@
+﻿<div class="field-row">
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Image Display</label>
+        <div class="fCol TxAl-r">
+            <span class="select__box">
+                <select id="imageDisplay">
+                    <option value="rectangle">Rectangle</option>
+                    <option value="round">Round</option>
+                </select>
+            </span>
+        </div>
+    </div>
+    <div class="rectangleOption" style="display: none;">
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imagesizeSlider">
+                    <div id="imagesizeHandle" class="ui-slider-handle" title="Image Width">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imageHeightSlider">
+                    <div id="imageHeightHandle" class="ui-slider-handle" title="Image Height">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row stElWrap col10-90">
+            <div class="fCol">
+                <span class="fa fa-refresh" id="refresImageWidth"></span>
+            </div>
+            <div class="fCol"><label>Reset Height to 100%</label></div>
+        </div>
+        <div class="field-row stElWrap col100" style="display: none;">
+            <div class="range__slider fCol">
+                <div id="imageRadiusSlider">
+                    <div id="imageRadiusHandle" class="ui-slider-handle" title="Box Radius">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="roundOption" >
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imageRoundSlider">
+                    <div id="imageRoundHandle" class="ui-slider-handle" title="Round Image Width">0</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Fit Image</label>
+        <div class="fCol TxAl-r">
+            <span class="toggle_btn">
+                <input type="checkbox" id="imageFittoCover" name="toggleButton">
+                <label for="toggleButton" class="tgl_slider"></label>
+            </span>
+        </div>
+
+    </div>

@@ -1,0 +1,68 @@
+﻿<html>
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible">
+    <title>@ViewData["Title"] in Cbuilder</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,500;0,600;0,800;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" media="screen" href="/admin/css/docs.css" />
+    <link rel="stylesheet" type="text/css" media="screen" href="/admin/css/dashboard.css" />
+    <link href="~/lib/css/CustomIcon.css" rel="stylesheet" />
+    <link href="~/lib/css/select2.min.css" rel="stylesheet" />
+    <link href="~/lib/css/font-awesome.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/styles/github.min.css">
+    <script src="/lib/js/jquery-3.4.1.min.js"></script>
+    <script src="/lib/js/jquery-ui.min.js"></script>
+    <script src="/lib/js/select2.min.js"></script>
+    <script src="/admin/js/UIComponents.js"></script>
+    <script src="/admin/js/dialog.js"></script>
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.3/highlight.min.js"></script>
+
+</head>
+
+<body>
+    <header class="documentation documentation-navbar">
+        <div class="sfContainer-full">
+            <div class="sfRow">
+                <div class="sfCol-100">
+                    <h1>Cbuilder Services Implementation Help</h1>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="sfContainer-full">
+        <div class="sfRow">
+            <div class="cd_sidebar sfCol-2">
+                <nav class="cd_links">
+                    <span class="cd_links_title">Services</span>
+                    <ul class="nav cd_sidenav">
+                        <li><a href="/document/design">Goto Design</a></li>
+                        <li><a href="/document/code/captchaexample">Captcha</a></li>
+                        <li><a href="/document/code/UploadExample">File Upload </a></li>
+                    </ul>
+                </nav>
+            </div>
+            <div class="sfCol-10 cd_preview Pl-10x Pr-8x Pt-6x">
+                @RenderBody()
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+        $(function () {
+            $('.codeContent').each(function () {
+                var $ths = $(this);
+                var html = $ths.html();
+                $ths.html('<pre><code class=' + $ths.attr('data-lang') + '></code></pre>');
+                $ths.find('code').text(html);
+            });
+            hljs.initHighlightingOnLoad();
+
+        });
+    </script>
+</body>
+
+</html>
+

@@ -1,0 +1,329 @@
+﻿.campaignType .card, .app-data .card {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 500;
+    color: #343a40;
+    box-shadow: 0 0px 10px rgba(0,0,0,0.05);
+    border-radius: 5px;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: 0.3s ease;
+    -webkit-transition: 0.3s ease;
+    -moz-transition: 0.3s ease;
+}
+
+.campaignType .card {
+    min-height: 180px;
+}
+
+.app-data .card {
+    min-height: 250px;
+}
+
+    .campaignType .card:hover, .app-data .card:hover {
+        box-shadow: 0 0 25px rgba(0,0,0,0.085);
+        border: 2px solid #83b53a;
+    }
+
+.campaignType .card:before {
+    font-family: "contentder";
+    align-self: flex-end;
+    font-size: 3rem;
+    width: 100%;
+    color: #5663ff
+}
+
+.campaignType:nth-child(2) .card:before {
+    content: "\53";
+}
+
+.campaignType:first-child .card:before {
+    content: "\7a";
+}
+
+.campaign-title, .app-data .card-title {
+    align-self: flex-start;
+    margin-top: 15px;
+}
+
+.card-icon {
+    font-size: 2.8rem;
+}
+
+    .card-icon .fa-facebook {
+        color: #3b5998;
+    }
+
+    .card-icon .fa-twitter {
+        color: #1DA1F2;
+    }
+
+.campaign-post-title .thumb.round {
+    border-radius: 50%;
+    border: 2px solid #ccc;
+}
+
+.campaign-post .sfFormcontrol {
+    border: none;
+    background: none;
+}
+
+    .campaign-post .sfFormcontrol.area {
+        min-height: 70px;
+        line-height: 1.5;
+        padding: 0;
+    }
+
+.campaign-post-title {
+    border-bottom: 1px solid rgba(0,0,0,0.125);
+}
+
+.postImagePrimary {
+    height: 325px;
+    width: 100%;
+    background: #eee;
+}
+
+.thumb .deleteImage {
+    position: absolute;
+    right: -10px;
+    top: -10px;
+}
+
+    .thumb .deleteImage.btn.sq {
+        height: 25px;
+        width: 25px;
+        line-height: 25px;
+    }
+
+.camp-app {
+    display: inline-block;
+    margin-bottom: 30px;
+}
+
+    .camp-app input[type="checkbox"] {
+        display: none;
+    }
+
+    .camp-app .checkbox-label input + label {
+        width: 160px;
+        height: 160px;
+        display: flex;
+        border: 2px solid transparent;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        margin: 0 35px 0 0;
+        background: #fff;
+        border-radius: 6px;
+        box-shadow: 0 0px 10px rgba(0,0,0,0.05);
+        cursor: pointer;
+        transition: 0.3s ease;
+        -webkit-transition: 0.3s ease;
+        -moz-transition: 0.3s ease;
+    }
+
+    .camp-app input[type="checkbox"] + label:before, .camp-app .form-input + label:before {
+        opacity: 0;
+        visibility: hidden;
+        border-radius: 50%;
+        left: auto;
+        right: -15px;
+        top: -15px;
+        width: 30px;
+        height: 30px;
+        line-height: 30px;
+        background-color: #83b53a;
+    }
+
+    .camp-app input[type="checkbox"]:checked + label {
+        border: 2px solid #83b53a;
+        box-shadow: 0 5px 15px rgba(131,181,58,0.4)
+    }
+
+        .camp-app input[type="checkbox"]:checked + label:before, .camp-app .form-input:checked + label:before {
+            opacity: 1;
+            visibility: visible;
+        }
+
+.camp-app, fa {
+    font-size: 3.15rem;
+}
+
+    .camp-app:first-child .fa {
+        color: #3b5998;
+    }
+
+    .camp-app:nth-child(2) .fa {
+        color: #1DA1F2;
+    }
+
+.campaignPostList .campaignPost:only-child {
+    width: 100%;
+}
+
+.campaignPostList .campaignPost {
+    width: 50%;
+    padding: 0 15px;
+}
+
+
+.platformMeta {
+ max-width: calc(100% - 90px);
+}
+.platformIcons {
+ width: 32px;
+ height: 32px;
+ border-radius: 50%;
+ color: #fff;
+}
+
+.facebook .platformIcons {
+    background:#4267B2;
+}
+
+.twitter .platformIcons {
+    background: #1DA1F2;
+}
+.foriegnProfileIdField  .select{
+    min-width:300px;
+}
+.campaign-post .platform-icon {
+    width: 30px;
+    height: 30px;
+    line-height:30px;
+    border-radius: 50%;
+    display:inline-block;
+    color:#fff;
+    text-align:center;
+
+}
+ .campaign-post .platform-icon.grid-icon {
+  width: auto;
+  height: auto;
+  font-size:0.85rem;
+  text-align:left;
+ }
+.campaign-post .twitter .grid-icon {
+
+ color: #1DA1F2;
+ background: none;
+}
+.campaign-post .facebook .grid-icon {
+ margin-right:8px;
+ color: #4267B2;
+ background: none;
+ font-size:0.85rem;
+}
+ .platform-icon.grid-icon {
+  background: none;
+ }
+.facebook .platform-icon {
+ background: #4267B2
+}
+.twitter .platform-icon {
+    background: #1DA1F2;
+}
+    .twitter .platform-icon .fa-facebook:before {
+        content: "\f099";
+    }
+.campaign-status {
+    border-radius: 25px;
+    font-size: 80%;
+    outline: none;
+    color: #fff;
+    padding: 0.2rem 0.85rem;
+    -webkit-transition: 0.3s ease;
+    transition: 0.3s ease;
+}
+    .campaign-status.Published {
+        background: #83b53a;
+       
+    }
+    .campaign-status.Scheduled {
+        background: #ffc107;
+    }
+.camp-content.scheduled:before {
+    content: "";
+    background-image: url("/images/campaign-schedule.png");
+    width: 298px;
+    height: 159px;
+    display: block;
+    margin: 0 auto 25px;
+}
+.camp-content.scheduled {
+    font-size: 1.25rem;
+    margin: 15px 0;
+    display: block;
+}
+.campaign-detail .sfFieldset .key {
+
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+.campaign-detail .sfFieldset .value {
+    font-weight: 400;
+    color: #212529;
+    padding-left:20px;
+}
+.campaign-post .section{
+    border-radius:5px;
+    border:1px solid #ccc;
+    display:flex;
+}
+.view-table .value {
+    font-size: 2.5rem;
+   
+    color: #343a40;
+   
+}
+.view-table .key {
+    font-size: 0.9rem;
+    
+    color: #6c757d;
+   
+}
+.view-table:not(:last-child) {
+    border-right: 1px solid #ccc;
+}
+.counters .value{
+    float:right;
+}
+.impression-types:first-child{
+    order:2;
+}
+@media (max-width:768px){
+ .campaignPostList .campaignPost{
+  width:100%;
+  padding:0;
+  margin-bottom:40px;
+ }
+ .foriegnProfileIdField .select {
+  min-width: 220px;
+ }
+}
+@media (max-width:600px) {
+    .camp-app .checkbox-label input + label {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+.choosemedia input + .sfError {
+    border-color: #D24546;
+    color: #a32728;
+    background: #e18383;
+    border: 1px solid transparent;
+    border-radius: 5px;
+    font-size:1rem;
+    position: fixed;
+    bottom: 0;
+    left: 265px;
+    width: calc(100% - 265px);
+    z-index:1;
+}
+
+.is-open .choosemedia input + .sfError {
+    left: 0;
+    width: 100%;
+}

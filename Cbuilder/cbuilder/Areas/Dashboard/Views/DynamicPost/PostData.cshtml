@@ -1,0 +1,94 @@
+﻿@model Cbuilder.Core.DynamicPost.Post
+<form id="form1">
+    @await Component.InvokeAsync("MediaManagement")
+    <div id="postDataWrapper">
+        <div id="postDataListWrapper">
+            <section class="content-header  ">
+                <div class="page-title d-block sm-d-flex">
+                    <div class="h2 title">Manage Data</div>
+                    <div class="sfButtonwrapper Mb-0">
+                        <span class="btn primary-outline round" id="addPostData">Add Data</span>
+                        <span class="btn primary round" id="gotoPTList">Go to Post Types</span>
+                    </div>
+                </div>
+
+
+            </section>
+            <div class="sfDatagrid">
+                <div class="sfDatagrid-header">
+                    <div class="dg-col-wp">
+                        <div class="sfCol-12 sfCol-lg-4 Mb-20 lg-Mb-0">
+                            <div class="dg-group ">
+                                <div class="dg-search-filter flex f-middle">
+                                    <div class="sfFormkey Pr-20">
+                                        <span class="sfFormlabel" id="postTypeLabel" for="postTypeSelect">Switch Post Type </span>
+                                    </div>
+                                    <div class="sfFormvalue f-fill">
+                                        <select id="postTypeSelect" class="sfFormcontrol rounded"></select>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="sfCol-12 sfCol-lg-4 ml-auto">
+                            <div class="dg-group">
+                                <div class="dg-search-key rounded">
+                                    <input type="text" id="dataSearchInput" name="dataSearchInput" class="sfFormcontrol rounded" placeholder="Search here by data">
+                                    <button type="submit" id="btnSearch" class="search"><i class="fa fa-search rounded"></i></button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-responsive">
+
+                    <table class="table table  data-grid">
+                        <thead>
+                            <tr id="gridDynamicColum">
+                            </tr>
+                        </thead>
+
+                        <tbody id="postDataTable" class="sfDatagrid-body ">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div id="postDataFormWrapper" style="display: none;">
+            <section class="content-header">
+                <div class="page-title">
+                    <h2 class="page-title" id="postDataHead">Post name</h2>
+                    <div class="sfButtonwrapper pull-right mt-0">
+                        <span class="btn primary round" id="gotoList">Go to list</span>
+                    </div>
+                </div>
+            </section>
+            <div class="sectionWrapper formView is-small">
+                <div class="card">
+                    <div class="card-body">
+                        <div id="postDataForm"></div>
+                        <div id="postDataFormBtn" class="sfButtonwrapper Mt-25">
+                            <span class="btn primary round" id="submitPostData">Add</span>
+                            <span class="btn  round light" id="cancelPostData">Cancel</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+@section Scripts {
+    <script type="text/javascript">
+        var currentPostTypeId = @Model.PostId;
+        $(document).ready(function () {
+            window.dynCmpUserModuleID = 0;
+            $('#postDataWrapper').PostData({
+                currentPostTypeId: currentPostTypeId,
+                SageSetting: {
+                }
+            });
+        });
+    </script>
+}

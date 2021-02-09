@@ -1,0 +1,1 @@
+﻿put default template for list/detail here

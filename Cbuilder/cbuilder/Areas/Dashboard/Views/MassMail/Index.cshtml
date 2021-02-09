@@ -1,0 +1,441 @@
+﻿@{
+    ViewData["Title"] = "Email Campaign";
+
+}
+<div id="divMassMailList">
+    <section class="content-header clearfix">
+        <div class="page-title d-block sm-d-flex">
+            <div class="h2">@ViewData["Title"]</div>
+            <div class="sfButtonwrapper">
+                <button type="button" id="btnNewMassMail" class="btn round primary-outline"> Compose</button>
+                <button type="button" id="btnOpenMailStng" class="btn dark-outline round"> Settings</button>
+
+                <button type="button" id="deleteChkd" class="btn light round"> Delete</button>
+            </div>
+        </div>
+    </section>
+    <div class="sfDatagrid">
+        <div class="sfDatagrid-header">
+            <div class="dg-col-wp">
+                <div class="sfCol-6 sfCol-sm-4 Mb-20 sm-Mb-0">
+                    <div class="sfCheckbox">
+                        <input type="checkbox" class="chkAllGrdItem" id="cbAll">
+                        <label for="cbAll">All</label>
+                    </div>
+                </div>
+                <div class="sfCol-6 sfCol-sm-4  Mb-20 sm-Mb-0">
+                    <div class="dg-group dropdown-group">
+                        <div class="list-dropdown">
+                            <span class="dropdown-link">Status <i class="fa fa-chevron-down"></i></span>
+                        </div>
+                        <ul class="list-group ">
+                            <li class=" group-item group-item-link-bg ">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="checkbox2" value="2">
+                                    <label for="checkbox2">Scheduled</label>
+                                </div>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="checkbox1" value="1">
+                                    <label for="checkbox1">Processed</label>
+                                </div>
+                            </li>
+                            <li class=" group-item group-item-link-bg">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="checkbox0" value="0">
+                                    <label for="checkbox0">Dispatchecd</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="sfCol-12 sfCol-sm-4  Mb-20 sm-Mb-0">
+                    <div class="dg-group">
+                        <div class="dg-search-key rounded">
+                            <input type="text" id="txtMassMailTitle" class="sfInputbox rounded" placeholder="Search">
+                            <button type="button" class="search" id="btnSearchMail">
+                                <i class="fa fa-search rounded"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sfDatagrid-title  d-none sm-d-block">
+            <div class="dg-col-wp">
+                <div class="sfCol-6 ">Mail Title</div>
+                <div class="sfCol-3 f-center">Scheduled Type</div>
+                <div class="sfCol-3 f-center">Action</div>
+            </div>
+        </div>
+        <div class="sfDatagrid-body" id="divMailGridBdy">
+        </div>
+    </div>
+</div>
+
+
+<div id="chooseTemplate" style="display: none;">
+    <section class="content-header">
+        <div class="page-title">
+            <div class="h2">Select a suitable template.</div>
+            <div class="sfButtonwrapper">
+                <button type="button" id="btnOpenFltr" class="filterIcon btn sq round bg-white"><i class="fa fa-random"></i></button>
+                <button type="button" id="btnBack" class="btn secondary round light">Back</button>
+            </div>
+        </div>
+    </section>
+
+
+    <div class="filter-slide" style="display: none;" id="divTempFltr">
+
+        <div class="filter-search">
+            <div class="searchbox ">
+                <div class="sfFormwrapper">
+                    <div class="sfFieldset flex">
+                        <div class="formvalue  f-fill Mt-0">
+                            <input id="txtTemplateSearch" class="sfFormcontrol" placeholder="Template Name" type="text">
+                        </div>
+                        <div class=" sfButtonwrapper f-a-s-stretch Mt-0 zi-1 Ml-N-5 ">
+                            <button id="btnSearchTemplate" class="btn primary br-r-none Mr-0">
+                                <i class="fa fa-search" aria-hidden="true"></i>
+                            </button>
+                            <button id="btnResetSearch" class=" success-outline btn br-r-none">
+                                <i class="fa fa-refresh" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="filter-search_list">
+            <div class="cat-listing">
+                <ul id="fltrCatListing" class="Mt-30 sfRow Mx-N-20">
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <div class="eTemp-list sfRow">
+    </div>
+    <button type="button" id="btnLoadMore" class="sfBtn primary-btn icon-choose" style="display: none;">Load More</button>
+</div>
+
+<form id="divMailManage" class="sfContainer-full campaigning" style="display: none;">
+    <h2 class="form-title">@ViewData["Title"]</h2>
+    <div class="sfRow">
+        <div class="sfCol-8">
+            <div class="sfFormwrapper card">
+                <div class="card-body Pa-6x">
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label class="sfFormlabel">Subject</label>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" id="txtSubject" name="subject" class="sfFormcontrol" />
+                        </div>
+                    </div>
+                    <div class="sfFieldset templateChoose">
+                        <div class="formkey">
+                            <label class="sfFormlabel">Body</label>
+                        </div>
+                        <div class="formvalue" style="clear: both">
+                            <div id="divMailTempEditor">
+                                <!-- Email Composer Editor Start  -->
+                                @await Component.InvokeAsync("MailComposer", "/EmailTemplate/")
+                                <!-- Email Composer End   -->
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="sfButtonwrapper">
+                        <button type="button" id="btnPreview" class="btn primary round icon-prev pull-right">Preview</button>
+                        <button type="button" id="btnSaveTempPopup" class="btn success round icon-save pull-right" style="display: none;">Save as Template</button>
+                        <button type="button" id="btnSaveMassMail" class="btn success-outline round">Send</button>
+                        <button type="button" id="btnCancelMassMailManage" class="btn light round ">Cancel</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sfCol-4 Pl-1">
+            <div class="card">
+                <div class="card-body Pa-6x">
+                    <div class="sfFormwrapper">
+                        <div class="recipient-group ">
+                            <div class="recptTitle">
+                                <h6>Mail Recipient Group</h6>
+                            </div>
+                            <div>
+                                <input type="text" id="txtValidateAudience" name="targetAudience" style="width: 0px; height: 0px; opacity: 0;" />
+                            </div>
+                            <div class="sfFieldset custom-filters">
+                                <div class="flex">
+                                    <div class="formKey ">
+                                        <label class="sfFormlabel">Advance Filters</label>
+                                    </div>
+                                    <div class=" sfButtonwrapper ml-auto Mt-0">
+                                        <span class="btn primary-outline round" id="btnAdvanceFilter">Choose</span>
+                                    </div>
+                                </div>
+                                <div class="advance-list">
+                                </div>
+                            </div>
+
+                            <div ID="divFilterValue" class="sfFieldset"></div>
+                        </div>
+                        <div class="sfFieldset">
+                            <div class="formkey">
+                                <label class="sfFormlabel">Individual Recipient(s)</label>
+                            </div>
+                            <div class="formvalue">
+                                <input type="text" id="txtAdditionalUsers" name="additionaluser" class="input_field sfFormcontrol" />
+                            </div>
+                        </div>
+                        <div id="divSelectedUsers" class="selectedUers">
+                        </div>
+
+                        <div class="sfFieldset receipent-interest flex">
+                            <div class="formKey">
+                                <label class="sfFormlabel">Audience By Interest</label>
+                            </div>
+
+                            <span class="btn primary-outline round ml-auto" id="btnSelectInterest"> Interest</span>
+                            <div class="interest-list">
+                            </div>
+                        </div>
+                        <div class="sfFieldset recipient-gender">
+                            <div class="formKey Mb-10">
+                                <label class="sfFormlabel">Audience By Gender</label>
+                            </div>
+                            <div class="formvalue">
+                                <div class="checkbox-label sfCheckbox">
+                                    <input id="cbGndrAll" type="checkbox" value="-1" />
+                                    <label for="cbGndrAll">All</label>
+                                </div>
+                                <div class="checkbox-label sfCheckbox">
+                                    <input id="cbGndrMale" type="checkbox" name="gender" value="0" />
+                                    <label for="cbGndrMale">Male</label>
+                                </div>
+                                <div class="checkbox-label sfCheckbox">
+                                    <input id="cbGndrFemale" type="checkbox" name="gender" value="1" />
+                                    <label for="cbGndrFemale">Female</label>
+                                </div>
+                                <div class="checkbox-label sfCheckbox">
+                                    <input id="cbGndrOthers" type="checkbox" name="gender" value="2" />
+                                    <label for="cbGndrOthers">Others</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sfFieldset usersType">
+                            <div class="formkey">
+                                <input id="rbInstant" type="radio" name="schedule" class="input_radio rbSchedule" value="1" />
+                                <label class="radio_label" for="rbInstant">Instant</label>
+                                <input id="rbCustom" type="radio" name="schedule" class="input_radio rbSchedule" value="2" />
+                                <label class="radio_label" for="rbCustom">Custom</label>
+                            </div>
+                        </div>
+                        <div class="sfFieldset" id="divScheduleForm">
+                            <div class="formkey">
+                                <label class="sfFormlabel">Schedule Date</label>
+                            </div>
+                            <div class="formvalue">
+                                <input type="text" class="filter_field sfFormcontrol" id="txtSchedule" name="scheduleOn" />
+                            </div>
+                        </div>
+                        <div class="sfFieldset" id="timeZone">
+                            <div class="formkey">
+                                <label class="sfFormlabel">Time Zone</label>
+                            </div>
+                            <div class="formvalue">
+                                <select id="ddTimeZone" class="sfFormcontrol">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div id="mailReport" style="display: none;">
+    <section class="content-header clearfix">
+        <div class="page-title d-block sm-d-flex">
+            <div class="h2">Mail Delivery Statistics</div>
+            <div class="sfButtonwrapper dropdown-group p-relative">
+                <button type="button" id="btnReportBack" style="display: inline-block;" class="btn primary-btn icon-back-page">Back</button>
+            </div>
+        </div>
+    </section>
+    <div class="mail-statistics sfRow">
+        <div class="sfCol-12 sfCol-md-12 sfCol-lg-4 Mb-40 card-holder">
+            <div class="card">
+                <div id="divTotalStat" class="Pa-25 md-d-flex h1 lg-f-middle t-center">
+                    <i class="fa fa-users color-primary" aria-hidden="true"></i>
+                    <div class="counts ml-auto Mt-10 sm-Mt-0 h6 fw-400 gray-600">
+                        <div class="counts_values display-4 color-primary">
+                            <span class="counter_amount">10</span>
+                        </div>
+                        Total Audiences
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sfCol-12 sfCol-md-12 sfCol-lg-4 Mb-40 card-holder">
+            <div class="card">
+                <div id="successValues" class=" Pa-25 md-d-flex h1 lg-f-middle t-center">
+                    <div class="counter_value color-success">0%</div>
+                    <div class="counts ml-auto Mt-10 sm-Mt-0 h6 fw-400 gray-600">
+                        <div class="counts_values display-4 color-success">
+                            <div class="counter_amount">0</div>
+                        </div>
+                        <div class="counter_title">Delivery Success</div>
+                        <div class='mail-stats' data-percent=''>
+                            <div class='stat-bar' style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sfCol-12 sfCol-md-12 sfCol-lg-4 Mb-40 card-holder">
+            <div class="card">
+                <div id="failureValues" class=" Pa-25 md-d-flex h1 lg-f-middle t-center">
+                    <div class="counter_value color-danger">0%</div>
+                    <div class="counts ml-auto Mt-10 sm-Mt-0 h6 fw-400 gray-600">
+                        <div class="counts_values display-4 color-danger">
+                            <div class="counter_amount">0</div>
+                        </div>
+                        <div class="counter_title">Delivery Failure</div>
+                        <div class='mail-stats' data-percent=''>
+                            <div class='stat-bar' style="width: 0%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="sfDatagrid">
+        <div class="sfDatagrid-header">
+            <div class="dg-col-wp">
+                <div class="sfCol-sm-4">
+                    <div class="dg-group dropdown-group">
+                        <div class="list-dropdown">
+                            <span class="dropdown-link">Status <i class="fa fa-chevron-down"></i></span>
+                        </div>
+                        <ul class="list-group mailFilter-container">
+                            <li class="group-item group-item-link-bg">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="cbStAll" value="2">
+                                    <label for="checkbox2">All</label>
+                                </div>
+                            </li>
+                            <li class="group-item group-item-link-bg">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="cbSt1" value="1">
+                                    <label for="checkbox2">Delivered</label>
+                                </div>
+                            </li>
+                            <li class=" group-item group-item-link-bg ">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="cbSt0" value="0">
+                                    <label for="checkbox2">Failure</label>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sfDatagrid-title">
+            <div class="dg-col-wp">
+                <div class="sfCol-sm-2">S.N.</div>
+                <div class="sfCol-sm-7">Email</div>
+                <div class="sfCol-sm-3">Status</div>
+            </div>
+        </div>
+        <div id="delFailList" class="divGridBody">
+        </div>
+    </div>
+    <div id="reportPagination" class="sfPagination customized">
+    </div>
+</div>
+
+<div id="divTempInterest" style="display: none;">
+
+    <div class="filter-search">
+        <div class="searchbox flex ">
+            <input id="txtInterestSearch" class="sfFormcontrol" placeholder="eg. sports, nike" type="text">
+            <button id="btnSearchInterest" class="btn primary br-none Mr-0"><i class="fa fa-search"></i></button>
+            <button id="btnResetIntSearch" class="success-outline btn br-none"><i class="fa fa-refresh"></i></button>
+        </div>
+
+    </div>
+    <div class="group-list" id="divGroupManage" style="">
+        <div class="chkInterestsList">
+        </div>
+        <button type="button" id="btnChooseInterest" class="sfBtn smlbtn-succ icon-addnew">Select</button>
+    </div>
+
+</div>
+
+<div class="filter-slide" style="display: none;" id="divAdvanceFilter">
+    <div class="filter-search">
+        <div class="searchbox flex">
+            <div class="formValue">
+                <input id="txtAdvanceSearch" class="sfFormcontrol" placeholder="eg. sports, nike" type="text">
+            </div>
+            <button id="btnSearchAdvance" class="primary btn Mr-0 br-r-none">  <i id="" class="fa fa-search"></i></button>
+            <button id="btnResetAdvSearch" class="success-outline btn br-r-none"><i class="fa fa-refresh"> </i></button>
+        </div>
+    </div>
+    <div class="group-list" id="divAdvanceManage" style="">
+        <div class="filterDataList">
+        </div>
+        <button type="button" id="btnChooseFilter" class="sfBtn smlbtn-succ icon-addnew">Select</button>
+    </div>
+</div>
+
+<div id="divMailGtWayStng" style="display: none" class="filter-slide mass-mail-stng">
+    <div class="mail-stng-form sfFormwrapper">
+        <div class="sfFieldset">
+            <div class="formkey textType">
+                <label class="sfFormlabel">Email Gateway</label>
+            </div>
+            <div class="formValue">
+                <div class="sfCheckbox My-15">
+                    <input type="radio" id="rdoEmlGtWayContentder" class="form-radio rdoEmailGateway" name="rdoEmailGateway" value="contentder" checked>
+                    <label for="rdoEmlGtWayContentder">Contentder</label>
+                </div>
+                <div class="sfCheckbox My-15">
+                    <input type="radio" id="rdoEmlGtWayMandrill" class="form-radio rdoEmailGateway" name="rdoEmailGateway" value="mandrill">
+                    <label for="rdoEmlGtWayMandrill">Mandrill By MailChimp</label>
+                </div>
+            </div>
+        </div>
+        <div class="sfFieldset" style="display: none" id="divMandrilSettings">
+            <div class="formkey textType flex">
+                <label class="sfFormlabel">Mandrill API Key</label>
+                <a target="_blank" class="ml-auto" href="https://mailchimp.com/help/about-api-keys/#find+or+generate+your+api+key"><i class="fa fa-question-circle link-primary"></i> </a>
+            </div>
+            <div class="formvalue">
+                <input type="text" id="txtMandrilAPIKey" name="mandrillApiKey" class="sfFormcontrol" />
+                <label class="sfError d-none">* Required</label>
+            </div>
+            <div></div>
+        </div>
+        <div class="sfButtonwrapper">
+            <button type="button" id="btnSaveEsettings" class="btn success-outline round">Save</button>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+
+    <script type="text/javascript">
+        var CurrentHostURL = SageFrameHostURL;
+        $(function () {
+            $(this).MassMailManage();
+        });
+    </script>
+}

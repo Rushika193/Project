@@ -1,0 +1,165 @@
+<html>
+<head>
+    <title>Data</title>
+    <link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+   
+     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+   .next-prev{
+       position:relative;
+       margin-left:50%;
+   }
+       #form{
+        margin-left:35px;       
+        }
+</style>
+<body>
+
+
+  
+{{html_data|safe}} 
+    
+                 
+    
+<div id="form">
+       <div class="row">
+            <div class="col-md-3">
+                    <input name="gid" value="ccdc521d-2509-4a00-af82-2204895cf428" hidden="">
+                        
+                    <input class="form-control" type="hidden" data-val="true" data-val-required="The ComponentId field is required." id="ComponentId" name="ComponentId" value="26814">
+                    <div class="form-group">
+                        <label class="control-label" for="Name">Name</label><br>
+                            {{index}}                        
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Name" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label" for="Components">Component</label><br>
+                         {%for i in components%} 
+                            {{i}},
+                         {%endfor%}
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Component" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="SiteType">Type</label><br>
+                            {{data_type}}
+                        <span class="text-danger field-validation-valid" data-valmsg-for="SiteType" data-valmsg-replace="true"></span>
+                    </div>
+                                       
+                    <div class="form-group">
+                        <label class="control-label" for="Id">Id</label><br>
+                           {{d_id}}
+                        <span class="text-danger field-validation-valid" data-valmsg-for="id" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label" for="Id">PageType</label><br>
+                        {{pagetype}}
+                        <span class="text-danger field-validation-valid" data-valmsg-for="id" data-valmsg-replace="true"></span>
+                    </div>
+                    
+                    
+
+                    <input hidden="" type="number" data-val="true" data-val-required="The NextId field is required." id="NextId" name="NextId" value="26813">
+                    <input hidden="" type="text" id="Url" name="Url" value="https://easybuilder.contentder.com/webbuilderpreview/440/Pilgrimage">
+                    <input hidden="" type="text" id="ComponentImage" name="ComponentImage" value="/images/440/23.png">
+            </div>
+            
+            <div class="col-md-3">
+                    
+                    
+                    <div class="form-group">
+                        <label class="control-label" for="Image">No. of Images</label><br>
+                        {% for i in count%}  
+                            {{i.image}}
+                        {% endfor %}
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Image" data-valmsg-replace="true"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="control-label" for="BackgroundImage">BackgroundImage</label><br>
+                            {{backgroundImage}}
+                        <span class="text-danger field-validation-valid" data-valmsg-for="BackgroundImage" data-valmsg-replace="true"></span>
+                    </div>
+                        
+                        <div class="form-group">
+                            <label class="control-label" for="Text">No. of Components</label><br>
+                            {{componentCount}}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Text" data-valmsg-replace="true"></span>
+                        </div>
+
+                        <div class="form-group">Listing</label><br>
+                            {{Listing}}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="application" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        
+                        <div class="form-group">
+                            <label class="control-label" for="Id">SiteType</label><br>
+                            {{sitetype}}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="id" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="Icon">Icon</label><br>
+                                {{0}}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Icon" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="Form">Form</label><br>
+                                {{0}}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Form" data-valmsg-replace="true"></span>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="Title">Title</label>
+                            {% for i in count%}<br>  
+                                {{i.heading}}
+                            {% endfor %}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                        </div>
+                        
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                          <b>  <label class="control-label" for="PageUrl">PageUrl</label></b><br>
+                                {{pageurl}}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="pageurl" data-valmsg-replace="true"></span>
+                        </div>
+                            
+
+                        <div class="form-group">
+                            <label class="control-label" for="Description">Description</label><br>
+                            {{Describe}}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="description" data-valmsg-replace="true"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="control-label" for="Remarks">Remarks</label><br>
+                            {{Remarks}}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Remarks" data-valmsg-replace="true"></span>
+                        </div>
+
+                        <div class="form-group">Application</label><br>
+                            {{Application}}
+                            <span class="text-danger field-validation-valid" data-valmsg-for="application" data-valmsg-replace="true"></span>
+                        </div>
+                    </div>
+
+
+
+                </div>
+        </div>
+</div>
+
+<center>
+        <a href="http://127.0.0.1:8000/webscrapper/edit/{{d_id}}"><input type="button" value="Edit" class="btn btn-primary"></a> 
+        <a href="http://127.0.0.1:8000/webscrapper/delete/{{d_id}}"><input type="button" value="Delete" class="btn btn-primary"></a><br>
+</center>
+    
+    
+    
+</body>
+</html>

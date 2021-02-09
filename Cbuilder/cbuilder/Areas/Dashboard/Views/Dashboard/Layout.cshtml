@@ -1,0 +1,133 @@
+﻿@using Newtonsoft.Json;
+@using Newtonsoft.Json.Linq;
+@using Cbuilder.Block.Entities;
+@model PageLayoutViewModel;
+@{
+ 
+    ViewData["Title"] = "Edit Layout";
+
+}
+<div id="divLayoutManager">
+    <div id="divLayoutEditor" class="layout-editor">
+
+        @foreach (var row in Model.Elements)
+        {
+            <div data-id="@row.ID" id="@row.ElementID" data-eletype="@row.EleType" @Html.Raw(row.Attributes)>
+                <ul class="rowStng stng">
+                    <li><span class="sortRow fa fa-sort"></span></li>
+                    <li  class="delComp"><span class="removeRow c-pointer fa fa-trash"></span></li>
+                </ul>
+                @foreach (var col in row.InnerElements)
+                {
+                    <div data-id="@col.ID" id="@col.ElementID" data-eletype="@col.EleType" @Html.Raw(col.Attributes)>
+                        <ul class="colStng stng">
+                            <li><span class="addModule c-pointer tooltip left" data-toggle="tooltip"  data-title="add module"><i class="fa fa-th-large"></i> </span></li>
+                        </ul>
+                        @if (col.HasModules)
+                            @foreach (var comp in col.Modules)
+                            {
+                                <div data-id="@comp.ID" data-moduleid="@comp.ModuleID" data-title="@comp.Title" data-cssclass="@comp.CssClass" data-param="@comp.InvokeParam" class="modules w-100 @comp.CssClass">
+                                    <ul class="compStng stng">
+                                        <li><span class="sortComp fa fa-arrows"></span></li>
+                                        <li><span class="editComp fa fa-pencil-square-o"></span></li>
+                                        <li class="delComp"><span class="removeComp c-pointer fa fa-trash"></span></li>
+                                    </ul>
+                                    @{ JObject param = null;
+                                        @if (!string.IsNullOrEmpty(comp.InvokeParam))
+                                            param = JsonConvert.DeserializeObject<JObject>(comp.InvokeParam);
+                                        if (comp.ModuleType == ModuleType.ViewComponent)
+                                        {
+                                            @await Component.InvokeAsync(comp.InvokeName, param)
+                                        }
+                                        else if(comp.ModuleType == ModuleType.PartialView)
+                                        {
+                                            @await Html.PartialAsync(comp.InvokeName, param)
+                                        }
+
+                                    }
+                                </div>
+                            }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+    <div id="divLayoutSample" style="display:none;">
+        @*<button type="button" class="btn warning pull-right" id="btnCloseLayout"><i class="fa fa-close"></i></button>*@
+        <ul class="selectRow flex f-wrap">
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-12 col" data-eletype="col">100</div></div></li>
+            
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-9 col" data-eletype="col">75</div><div class="sfCol-3 col" data-eletype="col">25</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-6 col" data-eletype="col">50</div><div class="sfCol-6 col" data-eletype="col">50</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-4 col" data-eletype="col">33.33</div><div class="sfCol-4 col" data-eletype="col">33.33</div><div class="sfCol-4 col" data-eletype="col">33.33</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-3 col" data-eletype="col">25</div><div class="sfCol-3 col" data-eletype="col">25</div><div class="sfCol-3 col" data-eletype="col">25</div><div class="sfCol-3 col" data-eletype="col">25</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol col" data-eletype="col">20</div><div class="sfCol col" data-eletype="col">20</div><div class="sfCol col" data-eletype="col">20</div><div class="sfCol col" data-eletype="col">20</div><div class="sfCol col" data-eletype="col">20</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-6 col" data-eletype="col">60</div><div class="sfCol-3 col" data-eletype="col">20</div><div class="sfCol-3 col" data-eletype="col">20</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-6 col" data-eletype="col">50</div><div class="sfCol-3 col" data-eletype="col">25</div><div class="sfCol-3 col" data-eletype="col">25</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-4 col" data-eletype="col">33.33</div><div class="sfCol-5 col" data-eletype="col">33.33</div><div class="sfCol-3 col" data-eletype="col">33.33</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-5 col" data-eletype="col">40</div><div class="sfCol-7 col" data-eletype="col">60</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-3 col" data-eletype="col">25 </div><div class="sfCol-9 col" data-eletype="col">75</div></div></li>
+            <li class="selectData"><div data-eletype="row" class="sfRow"><div class="sfCol-3 col" data-eletype="col">25</div><div class="sfCol-9 col" data-eletype="col">75</div></div></li>
+        </ul>
+    </div>
+    <div class="sfButtonwrapper layoutmanager-button">
+        <div class="layout-saver mx-auto">
+            <button type="button" class="btn success round" id="btnSaveLayout">Save</button>
+            <a asp-action="index" class="btn light round" id="btnLayoutBack">Cancel</a>
+        </div>
+        <button type="button" class="btn primary addrow tooltip left" data-open="0" data-title="Add Row" id="btnAddNewRow"><i class="fa fa-plus "></i></button>
+
+    </div>
+
+</div>
+<div id="divModuleForm" style="display:none;">
+    <div class="sfFormwrapper">
+        <div class="sfFieldset ">
+            <div class="formkey">
+                <span class="sfFormlabel">Select Module</span>
+            </div>
+            <div class="formvalue">
+                <select id="slcModuleList" class="sfFormcontrol">
+                    @foreach (var m in Model.AvailableModules)
+                    {
+                        <option data-invokename="@m.InvokeName" data-moduleid="@m.ModuleID" data-param="@m.InvokeParam">@m.Title</option>
+
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="sfFieldset ">
+            <div class="formkey">
+                <span class="sfFormlabel">Title</span>
+            </div>
+            <div class="formvalue">
+                <input id="txtModuleTitle" type="text" class="sfFormcontrol">
+            </div>
+        </div>
+        <div class="sfFieldset">
+            <div class="formkey">
+                <span class="sfFormlabel">Css Class</span>
+            </div>
+            <div class="formvalue">
+                <input type="text" id="txtModuleCssClass" class="sfFormcontrol">
+            </div>
+        </div>
+        <div id="fldParam" class="sfFieldset" style="display:none;">
+            <div class="formkey">
+                <span class="sfFormlabel">Parameters</span>
+            </div>
+            <div class="sfRow" id="divInvokeParam">
+
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $('#divLayoutManager').ManagePageLayout({
+            pageName: '@ViewData["PageName"]'
+        });
+    </script>
+}
+
+

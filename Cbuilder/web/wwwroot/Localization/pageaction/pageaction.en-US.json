@@ -1,0 +1,9 @@
+{
+  "Title": "Page Controller Management",
+  "Actions": "Actions",
+  "ButtonAction": {
+    "AddNew": "Add New",
+    "ManageArea": "Manage Area",
+    "ManageActions": "Manage Actions"
+  }
+}

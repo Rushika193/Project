@@ -1,0 +1,146 @@
+﻿
+<div class="field-row">
+    <div class="field-row stElWrap divlayout col50-50">
+        <label class="fCol">Choose Layout</label>
+        <span class="fCol TxAl-r select__box">
+            <select id="slcchooselayout">
+                <option value="grid">Grid</option>
+                <option value="masonry">Masonry</option>
+                <option value="carousel">Carousel</option>
+            </select>
+        </span>
+    </div>
+</div>
+
+<div id="imagesperrow"></div>
+
+<div class="field-row imgdivWidth">
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Apply Width On</label>
+        <span class="fCol TxAl-r select__box">
+            <select id="slcwidth">
+                <option value=".imgGalleryDOM">Entire Component</option>
+                <option value=".images-img-wrp">Individual Item</option>
+            </select>
+        </span>
+    </div>
+</div>
+
+<div id="imgsizeslider"></div>
+<div id="respImgHeight" class="field-row stElWrap col100 Dn">
+    <div class="range__slider fCol">
+        <div id="imgHeightSlider">
+            <div id="imgHeightHandle" class="ui-slider-handle" title="Image Height">0</div>
+        </div>
+    </div>
+</div>
+<div class="field-row imgsizestng Dn">
+    <div class="rectangleOption">
+        <!--<div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imagesizeSlider">
+                    <div id="imagesizeHandle" class="ui-slider-handle" title="Image Width">0</div>
+                </div>
+            </div>
+        </div>-->
+        <div class="field-row stElWrap col100">
+            <div class="range__slider fCol">
+                <div id="imageHeightSlider">
+                    <div id="imageHeightHandle" class="ui-slider-handle" title="Image Height">0</div>
+                </div>
+            </div>
+        </div>
+        <div class="field-row stElWrap col10-90">
+            <div class="fCol">
+                <span class="fa fa-refresh" id="refresImageWidth"></span>
+            </div>
+            <div class="fCol"><label>Reset Height to 100%</label></div>
+        </div>
+    </div>
+    <div class="field-row stElWrap col50-50">
+        <label class="fCol">Fit Image</label>
+        <div class="fCol TxAl-r">
+            <span class="toggle_btn">
+                <input type="checkbox" id="imageFittoCover" name="toggleButton">
+                <label for="toggleButton" class="tgl_slider"></label>
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="field-row carouselstng Dn">
+    <div class="field-row">
+        <div class="field-row stElWrap col50-50 hideele">
+            <label class="fCol">Auto Adjust to screen</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="heightAdjustCarousel" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+        <div class="field-row stElWrap col100" id="heightadjust">
+            <span class="range__slider fCol">
+                <div id="carouselHeightSlider">
+                    <div class="ui-slider-handle" id="carouselHeightHandle" title="Height">0</div>
+                </div>
+            </span>
+        </div>
+
+        <div class="field-row stElWrap col50-50 hideele">
+            <label class="fCol">Show Arrow Button</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="showArrowCarousel" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50 hideele">
+            <label class="fCol">Show Dots</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="showDotsCarousel" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50 hideele">
+            <label class="fCol">Transition</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="carouselAnimation" aria-invalid="false" class="valid">
+                        <option value="fade">Fade</option>
+                        <option value="slide">Slide</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50 hideele">
+            <label class="fCol">Auto Slide</label>
+            <div class="fCol TxAl-r">
+                <span class="toggle_btn">
+                    <input type="checkbox" id="AutoSlideCarousel" name="toggleButton">
+                    <label for="toggleButton" class="tgl_slider"></label>
+                </span>
+            </div>
+        </div>
+
+        <div class="field-row stElWrap col50-50 hideele">
+            <label class="fCol">Items per slider</label>
+            <div class="fCol TxAl-r">
+                <span class="select__box">
+                    <select id="itemsperslider">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+    </div>
+</div>

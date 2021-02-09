@@ -1,0 +1,152 @@
+﻿@model bool
+<section class="content-header clearfix">
+    <div class="page-title d-block md-d-flex md-f-top">
+        <div class="">
+            <div class="h2 Mb-15">Language Management</div>
+            <div class="sfFormwrapper">
+                <div class="sfFieldset ">
+                    <div class="formvalue horizontal-list">
+                        <div class="sfCheckbox sfCheckbox-toggle">
+                            <input type="checkbox" checked="@ViewBag.EnableLocalization" id="localizationToggler" class="form-toggle">
+                            <label for="localizationToggler" class="toggle "></label>
+                        </div>
+
+                        @if (ViewBag.EnableLocalization)
+                        {
+                            <span class="sfFormlabel">
+                                Disable Localization
+                            </span>
+                        }
+                        else
+                        {
+                            <span class="sfFormlabel">
+                                Enable Localization
+                            </span>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+        @if (ViewBag.EnableLocalization)
+        {
+            <div class="sfButtonwrapper   dropdown-group p-relative  Mb-20">
+                <div class="list-dropdown btn primary round">
+                    <span class="dropdown-link">Actions <i class="fa fa-chevron-down Ml-10"></i></span>
+                    @*<a asp-action="AddLanguage" asp-controller="Localization" class="btn  primary-outline round">Add New Language</a>
+                        <a asp-action="ImportExport" asp-controller="Localization" class="btn  primary-outline round">Import/export Languages</a>*@
+                </div>
+                <ul class="list-group">
+                    <li class="group-item group-item-link-bg">
+                        <a href="@URLHelper.DashboardURL(Context,"Localization", "AddLanguage")" class="btn  link-secondary">Add New Language</a>
+                    </li>
+                    <li class="group-item group-item-link-bg">
+                        <a href="@URLHelper.DashboardURL(Context,"Localization", "ImportExport")" class="btn  link-secondary">Import/export Languages</a>
+                    </li>
+
+                </ul>
+            </div>
+        }
+    </div>
+
+
+</section>
+
+
+@Html.AntiForgeryToken()
+
+@if (ViewBag.EnableLocalization)
+{
+    <form asp-action="Index" method="post">
+        <div class="sfFormwrapper">
+
+            <div class="sfDatagrid">
+
+                <div class="sfDatagrid-title d-none sm-d-block">
+                    <div class="dg-col-wp">
+                        @*<div class="sfCol-2">ID</div>*@
+                        <div class="sfCol-6">Language</div>
+                        <div class="sfCol-4">Code</div>
+                        <div class="sfCol-2">Action</div>
+                        @*<div class="sfCol-3  f-center">Enable</div>*@
+                    </div>
+                </div>
+                <div class="sfDatagrid-body">
+
+                    @if (ViewBag.AvailableCulture != null)
+                    {
+                        @foreach (var item in ViewBag.AvailableCulture)
+                        {
+                            <div class="dg-col-wp">
+                                @*<div class="sfCol-3 sfCol-sm-3">
+                                        <div class="dg-group Mb-10 sm-Mb-0">
+                                            <span class="ds-grd-tit">
+                                                @item.LanguageID
+                                            </span>
+                                        </div>
+                                    </div>*@
+                                <div class="sfCol-12 sfCol-sm-6">
+                                    <div class="dg-group Mb-10 sm-Mb-0">
+                                        <span class="ds-grd-tit">
+                                            @item.LanguageName
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="sfCol-12 sfCol-sm-4">
+                                    <div class="dg-group Mb-10 sm-Mb-0">
+                                        <span class="ds-grd-tit"> @item.LanguageCode</span>
+                                    </div>
+                                </div>
+                                <div class="sfCol-12  sfCol-sm-2  f-left sm-f-center">
+                                    <div class="dg-group-inline">
+                                        <div class="action-menu">
+                                            <span class="action-icon">
+                                                <i class="fa fa-ellipsis-h"></i>
+                                            </span>
+                                            <ul class="action-open">
+                                                <li>
+                                                    <a asp-controller="Localization" asp-action="Localize" asp-route-LanguageCode="@item.LanguageCode" class="links"><i class="fa fa fa-edit"></i>Localize</a>
+                                                </li>
+                                                @if (ViewBag.DefaultCulture != item.LanguageCode)
+                                                {
+                                                    <li>
+                                                        <a asp-action="Delete" asp-route-id="@item.LanguageID" class="links"><i class='fa fa-trash'></i>Delete</a>
+                                                    </li>
+                                                    <li>
+                                                        <a asp-action="Update" asp-route-LanguageCode="@item.LanguageCode" asp-route-Language="@item.CultureLanguage" class="links"><i class='fa fa-globe'></i>Set Default Language</a>
+                                                    </li>
+                                                }
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    }
+                    else
+                    {
+                        <div class="dg-nodata">
+                            No Data To Display.
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </form>
+}
+else
+{
+    <p>
+        Rather than simply translating text, it’s important that a company’s website is localised.  This means that each page is adapted to the local language and culture of the target market.  The art of website localisation is ensuring that each page makes sense in a linguistic and cultural context for each country.
+    </p>
+}
+
+
+
+@section Scripts{
+    <script type="text/javascript">
+        $(function () {
+            $(this).Language({ enabled: '@ViewBag.EnableLocalization' });
+        });
+    </script>
+}

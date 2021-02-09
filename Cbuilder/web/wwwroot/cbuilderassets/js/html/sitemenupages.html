@@ -1,0 +1,51 @@
+﻿<div id="pageCreateArea" style="display: none;" data-pageid="0">
+    <input type="hidden" id="hdnPageID" value="0" />
+    <div class="field-row stElWrap col40-60">
+        <label class="fCol">Page Name</label>
+        <span class="fCol tTxAl-r cb_input">
+            <input type="text" id="txtPageName" />
+            <span class="sfError" id="pageError"></span>
+        </span>
+
+    </div>
+    <div class="field-row stElWrap col40-60">
+        <label class="fCol">Title</label>
+        <span class="fCol cb_input tTxAl-r">
+            <input class="" type="text" id="txtPageTitle" />
+        </span>
+    </div>
+    <div class="field-row stElWrap col40-60">
+        <label class="fCol">Description</label>
+        <span class="fCol tTxAl-r cb_input">
+            <input type="text" id="txtPageDescription" />
+        </span>
+    </div>
+    <div class="field-row stElWrap col80-20 setting__has--child">
+        <label class="fCol">Clone Page</label>
+        <span class="fCol TxAl-r toggle_btn">
+            <input id="chkClonePage" type="checkbox">
+            <label for="chkClonePage" class="tgl_slider"></label>
+        </span>
+    </div>
+    <div class="field-row clearfix">
+        <div class="clonePageList select__box" style="display:none;">
+            <select id="clonePageList"></select>
+        </div>
+    </div>
+    <div class="field-row clearfix">
+        <div class="field-row stElWrap col100">
+            <span class="cb-btn-green" id="btnSavePage">Save Page</span>
+            <span class="cb-btn-red" id="btnCancelPageAdd">Cancel</span>
+        </div>          
+    </div>
+
+</div>
+<div id="pageListArea">
+    <div id="pageList" class="pageList">
+        <div id="headerMenuList" class="sortable ui-sortable">
+        </div>
+    </div>
+    <div class="field-row stElWrap col100">
+        <span class="stngSmallBtn" id="pageAddPanel">Add Page</span>
+    </div>
+</div>

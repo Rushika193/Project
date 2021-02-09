@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewData["Title"] = "pagination";
+}
+<div class="cd_content">
+    <h1 class="content_title ">Pagination</h1>
+    <p class="content_lead ">
+       In Cbuilder jQuery pagination is used. Below is using example of jQuery pagination. 
+    </p>
+</div>
+<div class="cd_example">
+
+    <div class="preview">
+        <div id="divPagination" class="sfPagination">
+        </div>
+    </div>
+</div>
+<script src="/lib/js/jquery.pagination.js"></script>
+
+<div class="Mt-4x">
+    <div data-lang="lang-javascript" class="codeContent">
+        <div id="divPagination" class="sfPagination"></div>
+    </div>
+</div>
+
+<div class="Mt-4x">
+    <div data-lang="lang-javascript" class="codeContent">
+        <script type="text/javascript">
+            var Example = {
+                config: {
+                    limit: 10,
+                    currentPage: 0
+                },
+                getAllData: function (offset, limit, page) {
+                    var newOffset = limit * page;
+                    this.config.currentPage = page;
+                    this.bindPagination(200);
+                },
+                bindPagination: function (aboutRow) {
+                    var self = this;
+                    if (aboutRow > self.config.limit) {
+                        $('#divPagination').show().pagination(aboutRow, {
+                            items_per_page: self.config.limit,
+                            current_page: self.config.currentPage,
+                            num_edge_entries: 2,
+                            callfunction: true,
+                            function_name: {
+                                name: function (offset, limit, current) {
+                                    self.getAllData(offset, limit, current);
+                                },
+                                limit: self.config.limit
+                            },
+                            //prev_text: '',
+                            //next_text: ''
+                        });
+                    } else {
+                        $('#divPagination').hide();
+                    }
+                }
+            };
+            Example.getAllData(0, Example.limit, 0);
+
+        </script>
+    </div>
+</div>
+

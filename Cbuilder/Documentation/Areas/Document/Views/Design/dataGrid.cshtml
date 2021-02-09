@@ -1,0 +1,513 @@
+﻿
+@{
+    ViewData["Title"] = "Data Grid";
+}
+
+
+
+<div class="cd_content">
+    <h1 class="content_title ">Data Grid</h1>
+    <p class="content_lead ">
+        Data grid or data table for the representation of various information in a grid format with search and other features.
+    </p>
+</div>
+
+<div class="cd_example Mb-10x">
+    <div class="preview">
+        <span class="example_title"> Data Grid</span>
+        <div class="sfDatagrid">
+            <div class="sfDatagrid-header">
+
+                <div class="dg-col-wp">
+                    <div class="sfCol-sm-4">
+                        <div class="dg-group">
+                            <div class="sfCheckbox">
+                                <input type="checkbox" class="chkAllGrdItem" id="checkbox1">
+                                <label for="checkbox1">All</label>
+                            </div>
+                        </div>
+                        <div class="dg-group">
+                            <button type="button" style="display: none" class="btn  danger-outline round btnGroupAction">Delete</button>
+                        </div>
+                    </div>
+                    <div class="sfCol-sm-4">
+                        <div class="dg-group dropdown-group">
+
+                            <div class="list-dropdown">
+                                <span class="dropdown-link">Category <i class="fa fa-chevron-down"></i></span>
+                            </div>
+                            <ul class="list-group ">
+                                <li class=" group-item group-item-link-bg ">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkbox2">
+                                        <label for="checkbox2">All</label>
+                                    </div>
+
+                                </li>
+                                <li class=" group-item group-item-link-bg">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkbox3">
+                                        <label for="checkbox3">Second Item</label>
+                                    </div>
+
+                                </li>
+                                <li class="group-item group-item-link-bg">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkbox4">
+                                        <label for="checkbox4">Third</label>
+                                    </div>
+
+                                </li>
+                                <li class="group-item group-item-link-bg">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkbox5">
+                                        <label for="checkbox5">Last Item</label>
+                                    </div>
+
+                                </li>
+                            </ul>
+
+                        </div>
+                    </div>
+
+                    <div class="sfCol-sm-4">
+                        <div class="dg-group">
+                            <div class="dg-search-key rounded">
+                                <input type="text" class="sfFormcontrol rounded" placeholder="Search">
+                                <button type="button" class="search">
+                                    <i class="fa fa-search rounded"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="sfDatagrid-title">
+
+                <div class="dg-col-wp">
+
+                    <div class="sfCol-sm-7 ">
+                        Detail
+                    </div>
+
+                    <div class="sfCol-sm-2 f-center">
+                        Status
+                    </div>
+                    <div class="sfCol-sm-3 f-center">
+                        Action
+                    </div>
+                </div>
+
+            </div>
+            <div id="divGridBody" class="sfDatagrid-body">
+            </div>
+        </div>
+
+    </div>
+    <figure class="Mt-4x">
+        <div data-lang="lang-html" class="codeContent">
+            <div class="sfDatagrid">
+                <div class="sfDatagrid-header">
+
+                    <div class="dg-col-wp">
+                        <div class="sfCol-sm-4">
+                            <div class="dg-group">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="checkbox1">
+                                    <label for="checkbox1">All</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="sfCol-sm-4">
+                            <div class="dg-group dropdown-group">
+
+                                <div class="list-dropdown">
+                                    <span class="dropdown-link">Category <i class="fa fa-chevron-down"></i></span>
+                                </div>
+                                <ul class="list-group ">
+                                    <li class=" group-item group-item-link-bg ">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkbox2">
+                                            <label for="checkbox2">All</label>
+                                        </div>
+
+                                    </li>
+                                    <li class=" group-item group-item-link-bg">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkbox3">
+                                            <label for="checkbox3">Second Item</label>
+                                        </div>
+
+                                    </li>
+                                    <li class="group-item group-item-link-bg">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkbox4">
+                                            <label for="checkbox4">Third</label>
+                                        </div>
+
+                                    </li>
+                                    <li class="group-item group-item-link-bg">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkbox5">
+                                            <label for="checkbox5">Last Item</label>
+                                        </div>
+
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+
+                        <div class="sfCol-sm-4">
+                            <div class="dg-group">
+                                <div class="dg-search-key rounded">
+                                    <input type="text" class="sfFormcontrol rounded" placeholder="Search">
+                                    <button type="button" class="search">
+                                        <i class="fa fa-search rounded"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sfDatagrid-title">
+
+                    <div class="dg-col-wp">
+
+                        <div class="sfCol-sm-7 ">
+                            Detail
+                        </div>
+
+                        <div class="sfCol-sm-2 f-center">
+                            Status
+                        </div>
+                        <div class="sfCol-sm-3 f-center">
+                            Action
+                        </div>
+                    </div>
+
+                </div>
+                <div id="divGridBody" class="sfDatagrid-body">
+                </div>
+            </div>
+        </div>
+    </figure>
+
+    <figure class="Mt-4x">
+        <span class="example_title">jQuery Code Sample</span>
+        <div data-lang="lang-javascript" class="codeContent">
+            <script type="text/javascript">
+                $(function () {
+                    var html = '';
+                    var data = [1, 2, 3]
+                    $.each(data, function (i, v) {
+                        html += `<div class="dg-col-wp">
+                                                                                                        <div class="sfCol-sm-7">
+                                                                                                            <div class="dg-group-inline checkbox">
+                                                                                                                <div class="sfCheckbox">
+                                                                                                                    <input class="chkGrdItem" type="checkbox" id="chk${v}">
+                                                                                                                    <label for="chk${v}" class="onlylabel"></label>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="dg-group-inline">
+                                                                                                                <div class="dg-group">
+                                                                                                                    <div class="dg-thumb">
+                                                                                                                        <img src="/images/demo.jpeg" alt="">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div class="dg-group-inline">
+                                                                                                                <div class="dg-group">
+                                                                                                                    <div class="dg-title">Mark Anthony${v}</div>
+                                                                                                                </div>
+                                                                                                                <div class="dg-group">
+                                                                                                                    <div class="dg-group-inline">
+                                                                                                                        <span class="grd-key">Address: </span>
+                                                                                                                        <span class="grd-value">Kathmandu${v}</span>
+                                                                                                                    </div>
+                                                                                                                    <div class="dg-group-inline">
+                                                                                                                        <span class="grd-key">Country: </span>
+                                                                                                                        <span class="grd-value">Nepal</span>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                                <div class="dg-group">
+                                                                                                                    <div class="dg-group-inline">
+                                                                                                                        <span class="grd-key">Phone: </span>
+                                                                                                                        <span class="grd-value">981324522${v}</span>
+                                                                                                                    </div>
+                                                                                                                    <div class="dg-group-inline">
+                                                                                                                        <span class="grd-key">Email: </span>
+                                                                                                                        <span class="grd-value">N${v}testing@gmail.com</span>
+                                                                                                                    </div>
+                                                                                                                    <div class="dg-group-inline">
+                                                                                                                        <span class="grd-key">Fax: </span>
+                                                                                                                        <span class="grd-value">0125487${v}</span>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="sfCol-sm-2 f-center">
+                                                                                                            <div class="ds-group">
+                                                                                                                <span class="pills pills-success rounded">active</span>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="sfCol-sm-3 f-center">
+                                                                                                            <div class="dg-group-inline">
+                                                                                                                <div class="action-icon"><i class="fa fa-eye"></i></div>
+                                                                                                            </div>
+                                                                                                            <div class="ds-group-inline">
+                                                                                                                <div class="action-menu">
+                                                                                                                    <div class="action-icon">
+                                                                                                                        <i class="fa fa-ellipsis-h"></i>
+                                                                                                                    </div>
+                                                                                                                    <ul class="action-open">
+                                                                                                                        <li><a class="links" href="#"><i class="fa fa-edit"></i>Edit</a></li>
+                                                                                                                        <li><a class="links" href="#"><i class="fa fa-trash"></i>Delete</a></li>
+                                                                                                                        <li><a class="links" href="#"><i class="fa fa-eye">Detail</i></a></li>
+                                                                                                                    </ul>
+                                                                                                                </div>
+
+                                                                                                            </div>
+                                                                                                        </div>
+</div>`
+                    });
+                    $('#divGridBody').html(html);
+                    gridHelper.bindEvent({
+                        onMenuClick: function ($ele) {
+
+                        },
+                        onItemChecked: function ($chkedItems) {
+                            if ($chkedItems.length > 0)
+                                $('.btnGroupAction').show();
+                            else
+                                $('.btnGroupAction').hide();
+                        }
+                    });
+                });
+
+            </script>
+        </div>
+    </figure>
+</div>
+<div class="cd_example ">
+    <div class="preview">
+        <span class="example_title">Empty Data Grid</span>
+        <div class="sfDatagrid">
+            <div class="sfDatagrid-header">
+
+                <div class="dg-col-wp">
+                    <div class="sfCol-sm-4">
+                        <div class="dg-group">
+                            <div class="sfCheckbox">
+                                <input type="checkbox" id="checkbox1">
+                                <label for="checkbox1">All</label>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="sfCol-sm-4">
+                        <div class="dg-group dropdown-group">
+
+                            <div class="list-dropdown">
+                                <span class="dropdown-link">Category <i class="fa fa-chevron-down"></i></span>
+                            </div>
+                            <ul class="list-group ">
+                                <li class=" group-item group-item-link-bg ">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkboxa">
+                                        <label for="checkboxa">All</label>
+                                    </div>
+
+                                </li>
+                                <li class=" group-item group-item-link-bg">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkboxb">
+                                        <label for="checkboxb">Second Item</label>
+                                    </div>
+
+                                </li>
+                                <li class="group-item group-item-link-bg">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkboxc">
+                                        <label for="checkboxc">Third</label>
+                                    </div>
+
+                                </li>
+                                <li class="group-item group-item-link-bg">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkboxd">
+                                        <label for="checkboxd">Last Item</label>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="sfCol-sm-4">
+                        <div class="dg-group">
+                            <div class="dg-search-key rounded">
+                                <input type="text" class="sfFormcontrol rounded" placeholder="Search">
+                                <button type="button" class="search">
+                                    <i class="fa fa-search rounded"></i>
+                                </button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                </div>
+            </div>
+            <div class="sfDatagrid-title">
+
+                <div class="dg-col-wp">
+
+                    <div class="sfCol-sm-7 ">
+                        Detail
+                    </div>
+
+                    <div class="sfCol-sm-2 f-center">
+                        Status
+                    </div>
+                    <div class="sfCol-sm-3 f-center">
+                        Action
+                    </div>
+                </div>
+
+            </div>
+            <div class="sfDatagrid-body">
+                <div class="dg-col-nodata">
+                    <h5>No Data To Display.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+    <figure>
+        <div data-lang="lang-html" class="codeContent">
+            <div class="sfDatagrid">
+                <div class="sfDatagrid-header">
+
+                    <div class="dg-col-wp">
+                        <div class="sfCol-sm-4">
+                            <div class="dg-group">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="checkbox1">
+                                    <label for="checkbox1">All</label>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="sfCol-sm-4">
+                            <div class="dg-group dropdown-group">
+
+                                <div class="list-dropdown">
+                                    <span class="dropdown-link">Category <i class="fa fa-chevron-down"></i></span>
+                                </div>
+                                <ul class="list-group ">
+                                    <li class=" group-item group-item-link-bg ">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkboxa">
+                                            <label for="checkboxa">All</label>
+                                        </div>
+
+                                    </li>
+                                    <li class=" group-item group-item-link-bg">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkboxb">
+                                            <label for="checkboxb">Second Item</label>
+                                        </div>
+
+                                    </li>
+                                    <li class="group-item group-item-link-bg">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkboxc">
+                                            <label for="checkboxc">Third</label>
+                                        </div>
+
+                                    </li>
+                                    <li class="group-item group-item-link-bg">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkboxd">
+                                            <label for="checkboxd">Last Item</label>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="sfCol-sm-4">
+                            <div class="dg-group">
+                                <div class="dg-search-key rounded">
+                                    <input type="text" class="sfFormcontrol rounded" placeholder="Search">
+                                    <button type="button" class="search">
+                                        <i class="fa fa-search rounded"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sfDatagrid-title">
+
+                    <div class="dg-col-wp">
+
+                        <div class="sfCol-sm-7 ">
+                            Detail
+                        </div>
+
+                        <div class="sfCol-sm-2 f-center">
+                            Status
+                        </div>
+                        <div class="sfCol-sm-3 f-center">
+                            Action
+                        </div>
+                    </div>
+
+                </div>
+                <div class="sfDatagrid-body">
+                    <div class="dg-col-nodata">
+                        <h5>No Data To Display.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </figure>
+</div>
+
+<div class="sfCol-sm-4">
+    <div class="dg-group dropdown-group">
+
+        <div class="list-dropdown">
+            <span class="dropdown-link">Asset Type <i class="fa fa-chevron-down"></i></span>
+        </div>
+        <ul class="list-group ">
+            <li class=" group-item group-item-link-bg ">
+                <div class="sfCheckbox">
+                    <input type="checkbox" id="live">
+                    <label for="live">Live</label>
+                </div>
+            </li>
+            <li class=" group-item group-item-link-bg">
+                <div class="sfCheckbox">
+                    <input type="checkbox" id="local">
+                    <label for="local">Local</label>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

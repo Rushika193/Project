@@ -1,0 +1,56 @@
+﻿@using Cbuilder.Assets
+<div class="sfFormwrapper ">
+    <div class="sfRow">
+        <div class="sfFieldset sfCol-6  Px-15">
+            <div class="formkey">
+                <span class="sfFormlabel">First name</span>
+            </div>
+            @*<div class="formvalue">
+                    <select asp-for="@Model.Value" asp-items="@ViewBag.Categories">
+                        <option>Select one</option>
+                    </select>
+                </div>*@
+
+            <ul class="list-group" id="assetModeList">
+                <li class=" group-item group-item-link-bg ">
+                    <div class="sfCheckbox">
+                        <input type="checkbox" class="selectedApplicationall" name="chkAssetMode" value="0" id="chkBoth">
+                        <label for="chkBoth">All</label>
+                    </div>
+                </li>
+                @foreach (ApplicationNameInfo applicationNameInfo in @ViewBag.Categories)
+                {
+                    <li class=" group-item group-item-link-bg">
+                        <div class="sfCheckbox">
+                            <input type="checkbox" class="selectedApplication" name="chkAssetMode" value="@applicationNameInfo.ApplicationID" id="chkLive_@applicationNameInfo.ApplicationID">
+                            <label for="chkLive_@applicationNameInfo.ApplicationID">@applicationNameInfo.ApplicationName</label>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </div>
+        <div class="sfFieldset sfCol-6  Px-15">
+            <input type="hidden" class="hdnAppIDs" value="0" />
+            <span id="exportLocalization" class="btn primary round">Export</span>
+        </div>
+
+    </div>
+
+</div>
+<div id="uploadJsons" class="uploads PosR Pl-5x"></div>
+
+<div class="sfFieldset">
+    <div class="sfRow Mt-2x">
+        <div class="sfButtonwrapper sfCol-2 sfCol-sm-4">
+            <a href="@URLHelper.DashboardURL(Context,"Localization")" class="btn light round">Back</a>
+        </div>
+    </div>
+</div>
+<script>
+    $(function () {
+        $(this).ImportExportLanguage({
+            Path: '@ViewBag.Path',
+            Extensions: '@ViewBag.Extensions'
+        });
+    });
+</script>

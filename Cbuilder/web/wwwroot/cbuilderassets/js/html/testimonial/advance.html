@@ -1,0 +1,68 @@
+﻿<div class="pr-spc">
+    <style>
+        .st-com-element {
+            padding: 5px 11px;
+            margin: 5px 0;
+            display: flex;
+            background: rgba(255,255,255,.06);
+            border-radius: 2px;
+            cursor: move;
+            font-size: 14px;
+            width: 100%;
+            text-align: center;
+            line-height: 2;
+        }
+
+            .st-com-element:before {
+                content: "\48";
+                margin-right: 5px;
+                line-height: 2;
+            }
+
+            .st-com-element span:nth-child(1) {
+                width: 80%;
+                text-align: left;
+            }
+
+        .mv-ctl {
+            margin-left: 7px;
+            display: table-cell;
+        }
+
+            .mv-ctl i {
+                cursor: pointer;
+                display: block;
+            }
+
+        .targetContainer {
+            border: solid rgba(255,255,255,.1) 1px;
+            min-width: 100px;
+            padding: 0 5px;
+            min-height: 20px;
+        }
+    </style>
+    <span class="info">Adjust setting if you know basic knowledge of design.</span>
+    <h4 class="hding-mange" id="MnagProEleHldr">Manage post element in Holder</h4>
+
+    <div class="manageContent">
+        <div class="field-row stElWrap col30-70">
+            <label class="fCol">Holder 1</label>
+            <div class="fCol targetContainer" id="divContainer1" data-tarcontain=".Holder1">
+
+            </div>
+        </div>
+        <div class="field-row stElWrap col30-70">
+            <label class="fCol">Holder 2</label>
+            <div class="fCol targetContainer" id="divContainer2" data-tarcontain=".Holder2">
+
+            </div>
+        </div>
+        <div class="field-row stElWrap col30-70">
+            <label class="fCol">Holder 3</label>
+            <div class="fCol targetContainer" id="divContainer3" data-tarcontain=".Holder2_signatures">
+
+            </div>
+        </div>
+    </div>
+
+</div>

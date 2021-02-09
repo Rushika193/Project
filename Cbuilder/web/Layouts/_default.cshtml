@@ -1,0 +1,28 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    @{
+        Cbuilder.Core.CoreHelpers.CoreHelper.RegisterJSVariable(Context);
+    }
+    @await Component.InvokeAsync("SEOMeta")
+    @await Component.InvokeAsync("Bundle")
+    @await Component.InvokeAsync("GoogleAnalytics")
+    @Html.Raw(TempData["cssHeader"])
+    @Html.Raw(TempData["jsHeader"])
+    @await Component.InvokeAsync("JSVariables")
+</head>
+<body>
+    <div class="">
+        <main role="main" class="pb-3">
+          
+            @RenderBody()
+            <div class="footer-message-error TxAl-c">
+                @await Component.InvokeAsync("Actionmessage")
+            </div>
+        </main>
+    </div>
+    @Html.Raw(TempData["jsFooter"])
+</body>
+</html>

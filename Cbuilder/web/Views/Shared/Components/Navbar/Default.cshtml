@@ -1,0 +1,49 @@
+﻿@using Cbuilder.Webbuilder;
+<nav class="navbar flex">
+    <div class="header-content ">
+        <div id="toggleMenu" class="toggle-menu-bar collapse-menu">
+            <div class="toggle-lines">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <div class="header-left f-middle">
+            <div class="brandWrapper sfLogo d-i-block">
+                <a href="@URLHelper.DashboardURL(Context, "dashboard")">
+                    <img src="@ViewBag.ImageURL" />
+                </a>
+            </div>
+        </div>
+        <div class="header-right header-right ml-auto flex">
+            <div class="editor-link Px-12 xs-Px-15 f-middle">
+                <a target="_blank" href="@(HttpContextCommons.HostURL)" class="btn info round"><span class="d-none sm-d-i-block">Preview</span><span class="d-i-block sm-d-none ct-edit-3"></span></a>
+            </div>
+            <div class="editor-link Px-12 xs-Px-15 f-middle">
+                <a target="_blank" href="@(HttpContextCommons.HostURL+"/webbuilder")" class="btn secondary-outline round"><span class="d-none sm-d-i-block">Edit Site</span><span class="d-i-block sm-d-none ct-edit-3"></span></a>
+            </div>
+            @if (HttpContextCommons.LocalizationEnabled)
+            {
+                <ul class="language-chooser navbar-right">
+                    <li class="language-selected dropdown-group Px-12 xs-Px-15">
+                        <div class="list-dropdown"><span class="dropdown-link"><span class="choose-language">@ViewBag.DefaultLanguage</span> <i class="fa fa-chevron-down"></i></span></div>
+                        <ul class="language-choices list-group">
+                            @if (ViewBag.Languages != null)
+                            {
+                                @foreach (LanguageList languagelist in ViewBag.Languages)
+                                {
+                                    string classActive = string.Empty;
+                                    if (HttpContextKey.CultureCode.FromHttpContext(Context) == languagelist.CultureCode)
+                                        classActive = "active";
+                                    string url = ViewBag.DropdownURL + languagelist.CultureCode;
+                                    <li class=" group-item group-item-link-bg @classActive">  <a href="@url" class="d-block">@languagelist.CultureName</a></li>
+                                }
+                            }
+                        </ul>
+                    </li>
+                </ul>
+            }
+            @await Html.PartialAsync("_LoginPartial")
+        </div>
+    </div>
+</nav>

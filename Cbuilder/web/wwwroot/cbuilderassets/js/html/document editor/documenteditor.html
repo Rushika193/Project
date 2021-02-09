@@ -1,0 +1,189 @@
+﻿<div class="editor-component documenteditor clearfix">
+    <div class="editor-component documenteditor clearfix">
+        <div class="carrier-open-option">
+            <i title="drag" class="icon-icon-drag sortComponent"></i>
+            Text editor <i class="fa fa-bars"></i>
+        </div>
+        <div class="carries-options button-options hide-element">
+            <i title="Text editor settings" class="row-setting com-settings" data-type="Text editor">Setting</i>
+            <i title="delete" class="deletehelper">Delete</i>
+        </div>
+        <div class="documenteditorWrap" id="documenteditorWrapid">
+
+            <div class="text-deitor-toolsbar text-align-left" >
+                <div class="display-flex" style="height:100%;width: auto;flex-wrap: nowrap">
+                    <!--drag icon-->
+                    <span>
+                        <span class="fa fa-arrows dragbutton" style="line-height:35px;"></span>
+                    </span>
+                    <!--Bold-->
+                    <span class="tool-wrap editor-com-innerSpacing-left-5 editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <button type="button" class="fa fa-bold boldC" id="btnbold" title="bold" ></button>
+                    </span>
+                    <!--Ends-->
+                    <!--Italic-->
+                    <span class="tool-wrap editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <button type="button" class="fa fa-italic italicC" id="btnItalic" title="italic"></button>
+                    </span>
+                    <!--Ends-->
+                    <!--Underline-->
+                    <span class="tool-wrap editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <button type="button" class="fa fa-underline underlineC" id="btnUnderLine" title="Underline"></button>
+                    </span>
+                    <!--Ends-->
+                    <!--Font Color-->
+                    <span class="tool-font-color editor-com-innerSpacing-right-5 editor-com-outerSpacing-top-0 editor-com-outerSpacing-right-5">
+                       
+                        <span class="color-picker-holder DocEditorColorPicker doceditcolor" id="DocEditColorPic" style="background-color:black;height:15px;width:15px;border-radius:50%;border:solid 1px rgba(255,255,255,.4);margin-top:3px;"></span>
+                    </span>
+                    <!--Ends-->
+                    <!--font background-color-->
+                    <!--<span class="tool-font-color editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">-->
+                        <!--<i class="fa fa-paint-brush" aria-hidden="true"></i>-->
+                        <!--<span class="color-picker-holder DocEditorColorPicker doceditcolorBG" id="DocEditColorPicBG"></span>-->
+                    <!--</span>-->
+                    <!--Ends-->
+                    <!--Font-family-->
+                    <span class="tool-font-family editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5" style="width: 110px;">
+                        <select class="cFontFamily" id="fontName"></select>
+                    </span>
+                    <!--Ends-->
+                    <!--Font-Weight-->
+                    <span class="tool-font-family f-weight editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <select class="cFontWeight" id="fontWeightEditor"></select>
+                    </span>
+                    <!--Ends-->
+
+                    <!--Font-Case-->
+                    <span class="tool-wrap transform-text has-drop-child editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+
+                        <button type="button" class="tCase" id="textCases" title="Text cases">T<span>T</span></button>
+
+                        <div class="toobar-drop-element fontcase">
+                            <select class="cFontCase" id="fontCase">
+                                <option title="none">None</option>
+                                <option title="uppercase">uppercase</option>
+                                <option title="lowercase">lowercase</option>
+                                <option title="capitalize">capitalize</option>
+                            </select>
+                        </div>
+
+
+                    </span>
+                    <!--Ends-->
+
+                    <!--Cat Font Size-->
+                    <span class="tool-wrap font-size-text has-drop-child editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+
+                        <button type="button" class="tCase" id="fontSizes" title="Font Sizes">A<span>a</span></button>
+
+                        <div class="toobar-drop-element fontAddless" style="min-width: 94px;">                            
+                            <span class="fa fa-minus minusC editor-com-outerSpacing-right-5" id="btnMinusFontSize" title="fontsize" style="border: none"></span>
+                            <label id="fontValue" class="editor-com-outerSpacing-left-5 fontValueC">14px</label>
+                            <span class="fa fa-plus plusC" id="btnPlusFontSize" title="fontsize"></span>
+                        </div>
+
+                    </span>
+                    <!--Ends-->                   
+
+                    <!--category Text Aligns-->
+                    <span class="tool-wrap has-drop-child editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <button type="button" class="fa fa-align-left" id="AlignsPrnt" title="Text Aligns"></button>
+                        <div class="toobar-drop-element" style="min-width: 112px;">
+                            <div id="catAligns">
+                               <span class="fa fa-align-left leftalignC" id="btnleftAlign" title="justifyleft"></span>
+                                <span class="fa fa-align-center centeralignC" id="btnCenterAlign" title="justifycenter"></span>
+                                <span class="fa fa-align-right rightalignC" id="btnRightAlign" title="justifyright"></span>
+                                <span class="fa fa-align-justify fullalignC" id="btnFullAlign" title="justifyFull"></span>
+                            </div>
+                        </div>
+                    </span>
+                    <!--Ends-->
+
+                    <!--Line height-->
+                    <span class="tool-wrap line-height-text has-drop-child editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <button type="button" class="fa fa-text-height" id="lineHeight" title="line Height Text"></button>
+                        <div class="toobar-drop-element">
+                            <div id="LineHeightSize" class="LineHeightSizeC">
+                                <div id="LineHeightSizeHandle" class="ui-slider-handle LineHeightSizeHandleC">0</div>
+                            </div>
+                        </div>
+
+                    </span>
+                    <!--Ends-->
+
+                    <!--Letter Space-->
+                    <span class="tool-wrap letter-space-text has-drop-child editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <button type="button" class="fa fa-text-width" id="letterSpace" title="letter Space Text"></button>
+                        <div class="toobar-drop-element">
+                            <div id="LetterSpaceSize" class="LetterSpaceSizec">
+                                <div id="LetterSpaceSizeSizeHandle" class="ui-slider-handle LetterSpaceSizeSizeHandleC">0</div>
+                            </div>
+                        </div>
+                    </span>
+                    <!--Ends-->
+
+                    <!--Ul Li Lists-->
+                    <span class="tool-wrap has-drop-child editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <button type="button" class="fa fa-ellipsis-v listC" id="Lists" title="Listings"></button>
+                        <div class="toobar-drop-element ul-li" style="min-width: 65px;">
+                            <span class="fa fa-list-ul ullistC" id="ulList" title="insertunorderedlist"></span>
+                            <span class="fa fa-list-ol ollistC" id="olList" title="insertorderedlist"></span>
+                        </div>
+                    </span>
+                    <!--Ends-->
+
+                    <!--Text Indents-->
+                    <!--<span class="tool-wrap has-drop-child editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <button type="button" class="fa fa-indent" id="indents" title="Text Indents"></button>
+                        <div class="toobar-drop-element ul-li" style="min-width: 65px;">
+                            <span class="fa fa-indent tindentC" id="textIndent" title="text-indent"></span>
+                            <span class="fa fa-outdent toutdentC" id="textOutdent" title="text-outdent"></span>
+                        </div>
+                    </span>-->
+                    <!--Ends-->                    
+
+                    <!--Quote-->
+                    <span class="tool-wrap editor-com-innerSpacing-right-5 editor-com-outerSpacing-right-5">
+                        <button type="button" class="fa fa-quote-left formatblockC" id="btnformatblock" title="Block Quotes"></button>
+                    </span>
+                    <!--Ends-->
+
+                    <!--Links-->
+                    <span class="tool-wrap has-drop-child editor-com-innerSpacing-right-5">
+                        <button type="button" class="fa fa-link btnlinkC" id="btnLink" title="Create link"></button>
+                        <!--Drop down-->
+                        <div id="dropElement" class="toobar-drop-element">
+                            <input type="text" id="txtCreateLink" class="createlinkC" title="externalLink" required />
+
+                            <select id="internalPages" title="InternalPagesLink" class="internalPagesC" style="display:none">
+                            <option title="_self">Home</option>
+                            <option title="_blank">About</option>                                
+                        </select>
+
+                            <select id="targetType" title="targetLink" class="targetTypeC">
+                            <option title="_self">Same window</option>
+                            <option title="_blank">New window tab</option>                                
+                        </select>
+
+                        </div>
+                    </span>
+                    <!--Ends-->
+
+                    <!--Links-->
+                    <span class="tool-wrap show-all editor-com-innerSpacing-left-5 editor-com-innerSpacing-right-5">
+                        <button type="button" class="fa fa-plus alloptionC" id="btnAllOption"></button>
+                        <!--Drop down-->
+                    </span>
+                    <!--Ends-->
+
+                </div>
+            </div>
+
+            <div class="documenttext nobreak" contenteditable="true" id="documenttextid">
+                <p style="letter-spacing:0px;line-height:20px;font-size: 14px;" class="pClass">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+            </div>
+
+        </div>
+    </div>
+</div>

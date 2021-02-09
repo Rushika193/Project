@@ -1,0 +1,606 @@
+﻿@using Cbuilder.Theme
+@model ThemeSettingsViewModel
+
+
+@{
+    ViewData["Title"] = "Manage Themes";
+
+}
+
+@Html.AntiForgeryToken()
+
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">Manage Themes</div>
+    </div>
+</section>
+
+@Html.AntiForgeryToken()
+
+<div class="tab vertical">
+
+    <div class="card">
+
+
+        @if (Model.ButtonComponents != null && Model.ButtonComponents.Count > 0)
+        {
+            //int count = Model.ButtonComponents.Count;
+            //List<MainComponentSettings> lstComponent1 = Model.ButtonComponents.Take(count / 2).ToList();
+            //List<MainComponentSettings> lstComponent2 = Model.ButtonComponents.Skip(count / 2).ToList();
+
+
+            <div class="card-header active">
+                <h5 class="fw-400">Buttons</h5>
+            </div>
+
+            <div class="collapse Py-15 Px-25 show ">
+                @{
+                    List<MainComponentSettings> lstComponent = Model.ButtonComponents;
+                    await RenderPredefinedSettings(lstComponent);
+                }
+                @*<div class="sfRow">
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent1);
+                }
+            </div>
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent2);
+                }
+            </div>
+        </div>*@
+
+
+            </div>
+
+        }
+
+        @if (Model.TextColorComponents != null && Model.TextColorComponents.Count > 0)
+        {
+            //int count = Model.TextColorComponents.Count;
+            //List<MainComponentSettings> lstComponent1 = Model.TextColorComponents.Take(count / 2).ToList();
+            //List<MainComponentSettings> lstComponent2 = Model.TextColorComponents.Skip(count / 2).ToList();
+
+            <div class="card-header">
+                <h5 class="fw-400">Text Color</h5>
+            </div>
+
+            <div class="collapse Py-15 Px-25">
+                @{
+                    List<MainComponentSettings> lstComponent = Model.TextColorComponents;
+                    await RenderPredefinedSettings(lstComponent);
+                }
+                @*<div class="sfRow">
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent1);
+                }
+            </div>
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent2);
+                }
+            </div>
+        </div>*@
+            </div>
+
+        }
+
+        @if (Model.LinkComponents != null && Model.LinkComponents.Count > 0)
+        {
+            //int count = Model.LinkComponents.Count;
+            //List<MainComponentSettings> lstComponent1 = Model.LinkComponents.Take(count / 2).ToList();
+            //List<MainComponentSettings> lstComponent2 = Model.LinkComponents.Skip(count / 2).ToList();
+
+            <div class="card-header">
+                <h5 class="fw-400">Links</h5>
+            </div>
+
+            <div class="collapse Py-15 Px-25">
+                @{
+                    List<MainComponentSettings> lstComponent = Model.LinkComponents ;
+                    await RenderPredefinedSettings(lstComponent);
+                }
+
+                @*<div class="sfRow">
+                    <div class="sfCol-12 sfCol-sm-6">
+                        @{
+
+                            await RenderPredefinedSettings(lstComponent1);
+                        }
+                    </div>
+                    <div class="sfCol-12 sfCol-sm-6">
+                        @{
+
+                            await RenderPredefinedSettings(lstComponent2);
+                        }
+                    </div>
+                </div>*@
+            </div>
+
+        }
+
+        @if (Model.BackgroundComponents != null && Model.BackgroundComponents.Count > 0)
+        {
+            //int count = Model.BackgroundComponents.Count;
+            //List<MainComponentSettings> lstComponent1 = Model.BackgroundComponents.Take(count / 2).ToList();
+            //List<MainComponentSettings> lstComponent2 = Model.BackgroundComponents.Skip(count / 2).ToList();
+
+            <div class="card-header">
+                <h5 class="fw-400">Backgrounds</h5>
+            </div>
+
+            <div class="collapse Py-15 Px-25">
+                @{
+                    List<MainComponentSettings> lstComponent = Model.BackgroundComponents;
+                    await RenderPredefinedSettings(lstComponent);
+                }
+                @*<div class="sfRow">
+                    <div class="sfCol-12 sfCol-sm-6">
+                        @{
+
+                            await RenderPredefinedSettings(lstComponent1);
+                        }
+                    </div>
+                    <div class="sfCol-12 sfCol-sm-6">
+                        @{
+
+                            await RenderPredefinedSettings(lstComponent2);
+                        }
+                    </div>
+                </div>*@
+            </div>
+
+        }
+
+
+        @if (Model.PillComponents != null && Model.PillComponents.Count > 0)
+        {
+            //int count = Model.PillComponents.Count;
+            //List<MainComponentSettings> lstComponent1 = Model.PillComponents.Take(count / 2).ToList();
+            //List<MainComponentSettings> lstComponent2 = Model.PillComponents.Skip(count / 2).ToList();
+
+            <div class="card-header">
+                <h5 class="fw-400">Pills</h5>
+            </div>
+
+            <div class="collapse Py-15 Px-25">
+                @{
+                    List<MainComponentSettings> lstComponent = Model.PillComponents;
+                    await RenderPredefinedSettings(lstComponent);
+                }
+                @*<div class="sfRow">
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent1);
+                }
+            </div>
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent2);
+                }
+            </div>
+        </div>*@
+            </div>
+
+        }
+
+        @if (Model.CapsuleComponents != null && Model.CapsuleComponents.Count > 0)
+        {
+            //int count = Model.CapsuleComponents.Count;
+            //List<MainComponentSettings> lstComponent1 = Model.CapsuleComponents.Take(count / 2).ToList();
+            //List<MainComponentSettings> lstComponent2 = Model.CapsuleComponents.Skip(count / 2).ToList();
+
+            <div class="card-header">
+                <h5 class="fw-400">Capsules</h5>
+            </div>
+
+            <div class="collapse Py-15 Px-25">
+                @{
+                    List<MainComponentSettings> lstComponent = Model.CapsuleComponents;
+                    await RenderPredefinedSettings(lstComponent);
+                }
+                @*<div class="sfRow">
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent1);
+                }
+            </div>
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent2);
+                }
+            </div>
+        </div>*@
+            </div>
+
+        }
+
+        @if (Model.BadgeComponents != null && Model.BadgeComponents.Count > 0)
+        {
+            //int count = Model.BadgeComponents.Count;
+            //List<MainComponentSettings> lstComponent1 = Model.BadgeComponents.Take(count / 2).ToList();
+            //List<MainComponentSettings> lstComponent2 = Model.BadgeComponents.Skip(count / 2).ToList();
+
+
+            <div class="card-header">
+                <h5 class="fw-400">Badges</h5>
+            </div>
+
+            <div class="collapse Py-15 Px-25">
+                @{
+                    List<MainComponentSettings> lstComponent = Model.BadgeComponents;
+                    await RenderPredefinedSettings(lstComponent);
+                }
+                @*<div class="sfRow">
+                    <div class="sfCol-12 sfCol-sm-6">
+                        @{
+
+                            await RenderPredefinedSettings(lstComponent1);
+                        }
+                    </div>
+                    <div class="sfCol-12 sfCol-sm-6">
+                        @{
+
+                            await RenderPredefinedSettings(lstComponent2);
+                        }
+                    </div>
+                </div>*@
+            </div>
+
+        }
+
+
+        @if (Model.AlertBoxComponents != null && Model.AlertBoxComponents.Count > 0)
+        {
+            //int count = Model.AlertBoxComponents.Count;
+            //List<MainComponentSettings> lstComponent1 = Model.AlertBoxComponents.Take(count / 2).ToList();
+            //List<MainComponentSettings> lstComponent2 = Model.AlertBoxComponents.Skip(count / 2).ToList();
+
+            <div class="card-header">
+                <h5 class="fw-400">Alert Boxes</h5>
+            </div>
+
+            <div class="collapse Py-15 Px-25">
+                @{
+                    List<MainComponentSettings> lstComponent = Model.AlertBoxComponents;
+                    await RenderPredefinedSettings(lstComponent);
+                }
+                @*<div class="sfRow">
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent1);
+                }
+            </div>
+            <div class="sfCol-12 sfCol-sm-6">
+                @{
+
+                    await RenderPredefinedSettings(lstComponent2);
+                }
+            </div>
+        </div>*@
+            </div>
+
+        }
+
+
+        @if (Model.OtherComponents != null && Model.OtherComponents.Count > 0)
+        {
+            //int count = Model.OtherComponents.Count;
+            //List<MainComponentSettings> lstComponent1 = Model.OtherComponents.Take(count / 2).ToList();
+            //List<MainComponentSettings> lstComponent2 = Model.OtherComponents.Skip(count / 2).ToList();
+            <div class="card-header">
+                <h5 class="fw-400">Others</h5>
+            </div>
+
+            <div class="collapse Py-15 Px-25">
+
+                
+                        @foreach (MainComponentSettings comp in Model.OtherComponents)
+                        {
+                            <div class="" style='@(@comp.ComponentName=="Sub Menu"?"display:none":"")'>
+                                <div>
+                                    <h5 class="fw-500 Mb-2x">@comp.ComponentName</h5>
+                                </div>
+
+
+                                <div class="sfFormWrapper">
+                                    @{ List<CssParserRule>
+                                                      lstRules = comp.Rules;
+                                        await RenderSettings(lstRules);
+
+                                        if (comp.SubComponents.Count > 0)
+                                        {
+                                            foreach (SubComponentSettings sub in comp.SubComponents)
+                                            {
+
+                                               
+                                                    <div>
+                                                        <h5 class="fw-500 Mb-2x">@sub.SubComponentName</h5>
+                                                    </div>
+                                         
+                                                <div>
+                                                    @{
+                                                        List<CssParserRule> lstSubRules = sub.Rules;
+                                                        await RenderSettings(lstSubRules);
+                                                    }
+                                                </div>
+                                            }
+                                        }
+
+                                    }
+                                </div>
+                            </div>
+                        }
+
+                    
+
+              
+
+
+                </div>
+
+            
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+    </div>
+    <div class="sfButtonwrapper sfCol-12 sfCol-md-6 offset-sfCol-md-3 Pl-0 sm-Pl-35 Mt-30">
+        <button class="btn primary round" id="btnSaveThemeSettings">Save</button>
+        <button class="btn danger round" id="btnResetThemeSettings">Reset</button>
+    </div>
+</div>
+
+
+
+@{
+    async Task RenderSettings(List<CssParserRule> lstRules)
+    {
+        for (int i = 0; i < lstRules.Count; i++)
+        {
+            var lstDeclarations = lstRules[i].Declarations.ToList();
+            string selector = lstRules[i].Selectors.First();
+
+            <div class="sfFormWrapper divCSSSelector Mb-4x" data-selector="@selector">
+                @{await RenderIndividualSetting(lstDeclarations); }
+            </div>
+
+        }
+
+    }
+
+
+    async Task RenderPredefinedSettings(List<MainComponentSettings> lstComponents)
+    {
+        foreach (MainComponentSettings component in lstComponents)
+        {
+            var lstRules = component.Rules;
+
+            for (int i = 0; i < lstRules.Count; i++)
+            {
+                var lstDeclarations = lstRules[i].Declarations.ToList();
+                string selector = lstRules[i].Selectors.First();
+
+                bool isPrimary = selector.ToLower().Contains("primary"),
+                     isSecondary = selector.ToLower().Contains("secondary"),
+                     isSuccess = selector.ToLower().Contains("success"),
+                     isInfo = selector.ToLower().Contains("info"),
+                     isWarning = selector.ToLower().Contains("warning"),
+                     isDanger = selector.ToLower().Contains("danger"),
+                     isLight = selector.ToLower().Contains("light"),
+                     isDark = selector.ToLower().Contains("dark");
+
+
+
+                bool isOutline = selector.Contains("outline");
+
+                bool isHover = selector.Contains("hover");
+
+                string label = string.Empty;
+                if (isPrimary)
+                    label = "Primary";
+                else if (isSecondary)
+                    label = "Secondary";
+                else if (isSuccess)
+                    label = "Success ";
+                else if (isInfo)
+                    label = "Info";
+                else if (isWarning)
+                    label = "Warning";
+                else if (isLight)
+                    label = "Light";
+                else if (isDark)
+                    label = "Dark";
+                else if (isDanger)
+                    label = "Danger";
+
+                if (isOutline)
+                    label += " Outline";
+
+
+                if (isHover)
+                    label += " Hover";
+
+
+                <div class="sfFormWrapper divCSSSelector Mb-4x" data-selector="@selector">
+                    <div class="sfRow sfCol-12">
+                        <h5 class="fw-500 Mb-2x">@label</h5>
+                    </div>
+                    @{await RenderIndividualSetting(lstDeclarations); }
+
+                </div>
+
+            }
+        }
+    }
+
+    async Task RenderIndividualSetting(List<CssParserDeclaration> lstDeclarations)
+    {
+
+        @foreach (var declaration in lstDeclarations)
+        {
+            bool isColorComponent = Array.IndexOf(CSSProperties.ColorProperties, declaration.Property) > -1;
+            bool isSizeComponent = (declaration.Property == CSSProperties.FontSize);
+            bool isAlignComponent = (declaration.Property == CSSProperties.TextAlign);
+            bool isMarginComponent = Array.IndexOf(CSSProperties.MarginProperties, declaration.Property) > -1;
+            bool isPaddingComponent = Array.IndexOf(CSSProperties.PaddingProperties, declaration.Property) > -1;
+
+            if (isColorComponent)
+            {
+
+
+                string colorType = "Color";
+                if (declaration.Property == CSSProperties.BgColor)
+                    colorType = "Background Color";
+                else if (declaration.Property == CSSProperties.BorderColor)
+                    colorType = "Border Color";
+
+
+                <div class="sfRow Mb-1x divColorWrapper divCSSProperty" data-property="@declaration.Property" data-value="@declaration.Value">
+                    <div class="sfCol-6 sfCol-md-4 formkey">
+                        <span class="sfFormlabel">@colorType</span>
+
+                    </div>
+                    <div class="sfCol-6 sfCol-md-4 formvalue">
+                        <div class="divColorView" style="background:@declaration.Value">&nbsp;</div>
+                    </div>
+                </div>
+            }
+            else if (isSizeComponent)
+            {
+                <div class="sfRow Mb-2x divCSSProperty" data-property="@declaration.Property" data-value="@declaration.Value">
+                    <div class="sfCol-6 sfCol-md-4 formkey">
+                        <span class="sfFormlabel">Font Size</span>
+                    </div>
+                    <div class="sfCol-6 sfCol-md-4 formvalue">
+                        <input type="text" class="sfFormcontrol txtFontSize txtCSSProp" value="@declaration.Value" />
+                        <span class="color-danger errInvalidValue" style="display:none">Invalid Value</span>
+                    </div>
+                </div>
+
+            }
+            else if (isAlignComponent)
+            {
+                var alignList = CSSProperties.AlignValues.Select(g => new SelectListItem
+                {
+                    Value = g.ToString(),
+                    Text = g.ToString(),
+                    Selected = (g == declaration.Value)
+                }).ToList();
+
+                <div class="sfRow Mb-2x divCSSProperty" data-property="@declaration.Property" data-value="@declaration.Value">
+                    <div class="sfCol-6 sfCol-md-4 formkey">
+                        <span class="sfFormlabel">Alignment</span>
+                    </div>
+                    <div class="sfCol-6 sfCol-md-4 formvalue">
+                        <select class="ddlAlignment sfFormcontrol" asp-items="@alignList">
+                        </select>
+                    </div>
+                </div>
+            }
+            else if (isMarginComponent || isPaddingComponent)
+            {
+                string[] propName = declaration.Property.Split('-');
+
+                string propLabel = propName[0];
+                if (propName.Length > 1)
+                    propLabel = propName[0] + " " + propName[1];
+
+                <div class="sfRow Mb-2x divCSSProperty" data-property="@declaration.Property" data-value="@declaration.Value">
+                    <div class="sfCol-6 sfCol-md-4 formkey">
+                        <span class="sfFormlabel">@propLabel</span>
+                    </div>
+                    <div class="sfCol-6 sfCol-md-4 formvalue">
+                        <input type="text" class="sfFormcontrol txtMarginPadding txtCSSProp" value="@declaration.Value" />
+                        <span class="color-danger errInvalidValue" style="display:none">Invalid Value</span>
+                    </div>
+                </div>
+
+            }
+            else
+            {
+                <div class="divCSSProperty" data-property="@declaration.Property" data-value="@declaration.Value" style="display:none">
+                </div>
+            }
+
+        }
+
+
+
+                    }
+
+
+}
+
+
+
+
+@section Scripts{
+
+    <script type="text/javascript">
+        $(function () {
+            $(this).ThemeSettings({
+                StatusID: 0
+            });
+
+        });
+
+
+    </script>
+
+
+    @*<script type="text/javascript">
+            $(function () {
+
+                $(".divColorWrapper").each(function () {
+                    var wrapper = this;
+
+                    $(wrapper).find('.divColorView').ColorPicker({
+                        color: '#0000ff',
+                        onShow: function (colpkr) {
+                            $(colpkr).fadeIn(500);
+                            return false;
+                        },
+                        onHide: function (colpkr) {
+                            $(colpkr).fadeOut(500);
+                            return false;
+                        },
+                        onBeforeShow: function () {
+                            var color = $(wrapper).find(".txtColorValue").val();
+                            $(wrapper).find('.divColorView').ColorPickerSetColor(color);
+                        },
+                        onChange: function (hsb, hex, rgb) {
+                            $(wrapper).find('.divColorView').css('backgroundColor', '#' + hex);
+                            $(wrapper).find(".txtColorValue").val("#" + hex);
+                        }
+                    });
+                });
+
+
+
+            });
+
+
+        </script>*@
+}

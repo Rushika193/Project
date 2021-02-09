@@ -1,0 +1,82 @@
+﻿@using Cbuilder.Webbuilder
+@using System.Web
+@model WebbuilderViewInfo
+@Html.AntiForgeryToken()
+@if (Model != null)
+{
+    <div class="edit-area site-body" data-settings="@Model.Settings">
+        <div class='editor-site-header'>
+            @Html.Raw(HttpUtility.HtmlDecode(Model.Header.Replace("fakeHostURL", Model.HostURL).Replace("fakeMenuURL", Model.HostURL)))
+        </div>
+        <div class='editor-componentWrapper'>
+           
+            @Html.Raw(HttpUtility.HtmlDecode(Model.ViewDOM.Replace("fakeHostURL", Model.HostURL).Replace("fakeMenuURL", Model.HostURL)))
+        </div>
+        <div class='editor-site-footer'>
+            @Html.Raw(HttpUtility.HtmlDecode(Model.Footer.Replace("fakeHostURL", Model.HostURL).Replace("fakeMenuURL", Model.HostURL)))
+
+        </div>
+    </div>
+
+    @*<div class="logout-site " title="Logout from editior" style="display: none;">
+            <asp:LinkButton ID="lnkloginStatus" runat="server" Text="" OnClick="lnkloginStatus_Click" EnableViewState="false" data-icon="s" CssClass="sfBtnlogin logout-icon logoutConfirm Dn"></asp:LinkButton>
+        </div>*@
+    <script>
+    var apiResultString =@Html.Raw(Model.APIResultString);
+    EditorMode = false;
+    var webbuildermodulepath = '@Model.Webbuildermodulepath';
+    var isPreview = '@Model.PreviewMode'=='True'?true:false;
+    var component = {};
+    var componentID = [];
+        var currentpageName = '@Model.PageName';
+        var AppsExtraComponents = @Html.Raw(@Model.AppsExtraComponent);
+
+    $(function () {
+        if (typeof storedComponent !== "undefined") {
+            $.each(storedComponent, (i, v) => {
+                if (v.ComponentID > 0)
+                    componentID.push(v.ComponentID);
+                v = v.ComponentValue;
+                var value = JSONParse(v);
+                var key = value.componentname;
+                component[key] = value;
+            });
+        }
+        if (AppsExtraComponents !== null) {
+            $.each(AppsExtraComponents, (i, v) => {
+                if (v.ComponentID > 0)
+                    componentID.push(v.ComponentID);
+                v = v.ComponentValue;
+                var value = JSONParse(v);
+                var key = value.componentname;
+                component[key] = value;
+            });
+        }
+        $(this).WebBuilderView({
+            pageName: currentpageName
+        });
+        if (isPreview) {
+            $(".eb-menu").find(".pagelink").each(function () {
+                var href = $(this).attr('href');
+                var pageName = getPageName(href);
+                var newHref = window.location.origin + '/webbuilderpreview/' + pageName.replace(/ /g, '-') + CultureURL;// + '/preview';
+                $(this).attr('href', newHref);
+            });
+            $('body').find("a.anchorpage").each(function () {
+                var href = $(this).attr('href');
+                if (typeof href !== "undefined" && href.indexOf("javascript") == -1 && href != "" && href != "#") {
+                    var pageName = getPageName(href);
+                    var newHref = window.location.origin + '/webbuilderpreview/' + pageName.replace(/ /g, '-') + CultureURL;// + '/preview';
+                    $(this).attr('href', newHref);
+                }
+            });
+        }
+    });
+    function getPageName(url) {
+        var index = url.lastIndexOf("/") + 1;
+        var filenameWithExtension = url.substr(index);
+        var filename = filenameWithExtension.split(".")[0]; // <-- added this line
+        return filename;                                    // <-- added this line
+    }
+    </script>
+}

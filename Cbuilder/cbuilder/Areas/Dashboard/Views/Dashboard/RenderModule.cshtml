@@ -1,0 +1,19 @@
+﻿@using Cbuilder.Block.Entities;
+@using Newtonsoft.Json;
+@using Newtonsoft.Json.Linq;
+@model ViewModule;
+@{ JObject param = null;
+    @if (!string.IsNullOrEmpty(Model.InvokeParam))
+        param = JsonConvert.DeserializeObject<JObject>(Model.InvokeParam);
+    if (Model.ModuleType == ModuleType.ViewComponent)
+    {
+        @await Component.InvokeAsync(Model.InvokeName, param)
+    }
+    else if (Model.ModuleType == ModuleType.PartialView)
+    {
+        @await Html.PartialAsync(Model.InvokeName, param)
+    }
+
+}
+
+

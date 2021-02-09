@@ -1,0 +1,156 @@
+﻿@model Cbuilder.Core.PageAction.PageAction
+
+
+<div class="is-medium">
+    @{ var action = "";
+        bool isUpdate = false;
+        if (Model == null) { action = "Create"; isUpdate = false; } else { action = "Update"; isUpdate = true; } }
+ 
+        <h2 class="form-title">@action Page Action</h2>
+        <div class="sfFormwrapper card ">
+            <div class="card-body Pa-6x">
+
+                <form asp-action="CreateAction" method="post">
+                    @Html.AntiForgeryToken()
+                    <div class="sfFieldset">
+                        <input asp-for="PageActionID" class="sfFormcontrol" type="hidden" />
+                        <input asp-for="@isUpdate" id="hdnIsEdit" name="hdnIsEdit" class="sfFormcontrol" type="hidden" />
+                        <input id="hdnPageName" name="hdnPageName" asp-for="PageName" class="sfFormcontrol" type="hidden" />
+                        <input id="hdnActionName" name="hdnPageName" asp-for="ActionName" class="sfFormcontrol" type="hidden" />
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="AreaName" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <select disabled="@isUpdate" class="sfFormcontrol" asp-for="AreaName"
+                                    asp-items="@ViewBag.AreaList">
+                                <option value="">Please select area</option>
+                            </select>
+                            <input type="hidden" asp-for="AreaName" />
+                            <span asp-validation-for="AreaName" class="sfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="PageName" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <select disabled="@isUpdate" class="sfFormcontrol" asp-for="PageName">
+                                <option value="">Please select page</option>
+                            </select>
+                            <input type="hidden" asp-for="PageName" />
+                            <span asp-validation-for="PageName" class="sfError"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="ActionName" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <select disabled="@isUpdate" class="sfFormcontrol" asp-for="ActionName">
+                                <option value="">Please select action</option>
+                            </select>
+                            <input type="hidden" asp-for="ActionName" />
+                            <span asp-validation-for="ActionName" class="sfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="ActionGroupID" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <select asp-disabled="@isUpdate" class="sfFormcontrol" asp-for="ActionGroupID"
+                                    asp-items="@ViewBag.ActionList">
+                            </select>
+                            <span asp-validation-for="ActionGroupID" class="sfError"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="DisplayName" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" asp-for="DisplayName" class="sfFormcontrol" />
+                            <span asp-validation-for="DisplayName" class="sfError"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="Description" class="sfFormlabel"></label>
+                        </div>
+                        <div class="formvalue">
+                            <textarea type="text" asp-for="Description" class="sfFormcontrol area" value=""></textarea>
+                            <span asp-validation-for="Description" class="sfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfButtonwrapper">
+                        <input type="submit" value="@action" class="btn primary round" />
+                        <a asp-action="ManageAction" class="btn light round">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+        </div>
+  
+
+@section Scripts {    
+    <script type="text/javascript">
+        $(function () {
+            var isEdit = $("#hdnIsEdit").val();
+            $('#AreaName').change(function () {
+                var areaVal = $(this).val();
+                var page = $('#PageName');                
+                if (areaVal != null) {
+                    page.empty();
+                    $.getJSON('@Url.Action("GetRefractionPages")', { areaName: areaVal, isEdit: true }, function (pages) {
+                        if (pages != null && !jQuery.isEmptyObject(pages)) {
+                            page.append($('<option/>', {
+                                value: "",
+                                text: "Please select page"
+                            }));
+                            $.each(pages, function (index, pageName) {
+                                page.append($('<option/>', {
+                                    value: pageName.Value,
+                                    text: pageName.Text
+                                }));
+                            });
+                            page.val($("#hdnPageName").val());
+                            $('#PageName').trigger("change");
+                        };
+                    });
+                }
+                
+            });
+
+
+            $('#PageName').change(function () {
+                var pageVal = $(this).val();
+                var areaVal = $('#AreaName').val();
+                var actionDiv = $('#ActionName');
+                if (pageVal != null) {                    
+                    $.getJSON('@Url.Action("GetRefractionPageAction")', { areaName: areaVal, pageName: pageVal, isEdit: isEdit }, function (actions) {
+                        if (actions != null && !jQuery.isEmptyObject(actions)) {
+                            actionDiv.empty();
+                            actionDiv.append($('<option/>', {
+                                value: "",
+                                text: "Please select action"
+                            }));
+                            $.each(actions, function (index, action) {
+                                actionDiv.append($('<option/>', {
+                                    value: action.Value,
+                                    text: action.Text
+                                }));
+                            });
+                            actionDiv.val($("#hdnActionName").val());
+                        };
+                    });
+                }
+            });
+            $('#AreaName').trigger("change");
+        });
+    </script>
+}

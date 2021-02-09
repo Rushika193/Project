@@ -1,0 +1,151 @@
+﻿
+@model IEnumerable<Cbuilder.Core.PageAction.PageController>
+
+@{
+    var localizeLabel = ViewBag.LocalizeLabel;
+    int rowTotal = 0;
+}
+
+<section class="content-header clearfix">
+    <div class="page-title d-block md-d-flex">
+        <div class="h2">@localizeLabel.Title</div>
+        <div class="sfButtonwrapper   dropdown-group p-relative">
+            <div class="list-dropdown btn primary round">
+                <span class="dropdown-link">@localizeLabel.Actions <i class="fa fa-chevron-down Ml-10"></i></span>
+            </div>
+            <ul class="list-group">
+                <li class="group-item group-item-link-bg">
+                    <a asp-action="Create" class="btn  link-secondary">@localizeLabel.ButtonAction.AddNew</a>
+                </li>
+
+                <li class="group-item group-item-link-bg">
+                    <a asp-action="PageArea" class="btn  link-secondary">@localizeLabel.ButtonAction.ManageArea</a>
+                </li>
+
+                <li class="group-item group-item-link-bg">
+                    <a asp-action="ManageAction" class="btn  link-secondary">@localizeLabel.ButtonAction.ManageActions</a>
+                </li>
+                <li class="group-item group-item-link-bg">
+                    <a asp-action="AutomateActions" onclick="return ConfirmDialog(this,'Confirmation','Are you sure you want to insert all actions.Already exists actions will not be affected.?')" class="btn  link-secondary">Automate Actions</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<div class="sfDatagrid">
+    <div class="sfDatagrid-header">
+
+        <form asp-action="Index" method="get">
+            <div class="dg-col-wp">
+                <div class="sfCol-12 sfCol-md-4">
+                    <div class="dg-group Mb-20 sm-Mb-0 ">
+                        <div class="dg-search-filter flex f-middle">
+                            <div class="sfFormkey Pr-20">
+                                <span class="sfFormlabel">Area</span>
+                            </div>
+                            <div class="sfFormvalue f-fill">
+                                <select class="sfFormcontrol rounded" id="areaName" name="areaName"
+                                        asp-items="@ViewBag.AreaList" value="@ViewData["AreaName"]">
+                                    <option value="">Please select area</option>
+                                </select>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="sfCol-12 sfCol-md-4 ml-auto">
+                    <div class="dg-group sm-Mb-0">
+                        <div class="dg-search-key rounded">
+                            <input type="text" id="keyword" class="sfFormcontrol rounded" name="keyword" placeholder="Search here by PageName" value="@ViewData["Keyword"]">
+                            <button type="submit" class="search"><i class="fa fa-search rounded"></i></button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+
+
+
+
+    </div>
+    <div class="sfDatagrid-title d-none sm-d-block">
+        <div class="dg-col-wp">
+            <div class="sfCol-12 sfCol-sm-9">Page</div>
+            @*<div class="sfCol-3">DisplayName</div>
+                <div class="sfCol-3">AreaName</div>*@
+            <div class="sfCol-12 sfCol-sm-3 f-center">Action</div>
+        </div>
+    </div>
+    <div class="sfDatagrid-body">
+        @if (Model != null && Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+                rowTotal = item.RowTotal;
+                <div class="dg-col-wp">
+                    <div class="sfCol-12 sfCol-sm-9 d-block">
+                        <div class="dg-group Mb-10 sm-Mb-0">
+                            <div class="dg-title">
+                                @item.PageName
+                            </div>
+                        </div>
+                        <div class="dg-group">
+                            <div class="dg-group-inline">
+                                <span class="grd-key">Display name: </span>
+                                <span class="grd-value"> @item.DisplayName</span>
+                            </div>
+                        </div>
+                        <div class="dg-group">
+                            <div class="dg-group-inline">
+                                <span class="grd-key">Area name: </span>
+                                <span class="grd-value"> @item.AreaName</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sfCol-12 sfCol-sm-3 t-left sm-f-center">
+                        <div class="dg-group-inline">
+                            <div class="action-menu">
+                                <span class="action-icon">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </span>
+                                <ul class="action-open">
+
+                                    <li>
+                                        <a asp-action="Edit" asp-route-id="@item.PageID" class="links"><i class="fa fa fa-edit"></i>Edit</a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="ManageAction" asp-route-id="@item.PageID" class="links"><i class="fa fa fa-edit"></i>Manage Action</a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Delete" asp-route-id="@item.PageID" onclick="return SageConfirmDialog('Are you sure you want to delete this? All actions and permissions associated will also be deleted.')" class="links"><i class='fa fa-trash'></i>Delete</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <div class="dg-nodata">
+                No Data To Display.
+            </div>
+        }
+
+    </div>
+</div>
+
+<div id="divPagination" class="Mt-5x"></div>
+@section Scripts{
+    <script type="text/javascript">
+
+         @*var localize =  @Html.Raw(ViewBag.LocalizeLabel)*@
+        $(function () {
+            $('#divPagination').CreatePagination({ total:@rowTotal, limit: 10 });
+        });
+    </script>
+}

@@ -1,0 +1,75 @@
+<div class="editor-component Dib  comp-loginform sfCol_100 tPl-5 mPl-5 Pl-0 TxAl-l msfCol_100" data-type="login form" data-id="2" style="display: block;">
+    <div class="SetHdlr">
+        <span class="stng">
+            <i class="cb-stng" title="login form Settings"></i>
+            <ul class="setDrp no_txt">
+                <li class="com-settings" data-type="login form"><span class="text-wrp">Settings</span><i class="cb-mxr" title="Settings"></i></li>
+                <li class="s-style" data-type="login form"><span class="text-wrp">Style</span><i class="cb-stl" title="Style"></i></li>
+                <li class="delete_icon deletehelper"><span class="text-wrp">Delete</span><i class="cb-del deletehelper" title="Delete"></i></li>
+            </ul>
+        </span>
+        <span class="sortComponent"><i class="cb-drg" title="Drag Up and down"></i></span>
+    </div>
+
+    <form method="post" action="/account/login" id="divLoginMainForm" data-name="Login Form" class="formMainWrap login-form Dfx flxWrp fldEnDn TxAl-m Pr-40 Pb-40 Pl-40 Mb-0 TxAl-r Pt-30 tMb-0 tPt-25 tPr-25 tPl-25 mMb-0 tPb-30 mPb-30 mPr-25 mPl-25 mPt-25 sfCol_100" style="background-color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.204) 0px 0px 32px; border-radius: 5px;">
+
+        <input type="hidden" id="hdnReturnURL" name="ReturnURL" />
+        <div id="divReqVerToken">
+
+        </div>
+
+        <div class="fmHFld Dfx flxWrp sfCol_100 mTxAl-l">
+            <h4 class="heading tPb-5 txU ff-poppins Fs-34 Lh-44 Mt-0 tFs-28 tLh-42 tMt-0 tMb-15 mMt-0 mPb-0 mFs-26 mLh-38 mMb-10 Mb-15 Pb-0 f-weight-700" style="border-style: none; border-width: 0px; border-bottom-color: rgb(197, 198, 0); color: rgb(31, 182, 255);">Sign In</h4>
+        </div>
+        <div class="fmFld Dfx flxWrp sfCol_100 Mb-10 tMb-10 mMb-10">
+            <div class="fmLbl"><label class="Dib Lh-26 Pb-0 Mt-0 ff-rubik f-weight-400 Fs-16 tMt-0 tFs-16 mMt-0 Mb-10 tMb-10 tLh-26 mFs-16 mLh-26 tPb-0 mPb-0 mMb-10" style="color: rgb(82, 82, 82);">User Name</label></div>
+            <div class="fmInp Dfx  sfCol_100">
+                <span class="inpWrp Dfx flxWrp sfCol_100">
+                    <input data-email="true" id="txtUserName" name="UserEmail" type="text" class="cbvInpTxt requiredFld Fs-16 ff-rubik f-weight-400 mPl-5 mPr-5 tPl-10 tPr-10 Lh-36 tFs-16 tPt-0 tPb-0 tLh-36 Pl-5 Pr-5 mLh-36 mFs-16 Mb-10 tMb-10 mMb-10" name="UserName" style="width: 100%;color: rgb(51, 51, 51);border-style: solid;border-width: 1px;border-color: rgb(204, 204, 204);" />
+                </span>
+            </div>
+        </div>
+
+        <div class="fmFld Dfx flxWrp sfCol_100 Mb-10 tMb-10 mMb-10">
+            <div class="fmLbl"><label class="Dib Lh-26 Pb-0 Mt-0 ff-rubik f-weight-400 Fs-16 tMt-0 tFs-16 mMt-0 Mb-10 tMb-10 tLh-26 mFs-16 mLh-26 tPb-0 mPb-0 mMb-10" style="color: rgb(82, 82, 82);">Password</label></div>
+            <div class="fmInp Dfx  sfCol_100">
+                <span class="inpWrp Dfx flxWrp sfCol_100">
+                    <input id="txtUserPassword" type="password" name="UserPassword" class="cbvInpTxt requiredFld Fs-16 ff-rubik f-weight-400 mPl-5 mPr-5 tPl-10 tPr-10 Lh-36 tFs-16 tPt-0 tPb-0 tLh-36 Pl-5 Pr-5 mLh-36 mFs-16 Mb-10 tMb-10 mMb-10" name="UserPassword" style="width: 100%; color: rgb(51, 51, 51); border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204);">
+                </span>
+            </div>
+        </div>
+        <div id="LoginCaptchaWrap" class="fmFld Dfx flxWrp sfCol_100 Mb-10 tMb-10 mMb-10">
+            <div id="LoginCaptcha" class="Dfx flxWrp sfCol_100 tsfCol_100 msfCol_100">
+
+            </div>
+            <div class="fmLbl">
+                <label contenteditable="true" class="Dib Lh-26 Pb-0 Mt-0 ff-rubik f-weight-400 Fs-16 tMt-0 tFs-16 mMt-0 Mb-10 tMb-10 tLh-26 mFs-16 mLh-26 tPb-0 mPb-0 mMb-10" style="color: rgb(82, 82, 82);">Result Value</label>
+            </div>
+            <div class="fmInp Dfx  sfCol_100">
+                <span class="inpWrp Dfx flxWrp sfCol_100">
+                    <input name="CaptchaAnswer" type="text" class="cbvInpTxt requiredFld Fs-16 ff-rubik f-weight-400 mPl-5 mPr-5 tPl-10 tPr-10 Lh-36 tFs-16 tPt-0 tPb-0 tLh-36 Pl-5 Pr-5 mLh-36 mFs-16 Mb-10 tMb-10 mMb-10" style="width: 100%;color: rgb(51, 51, 51);border-style: solid;border-width: 1px;border-color: rgb(204, 204, 204);" placeholder="Enter result of above number" />
+                </span>
+            </div>
+        </div>
+        <div class="fmFld fldPassForgot Dfx flxWrp sfCol_100 TxAl-r TxAl-m tTxAl-b Mb-10 tMb-10 mMb-10">
+            <a href="#" id="lnkForgotPassword" class="cPointer lnkPassForgot Lh-29 hovered ff-rubik f-weight-500 Fs-14 Mt-0 mPt-5 Pt-10 tFs-14 tLh-24 tMt-10 tPt-10 tPb-5 mLh-22 mFs-13 mMt-15" href="" style="color: rgb(146, 146, 146); background-color: rgba(0, 0, 0, 0); box-shadow: none; border-style: none; border-width: 0px; border-color: rgb(0, 118, 174);" data-hovereffect="{&quot;bg&quot;:&quot;rgba(204, 204, 204, 0)&quot;,&quot;font&quot;:&quot;rgba(1, 143, 211,1)&quot;,&quot;box&quot;:{&quot;on&quot;:&quot;off&quot;,&quot;hl&quot;:&quot;0px&quot;,&quot;vl&quot;:&quot;0px&quot;,&quot;br&quot;:&quot;0px&quot;,&quot;c&quot;:&quot;#000&quot;,&quot;i&quot;:&quot;false&quot;},&quot;border&quot;:{&quot;on&quot;:&quot;none&quot;,&quot;top&quot;:&quot;0&quot;,&quot;right&quot;:&quot;0&quot;,&quot;bottom&quot;:&quot;0&quot;,&quot;left&quot;:&quot;0&quot;,&quot;tc&quot;:&quot;#000&quot;,&quot;rc&quot;:&quot;#000&quot;,&quot;bc&quot;:&quot;#000&quot;,&quot;lc&quot;:&quot;#000&quot;},&quot;zoom&quot;:&quot;10&quot;,&quot;delay&quot;:0}" hovered-mousein="out">Forgot Password</a>
+        </div>
+        <div id="divLoginBtnWrap" class="btn-wrap Dfx flxWrp hovered sfCol_100" data-hovereffect="{&quot;bg&quot;:&quot;rgba(255, 255, 255,1)&quot;,&quot;font&quot;:&quot;rgba(31, 182, 255,1)&quot;,&quot;box&quot;:{&quot;on&quot;:&quot;off&quot;,&quot;hl&quot;:&quot;0px &quot;,&quot;vl&quot;:&quot;0px &quot;,&quot;br&quot;:&quot;0px &quot;,&quot;c&quot;:&quot;#000 &quot;,&quot;i&quot;:&quot;&quot;},&quot;border&quot;:{&quot;on&quot;:&quot;none&quot;,&quot;top&quot;:&quot;0px&quot;,&quot;right&quot;:&quot;0px&quot;,&quot;bottom&quot;:&quot;0px&quot;,&quot;left&quot;:&quot;0px&quot;,&quot;tc&quot;:&quot;#000&quot;,&quot;rc&quot;:&quot;#000&quot;,&quot;bc&quot;:&quot;#000&quot;,&quot;lc&quot;:&quot;#000&quot;},&quot;zoom&quot;:&quot;10&quot;,&quot;delay&quot;:0}" hovered-mousein="out" style="background-color: rgba(0, 0, 0, 0); color: rgb(0, 0, 0); box-shadow: none; border-style: none; border-width: 0px; border-color: rgb(0, 0, 0);">
+            <button type="button" id="btnSignIn" class="btnLogin cPointer ff-rubik txU f-weight-300 Pl-15 Pr-15 Lh-37 Fs-17 hovered MtN-30 tLh-34 tPl-20 tPr-20 tMtN-35 tFs-15 mPl-15 mPr-15 mLh-36 mFs-15 mMtN-30" style="background-color: rgb(31, 182, 255); border-radius: 3px; color: rgb(255, 255, 255); box-shadow: rgba(0, 0, 0, 0.25) 0px 4px 16px 0px; border-style: none; border-width: 0px; border-color: rgb(0, 0, 0);" data-hovereffect="{&quot;bg&quot;:&quot;rgba(0, 111, 163,1)&quot;,&quot;font&quot;:&quot;rgba(255, 255, 255,1)&quot;,&quot;box&quot;:{&quot;on&quot;:&quot;off&quot;,&quot;hl&quot;:&quot;0px&quot;,&quot;vl&quot;:&quot;0px&quot;,&quot;br&quot;:&quot;0px&quot;,&quot;c&quot;:&quot;#000&quot;,&quot;i&quot;:&quot;false&quot;},&quot;border&quot;:{&quot;on&quot;:&quot;none&quot;,&quot;top&quot;:&quot;0px&quot;,&quot;right&quot;:&quot;0px&quot;,&quot;bottom&quot;:&quot;0px&quot;,&quot;left&quot;:&quot;0px&quot;,&quot;tc&quot;:&quot;rgba(0, 146, 216,1)&quot;,&quot;rc&quot;:&quot;rgba(0, 146, 216,1)&quot;,&quot;bc&quot;:&quot;rgba(0, 146, 216,1)&quot;,&quot;lc&quot;:&quot;rgba(0, 146, 216,1)&quot;},&quot;zoom&quot;:&quot;10&quot;,&quot;delay&quot;:0}" hovered-mousein="out">Sign In</button>
+        </div>
+
+        <div data-name="opendid" class="fmFld fldOID Dfx flxWrp sfCol_100 tsfCol_100 msfCol_100 tPt-5 mPt-5 TxAl-m TxAl-c Pt-10 tPb-5 mPb-5 Pb-10 Mt-5 tMt-5 mMt-5" id="dvOpenIDField">
+            <div class="fldOIDTxt sfCol_100 tsfCol_100 msfCol_100 TxAl-c tMb-15 mMb-15 Mb-25" contenteditable="true">OR LOGIN WITH</div>
+            <div class="opid-btn sfCol_100 tsfCol_100 msfCol_100" id="divOpenIDBtnWrp">
+                <a href="javascript:void(0)"  class="oIdBtn cPointer sfCol_27 Ml-5 Mr-5 tsfCol_44 tMl-5 tMr-5 mMl-5 mMr-5 msfCol_40"><img src="/images/extLogin/facebook-btn.png" /></a>
+            </div>
+        </div>
+    </form>
+    <form id="divAlreadyLogin" method="post" action="/account/Logout" class="Dib fldEnDn FldAlreadyLogin Pt-35 Pr-35 Pb-35 Pl-35 TxAl-c tsfCol_100 tPt-20 tPr-20 tPb-20 tPl-20 msfCol_100 mPt-20 mPr-20 mPb-20 mPl-20 mMb-0 sfCol_75 Dn" data-name="Already Login Status" style="background-color: rgb(255, 255, 255); border-radius: 5px; box-shadow: rgba(0, 0, 0, 0.133) 0px 0px 12px;">
+        <p contenteditable="true" class="loginStatMsg Fs-16 Lh-26 ff-rubik f-weight-500 tFs-15 tLh-28 tMb-10 mLh-22 mFs-15 mMb-10" style="color: rgb(68, 68, 68);">You are already login</p>
+        <div class="fldCont alrdyLogBtn Dfx flxWrp sfCol_100 tMb-5 mMb-5 Mb-0 tMt-5 mMt-5 Mt-20 TxAl-c">
+            <button id="hypLnkCountinue" type="button" class="lnkCountinue ff-rubik f-weight-300 txU Pr-15 Pl-15 Mr-20 tPr-15 tPl-15 tMr-15 tFs-15 tPb-0 tPt-0 tLh-36 mPl-15 mPr-15 mMr-20 mFs-15 mLh-36 Fs-17 Lh-37"  contenteditable="true" style="background-color: rgb(131, 206, 119); color: rgb(255, 255, 255); border-radius: 2px;">Back</button>
+            <button  id="btnLogOutFrmSystem" type="button" class="logOutBtn cPointer ff-rubik f-weight-300 txU Pt-0 Pb-0 Pl-15 Pr-15 tPl-15 tPr-15 tMl-0 tFs-15 tPb-0 tPt-0 tLh-36 mPt-0 mPb-0 mPl-15 mPr-15 mFs-15 mLh-36 Fs-17 Lh-37"  style="background-color: rgb(210, 69, 70); color: rgb(255, 255, 255); border-radius: 2px; border-style: none; border-width: 0px; border-color: rgb(0, 0, 0);">Logout</button>
+        </div>
+    </form>
+</div>

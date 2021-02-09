@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Cbuilder.NewsLetter.GroupInfo>
+@{
+    ViewData["Title"] = "Groups";
+}
+<div class="sfContainer-full">
+    <div class="sfDatagrid">
+        <a asp-action="Create">Create New</a>
+        <div class="sfDatagrid-header">
+            <div class="dg-col-wp">
+                <div class="sfCol-4">
+                    <div class="dg-group">
+                        <div class="dg-search-key rounded">
+                            <input type="text" class="sfInputbox rounded" placeholder="Search">
+                            <button type="button" class="search">
+                                <i class="fa fa-search rounded"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sfDatagrid-title">
+            <div class="dg-col-wp">
+                <div class="sfCol-7 ">
+                    Detail
+                </div>
+                <div class="sfCol-2 f-center">
+                    Status
+                </div>
+                <div class="sfCol-3 f-center">
+                    Action
+                </div>
+            </div>
+
+        </div>
+        <div class="sfDatagrid-body">
+            @foreach (var item in Model)
+            {
+                <div class="dg-col-wp">
+                    <div class="sfCol-7">
+                        <div class="dg-group-inline">
+                            <div class="dg-group">
+                                <div class="dg-title">@item.Name</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfCol-2 f-center">
+                        <div class="ds-group">
+                            @*<span class="pills pills-success rounded">@item.Status</span>*@
+                        </div>
+                    </div>
+                    <div class="sfCol-3 f-center">
+                        <div class="dg-group-inline">
+                            <div class="action-icon"><i class="fa fa-eye"></i></div>
+                        </div>
+                        <div class="ds-group-inline">
+                            <div class="action-menu">
+                                <div class="action-icon">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </div>
+                                <ul class="action-open">
+                                    <li><a class="links" asp-action="Create" asp-route-id="@item.GroupID">Edit<i class="fa fa-"></i></a></li>
+                                    <li><a class="links" asp-action="DeleteGroup" asp-route-id="@item.GroupID">Delete<i class="fa fa-"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

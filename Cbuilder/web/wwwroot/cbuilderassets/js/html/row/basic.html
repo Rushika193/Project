@@ -1,0 +1,60 @@
+﻿
+<div class="field-row">
+    <div class="field-row stElWrap col80-20">
+        <label class="fCol">Show Row Title</label>
+        <span class="toggle_btn fCol TxAl-r">
+            <input id="showTitle" name="rowTitle" type="checkbox">
+            <label class="tgl_slider" for="showTitle"></label>
+        </span>
+    </div>
+    <div class="field-row stElWrap col80-20">
+        <label class="fCol">Auto Adjust to screen</label>
+        <div class="fCol TxAl-r">
+            <span class="toggle_btn">
+                <input type="checkbox" id="autoheightAdjustRow" name="toggleButton">
+                <label for="toggleButton" class="tgl_slider"></label>
+            </span>
+        </div>
+    </div>
+    <div class="field-row stElWrap col80-20" id="adjustHeightCheck">
+        <label class="fCol">Adjust Height</label>
+        <span class="toggle_btn fCol TxAl-r">
+            <input id="adJustHeight" name="adJust Height" type="checkbox">
+            <label class="tgl_slider" for="adJustHeight"></label>
+        </span>
+    </div>
+    <div class="field-row stElWrap col100" id="adjustHeaderHolder" style="display:none;">
+        <span class="range__slider fCol">
+            <div id="rowHeightSlider">
+                <div id="rowHeightHandle" class="ui-slider-handle" title="Row Height">0</div>
+            </div>
+        </span>
+    </div>
+    <div class="field-row stElWrap col80-20">
+        <label class="fCol">Center Wrapper</label>
+        <span class="toggle_btn fCol TxAl-r">
+            <input id="askContainer" name="Container" type="checkbox">
+            <label class="tgl_slider" for="askContainer"></label>
+        </span>
+    </div>
+    <div class="field-row col100" id="additionalContainer" style="display:none;">
+        <span class="select__box fCol">
+            <select id="selContainerWidth">
+                <option value="container-small">Small</option>
+                <option value="container-medium">Medium</option>
+                <option value="container-large">Large</option>
+                <option value="container-extralarge">ExtraLarge</option>
+            </select>
+        </span>
+    </div>
+
+    <div id="rearrangeColumn" style="display:none;">
+        <div class="field-row stElWrap col100">
+            <label class="fCol">Rearrange Columns</label>
+            <span class="toggle_btn fCol TxAl-r">
+            </span>
+        </div>
+        <div class="RearrangeColumnWrapper alignmentHWrapper" id="RearrangeColumnWrapper">            
+        </div>
+    </div>
+</div>

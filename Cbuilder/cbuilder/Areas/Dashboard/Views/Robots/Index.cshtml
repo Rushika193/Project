@@ -1,0 +1,95 @@
+﻿@using Cbuilder.Webbuilder
+@model Cbuilder.Areas.Dashboard.Models.Dashboard.Robots
+@{
+    ViewData["Title"] = "Index";
+    bool full = Model.FileType == "full";
+    int count = 0;
+
+    string showFull = string.Empty, showPartial = string.Empty;
+    if (full)
+        showFull = "Dn";
+    else
+        showPartial = "Dn";
+}
+<div class="cd_content">
+    <h1 class="content_title ">Robots</h1>
+    <p class="content_lead ">
+        Genrate robot.txt for the crawler
+    </p>
+</div>
+<form action="Index" method="post">
+    <div class="sfFieldset sfCol-6 ">
+        <div class="formkey">
+            <span class="sfFormlabel">Select your mode</span>
+        </div>
+        <div class="formvalue">
+            <select asp-for="@Model.FileType" class="sfFormcontrol selectrobotType" placeholder="Choose the type ">
+                @if (full)
+                {
+                    <option value="full" selected="selected">Full Edit</option>
+                    <option value="partial">Basic Edit</option>
+                }
+                else
+                {
+                    <option value="full">Full Edit</option>
+                    <option value="partial" selected="selected">Basic Edit</option>
+                }
+
+            </select>
+        </div>
+    </div>
+    <div class="selectedType @showFull" data-type="full">
+        <div class="sfFieldset">
+            <div class="formkey">
+                <span class="sfFormlabel">Robot.txtFile </span>
+            </div>
+            <div class="formvalue">
+                <textarea class="sfFormcontrol area" asp-for="@Model.FullText"></textarea>
+            </div>
+        </div>
+    </div>
+    <div class="selectedType @showPartial" data-type="partial">
+        <div class="sfFieldset">
+            <div class="formkey">
+                <span class="sfFormlabel">User Agent </span>
+            </div>
+            <div class="formvalue">
+                <textarea class="sfFormcontrol area" asp-for="@Model.UserAgent"></textarea>
+            </div>
+        </div>
+        <div class="sfFieldset">
+            <div class="formkey">
+                <span class="sfFormlabel">Choose the pages to be disallowed for the crawler to crawl</span>
+            </div>
+            <div class="formvalue">
+                <input type="hidden" asp-for="@Model.Disallowed" class="disallowedPages" />
+                <ul class="list-group" id="pagesList">
+                    @foreach (WebBuilderPages webBuilderPage in ViewBag.Pages)
+                    {
+                        string fakeID = "id" + count;
+                        string check = string.Empty;
+                        @foreach (string page in Model.DisallowedList)
+                        {
+
+                            if (page == webBuilderPage.PageName)
+                            {
+                                check = "checked='checked'";
+                                break;
+                            }
+                        }
+                        <li class=" group-item group-item-link-bg ">
+                            <div class="sfCheckbox pagename">
+                                <input type="checkbox" class="chkDisallowed" value="" @check id="@fakeID">
+                                <label for="@fakeID">@webBuilderPage.PageName</label>
+                            </div>
+                        </li>
+                        count++;
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="sfButtonwrapper">
+        <input type="Submit" value="Generate" class="btn primary round  Mr-8" />
+    </div>
+</form>

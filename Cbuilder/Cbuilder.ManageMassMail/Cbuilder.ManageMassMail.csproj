@@ -1,0 +1,17 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Provider\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cbuilder.Core.Helper\Cbuilder.Core.Helper.csproj" />
+    <ProjectReference Include="..\Cbuilder.EmailTemplate\Cbuilder.EmailTemplate.csproj" />
+    <ProjectReference Include="..\Cbuilder.MandrilMailHelper\Cbuilder.MandrilMailHelper.csproj" />
+  </ItemGroup>
+
+</Project>

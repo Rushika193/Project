@@ -1,0 +1,66 @@
+﻿@using Newtonsoft.Json;
+@using Newtonsoft.Json.Linq;
+@using Cbuilder.Block.Entities;
+@model PageLayoutViewModel;
+@{
+    ViewData["Title"] = "Dashboard";
+}
+    <section class="content-title Mb-25">
+        <a asp-action="layout" asp-route-pagename="dashboard" class="edit-layout tooltip  left pull-right" data-title="Edit Layout"><i class="fa fa-pencil-square-o"></i> </a>
+        <h2 class="fw-400">@ViewData["Title"]</h2>
+    </section>
+<section class="content-body">
+    <div class="">
+        @foreach (var row in Model.Elements)
+        {
+            <div id="@row.ElementID" @Html.Raw(row.Attributes) class="Mb-40">
+                @foreach (var col in row.InnerElements)
+                {
+                    <div id="@col.ElementID" @Html.Raw(col.Attributes)>
+                        @if (col.HasModules)
+                            @foreach (var comp in col.Modules)
+                            {
+                                <div data-title="@comp.Title" class="modules w-100 @comp.CssClass">
+                                    @{ JObject param = null;
+                                        @if (!string.IsNullOrEmpty(comp.InvokeParam))
+                                            param = JsonConvert.DeserializeObject<JObject>(comp.InvokeParam);
+                                        if (comp.ModuleType == ModuleType.ViewComponent)
+                                        {
+                                            @await Component.InvokeAsync(comp.InvokeName, param)
+                                        }
+                                        else if (comp.ModuleType == ModuleType.PartialView)
+                                        {
+                                            @await Html.PartialAsync(comp.InvokeName, param)
+                                        }
+                                    }
+                                </div>
+                            }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</section>
+
+
+<style>
+    .edit-layout {
+        background: #fff;
+        color: #1fb6ff;
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 33px;
+        border-radius: 50%;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        font-size: 0.85rem;
+        transition: 0.3s ease;
+        -webkit-transition: 0.3s ease;
+        -moz-transition: 0.3s ease;
+    }
+
+        .edit-layout:hover {
+            background: #1fb6ff;
+            color: #fff;
+        }
+</style>

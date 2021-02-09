@@ -1,0 +1,122 @@
+﻿@model Cbuilder.DashboardMenu.DashboardSideMenu
+@{
+    Cbuilder.DashboardMenu.SideMenuFormLabel labels = (Cbuilder.DashboardMenu.SideMenuFormLabel)ViewBag.LocalLabel;
+}
+<div class="is-default">
+    <h2 class="form-title">@ViewData["Title"]</h2>
+    <div class="sfFormwrapper card">
+        <div class="card-body Pa-6x">
+            <form asp-action="AddUpdate">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input asp-for="LinkID" class="form-control" />
+                <div class="sfRow">
+                    <div class="sfFieldset sfCol-12 sfCol-md-6">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@labels.LinkTitle</span>
+                        </div>
+                        <div class="formvalue">
+                            <input asp-for="LinkTitle" type="text" class="sfFormcontrol" placeholder="Enter your name">
+                            <span asp-validation-for="LinkTitle" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfCol-12 sfCol-md-6 link-section">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@labels.Area</span>
+                        </div>
+                        <div class="formvalue">
+                            <select asp-for="Area" class="sfFormcontrol" id="area" asp-items="ViewBag.Area"></select>
+                            <span asp-validation-for="Area" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfCol-12 sfCol-md-6 link-section">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@labels.Controller</span>
+                        </div>
+                        <div class="formvalue">
+                            <select class="sfFormcontrol" asp-for="Controller" id="controller">
+                                <option>Open this select menu</option>
+                            </select>
+                            <span asp-validation-for="Controller" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfCol-12 sfCol-md-6 link-section">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@labels.Action</span>
+                        </div>
+                        <div class="formvalue">
+                            <select class="sfFormcontrol" asp-for="Action" id="actions">
+                                <option>Open this select menu</option>
+                            </select>
+                            <span asp-validation-for="Action" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfCol-12 sfCol-md-6">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@labels.Culture</span>
+                        </div>
+                        <div class="formvalue">
+                            <select class="sfFormcontrol" asp-for="Culture" asp-items="ViewBag.Culture">
+                            </select>
+                            <span asp-validation-for="Culture" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfCol-12 sfCol-md-6">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@labels.Parent</span>
+                        </div>
+                        <div class="formvalue">
+                            <select asp-for="ParentID" class="sfFormcontrol" asp-items="ViewBag.Menu"></select>
+                            <span asp-validation-for="ParentID" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfCol-12 sfCol-md-6">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@labels.IconClass</span>
+                        </div>
+                        <div class="formvalue">
+                            <input asp-for="PageIcon" type="text" class="sfFormcontrol" placeholder="Enter Icon Class">
+                            <span asp-validation-for="PageIcon" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfCol-12 sfCol-md-6">
+                        <div class="formkey">
+                            <span class="sfFormlabel">@labels.Parameters</span>
+                        </div>
+                        <div class="formvalue">
+                            <input asp-for="Param" type="text" class="sfFormcontrol" placeholder="Enter Parameters">
+                            <span asp-validation-for="Param" class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="sfFieldset sfCol-12 sfCol-md-6 flex f-bottom">
+                        <div class="formvalue form-control ">
+                            <div class="sfCheckbox togglelist sfCheckbox-inline">
+                                <div class="formvalue">
+                                    <input type="checkbox" asp-for="IsParent" id="IsParent" class="form-toggle">
+                                    <label for="IsParent" class="toggle"></label>
+                                </div>
+                                <div class="formvalue">
+                                    <span class="sfFormlabel">@labels.IsParent</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="sfButtonwrapper ">
+                    <input type="submit" value="@ViewData["BtnValue"]" class="btn primary round Mr-8" />
+                    <a asp-action="Index" class="btn light round">@labels.BackBtnLabel</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script type="text/javascript">
+        var area = '@Html.Raw(Model?.Area)';
+        var controller = '@Html.Raw(Model?.Controller)';
+        var action = '@Html.Raw(Model?.Action)';
+    </script>
+}

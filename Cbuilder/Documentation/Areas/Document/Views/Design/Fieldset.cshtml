@@ -1,0 +1,739 @@
+﻿
+@{
+    ViewData["Title"] = "fieldset";
+}
+    <div class="cd_content">
+        <h1 class="content_title ">Fieldset</h1>
+        <p class="content_lead">Grouping of realated elements in a form using fieldset with examples.</p>
+    </div>
+<div class="cd_example Mb-10x">
+    <div class="preview">
+        <span class="example_title">Fieldset</span>
+        <div class="sfFormwrapper">
+            <form>
+                <fieldset>
+                    <legend>Personal Info</legend>
+                    <div class="sfRow">
+                        <div class="sfFieldset sfCol-3">
+                            <div class="formkey">
+                                <label for="fname" class="sfFieldsetlabel ">
+                                    First Name
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sfFieldset sfCol-9">
+                            <div class="formvalue">
+                                <input type="text" class="sfFormcontrol " id="fname" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfRow">
+                        <div class="sfFieldset sfCol-3">
+                            <div class="formkey">
+                                <label for="lname" class="sfFieldsetlabel ">
+                                    Last Name
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sfFieldset sfCol-9">
+                            <div class="formvalue">
+                                <input type="text" class="sfFormcontrol " id="lname" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfRow">
+                        <div class="sfFieldset sfCol-3">
+                            <div class="formkey">
+                                <label for="email" class="sfFieldsetlabel ">
+                                    Email
+                                </label>
+                            </div>
+
+                        </div>
+                        <div class="sfFieldset sfCol-9">
+                            <div class="formvalue">
+                                <input type="text" class="sfFormcontrol " id="email" placeholder="">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfRow">
+                        <div class="sfFieldset sfCol-3">
+                            <div class="formkey">
+                                <label for="inp-select" class="sfFieldsetlabel">
+                                    Select
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sfFieldset sfCol-9">
+                            <div class="formvalue">
+                                <select class="sfFormcontrol" id="inp-select" placeholder="">
+                                    <option value="">-</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfRow">
+                        <div class="sfFieldset sfCol-3">
+                            <div class="formkey">
+                                <label for="check" class="sfFieldsetlabel">
+                                    Checkbox box
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sfFieldset  sfCol-9 ">
+                            <div class="formvalue">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="checkbox1" class="form-checkbox">
+                                    <label for="checkbox1">Checkbox1</label>
+                                </div>
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="checkbox2" class="form-checkbox">
+                                    <label for="checkbox2">Checkbox1</label>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="sfRow">
+                        <div class="sfFieldset sfCol-3">
+                            <div class="formkey">
+                                <label for="check" class="sfFieldsetlabel">
+                                    Radio box
+                                </label>
+                            </div>
+                        </div>
+                        <div class="sfFieldset   sfCol-9">
+                            <div class="formvalue">
+                                <div class="sfCheckbox">
+                                    <input type="radio" id="radiobox1" class="form-radio">
+                                    <label for="radiobox1">Checkbox2</label>
+                                </div>
+                                <div class="sfCheckbox">
+                                    <input type="radio" id="radiobox1" class="form-radio">
+                                    <label for="radiobox1">Checkbox2</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sfRow">
+                        <div class="sfCol-9 offset-sfCol-3 offset-col-3">
+                            <div class="sfButtonwrapper">
+                                <button class="btn primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <figure>
+        <div data-lang="lang-html" class="codeContent">
+            <div class="sfFormwrapper">
+                <form>
+                    <fieldset>
+                        <legend>Personal Info</legend>
+                        <div class="sfRow">
+                            <div class="sfFieldset sfCol-3">
+                                <div class="formkey">
+                                    <label for="fname" class="sfFieldsetlabel ">
+                                        First Name
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-9">
+                                <div class="formvalue">
+                                    <input type="text" class="sfFormcontrol " id="fname" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sfRow">
+                            <div class="sfFieldset sfCol-3">
+                                <div class="formkey">
+                                    <label for="lname" class="sfFieldsetlabel ">
+                                        Last Name
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-9">
+                                <div class="formvalue">
+                                    <input type="text" class="sfFormcontrol " id="lname" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sfRow">
+                            <div class="sfFieldset sfCol-3">
+                                <div class="formkey">
+                                    <label for="email" class="sfFieldsetlabel ">
+                                        Email
+                                    </label>
+                                </div>
+
+                            </div>
+                            <div class="sfFieldset sfCol-9">
+                                <div class="formvalue">
+                                    <input type="text" class="sfFormcontrol " id="email" placeholder="">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sfRow">
+                            <div class="sfFieldset sfCol-3">
+                                <div class="formkey">
+                                    <label for="inp-select" class="sfFieldsetlabel">
+                                        Select
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="sfFieldset sfCol-9">
+                                <div class="formvalue">
+                                    <select class="sfFormcontrol" id="inp-select" placeholder="">
+                                        <option value="">-</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sfRow">
+                            <div class="sfFieldset sfCol-3">
+                                <div class="formkey">
+                                    <label for="check" class="sfFieldsetlabel">
+                                        Checkbox box
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="sfFieldset  sfCol-9 ">
+                                <div class="formvalue">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkbox1" class="form-checkbox">
+                                        <label for="checkbox1">Checkbox1</label>
+                                    </div>
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkbox2" class="form-checkbox">
+                                        <label for="checkbox2">Checkbox1</label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="sfRow">
+                            <div class="sfFieldset sfCol-3">
+                                <div class="formkey">
+                                    <label for="check" class="sfFieldsetlabel">
+                                        Radio box
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="sfFieldset   sfCol-9">
+                                <div class="formvalue">
+                                    <div class="sfCheckbox">
+                                        <input type="radio" id="radiobox1" class="form-radio">
+                                        <label for="radiobox1">Checkbox2</label>
+                                    </div>
+                                    <div class="sfCheckbox">
+                                        <input type="radio" id="radiobox1" class="form-radio">
+                                        <label for="radiobox1">Checkbox2</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="sfRow">
+                            <div class="sfCol-9 offset-sfCol-3 offset-col-3">
+                                <div class="sfButtonwrapper">
+                                    <button class="btn primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </figure>
+</div>
+
+
+<div class="cd_example Mb-10x">
+    <div class="preview">
+        <span class="example_title">Fieldset with centered legend and full width</span>
+        <div class="sfFormwrapper">
+            <form>
+                <fieldset class="headed">
+                    <legend>Personal Info</legend>
+                    <div class="sfFieldset ">
+                        <div class="formkey">
+                            <label for="fname" class="sfFieldsetlabel ">
+                                First Name
+                            </label>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" class="sfFormcontrol " id="fname" placeholder="">
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label for="lname" class="sfFieldsetlabel ">
+                                Last Name
+                            </label>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" class="sfFormcontrol " id="lname" placeholder="">
+                        </div>
+
+
+                    </div>
+
+                    <div class="sfFieldset ">
+                        <div class="formkey">
+                            <label for="email" class="sfFieldsetlabel ">
+                                Email
+                            </label>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" class="sfFormcontrol " id="email" placeholder="">
+                        </div>
+
+
+                    </div>
+
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label for="inp-select" class="sfFieldsetlabel">
+                                Select
+                            </label>
+                        </div>
+                        <div class="formvalue">
+                            <select class="sfFormcontrol" id="inp-select" placeholder="">
+                                <option value="">-</option>
+                                <option value="1">Option 1</option>
+                                <option value="2">Option 2</option>
+                                <option value="3">Option 3</option>
+                            </select>
+                        </div>
+
+
+                    </div>
+                    <div class="sfFieldset ">
+                        <div class="formkey">
+                            <label for="check" class="sfFieldsetlabel">
+                                Checkbox box
+                            </label>
+                        </div>
+                        <div class="formvalue">
+                            <div class="sfCheckbox">
+                                <input type="checkbox" id="checkbox1" class="form-checkbox">
+                                <label for="checkbox1">Checkbox1</label>
+                            </div>
+                            <div class="sfCheckbox">
+                                <input type="checkbox" id="checkbox2" class="form-checkbox">
+                                <label for="checkbox2">Checkbox1</label>
+                            </div>
+                        </div>
+
+
+
+
+
+                    </div>
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label for="check" class="sfFieldsetlabel">
+                                Radio box
+                            </label>
+                        </div>
+                        <div class="formvalue">
+                            <div class="sfCheckbox">
+                                <input type="radio" id="radiobox1" class="form-radio">
+                                <label for="radiobox1">Checkbox2</label>
+                            </div>
+                            <div class="sfCheckbox">
+                                <input type="radio" id="radiobox1" class="form-radio">
+                                <label for="radiobox1">Checkbox2</label>
+                            </div>
+
+                        </div>
+
+                    </div>
+                    <div class="sfButtonwrapper">
+                        <button class="btn primary">Submit</button>
+                    </div>
+                   
+
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <figure>
+        <div data-lang="lang-html" class="codeContent">
+            <div class="sfFormwrapper">
+                <form>
+                    <fieldset class="headed">
+                        <legend>Personal Info</legend>
+                        <div class="sfFieldset ">
+                            <div class="formkey">
+                                <label for="fname" class="sfFieldsetlabel ">
+                                    First Name
+                                </label>
+                            </div>
+                            <div class="formvalue">
+                                <input type="text" class="sfFormcontrol " id="fname" placeholder="">
+                            </div>
+
+
+                        </div>
+
+
+                        <div class="sfFieldset">
+                            <div class="formkey">
+                                <label for="lname" class="sfFieldsetlabel ">
+                                    Last Name
+                                </label>
+                            </div>
+                            <div class="formvalue">
+                                <input type="text" class="sfFormcontrol " id="lname" placeholder="">
+                            </div>
+
+
+                        </div>
+
+                        <div class="sfFieldset ">
+                            <div class="formkey">
+                                <label for="email" class="sfFieldsetlabel ">
+                                    Email
+                                </label>
+                            </div>
+                            <div class="formvalue">
+                                <input type="text" class="sfFormcontrol " id="email" placeholder="">
+                            </div>
+
+
+                        </div>
+
+                        <div class="sfFieldset">
+                            <div class="formkey">
+                                <label for="inp-select" class="sfFieldsetlabel">
+                                    Select
+                                </label>
+                            </div>
+                            <div class="formvalue">
+                                <select class="sfFormcontrol" id="inp-select" placeholder="">
+                                    <option value="">-</option>
+                                    <option value="1">Option 1</option>
+                                    <option value="2">Option 2</option>
+                                    <option value="3">Option 3</option>
+                                </select>
+                            </div>
+
+
+                        </div>
+                        <div class="sfFieldset ">
+                            <div class="formkey">
+                                <label for="check" class="sfFieldsetlabel">
+                                    Checkbox box
+                                </label>
+                            </div>
+                            <div class="formvalue">
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="checkbox1" class="form-checkbox">
+                                    <label for="checkbox1">Checkbox1</label>
+                                </div>
+                                <div class="sfCheckbox">
+                                    <input type="checkbox" id="checkbox2" class="form-checkbox">
+                                    <label for="checkbox2">Checkbox1</label>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                        <div class="sfFieldset">
+                            <div class="formkey">
+                                <label for="check" class="sfFieldsetlabel">
+                                    Radio box
+                                </label>
+                            </div>
+                            <div class="formvalue">
+                                <div class="sfCheckbox">
+                                    <input type="radio" id="radiobox1" class="form-radio">
+                                    <label for="radiobox1">Checkbox2</label>
+                                </div>
+                                <div class="sfCheckbox">
+                                    <input type="radio" id="radiobox1" class="form-radio">
+                                    <label for="radiobox1">Checkbox2</label>
+                                </div>
+
+                            </div>
+
+                        </div><div class="sfButtonwrapper">
+    <button class="btn primary">Submit</button>
+</div>
+                        
+
+
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </figure>
+</div>
+
+<div class="cd_example Mb-10x">
+    <div class="preview">
+        <span class="example_title">Fieldset with stripped border</span>
+        <div class="sfFormwrapper">
+            <form>
+                <fieldset class="stripped">
+                    <div class="sfRow">
+                        <div class="sfCol-3">
+                            <legend>User Information</legend>
+                        </div>
+                        <div class="sfCol-9">
+                            <div class="sfFieldset ">
+                                <div class="formkey">
+                                    <label for="uname" class="sfFieldsetlabel ">
+                                        First Name
+                                    </label>
+                                </div>
+                                <div class="formvalue">
+                                    <input type="text" class="sfFormcontrol " id="uname" placeholder="">
+                                </div>
+
+
+                            </div>
+
+
+                            <div class="sfFieldset">
+                                <div class="formkey">
+                                    <label for="pwd" class="sfFieldsetlabel ">
+                                        Last Name
+                                    </label>
+                                </div>
+                                <div class="formvalue">
+                                    <input type="password" class="sfFormcontrol " id="pwd" placeholder="">
+                                </div>
+
+
+                            </div>
+                            <div class="sfFieldset">
+                                <div class="formkey">
+                                    <label for="email" class="sfFieldsetlabel ">
+                                        Last Name
+                                    </label>
+                                </div>
+                                <div class="formvalue">
+                                    <input type="password" class="sfFormcontrol " id="email" placeholder="">
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+                <fieldset class="stripped">
+                    <div class="sfRow">
+                        <div class="sfCol-3">
+                            <legend>User Preferences</legend>
+                        </div>
+                        <div class="sfCol-9">
+                            <div class="sfFieldset">
+                                <div class="formkey">
+                                    <label for="inp-select" class="sfFieldsetlabel">
+                                        Select
+                                    </label>
+                                </div>
+                                <div class="formvalue">
+                                    <select class="sfFormcontrol" id="inp-select" placeholder="">
+                                        <option value="">-</option>
+                                        <option value="1">Option 1</option>
+                                        <option value="2">Option 2</option>
+                                        <option value="3">Option 3</option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+                            <div class="sfFieldset ">
+                                <div class="formkey">
+                                    <label for="check" class="sfFieldsetlabel">
+                                        Checkbox box
+                                    </label>
+                                </div>
+                                <div class="formvalue">
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkbox1" class="form-checkbox">
+                                        <label for="checkbox1">Checkbox1</label>
+                                    </div>
+                                    <div class="sfCheckbox">
+                                        <input type="checkbox" id="checkbox2" class="form-checkbox">
+                                        <label for="checkbox2">Checkbox1</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="sfFieldset">
+                                <div class="formkey">
+                                    <label for="check" class="sfFieldsetlabel">
+                                        Radio box
+                                    </label>
+                                </div>
+                                <div class="formvalue">
+                                    <div class="sfCheckbox">
+                                        <input type="radio" id="radiobox1" class="form-radio">
+                                        <label for="radiobox1">Checkbox2</label>
+                                    </div>
+                                    <div class="sfCheckbox">
+                                        <input type="radio" id="radiobox1" class="form-radio">
+                                        <label for="radiobox1">Checkbox2</label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="sfCol-9 offset-sfCol-3 offset-col-3">
+                            <div class="sfButtonwrapper">
+                                <button class="btn primary">Submit</button>
+                            </div>
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    <figure>
+        <div data-lang="lang-html" class="codeContent">
+            <div class="sfFormwrapper">
+                <form>
+                    <fieldset class="stripped">
+                        <div class="sfRow">
+                            <div class="sfCol-3">
+                                <legend>User Information</legend>
+                            </div>
+                            <div class="sfCol-9">
+                                <div class="sfFieldset ">
+                                    <div class="formkey">
+                                        <label for="uname" class="sfFieldsetlabel ">
+                                            First Name
+                                        </label>
+                                    </div>
+                                    <div class="formvalue">
+                                        <input type="text" class="sfFormcontrol " id="uname" placeholder="">
+                                    </div>
+
+
+                                </div>
+
+
+                                <div class="sfFieldset">
+                                    <div class="formkey">
+                                        <label for="pwd" class="sfFieldsetlabel ">
+                                            Last Name
+                                        </label>
+                                    </div>
+                                    <div class="formvalue">
+                                        <input type="password" class="sfFormcontrol " id="pwd" placeholder="">
+                                    </div>
+
+
+                                </div>
+                                <div class="sfFieldset">
+                                    <div class="formkey">
+                                        <label for="email" class="sfFieldsetlabel ">
+                                            Last Name
+                                        </label>
+                                    </div>
+                                    <div class="formvalue">
+                                        <input type="password" class="sfFormcontrol " id="email" placeholder="">
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset class="stripped">
+                        <div class="sfRow">
+                            <div class="sfCol-3">
+                                <legend>User Preferences</legend>
+                            </div>
+                            <div class="sfCol-9">
+                                <div class="sfFieldset">
+                                    <div class="formkey">
+                                        <label for="inp-select" class="sfFieldsetlabel">
+                                            Select
+                                        </label>
+                                    </div>
+                                    <div class="formvalue">
+                                        <select class="sfFormcontrol" id="inp-select" placeholder="">
+                                            <option value="">-</option>
+                                            <option value="1">Option 1</option>
+                                            <option value="2">Option 2</option>
+                                            <option value="3">Option 3</option>
+                                        </select>
+                                    </div>
+
+
+                                </div>
+                                <div class="sfFieldset ">
+                                    <div class="formkey">
+                                        <label for="check" class="sfFieldsetlabel">
+                                            Checkbox box
+                                        </label>
+                                    </div>
+                                    <div class="formvalue">
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkbox1" class="form-checkbox">
+                                            <label for="checkbox1">Checkbox1</label>
+                                        </div>
+                                        <div class="sfCheckbox">
+                                            <input type="checkbox" id="checkbox2" class="form-checkbox">
+                                            <label for="checkbox2">Checkbox1</label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="sfFieldset">
+                                    <div class="formkey">
+                                        <label for="check" class="sfFieldsetlabel">
+                                            Radio box
+                                        </label>
+                                    </div>
+                                    <div class="formvalue">
+                                        <div class="sfCheckbox">
+                                            <input type="radio" id="radiobox1" class="form-radio">
+                                            <label for="radiobox1">Checkbox2</label>
+                                        </div>
+                                        <div class="sfCheckbox">
+                                            <input type="radio" id="radiobox1" class="form-radio">
+                                            <label for="radiobox1">Checkbox2</label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="sfCol-9 offset-sfCol-3 offset-col-3">
+                                <div class="sfButtonwrapper">
+                                    <button class="btn primary">Submit</button>
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+        </div>
+    </figure>
+</div>

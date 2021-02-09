@@ -1,0 +1,84 @@
+﻿
+@using Cbuilder.Core.Helper.Models
+@model IEnumerable<Cbuilder.Assets.ApplicationNameInfo>
+
+@{
+    ViewData["Title"] = "Application Management";
+    var localLabel=ViewBag.LocalLabel;
+   
+}
+
+@Html.AntiForgeryToken()
+
+<section class="content-header clearfix">
+    <div class="page-title d-block sm-d-flex">
+        <div class="h2">@localLabel.GridHeading</div>
+        <div class="sfButtonwrapper">
+            <a href="@URLHelper.DashboardURL(Context,"Application", "Create")" class="btn  primary round">@localLabel.AddNew</a>
+
+        </div>
+    </div>
+</section>
+
+<div class="sfDatagrid">
+
+    <div class="sfDatagrid-title d-none sm-d-block">
+        <div class="dg-col-wp">
+            <div class="sfCol-8">@localLabel.Name</div>
+            <div class="sfCol-4  f-center">@localLabel.Action</div>
+        </div>
+    </div>
+    <div class="sfDatagrid-body">
+
+        @if (Model != null && Model.Count() > 0)
+        {
+            @foreach (var item in Model)
+            {
+
+                <div class="dg-col-wp">
+
+                    <div class="sfCol-8">
+                        <div class="dg-group Mb-10 sm-Mb-0">
+                            <span class="ds-grd-tit"> @item.ApplicationName</span>
+                        </div>
+                    </div>
+
+                    <div class="sfCol-4 f-center">
+                        <div class="dg-group-inline">
+                            <div class="action-menu">
+                                <span class="action-icon">
+                                    <i class="fa fa-ellipsis-h"></i>
+                                </span>
+                                <ul class="action-open">
+                                    <li>
+                                        <a asp-action="Edit" asp-controller="Application" asp-route-id="@item.ApplicationID" class="links">
+                                            <i class="fa fa-pencil"></i>@localLabel.Edit
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a asp-action="Delete" asp-controller="Application" asp-route-id="@item.ApplicationID" onclick="return ConfirmBox('Are you sure you want to delete?')" class="links">
+                                            <i class="fa fa-trash"></i>@localLabel.Delete
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+
+                       
+                    </div>
+
+                </div>
+            }
+        }
+        else
+        {
+            <div class="dg-nodata">
+                @localLabel.NoData
+            </div>
+        }
+
+    </div>
+</div>
+
+

@@ -1,0 +1,27 @@
+{
+  "Unauthorized": "Not Authorized",
+  "Title": "Campaign List",
+  "Actions": {
+    "NewCampaign": "New Campaign",
+    "ManageAccounts": "Manage Accounts",
+    "Edit": "Edit",
+    "RePost": "Re-post",
+    "View": "View",
+    "Delete": "Delete"
+  },
+  "Grid": {
+    "StatusTitle": "Status",
+    "All": "All",
+    "Draft": "Draft",
+    "Scheduled": "Scheduled",
+    "Published": "Published",
+    "SearchPlaceholder": "campaign title....",
+    "Title": "Campaign Title",
+    "ActionTitle": "Action"
+  },
+  "Messages": {
+    "NoData": "No data to display",
+    "DeleteConfirmation": "Are you sure you want to delete this post?",
+    "Deleted": "campaign post has been deleted"
+  }
+}

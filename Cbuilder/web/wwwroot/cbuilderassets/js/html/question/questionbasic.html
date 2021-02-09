@@ -1,0 +1,87 @@
+﻿
+<div class="surveyQuestionSettingsWrapper">
+    <div class="field-row clearfix">
+        <h4>Basic Settings</h4>
+
+        <div class="field-row clearfix">
+            <label>Question Type</label>
+            <span class="value">
+                <select id="slcQuestionType">
+                    <option value="qsn-open">Open Ended</option>          <!--FREE ANSWER-->
+                    <option value="qsn-multi">Multiple Choice</option>     <!--OPTIONS, ONE OR MORE ANSWER TYPE-->
+                    <option value="qsn-rating">Rating Scale</option>       <!--RATING-->
+                </select>
+            </span>
+        </div>
+
+        <div class="hidden-div field-row clearfix hide-element" id="qsnMultiChoice">
+            <label>Answer Type</label>
+            <span class="value">
+                <select id="slcAnswerType">
+                    <option value="single">Single Answer</option>
+                    <option value="multi">Multiple Answers</option>
+                </select>
+            </span>
+        </div>
+
+
+        <div class="hidden-div field-row clearfix hide-element" id="qsnOptions">
+            <label>Total Options</label><span class="value">
+                <span class="totalOptionsCounter">
+                </span>
+            </span>
+        </div>
+
+
+        <div class="hidden-div field-row clearfix hide-element" id="qsnOptPerRow">
+            <label>Options Per Row</label>
+            <span class="value">
+                <select id="slcOptPerRow">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </span>
+        </div>
+
+        <div class="hidden-div field-row clearfix hide-element" id="qsnOptAlignment">
+            <label>Options Alignment</label>
+            <span class="value">
+                <select id="slcOptAlignment">
+                    <option value="left">left</option>
+                    <option value="center">center</option>
+                    <option value="right">right</option>
+                </select>
+            </span>
+        </div>
+
+        <div class="hidden-div field-row clearfix hide-element" id="qsnRatingScaleType">
+            <label>Scale Type</label>
+            <span class="value">
+                <select id="slcRatingScaleType">
+                    <option value="star">Star</option>
+                    <option value="likert">Likert</option>
+                    <option value="right">right</option>
+                </select>
+            </span>
+        </div>
+
+
+        <!--<div class="field-row clearfix">
+            <label>Show Heading</label>
+            <span class="value">
+                <input id="showCardHeading" name="enable buttonLink" type="checkbox" />
+                <label for="showCardHeading"><i class="icon-icon-tick"></i></label>
+            </span>
+        </div>
+        <div class="field-row clearfix">
+            <label>Show Description </label>
+            <span class="value">
+                <input id="showCardDesc" name="enable buttonLink" type="checkbox" />
+                <label for="showCardDesc"><i class="icon-icon-tick"></i></label>
+            </span>
+        </div>-->
+    </div>
+</div>

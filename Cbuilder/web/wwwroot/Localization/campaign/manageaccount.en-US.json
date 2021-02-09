@@ -1,0 +1,11 @@
+{
+  "Title": "Manage Accounts",
+  "Actions": {
+    "Back": "Back",
+    "Connect": "Connect",
+    "Reconnect": "Re-connect"
+  },
+  "Messages": {
+    "ReconnectConfirmation": "Are you sure you want to reconnect? Once you reconnect your previous data will be lost."
+  }
+}

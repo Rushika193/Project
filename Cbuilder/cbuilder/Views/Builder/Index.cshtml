@@ -1,0 +1,800 @@
+﻿@using Cbuilder.Webbuilder
+@using System.Web
+@using Cbuilder.Core.Constants
+@model CbuilderView
+
+
+<script>
+    var apiResultString =@Html.Raw(Model.APIResultString);
+    var bucketComponents = '';@*@Model.BucketComponents;*@
+    var storedComponent =@Html.Raw(Model.ComponentList);
+        webBuilderUserModuleID = 1317;
+        apiDataContainer = '';
+        EditorMode = true;
+        var isPreview = false;
+        webBuilderPageExtension = '';
+        portalDefaultPage = '@Model.PortalDefaultPage';
+        currentpageName = '@Model.TempPageName';
+        webbuildermodulepath = '@Model.Webbuildermodulepath';
+        var component = {};
+        var componentID = [];
+    let updateComponent = [];
+
+     $(function () {
+        if (typeof storedComponent !== "undefined") {
+            $.each(storedComponent, function (i, v) {
+                if (v.ComponentID > 0)
+                    componentID.push(v.ComponentID);
+                v = v.ComponentValue;
+                var value = JSONParse(v);
+                var key = value.componentname;
+                component[key] = value;
+            });
+        }
+        $('.mediamanagementwrapper > div').appendTo($('body'));
+        $(this).SageWebBuilder({
+            userModuleID: webBuilderUserModuleID,
+            enableHeader: '@Model.EnableHeader',
+            tempPageName:  '@Model.TempPageName',
+            pageExtension:  '',
+            onlinestoreURL:  '@Model.OnlineStoreURL',
+            digisphereURL:  '@Model.DigiSphereApi',
+            isDeveloperMode:  '@Model.IsDevelopmentMode',
+            version:  '@Model.Version',
+            applicationname: '@Model.Applicationname',
+            core:true,
+        });
+    });
+</script>
+@Html.AntiForgeryToken()
+<div class="WebBuilderWrapper ">
+    <div class="SettingsUpperBody helps" data-pull="online help">
+        <span class="fa fa-close hideOverlay"></span>
+        <div class="OnlineComponentList">
+            <div class="module-searchwrapper">
+                <span class="module-search ">
+                    <input placeholder="Search Online Help" id="onlineHelpSearch" type="text" />
+                </span>
+            </div>
+            <div class="sfCol_100">
+                <ul class="youtubeList" id="youtubeList">
+                </ul>
+                <div id="loadmoreHelp">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="SettingsUpperBody componentLists" data-pull="online component">
+        <span class="fa fa-close hideOverlay"></span>
+
+        <!-- tabbed list of components -->
+        <div class="tabbedComponentList">
+            <div>
+                <ul class="tabTitleWrapp sfCol_100 Dfx" style="justify-content: space-around;">
+                    <li class="Pa-10 cPointer tabTitle" data-target="#targetOnline">Online Components</li>
+                    <li class="Pa-10 cPointer tabTitle" data-target="#targetPurchased">Purchased Components</li>
+                    <li class="Pa-10 cPointer tabTitle" data-target="#targetInstalled">Installed Components</li>
+                </ul>
+            </div>
+            <div class="OnlineComponentList advanceSearch" id="searchForCompo">
+                <div class="choose_businesssector searchTemp">
+                    <label class="form_label">Type</label>
+                    <div class="form_control">
+                        <select id='compoTypesearch' name='compoTypesearch' class='filter_select_dropdown'>
+                            <option value=''>Select a Type</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="choose_businesssector searchTemp">
+                    <label class="form_label">Category Type</label>
+                    <div class="form_control">
+                        <select id='compoCategorysearch' name='compoCategorysearch' class='filter_select_dropdown'>
+                            <option value=''>Select a Category Type</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="site_business_select searchTemp disabled">
+                    <label class="form_label">ApplicatioName Type</label>
+                    <div class="form_control">
+                        <select id='slccompoApplicationName' class='filter_select_dropdown'>
+                            <option value=''>All</option>
+                        </select>
+                    </div>
+                </div>
+                <span class="module-search">
+                    <input placeholder="Search Online components" id="onlinecomponentSearch" type="text" />
+                    <a id="btnComponentSearch" class="" href="javascript:void(0);"><i class="fa fa-search"></i></a>
+                </span>
+                <i class="fa fa-refresh" id="refreshOnlineCompoSearch"></i>
+            </div>
+            <div>
+                <ul class="tabDetails">
+                    <li class="tabContent" id="targetOnline">
+                        <ul class="tabContentList">
+                        </ul>
+                    </li>
+                    <li class="tabContent Dn" id="targetPurchased">
+                        <ul class="tabContentList">
+                        </ul>
+                    </li>
+                    <li class="tabContent Dn" id="targetInstalled">
+                        <ul class="tabContentList">
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <div class="SettingsUpperBody templates" data-pull="online site">
+        <span class="fa fa-close hideOverlay"></span>
+        <div id="divSiteList" class="OnlineComponentList ">
+
+
+            <!-- tabbed list of sites -->
+            <div class="tabbedSiteWrapper">
+                <div>
+                    <ul class="siteTabTitleWrapp sfCol_100 Dfx" style="justify-content: space-around;">
+                        <li class="Pa-10 cPointer" data-target="#siteOnline">Online Sites</li>
+                        <li class="Pa-10 cPointer" data-target="#sitePurchased">Purchased Sites</li>
+                        <li class="Pa-10 cPointer" data-target="#siteInstalled">Installed Sites</li>
+                    </ul>
+                </div>
+                <div id="divAdvSearch" class="advanceSearch">
+                    <div class="choose_businesssector searchTemp">
+                        <label class="form_label">Sector</label>
+                        <div class="form_control">
+                            <select id='slcSectors' name='slcSectors' class='filter_select_dropdown'>
+                                <option value='0'>Select a Sector</option>
+                            </select>
+                        </div>
+
+                    </div>
+                    <div class="site_category_select searchTemp disabled">
+                        <label class="form_label">Category</label>
+                        <div class="form_control">
+                            <select id='slcSiteCategory' name='slcSiteCategory' class='filter_select_dropdown'>
+                                <option value='0'>Select a Category</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="site_business_select searchTemp disabled">
+                        <label class="form_label">Business Type</label>
+                        <div class="form_control">
+                            <select id='slcBusinessType' name='slcBusinessType' class='filter_select_dropdown'>
+                                <option value='0'>Select Business Type</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="site_business_select searchTemp disabled">
+                        <label class="form_label">ApplicatioName Type</label>
+                        <div class="form_control">
+                            <select id='slcApplicationName' class='filter_select_dropdown'>
+                                <option value=''>All</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="module-search simpleSearch" id="divSimpleSearch">
+                        <input placeholder="Search site" id="onlineSiteSearch" type="text" />
+                        <a id="btnSiteSearch" class="" href="javascript:void(0);"><i class="fa fa-search"></i></a>
+                    </div>
+                    <i class="fa fa-refresh" id="refreshOnlineThemeSearch"></i>
+                </div>
+                <div>
+                    <ul class="siteTabDetails">
+                        <li class="siteTabContent" id="siteOnline"></li>
+                        <li class="siteTabContent Dn" id="sitePurchased"></li>
+                        <li class="siteTabContent Dn" id="siteInstalled"></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--New Bottom Taskbar-->
+    <div class="main-top-row">
+        <div class="top-bar-item-lists Dfx JcSp-b Pl-15 Pr-10 tPl-15 tPr-10 mPl-15 mPr-10">
+            <div class="top-bar__leftpanel Dfx TxAl-m">
+                <div title="Choose menu" class="top-bar_menuselector  " id="ChooseActions">
+                    <span class="menu-selector expand-panel-topbar taskbarAction">
+                        <i class="fa fa-bars"></i>
+                    </span>
+                    <div class="panel__topbar topbar-system-menu Dn taskbarActionMenu" id="ChooseActionsMenu">
+                        <div class="panel__topbar-container">
+                            <div class="content-box panel-links">
+                                <form asp-area="" asp-controller="Account" asp-action="Logout" method="post" id="logoutForm" class="navbar-right">
+                                    <i class="fa fa-power-off"></i>
+                                    <label>
+                                        Logout
+                                        <button type="submit" class="btn btn-link navbar-btn navbar-link" style="display:none;"></button>
+                                    </label>
+                                </form>
+                            </div>
+                            <div class="content-box panel-links dropOverlay headerControls" data-pull="online help" id="Help">
+                                <i data-icon="j"></i>
+                                Help
+                            </div>
+                            <div class="content-box panel-links dropOverlay" data-pull="online site">
+                                <i data-icon="e"></i>
+                                Online Template
+                            </div>
+                            <div class="content-box panel-links dropOverlay" data-pull="online component">
+                                <i data-icon="e"></i>
+                                Online Component
+                            </div>
+                            <div class="content-box panel-links" id="manageBody">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                Body Settings
+                            </div>
+                            <div class="content-box panel-links" id="sitesettings">
+                                <i class="fa fa-cog" aria-hidden="true"></i>
+                                Site Settings
+                            </div>
+                            <div class="content-box panel-links" id="Feedback">
+                                <i class="fa font-icon Fs-20 fa-commenting-o"></i>
+                                Feedback
+                            </div>
+                            <div class="content-box panel-links">
+                                <i data-icon="f"></i>
+                                <a target="_blank" href="@($"{Model.HostURL}/Dashboard/dashboard/index{Model.CultureURL}")">Dashboard</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div title="Choose page" class="top-bar_pageselector Dfx">
+                    <div class="page-selector expand-panel-topbar taskbarAction" id="pagesSelector">
+                        <div class="page-options Dfx TxAl-m">
+                            <span>Page:</span>
+                            <span class="pagename ">@Model.PortalDefaultPage</span>
+                            <i class="fa fa-chevron-down"></i>
+                        </div>
+                    </div>
+                    <div class="panel__topbar topbar-pages Dn taskbarActionMenu" id="pagesSelectorMenu">
+                        <div class="panel__topbar-container">
+                            <section class="tabs">
+                                <div class="tabs__title content-box">
+                                    <ul class="page-list-array">
+                                        <li class="pagetype active" data-open="simplepages"><span>Pages</span></li>
+                                        <li class="pagetype" data-open="systempages"><span>System Pages</span></li>
+                                    </ul>
+                                </div>
+                                <div class="tabs__content">
+                                    <div class="page-lists" id="simplepages">
+                                        <div id="pageCreateArea" style="display: none;" data-pageid="0">
+                                            <div class="scroll__parent Pt-0">
+                                                <input type="hidden" id="hdnPageID" value="0" />
+                                                <div class="field-row stElWrap col40-60">
+                                                    <label class="fCol">Page Name</label>
+                                                    <span class="fCol tTxAl-r cb_input">
+                                                        <input type="text" id="txtPageName" />
+                                                        <span class="sfError" id="pageError"></span>
+                                                    </span>
+
+                                                </div>
+                                                <div class="field-row stElWrap col40-60">
+                                                    <label class="fCol">Title</label>
+                                                    <span class="fCol cb_input tTxAl-r">
+                                                        <input class="" type="text" id="txtPageTitle" />
+                                                    </span>
+                                                </div>
+                                                <div class="field-row stElWrap col40-60">
+                                                    <label class="fCol">Description</label>
+                                                    <span class="fCol tTxAl-r cb_input">
+                                                        <input type="text" id="txtPageDescription" />
+                                                    </span>
+                                                </div>
+                                                <div class="field-row stElWrap col80-20 setting__has--child" id="clonePageDiv">
+                                                    <label class="fCol">Clone Page</label>
+                                                    <span class="fCol TxAl-r toggle_btn">
+                                                        <input id="chkClonePage" type="checkbox">
+                                                        <label for="chkClonePage" class="tgl_slider"></label>
+                                                    </span>
+                                                </div>
+                                                <div class="field-row clearfix">
+                                                    <div class="clonePageList select__box" style="display:none;">
+                                                        <select id="clonePageList"></select>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="panel_topbar-btn TxAl-c">
+                                                <span class="btn-flat small success Mr-10" id="btnSavePage">Save Page</span>
+                                                <span class="btn-flat small danger" id="btnCancelPageAdd">Cancel</span>
+                                            </div>
+
+
+
+                                        </div>
+                                        <div id="pageListArea">
+                                            <div id="pageList" class="page-array scroll__parent">
+                                                <div id="headerMenuList" class="sortable ui-sortable">
+                                                </div>
+                                            </div>
+                                            <div class="panel_topbar-btn TxAl-c">
+                                                <span class="btn-flat small success" id="pageAddPanel">Add Page</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="systempages" style="display:none;">
+                                        <div>
+                                            <div id="pageList" class="page-array tabcontent scroll__parent">
+                                                <div id="forbiddenPageList">
+                                                    @foreach (WebBuilderPages webBuilderPages in Model.ForbiddenPage)
+                                                    {
+                                                        <div class="content-box panel-links Dfx PosR TxAl-m" data-type="page" data-webbuilderid="12" data-pageid="@webBuilderPages.PageID">
+                                                            <div class="page-name title">@webBuilderPages.PageName</div>
+                                                            <div class="page-settings">
+                                                                <div class="page-settings__containers Dfx TxAl-m">
+                                                                    <div class=" page-stng view pagepreview">
+                                                                        <a href="@Model.HostURL/webbuilderpreview/@webBuilderPages.PageName" target="_blank"><i class="fa fa-eye"></i></a>
+                                                                    </div>
+                                                                    <div class="page-stng page-preview pageEdit">
+                                                                        <a href="@Model.HostURL/webbuilder/@webBuilderPages.PageName"> <i class="fa fa-share-square-o"></i></a>
+                                                                    </div>
+                                                                    <div class="page-stng page-preview activedefaultPage">
+                                                                       <i class="fa fa-star"></i>
+                                                                    </div>
+                                                                    <div class="page-stng action pageAction">
+                                                                        <i class="fa fa-ellipsis-h"></i>
+                                                                        <div class="page-setting-panel Dn">
+                                                                            <div class="page-setting-container ">
+                                                                                <div class="tabcontent scroll__parent">
+                                                                                    <div class="field-row">
+                                                                                        <div class="field-row stElWrap col80-20">
+                                                                                            <div class="fCol">
+                                                                                                <label>Header</label>
+                                                                                            </div>
+                                                                                            <div class="fCol TxAl-r">
+                                                                                                <span class="value">
+                                                                                                    <span class="toggle_btn">
+                                                                                                        <input id="page_head_@webBuilderPages.PageName" data-pageName="@webBuilderPages.PageName" data-section="header" class="enableheaderfooter" type="checkbox" checked="@webBuilderPages.ShowHeader">
+                                                                                                        <label for="page_head_@webBuilderPages.PageName" class="tgl_slider"></label>
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="field-row stElWrap col80-20">
+                                                                                            <div class="fCol">
+                                                                                                <label>Footer</label>
+                                                                                            </div>
+                                                                                            <div class="fCol TxAl-r">
+                                                                                                <span class="value">
+                                                                                                    <span class="toggle_btn">
+                                                                                                        <input id="page_foot_@webBuilderPages.PageName" data-pageName="@webBuilderPages.PageName" data-section="footer" class="enableheaderfooter" type="checkbox" checked="@webBuilderPages.ShowFooter">
+                                                                                                        <label for="page_foot_@webBuilderPages.PageName" class="tgl_slider"></label>
+                                                                                                    </span>
+                                                                                                </span>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+
+                    </div>
+
+                </div>
+                @if (HttpContextCommons.LocalizationEnabled)
+                {
+                    <div title="Language" clas="topbar_langselector " id="ChooseLanguageMenu">
+                        <div class="lang-selector expand-panel-topbar taskbarAction">
+                            <div class="language-options Dfx TxAl-m">
+                                <span>@Model.CultureLanguage</span>
+                                <i class="fa fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="panel__topbar topbar-system-menu Dn taskbarActionMenu" id="ChooseLanguageMenu">
+                            <div class="panel__topbar-container">
+                                <div class="content-box">
+                                    <div class="panel__topbar-header">
+                                        <span>Choose Language</span>
+                                    </div>
+                                </div>
+                                <div class="page-array tabcontent scroll__parent">
+
+                                    @foreach (LanguageList Languages in Model.Languages)
+                                    {
+                                        string classActive = string.Empty;
+                                        if (HttpContextKey.CultureCode.FromHttpContext(Context) == Languages.CultureCode)
+                                            classActive = "active";
+                                        string url = Model.HostURL + "/webbuilder/" + Model.TempPageName + "/" + @Languages.CultureCode + "/" + Model.ParamString;
+                                        <div class="content-box panel-links @classActive">
+                                            <a href="@url">@Languages.CultureName</a>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="top-bar__centerpanel">
+                <div title="Choose device type">
+                    <!--<span class="viewPorts" id="viewPorts">
+                        <span class="desktop active changePort" data-width="" data-height="" data-shorthand=""><i data-icon="g"></i></span>
+                        <span class="tablet changePort" data-width="768" datapanel__topbar topbar-pages-height="1024" data-shorthand="t"><i data-icon="v"></i></span>
+                        <span class="mobile changePort" data-width="375" data-height="715" data-shorthand="m"><i data-icon="w"></i></span>
+                    </span>-->
+                    <div class="viewDevices" id="viewPorts">
+
+                        <div class="desktop active changePort" data-width="" data-height="" data-shorthand=""><i data-icon="g"></i></div>
+                        <div class="tablet changePort PosR" data-width="768" data-height="1024" data-shorthand="t">
+                            <i data-icon="v"></i>
+                            <div class="panel__topbar device-change Dn">
+                                <div class="panel__topbar-container">
+                                    <div class="content-box panel-links Dfx">
+                                        <i class="fa fa-tablet"></i>
+                                        <div class="device-name Dfx">
+                                            <span class="device">Tablet</span>
+                                            <span class="orientation TxAl-l">Portrait</span>
+                                        </div>
+                                    </div>
+                                    <div class="content-box panel-links Dfx">
+                                        <i class="fa fa-tablet landscape"></i>
+                                        <div class="device-name Dfx ">
+                                            <span class="device">Tablet</span>
+                                            <span class="orientation TxAl-r">Landscape</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mobile changePort PosR" data-width="375" data-height="715" data-shorthand="m">
+                            <i data-icon="w"></i>
+                            <div class="panel__topbar device-change Dn">
+                                <div class="panel__topbar-container">
+                                    <div class="content-box panel-links Dfx">
+                                        <i class="fa fa-mobile"></i>
+                                        <div class="device-name Dfx">
+                                            <span class="device">Mobile</span>
+                                            <span class="orientation TxAl-l">Portrait</span>
+                                        </div>
+                                    </div>
+                                    <div class="content-box panel-links Dfx">
+                                        <i class="fa fa-mobile landscape"></i>
+                                        <div class="device-name Dfx ">
+                                            <span class="device">Mobile</span>
+                                            <span class="orientation TxAl-r">Landscape</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="top-bar__rightpanel Dfx">
+                <div title="Save changes" class="save-site Mr-20">
+                    <span id="SaveWeb" class="btn-flat success">Save</span>
+                    <span id="SaveWebhidden"></span>
+                </div>
+                <div title="Publish" class="publish-site" id="btnPublishedWeb">
+                    <span class="btn-flat light">Publish</span>
+                </div>
+                <div title="Preview" class="preview-site">
+                    <a href="" id="previewURL" target="_blank">
+                        <span class="preview-link"><i class="fa fa-play"> </i></span>
+                    </a>
+                </div>
+                <div title="components" class="expand-panel-topbar topbar-components addComponent">
+                    <span class="expand-compo-btn  headerControls" data-title="Components">
+                        <i class="fa fa-th-large" aria-hidden="true"></i>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- New Bottom Taskbar Ends-->
+    <!-- Component pop and site setting pop -->
+    <div class="main-left setting__panel skin-dr mxwdthPop" style="display: none;">
+        <!--This is drag icon when user unpin the setting panel-->
+        <!-- Panel Head -->
+        <div class="panel__head dragComponentSettings">
+            <span class="drag_icon cb-drg"></span>
+            <h1 class="pTitle txC">Component</h1>
+            <div class="right_actions">
+                <span class="pin__right"><i data-icon="r"></i></span>
+                <span class="collapse heademarControls">
+                    <span class="icClose"><i data-icon="d"></i></span>
+                </span>
+            </div>
+        </div>
+        <!-- Ends -->
+        <!--Panel Body-->
+        <div class="panel__body body__setting--panel no__foot--btn ">
+            <section class="tabs" id="sidebarcontrol">
+                <div class="content">
+                    <div class="content-1 content-box body__setting builder-options-array moduleRemoval">
+                        <div class="theme-color builder-options">
+                            <h2>Set Theme Color</h2>
+                            <div class="OptionItems">
+                                <div class="field-row stElWrap col50-50">
+                                    <div class="fCol">
+                                        <label>Primary Color</label>
+                                    </div>
+                                    <div class="fCol TxAl-r">
+                                        <span class="color-picker-holder chooseThemeColor selected" id="primaryColor" style="background-color: rgba(247, 247, 247,.8); color: rgb(34, 34, 34);"></span>
+                                    </div>
+                                </div>
+                                <div class="field-row stElWrap col50-50">
+                                    <div class="fCol">
+                                        <label>Secondary Color</label>
+                                    </div>
+                                    <div class="fCol TxAl-r">
+                                        <span class="color-picker-holder chooseThemeColor selected" id="secondaryColor" style="background-color: rgba(247, 16, 247,.8); color: rgb(34, 34, 34);"></span>
+                                    </div>
+                                </div>
+                                <div class="field-row stElWrap col50-50">
+                                    <div class="fCol">
+                                        <label>Alternate Color</label>
+                                    </div>
+                                    <div class="fCol TxAl-r">
+                                        <span class="color-picker-holder chooseThemeColor selected" id="optionalColor" style="background-color: rgba(247, 16, 8,.8); color: rgb(34, 34, 34);"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="theme-fonts builder-options">
+                            <h2>Set Theme Font</h2>
+                            <div class="OptionItems" style="display: none;">
+                                <p>Choose fonts from below</p>
+                                <span class="select__box">
+                                    <select id="basicFonts">
+                                    </select>
+                                </span>
+                                <div class="text__area">
+                                    <textarea id="fontPreview" class="ff-montserrat" placeholder="Almost before we knew it, we had left the ground."></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="reserved-pages builder-options">
+                            <h2>Reserved Pages</h2>
+                            <div class="OptionItems pageList" style="display: none;">
+                                <div class="panel panel-info stElWrap col70-30">
+                                    <label class="fCol title btnSystemPages" data-pages="unsubscribe">Unsubscribe</label>
+                                    <span class="fCol TxAl-r">
+                                        <span class="editPage fa fa-pencil-square-o"></span>
+                                    </span>
+                                </div>
+                                <div class="panel panel-info stElWrap col70-30">
+                                    <label class="fCol title btnSystemPages" data-pages="search result">Search Result</label>
+                                    <span class="fCol TxAl-r">
+                                        <span class="editPage fa fa-pencil-square-o"></span>
+                                    </span>
+                                </div>
+                                <div class="panel panel-info stElWrap col70-30">
+                                    <label class="fCol title btnSystemPages" data-pages="under construction">Under Construction</label>
+                                    <span class="fCol TxAl-r">
+                                        <span class="editPage fa fa-pencil-square-o"></span>
+                                    </span>
+                                </div>
+                                <div class="panel panel-info stElWrap col70-30">
+                                    <label class="fCol title btnSystemPages" data-pages="login">Login</label>
+                                    <span class="fCol TxAl-r">
+                                        <span class="editPage fa fa-pencil-square-o"></span>
+                                    </span>
+                                </div>
+                                <div class="panel panel-info stElWrap col70-30">
+                                    <label class="fCol title btnSystemPages" data-pages="forgotpassword">Forgot Password</label>
+                                    <span class="fCol TxAl-r">
+                                        <span class="editPage fa fa-pencil-square-o"></span>
+                                    </span>
+                                </div>
+                                <div class="panel panel-info stElWrap col70-30">
+                                    <label class="fCol title btnSystemPages" data-pages="register">Register</label>
+                                    <span class="fCol TxAl-r">
+                                        <span class="editPage fa fa-pencil-square-o"></span>
+                                    </span>
+                                </div>
+                                <div class="panel panel-info stElWrap col70-30">
+                                    <label class="fCol title btnSystemPages" data-pages="password-recovery">Password Recovery</label>
+                                    <span class="fCol TxAl-r">
+                                        <span class="editPage fa fa-pencil-square-o"></span>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="HeaderOption builder-options" style="display: none;">
+                            <h2>Set Layout</h2>
+                            <div class="OptionItems" style="display: none;">
+                                <span>
+                                    <span class="check radioWrp Dfx">
+                                        <input type="radio" id="full" name="one" checked="checked" class="layoutChange" data-layout="fullWidth" style="margin-left: auto" />
+                                        <label for="full">Full width</label>
+                                        <i class="cb-full-width"></i>
+                                    </span>
+                                </span>
+                                <span>
+                                    <span class="check radioWrp Dfx">
+                                        <input type="radio" id="box" name="one" class="layoutChange" data-layout="boxed" />
+                                        <label for="box">Boxed Layout</label>
+                                        <i class="cb-box-width"></i>
+                                    </span>
+                                </span>
+                                <span>
+                                    <span class="check radioWrp Dfx">
+                                        <input type="radio" id="leftlayout" name="one" class="layoutChange" data-layout="leftLayout" />
+                                        <label for="leftlayout">Left Layout</label>
+                                        <i class="cb-left-nav"></i>
+                                    </span>
+                                </span>
+                                <span>
+                                    <span class="check radioWrp Dfx">
+                                        <input type="radio" id="rightlayout" name="one" class="layoutChange" data-layout="rightLayout" />
+                                        <label for="rightlayout">Right Layout</label>
+                                        <i class="cb-right-nav"></i>
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                        <span class="manage-body sfBtn smlbtn-succ" id="manageOnePagemenu">
+                            <div class="field-row stElWrap col80-20">
+                                <div class="fCol">
+                                    <label>Dark mode</label>
+                                </div>
+                                <div class="fCol TxAl-r">
+                                    <span class="value">
+                                        <span class="toggle_btn">
+                                            <input id="darkMode" type="checkbox" @Model.DarkMode />
+                                            <label for="darkMode" class="tgl_slider"></label>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="field-row stElWrap col80-20">
+                                <div class="fCol">
+                                    <label>Single Page Site</label>
+                                </div>
+                                <div class="fCol TxAl-r">
+                                    <span class="value">
+                                        <span class="toggle_btn">
+                                            <input id="chkOnePageMenu" type="checkbox" />
+                                            <label for="chkOnePageMenu" class="tgl_slider"></label>
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="field-row stElWrap col80-20 setting__has--child">
+                                <div class="fCol">
+                                    <label>Set Site Under Construction</label>
+                                </div>
+                                <div class="fCol TxAl-r">
+                                    <span class="value">
+                                        <span class="toggle_btn">
+                                            <input id="chkUnderConstruction" type="checkbox" />
+                                            <label for="chkUnderConstruction" class="tgl_slider"></label>
+                                        </span>
+                                        <!-- <span id="chkUnderConstruction" class="checkboxlike" /> -->
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="field-row stElWrap col100">
+                                <h2 class="hdn">Header Options</h2>
+                                <span id="SitemenuHeaderStyle" class="menuHeaderStyle icon-radio">
+                                    <i class="cb-hdr-nml selected" data-class="hdr-nml" title="Standard"></i>
+                                    <i class="cb-hdr-fx" data-class="hdr-fxd" title="Fixed"></i>
+                                    <i class="cb-hdr-stk" data-class="hdr-stky" title="Sticky" style="display: none;"></i>
+                                    <i class="cb-hdr-abs" data-class="hdr-abs" title="Absolute"></i>
+                                </span>
+                            </div>
+                            <!--Child to expand-->
+                            <!--ends-->
+                            @*<div class="btm-btns panel__foot">
+
+                                </div>*@
+                        </span>
+                    </div>
+                    <div class="content-3 content-box all__components" id="componentCollection">
+                        <div class="module-searchwrap">
+                            <span class="module-search">
+                                <input type="text" placeholder="Search components" id="componentSearch" />
+                                <i class="fa fa-refresh" id="refreshComSearch"></i>
+                            </span>
+                        </div>
+                        @*<div class="component-types Mb-25 TxAl-c">
+                            <div class="comItems Db">
+                                <span class="comBasic comItemBlock ui-state-highlight ui-draggable Dib"  data-type="Online Component"><i class="cb-compo"></i><br>Online Component</span>
+                                <span class="comBasic comItemBlock ui-state-highlight ui-draggable Dib"   data-type="Bucket List"><i class="cb-bucket"></i><br>Bucket List</span>
+                            </div>
+                        </div>*@
+                        <div class="components-list-array">
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <!-- Ends -->
+        <!--Panel Foot-->
+        <!-- <div class="panel__foot">
+            <<span class="cancel">cancel</span>
+            <span class="update">save & Update</span>>
+        </div> -->
+        <!--Ends-->
+    </div>
+    <!-- Ends this pops -->
+    <!-- Main Container Wrapper -->
+    <div class="devicewrap">
+        <div class="main-container editor-box device">
+            <div class="edit-area site-body f-weight-400" data-settings="@Model.Settings">
+                <div class='editor-site-header cRow-sort clearfix'>
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.HeaderEdit.Replace("fakeHostURL", Model.HostURL).Replace("fakeMenuURL", Model.HostURL)))
+                </div>
+                <div class='editor-componentWrapper cRow-sort clearfix'>
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.EditDOM.Replace("fakeHostURL", Model.HostURL).Replace("fakeMenuURL", Model.HostURL)))
+                </div>
+                <div class='editor-site-footer cRow-sort'>
+                    @Html.Raw(HttpUtility.HtmlDecode(Model.FooterEdit.Replace("fakeHostURL", Model.HostURL).Replace("fakeMenuURL", Model.HostURL)))
+                </div>
+                <!-- Editor Copyright -->
+                <div class="etitor__copyright">
+                    <img src="/cbuilderassets/img/ContentderBlk.png">
+                    <p>Contentder Builder V2.0 - 2018 ©  Powered By <a href="#">Contentder</a> All Rights Reserved.</p>
+                </div>
+                <!-- Editor Copyright Ends -->
+            </div>
+            <!-- Main Container Ends -->
+            <div id="popupModel" class="popup-model ui-state-highlight setting__panel skin-dr mxwdthPop" draggable="true" style="display: none; position: fixed; top: 0px; left: 0px;">
+                <div class="panel__head popup-header">
+                    <span class="drag_icon cb-drg"></span>
+                    <h2 class="pTitle txC">Setting</h2>
+                    <div class="right_actions">
+                        <span class="pin__right"><i data-icon="r"></i></span>
+                        <span class="collapse heademarControls">
+                            <span class="icClose close-model"><i data-icon="d"></i></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="popup-model-body panel__body">
+                </div>
+                <div class="panel__foot">
+                    <span id="settingSave" class="update">Save & Update</span>
+                </div>
+            </div>
+        </div>
+        <div id="simplePopupModel" class="simple-popup-model setting__panel skin-dr" style="display: none; position: absolute; top: 0px; left: 0px;">
+            <div class="panel__head popup-header simple-popup-header">
+                <span class="drag_icon cb-drg"></span>
+                <h2 class="pTitle simple-popup-title txC">Setting</h2>
+                <div class="right_actions">
+                    <span class="collapse heademarControls simple-close-model">
+                        <span class="icClose close-model"><i data-icon="d"></i></span>
+                    </span>
+                </div>
+            </div>
+            <div class="simple-popup-model-body popup-model-body panel__body">
+            </div>
+        </div>
+        <div class="resueabledata" style="display: none;">
+            <ul id="fontIconCollection">
+                <asp:Literal runat="server" ID="ltrFontFamily"></asp:Literal>
+            </ul>
+            <ul id="innerPageList" class="eb-menu">
+                @Html.Raw(Model.PagesDOM)
+            </ul>
+            <ul id="dashboardPageList">
+                @Html.Raw(Model.DashboardPagesDOM)
+            </ul>
+            <div id="WebBuilderWrapperClone" style="display: none;">
+            </div>
+            <div id="WebBuilderWrapperEditClone" style="display: none;">
+            </div>
+        </div>
+        <div class="mediamanagementwrapper" style="display:none;">
+            @await Component.InvokeAsync("MediaManagement")
+        </div>
+    </div>
+</div>

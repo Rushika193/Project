@@ -1,0 +1,141 @@
+<html>
+<head>
+
+    <title>Data</title>
+    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    #border{
+        margin-left:20px;
+        margin-right:90px;
+        margin-top:120px;
+        
+        border-size:150px 50px 50px 150px;
+        border-radius:25px;
+    }
+    .form{
+        margin-left:360px;
+        {% comment %} ?margin-right:50px; {% endcomment %}
+        margin-top:22px;
+        size:162px;
+      
+        }
+        .textsize{
+            font-size:20px;
+        }
+        .textarea{
+            font-size:20px;
+            height:50px;
+        }
+     
+</style>
+
+<body>
+
+    <form method="POST" action="" >
+        {% csrf_token %}
+        <div id="border">
+            <div class="row">
+                
+                <div class="col-md-3">
+                    <div class="form">
+                            <label class="control-label" for="Text"><div style="margin-left:62;font-size:20px">Text</div></label>
+                            <input name="Text" class="textsize" type="number" data-val="true" data-val-required="The No. of Paragraph field is required."value={% for i in count%}  
+                            {{i.text}}
+                        {% endfor %}  >
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Text" data-valmsg-replace="true"></span>
+                   </div>
+                
+                    <div class="form">
+                            <label class="control-label" for="Title"><div style="margin-left:62;font-size:20px">Title</div></label>
+                            <input name="Title" class="textsize" type="number" data-val="true" data-val-required="The Title field is required."  value={% for i in count%}  
+                            {{i.heading}}
+                        {% endfor %}></input>
+                            <span class="text-danger field-validation-valid" data-valmsg-for="Title" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="form">
+                        <label class="control-label" for="Image"><div style="margin-left:62;font-size:20px">Image</div></label>
+                        <input name="Image" class="textsize" type="number" data-val="true" data-val-required="The Image field is required."  value={% for i in count%}  
+                            {{i.image}}
+                        {% endfor %}></input>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Image" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form">
+                        <label class="control-label" for="Listing"><div style="margin-left:20;font-size:20px">Listing</div></label>
+                        <select name="listing" class="textsize" type="option" data-val="true" value={{Listing}}>
+                            <option class="textsize" input value="Yes">Yes</option>
+                            <option class="textsize" input value="No">No</option>
+                        </select>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Listing" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+                <div class="col-md-3">
+                     
+                    <div class="form">
+                        <label class="control-label" for="BackgroundImage"><div style="margin-left:4;font-size:20px">BackgroundImage</div></label>
+                        <input name="B_img" class="textsize" type="number" data-val="true"  value={{backgroundImage}}></input>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Background Image" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form">
+                        <label class="control-label" for="Sitetype"><div style="margin-left:20;font-size:20px">Sitetype</div></label>
+                        <input name="site" class="textsize" type="text" data-val="true"  value={{sitetype}}></input>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Sitetype" data-valmsg-replace="true"></span>
+                    </div>
+                    <div class="form">
+                        <label class="control-label" for="Application"><div style="margin-left:20;font-size:20px">Application</div></label>
+                        <input name="application" class="textsize" type="text" data-val="true"  value={{Application}}></input>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Application" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form">
+                        <label class="control-label" for="VerifiedBy"><div style="margin-left:20;font-size:20px">Verified_By</div></label>
+                        <input name="By" class="textsize" type="text" data-val="true"  value=""></input>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="VerifiedBy" data-valmsg-replace="true"></span>
+                    </div>
+
+                    
+                </div>
+
+                <div class="col-md-3">    
+                    <div class="form">
+                        <label class="control-label" for="Pagetype"><div style="margin-left:20;font-size:20px">Pagetype</div></label>
+                        <input name="page" class="textsize" type="text" data-val="true"  value={{pagetype}}>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Pagetype" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form">
+                        <label class="control-label" for="Description"><div style="margin-left:20;font-size:20px">Description</div></label>
+                        <input name="description" class="textarea" type="text" data-val="true"  value={{Describe}}></input>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Pagetype" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form">
+                        <label class="control-label" for="Remarks"><div style="margin-left:20;font-size:20px">Remarks</div></label>
+                        <input name="remarks" class="textarea" type="text" data-val="true"  value={{Remarks}}></input>
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Remarks" data-valmsg-replace="true"></span>
+                    </div>
+
+                    <div class="form">
+                        <label class="control-label" for="Verifieddate"><div style="margin-left:20;font-size:20px">Verified_Date</div></label>
+                        <input name="date" class="textsize" type="date" data-val="true"  value="">
+                        <span class="text-danger field-validation-valid" data-valmsg-for="Verifieddate" data-valmsg-replace="true"></span>
+                    </div>
+                     
+                </div>
+             
+                <div style="margin-left:860px;margin-top:442px"><input type="submit" value="Save"/></div>
+                          
+         
+            </div>
+        </div>
+    </form>
+
+    
+</body>
+</html>

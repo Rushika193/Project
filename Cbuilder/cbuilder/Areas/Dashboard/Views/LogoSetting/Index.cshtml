@@ -1,0 +1,70 @@
+﻿@using System.IO
+@model Cbuilder.Core.MediaManagement.LogoSettingModel
+
+
+@{
+
+    ViewData["Title"] = "Logos and Icons";
+}
+
+@Html.AntiForgeryToken()
+@await Component.InvokeAsync("MediaManagement")
+<div class="is-large">
+    <section class="content-header">
+        <div class="page-title">
+            <div class="h2">Customize Logos and Icons</div>
+        </div>
+    </section>
+
+    <input type="hidden" id="hdnImagePath" />
+    <input type="hidden" id="hdnFolderName" />
+
+
+    <div class="sfRow">
+        <div class="sfCol-12 sfCol-sm-6 sfCol-md-6 sfCol-lg-4 Mb-30">
+            <div class="card h-100">
+                <div class="card-body Pa-30">
+                    <div class="img-wrap">
+                        <img src="/favicon.ico" />
+                    </div>
+                    <span class="btn primary round sm Mt-10" id="btnChangeFavicon">Change Favicon</span>
+                </div>
+            </div>
+        </div>
+        @{
+            DirectoryInfo[] dir = new DirectoryInfo(Model.LogoDirectoryPath).GetDirectories();
+            int folderLen = dir.Length;
+
+            for (int i = 0; i < folderLen; i++)
+            {
+                string directoryName = System.IO.Path.GetFileName(dir[i].Name);
+                if (dir[i].GetFiles().Length > 0)
+                {
+                    string imageName = dir[i].GetFiles()[0].Name;
+                    string image = HttpContextCommons.HostURL + "/images/logos/" + directoryName + "/" + imageName;
+
+                    <div class="sfCol-12 sfCol-sm-6 sfCol-md-6 sfCol-lg-4 Mb-30">
+                        <div class="card h-100">
+                            <div class="card-body Pa-30">
+                                <div class="img-wrap">
+                                    <img src="@image" />
+                                </div>
+                                <span class="changesimage btn primary round sm Mt-10" data-dirName="@directoryName">
+                                    Change Image
+                                </span>
+                                <div class="infos">
+                                    <span class="updatenote">
+                                        Update image for
+                                    </span>
+                                    <span class="dirName">
+                                        @directoryName logo
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+        }
+    </div>
+</div>

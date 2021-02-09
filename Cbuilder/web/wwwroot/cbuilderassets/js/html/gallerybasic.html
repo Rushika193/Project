@@ -1,0 +1,118 @@
+﻿
+<div class="galleryWrapper">
+
+    <div class="field-row clearfix">
+        <h4 id="GalleryBasicWrap">Basic</h4>
+
+        <div class="field-row clearfix">
+            <label>Gallery Item</label>
+            <span class="value">
+                <select id="slcGalleryItem"></select>
+            </span>
+        </div>
+
+
+        <div class="field-row clearfix ">
+            <label>Preview</label>
+            <span id="previewPanel" class="value hide-options">
+
+            </span>
+        </div>
+
+        <div class="field-row clearfix ">
+
+            <span class="value previewPanel">
+                <button type="button" class="btn sfBtn smlbtn-succ" id="btnApplyGalleryComp">Apply</button>
+                <button type="button" class="btn sfBtn smlbtn-danger" id="btnCancelCurrentComp">Cancel</button>
+            </span>
+        </div>
+
+
+        <div class="field-row clearfix">
+            <label>Items per row</label>
+            <span class="value">
+                <select id="slcGalleryItemsPerRow">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </span>
+        </div>
+
+
+        <div class="field-row clearfix">
+            <label>Total Items</label><span class="value">
+                <span class="manualNumCounter">
+                </span>
+            </span>
+        </div>
+
+        <div class="field-row clearfix">
+            <label>Show Heading</label>
+            <span class="value">
+                <input id="showGalleryHeading" name="enable buttonLink" type="checkbox" />
+                <label for="showGalleryHeading"><i class="icon-icon-tick"></i></label>
+            </span>
+        </div>
+
+    </div>
+
+    <div class="field-row clearfix">
+        <div id="galleryHvrGutterSpace" class="field-row clearfix" data-slidemin="0" data-slidemax="40">
+
+            <h4 id="GalleryGutterSpaceWrap" data-times="5">Gutter Spacing</h4>
+
+            <div class="field-row clearfix">
+                <label>Horizontal</label>
+                <span class="value">
+                    <div id="galleryHorGutterSpaceSlider">
+                        <div id="galleryHorGutterSpaceHandle" class="ui-slider-handle">0</div>
+                    </div>
+                </span>
+            </div>
+
+            <div class="field-row clearfix">
+                <label>Vertical</label>
+                <span class="value">
+                    <div id="galleryVerGutterSpaceSlider">
+                        <div id="galleryVerGutterSpaceHandle" class="ui-slider-handle">0</div>
+                    </div>
+                </span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="field-row clearfix">
+        <div class="field-row clearfix">
+            <label>Center Wrapper</label>
+            <span class="value">
+                <input id="askContainer" name="Container" type="checkbox">
+                <label for="askContainer">
+                    <i class="icon-icon-tick"></i>
+                </label>
+            </span>
+        </div>
+
+
+        <div class="hidden-div clearfix" id="additionalContainer" style="display:none;">
+            <div class="field-row clearfix">
+                <span class="value">
+                    <select id="selContainerWidth">
+                        <option value="container-small">Small</option>
+                        <option value="container-medium">Medium</option>
+                        <option value="container-large">Large</option>
+                        <option value="container-extralarge">ExtraLarge</option>
+                    </select>
+                </span>
+            </div>
+        </div>
+
+    </div>
+
+
+</div>

@@ -1,0 +1,47 @@
+﻿@model Cbuilder.Core.Users.UserEditGetModel
+@{
+    Dictionary<string, string> localLabel = (Dictionary<string, string>)ViewData["LocalLabel"];
+
+}
+<div class="is-small">
+    <h2 class="form-title">@localLabel["Update User"]</h2>
+    <div class="sfFormwrapper card">
+
+        <div class="card-body Pa-6x">
+
+            <div class="sfFormwrapper">
+                <form asp-action="Edit" method="post">
+
+                    <input asp-for="ID" class="sfFormcontrol" type="hidden" />
+                    <input asp-for="UserName" class="sfFormcontrol" type="hidden" />
+                    <div class="sfFieldset">
+                        <div class="formkey">
+                            <label asp-for="Email" class="sfFormlabel">@localLabel["Email"]</label>
+                        </div>
+                        <div class="formvalue">
+                            <input type="text" asp-for="Email" class="sfFormcontrol" />
+                            <span asp-validation-for="Email" class="sfError"></span>
+                        </div>
+                    </div>
+
+                    <div class="sfFieldset">
+                        <div class="formkey Mb-2x">
+                            <span class="sfFormlabel">                               
+                                @localLabel["Choose Roles"]
+                            </span>
+                        </div>
+
+                        @*@await Component.InvokeAsync("Roles")*@
+                        <radiobuttonlist group-name="UserInRoles" list-item="@ViewBag.RoleList"></radiobuttonlist>
+                    </div>
+
+                    <div class="sfButtonwrapper">
+                        <input type="submit" value="@localLabel["Update"]" class="btn  primary round Mr-8" />
+                        <a href="@URLHelper.DashboardURL(Context,"User", "Index")" class="btn light round">@localLabel["Back"]</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,146 @@
+﻿@model Cbuilder.Core.Role.RolePermission
+@{
+    Dictionary<string, string> localized = (Dictionary<string, string>)ViewData["localized"];
+    string actionType = @ViewData["ActionType"].ToString();
+    string title = actionType + " Role";
+ }
+<div class="is-medium">
+    <h2 class="form-title">@localized[title]</h2>
+    <div class="sfFormwrapper card">
+        <div class="card-body Pa-6x">
+            <form asp-action="AddUpdate" method="post">
+                @Html.AntiForgeryToken()
+                <div class="sfFieldset">
+                    <input type="hidden" asp-for="@Model.RoleViewModel.ID" class="sfInp" />
+                    <input type="hidden" asp-for="@Model.RoleViewModel.SelectedPageActions" class="form-control" />
+                </div>
+                <div class="sfFieldset">
+                    <div class="sfFormkey">
+                        <label asp-for="@Model.RoleViewModel.Name" class="sfFormlabel">@localized["Name"]</label>
+                    </div>
+                    <div class="sfFormvalue">
+                        @if (!string.IsNullOrEmpty(@Model.RoleViewModel.ID))
+                        {
+                            <input type="hidden" asp-for="@Model.RoleViewModel.Name" class="sfInp" />
+                            <input type="text" asp-for="@Model.RoleViewModel.Name" class="sfFormcontrol" disabled="disabled" />
+                        }
+                        else
+                        {
+                            <input type="text" asp-for="@Model.RoleViewModel.Name" class="sfFormcontrol" />
+                        }
+                        <span asp-validation-for="@Model.RoleViewModel.Name" class="sfError"></span>
+                    </div>
+                </div>
+
+                <div class="sfFieldset">
+                    <div class="sfFormkey">
+                        <label asp-for="@Model.RoleViewModel.AliasName" class="sfFormlabel">@localized["Alias Name"]</label>
+                    </div>
+                    <div class="sfFormvalue">
+                        <input type="text" asp-for="@Model.RoleViewModel.AliasName" class="sfFormcontrol" />
+                        <span asp-validation-for="@Model.RoleViewModel.AliasName" class="sfError"></span>
+                    </div>
+                </div>
+
+                <div class="sfFieldset">
+                    <div class="sfFormkey">
+                        <label asp-for="@Model.RoleViewModel.Description" class="sfFormLabel">@localized["Description"]</label>
+                    </div>
+                    <div class="sfFormvalue">
+                        <textarea type="text" asp-for="@Model.RoleViewModel.Description" class="sfFormcontrol area"></textarea>
+                        <span asp-validation-for="@Model.RoleViewModel.Description" class="sfError"></span>
+                    </div>
+                </div>
+                <div class="sfFieldset">
+                    <div class="custom-control custom-checkbox sfCheckbox">
+                        <input class="sfCheckbox" asp-for="@Model.RoleViewModel.IsActive" id="chkEnabled" />
+                        <label for="chkEnabled" class="sfCheckboxlabel">@localized["Is Active"]</label>
+                    </div>
+                </div>
+                <div class="sfFieldset Mt-40" id="actionList">
+                    <div class="sfFormkey">
+                        <label class="sfFormlabel">@localized["Allow Services"]</label>
+                    </div>
+                    <div class="sfFormvalue accAreaWrap Mt-20">
+                        <div class="card">
+                            @foreach (var areas in Model.PageActions?.GroupBy(x => x.AreaName).Select(y => y.First()))
+                            {
+
+                                <div class="accArea accordion">
+
+                                    <div class="accHeader card-header">
+                                        <h5>@areas.AreaName   <i class="fa fa-chevron-up "></i></h5>
+
+                                    </div>
+                                    <div class="accPagesWrap accContents accordion collpase" style="display:none;">
+                                        @foreach (var pages in Model.PageActions.Where(x => x.AreaName == areas.AreaName).GroupBy(x => x.PageName).Select(y => y.First()))
+                                        {
+                                            <div class="accHeader card-header Pl-35">
+                                                <div class="head">
+                                                    <div class="ds-grd-chk   custom-control custom-checkbox sfCheckbox">
+                                                        <input id="customCheck_@pages.PageID" name="Pages" class="gdchkbx sfCheckbox" type="checkbox" value="@pages.PageName">
+                                                        <label class="sfCheckboxlabel" for="customCheck_@pages.PageID">@pages.PageName</label>
+                                                    </div>
+
+                                                    <i class="fa fa-chevron-up"></i>
+                                                </div>
+                                            </div>
+                                            <div class="accGrpWrap accContents accordion collapse" style="display:none;">
+                                                @foreach (var actiongrp in Model.PageActions.Where(x => x.AreaName == areas.AreaName && x.PageName == pages.PageName).GroupBy(x => x.GroupName).Select(y => y.First()))
+                                                {
+                                                    <div class="accHeader card-header Pl-60">
+                                                        <div class="head">
+                                                            <div class="ds-grd-chk   custom-control custom-checkbox sfCheckbox">
+                                                                <input id="customCheck_@actiongrp.ActionGroupID" name="ActionGrp" class="gdchkbx sfCheckbox" type="checkbox" value="@actiongrp.GroupName">
+                                                                <label class="sfCheckboxlabel" for="customCheck_@actiongrp.ActionGroupID">@actiongrp.GroupName</label>
+                                                            </div>
+
+                                                            <i class="fa fa-chevron-up"></i>
+
+                                                        </div>
+                                                    </div>
+                                                    <div class="accActionWrap accContents" style="display:none;">
+                                                        @foreach (var action in Model.PageActions.Where(x => x.AreaName == areas.AreaName && x.PageName == pages.PageName && x.ActionGroupID == actiongrp.ActionGroupID))
+                                                        {
+                                                            <div class="card-header Pl-85">
+                                                                <div class="head">
+                                                                    <div class="ds-grd-chk custom-control custom-checkbox sfCheckbox">
+                                                                        @if (!string.IsNullOrEmpty(Model.RoleViewModel.SelectedPageActions) && Model.RoleViewModel.SelectedPageActions.ToLower().Contains(action.PageActionID.ToString().ToLower()))
+                                                                        {
+                                                                            <input class="gdchkbx sfCheckbox roleAction" type="checkbox" id="customCheck_@action.PageActionID" checked="checked" name="SelectedPagesActions" value="@action.PageActionID">
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <input class="gdchkbx sfCheckbox roleAction" type="checkbox" id="customCheck_@action.PageActionID" name="SelectedPagesActions" value="@action.PageActionID">
+
+                                                                        }
+                                                                        <label class="sfCheckboxlabel" for="customCheck_@action.PageActionID">@action.ServiceName</label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        }
+                                                    </div>
+
+
+                                                }
+                                            </div>
+
+                                        }
+
+                                    </div>
+                                </div>
+
+
+                            }
+                        </div>
+                    </div>
+                </div>
+                <div class="sfButtonwrapper">
+                    <input type="submit" value="@localized[""+actionType+""]" class="btn primary round Mr-8" />
+                    <a href="@URLHelper.DashboardURL(Context,"Role", "Index")" class="btn light round">@localized["Back"]</a>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</div>

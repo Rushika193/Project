@@ -1,0 +1,45 @@
+﻿@model Cbuilder.Assets.ApplicationNameInfo
+
+@{ 
+     var localLabel=ViewBag.LocalLabel;
+}
+
+@Html.AntiForgeryToken()
+
+<div class="is-small">
+    @{ var action = "";
+        if (Model == null) { action = localLabel.AddFormHeading; } else { action = localLabel.EditFormHeading; } }
+    <h2 class="form-title">@action</h2>
+    <div class="sfFormwrapper card ">
+        <div class="card-body Pa-6x">
+
+            <form asp-action="Create" method="post">
+
+                <input asp-for="ApplicationID" class="sfFormcontrol" type="hidden" />
+
+                <div class="sfFieldset">
+                    <div class="formkey">
+                        <label asp-for="ApplicationName" class="sfFormlabel">@localLabel.ApplicationName  </label>
+                    </div>
+                    <div class="formvalue">
+                        <input type="text" asp-for="ApplicationName" class="sfFormcontrol" />
+                        <span asp-validation-for="ApplicationName" class="color-danger"></span>
+                        @if (ViewBag.AppErrMsg != null)
+                        {
+                            <span class="color-danger">@ViewBag.AppErrMsg</span>
+                        }
+                    </div>
+                </div>
+
+
+                <div class="sfButtonwrapper">
+                    <input type="submit" value="@action" class="btn primary round  Mr-8" />
+                    <a asp-action="Index" class="btn light round">@localLabel.Back</a>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,139 @@
+﻿<div class="editor-component grpStng sfCol_100 tsfCol_100 msfCol_100 dynamic-component-list" data-type="{{component_name}}" data-post-type-id="{{post_type_id}}" data-post-has-detail="{{has_detail}}" data-offset="0" data-limit="10" data-unlimit="1">
+    <div class="SetHdlr">
+        <span class="stng">
+            <i class="cb-stng" title="Settings" data-title="{{component_name}}"></i>
+            <ul class="setDrp no_txt" style="display: none;">
+                <li class="com-settings" data-type="{{component_name}}" data-title="{{component_name}}">
+                    <span class="text-wrp">Settings</span>
+                    <i class="cb-mxr" title="Settings"></i>
+                </li>
+                <li class="s-style" data-type="{{component_name}}" data-title="{{component_name}}">
+                    <span class="text-wrp">Style</span>
+                    <i class="cb-stl" title="Styles"></i>
+                </li>
+                <li class="com-style" data-type="{{component_name}}" data-title="Change Template">
+                    <span class="text-wrp">Change Template</span>
+                    <i class="cb-chstl" title="Change Template"></i>
+                </li>
+                <li class="manage-data" data-type="{{component_name}}" data-title="Manage Data">
+                    <span class="text-wrp">Manage Data</span>
+                    <a href="#" target="_blank" style="color:#fff;">
+                        <i class="fa fa-database" title="Manage Data"></i>
+                    </a>
+                </li>
+                <li class="deletehelper delete_icon">
+                    <i class="cb-del" title="Delete"></i>
+                </li>
+            </ul>
+        </span>
+        <span class="sortComponent">
+            <i class="cb-drg" title="Drag Up and down"></i>
+        </span>
+    </div>
+    <div class="dynamicComponentListWrap cGrid sfCol_100 tsfCol_100 msfCol_100">
+        <div class="dynamicComponentListItemTmp Dn sfCol_100 tsfCol_100 msfCol_100">
+            {{#each fields}}
+            {{#equal type 'richtext'}}
+            <div class="dyncmpfld" data-value-key="{{name}}">
+                <div class="dyncmpfldval"></div>
+            </div>
+            {{/equal}}
+            {{#equal type 'sageIcon'}}
+            <div class="editor-component fonticon Dib dyncmpfld TxAl-c H-90 W-90 Mt-0 Mr-0 Mb-0 Ml-0 Pt-0 Pr-0 Pb-0 Pl-0 tH-90 tW-90 tDib tMt-0 tMr-0 tMb-0 tMl-0 tPt-0 tPr-0 tPb-0 tPl-0 mH-90 mW-90 mDib mMt-0 mMr-0 mMb-0 mMl-0 mPt-0 mPr-0 mPb-0 mPl-0" style="color: rgb(34, 34, 34); background-color: rgba(55, 154, 247, 0); border-radius: 69px; border-style: solid; border-width: 3px; border-color: rgb(0, 131, 255);"
+                 data-backgroundcolor="color" data-backgroundimage="" data-type="font icon" data-value-key="{{name}}">
+                <div class="SetHdlr">
+                    <span class="stng">
+                        <i class="cb-stng" title="Settings"></i>
+                        <ul class="setDrp no_txt">
+                            <li class="com-settings" data-type="font icon">
+                                <span class="text-wrp">Settings</span>
+                                <i class="cb-mxr" title="Settings"></i>
+                            </li>
+                            <li class="s-style" data-type="font icon">
+                                <span class="text-wrp">Style</span>
+                                <i class="cb-stl" title="Styles"></i>
+                            </li>
+                            <li class="com-style" data-type="font icon">
+                                <span class="text-wrp">Change Styles</span>
+                                <i class="cb-chstl" title="Change Styles"></i>
+                            </li>
+                            <li class="deletehelper delete_icon">
+                                <i class="cb-del" title="Delete"></i>
+                            </li>
+                        </ul>
+                    </span>
+                    <span class="sortComponent">
+                        <i class="cb-drg" title="Drag Up and down"></i>
+                    </span>
+                </div>
+                <div class="Dfx TxAl-c tTxAl-c mTxAl-c TxAl-m tTxAl-c mTxAl-c H-f">
+                    <i class="fa fa-star onhovercolor font-icon  Fs-50 tFs-50 mFs-50 dyncmpfldval" style="color:rgb(61, 155, 244);"></i>
+                </div>
+            </div>
+            {{/equal}}
+            {{#isTextField type}}
+            <div class="editor-component paragraph sfFixed text sfCol_100 tsfCol_100 msfCol_100 Dib TxAl-n tTxAl-n mTxAl-n mDib tDib dyncmpfld" data-type="text" data-value-key="{{name}}">
+                <div class="SetHdlr">
+                    <span class="stng">
+                        <i class="cb-stng" title="Settings"></i>
+                        <ul class="setDrp no_txt">
+                            <li class="com-settings" data-type="text">
+                                <span class="text-wrp">Settings</span>
+                                <i class="cb-mxr" title="Settings"></i>
+                            </li>
+                            <li class="s-style" data-type="text">
+                                <span class="text-wrp">Style</span>
+                                <i class="cb-stl" title="Styles"></i>
+                            </li>
+                            <li class="deletehelper delete_icon">
+                                <i class="cb-del" title="Delete"></i>
+                            </li>
+                        </ul>
+                    </span>
+                    <span class="sortComponent">
+                        <i class="cb-drg" title="Drag Up and down"></i>
+                    </span>
+                </div>
+                <p style="color: rgb(116, 119, 122);" class="editor-para ff-montserrat f-weight-400 Fs-20 LtrSpc-0 Mt-0 Mr-0 Mb-0 Ml-0 Pt-0 Pr-0 Pb-0 Pl-0 tFs-18 tMt-0 tMr-0 tMb-0 tMl-0 tPt-0 tPr-0 tPb-0 tPl-0 mFs-16 mMt-0 mMr-0 mMb-0 mMl-0 mPt-0 mPr-0 mPb-0 mPl-0 Lh-24 tLh-22 mLh-20 dyncmpfldval" contenteditable="true">{{label}} will be rendered here</p>
+            </div>
+            {{/isTextField}}
+            {{#equal type 'sageMedia'}}
+            <div class="editor-component sfCol_100 tsfCol_100 msfCol_100 image imagelink Dib dyncmpfld" data-type="Image Link" data-value-key="{{name}}">
+                <div class="SetHdlr" data-type="Image Link">
+                    <span class="stng">
+                        <i class="cb-stng" title="Settings"></i>
+                        <ul class="setDrp no_txt">
+                            <li class="com-settings" data-type="Image Link">
+                                <span class="text-wrp">Settings</span>
+                                <i class="cb-mxr" title="Settings"></i>
+                            </li>
+                            <li class="s-style" data-type="Image Link">
+                                <span class="text-wrp">Style</span>
+                                <i class="cb-stl" title="Styles"></i>
+                            </li>
+                            <li class="image-settings" data-type="image">
+                                <span class="text-wrp">Change Image</span>
+                                <i class="cb-img" title="Change Image"></i>
+                            </li>
+                            <li class="copyData">
+                                <span class="text-wrp">Copy</span>
+                                <i class="cb-cpy" title="copy data"></i>
+                            </li>
+                            <li class="deletehelper delete_icon">
+                                <i class="cb-del" title="Delete"></i>
+                            </li>
+                        </ul>
+                    </span>
+                    <span class="sortComponent">
+                        <i class="cb-drg" title="Drag Up and down"></i>
+                    </span>
+                </div>
+                <a href="#" target="_blank">
+                    <img src="/Media/bnr3.jpg" class="editor-image dyncmpfldval" alt="bnr3">
+                </a>
+            </div>
+            {{/equal}}
+            {{/each}}
+        </div>
+    </div>
+</div>

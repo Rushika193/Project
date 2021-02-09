@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Cbuilder.Core.Constants\Cbuilder.Core.Constants.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core.Helper\Cbuilder.Core.Helper.csproj" />
+    <ProjectReference Include="..\Cbuilder.Core\Cbuilder.Core.csproj" />
+  </ItemGroup>
+
+</Project>

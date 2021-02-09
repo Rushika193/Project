@@ -1,0 +1,174 @@
+﻿<div class="field-row stElWrap col100">
+    <label class="sfCol_85">Cell Text Setting</label>
+    <div class="sfCol_15  TxAl-r">
+        <span class="toggle_btn">
+            <input type="checkbox" id="showCellSetting" name="toggleButton"><label for="showicon" class="tgl_slider"></label>
+        </span>
+    </div>
+</div>
+<div class="" id="textTableWidthSlider"></div>
+
+<div class="field-row stElWrap col40-60">
+    <label class="fCol">Column Width</label>
+    <span class="fCol TxAl-r select__box">
+        <select class="slcColumnForWidth"></select>
+    </span>
+</div>
+<div class="field-row stElWrap col100">
+    <span class="range__slider fCol">
+        <div id="columnWidthSlider">
+            <div id="columnWidthHandle" class="ui-slider-handle" title="Column Width">0</div>
+        </div>
+    </span>
+</div>
+
+
+<div class="" id="textTableWidthSlider"></div>
+
+
+
+<div class="createTable">
+    <div class="ResponsiveTableBasicWrap createTable Dn" id="divResponsiveTable">
+        <div class="field-row stElWrap col30-70">
+            <label class="fCol">Row Count</label>
+            <span class="fCol cb_input">
+                <input type="text" class="rowColumnSetting" id="txtRowCount" placeholder="No. of Rows" required>
+            </span>
+        </div>
+        <div class="field-row stElWrap col30-70">
+            <label class="fCol">Column Count</label>
+            <span class="fCol cb_input">
+                <input type="text" class="rowColumnSetting" id="txtColumnCount" placeholder="No.of Columns" required>
+            </span>
+        </div>
+        <div class="sfCol_100"><span class="stngSmallBtn sfBtn mlbtn-succ" id="btnTableBuild">Design Table</span></div>
+    </div>
+
+
+    <div class="field-row createTableOutline" id="divRespTblGraph">
+        <h4>Table Outline</h4>
+        <table id="tblGraph" style="margin-bottom:10px;">
+            <tr class="row">
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+            </tr>
+            <tr class="row">
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+            </tr>
+            <tr class="row">
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+            </tr>
+            <tr class="row">
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+            </tr>
+            <tr class="row">
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+                <td class="cell" style="height:30px;width:30px; border:1px solid black"></td>
+            </tr>
+        </table>
+
+        <div class="Value">
+            <span id="noOfRow">Rows</span>
+            &nbsp;x&nbsp;
+            <span id="noOfColumns">Cols</span>
+        </div>
+        <div class="sfCol_30 Dib"><span class="stngSmallBtn sfBtn mlbtn-succ" id="btnTblDesignMore">Design more</span></div>
+        <div class="sfCol_40 Dib"><span class="stngSmallBtn sfBtn mlbtn-succ" id="btnTblManage">Manage Table</span></div>
+    </div>
+    <div id="tblBasicHtml">
+
+    </div>
+</div>
+
+
+<div class="manageTable Dn">
+    <div class="field-row">
+        <div class="field-row stElWrap col100">
+            <span class="fCol TxAl-r select__box">
+                <select class="slcShowOption">
+                    <option value="so">Select Option</option>
+                    <option value="Add">Insert</option>
+                    <option value="Remove">Delete</option>
+                </select>
+            </span>
+        </div>
+
+
+
+        <div class="add Dn">
+            <div class="field-row manageAddType stElWrap col100">
+                <span class="fCol TxAl-r select__box">
+                    <select class="slcAddTypeFa">
+                        <option value="slcrowcolumn">Select Row/Column</option>
+                        <option value="row">Row</option>
+                        <option value="column">Column</option>
+                    </select>
+                </span>
+            </div>
+
+            <div class="field-row beforeAfter stElWrap Dn col100">
+                <span class="fCol TxAl-r select__box">
+                    <select class="slcPositionFa">
+                    </select>
+                </span>
+            </div>
+
+
+                <div class="field-row addPosition rowColumnFa  stElWrap Dn  col100">
+                    <span class="fCol TxAl-r select__box">
+                        <select class="slcRowColumnFa"></select>
+                    </span>
+                </div>
+                   
+            <div class="field-row stElWrap rowColumnNumber Dn col100">
+                <span class="fCol cb_input">
+                    <input class="rowColumnSetting" id="txtRowColumnNumber" placeholder="No.of Rows/Columns" required="" type="text">
+                </span>
+            </div>
+
+            <div class="sfCol_100 btnAdd Dn">
+                <span class="stngSmallBtn sfBtn mrbtn-succ" id="btnadd">Add</span>
+            </div>
+        </div>
+
+        <!-- --------------------------------------------------------->
+        <div class="remove Dn">
+            <div class="field-row stElWrap manageRemoveType col100">
+                <span class="fCol TxAl-r select__box">
+                    <select class="slcRemoveTypeFr">
+                        <option value="src">Select Row/Column</option>
+                        <option value="row">Row</option>
+                        <option value="column">Column</option>
+                    </select>
+                </span>
+            </div>
+
+            <div class="field-row removePosition stElWrap Dn col100">
+                <span class="fCol TxAl-r select__box">
+                    <select class="slcRowColumnFr"></select>
+                </span>
+            </div>
+            <div class="sfCol_100 removeButton Dn">
+                <span class="stngSmallBtn sfBtn mrbtn-succ" id="btnremove">Remove</span>
+            </div>
+        </div>
+    </div>
+</div>

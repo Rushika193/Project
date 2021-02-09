@@ -1,0 +1,16 @@
+﻿@using Microsoft.AspNetCore.Mvc.Rendering
+@using Cbuilder.Core.Helper.Models;
+@model CustomMultiselect
+
+@if (Model !=null && Model.Items.Count > 0)
+{
+@foreach (SelectListItem item in Model.Items)
+{
+    var chkID = "chkMultiple" + item.Value;
+    <div class="custom-control custom-checkbox Mb-3x Mt-3x">
+        <input value="@item.Value" type="checkbox" class="sfCheckbox" checked="@item.Selected" name="@Model.GroupName" id="@chkID" />
+        <label for="@chkID" class="sfCheckboxlabel">@item.Text</label>
+    </div>
+}
+}
+

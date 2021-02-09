@@ -1,0 +1,20 @@
+﻿@{
+    ViewData["Title"] = "Roles";
+}
+
+@model IEnumerable<Cbuilder.Core.Role.RoleViewModel>
+<div class="sfFieldset">
+    <div class="sfFormkey">
+        <span class="sfFormlabel">Select Roles</span>
+    </div>
+
+    <div class="sfFormvalue">
+        @foreach (var item in Model)
+        {
+            <div class="custom-control custom-checkbox">
+                <input type="checkbox" class="custom-control-input" id="customCheck+@item.ID" name="UserInRoles" value="@item.Name">
+                <label class="custom-control-label" for="customCheck+@item.ID">@item.Name</label>
+            </div>
+        }
+    </div>
+</div>
